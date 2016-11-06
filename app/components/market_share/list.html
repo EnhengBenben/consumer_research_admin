@@ -1,0 +1,92 @@
+<div class="ibox" style="height: 100%">
+  <div style="position: relative;height: 100%;width: 100%">
+    <div class="box-item" id="mark-share-list">
+      <div class="show-item" style="height: 100%;">
+        <div class="move-box box-2" style="width: 100%">
+          <div class="row">
+            <div class="row -box-title">
+              <ul>
+                <li ng-repeat="i in vm.sortName"><p>{{i}}</p></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row" style="height: 90%">
+            <div class="row market-share market-share-list-top">
+              <div class="show-content" style="height: 96%">
+                <div class="font-title">
+                  <div class="title-left">
+                    <p>渠<br>道<br>类<br>别</p>
+                  </div>
+                  <div class="title-right title-right-top">
+                    <p style="cursor: inherit"><span>整体</span></p>
+                    <p><span ui-sref="app.market.channel({status: 'online'})">线上<img class="point-image" ng-src="images/point.png"></span></p>
+                    <p><span ui-sref="app.market.channel({status: 'line'})">线下<img class="point-image" ng-src="images/point.png"></span></p>
+                  </div>
+                </div>
+                <div class="font-right">
+                  <div class="content-right left-center-right" ng-repeat="lists in vm.datalists" ng-if="$index < 3">
+                    <ul>
+                      <li ng-repeat="i in lists track by $index"><p><span>{{i.marketshare*100 | number:1}}</span><span>{{i.marketshareMom*100 | number:1}}</span>
+                        <img ng-src="images/icon/02_03.png" ng-if="(i.marketshareMom*100 | number:1) < 0"/>
+                        <img ng-src="images/icon/02_08.png" ng-if="(i.marketshareMom*100 | number:1) == 0"/>
+                        <img ng-src="images/icon/02_06.png" ng-if="(i.marketshareMom*100 | number:1) > 0"/>
+                      </p></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row price" id="content-show-box-4">
+              <div class="show-content">
+                <div class="font-title">
+                  <div class="title-left">
+                    <p>产<br>品<br>类<br>别</p>
+                  </div>
+                  <div class="title-right">
+                    <p ui-sref="app.market.product({status: '挂机'})"><span>挂机<img class="point-image" ng-src="images/point.png"></span></p>
+                    <p ui-sref="app.market.product({status: '柜机'})"><span>柜机<img class="point-image" ng-src="images/point.png"></span></p>
+                    <p ui-sref="app.market.product({status: '变频'})"><span>变频<img class="point-image" ng-src="images/point.png"></span></p>
+                    <p ui-sref="app.market.product({status: '定频'})"><span>定频<img class="point-image" ng-src="images/point.png"></span></p>
+                  </div>
+                </div>
+                <div class="font-right">
+                  <div class="content-right left-center-right" ng-repeat="lists in vm.datalists" ng-if="$index > 2">
+                    <ul>
+                      <li ng-repeat="i in lists track by $index"><p><span>{{i.marketshare*100 | number:1}}</span><span>{{i.marketshareMom*100 | number:1}}</span>
+                        <img ng-src="images/icon/02_03.png" ng-if="(i.marketshareMom*100 | number:1) < 0"/>
+                        <img ng-src="images/icon/02_08.png" ng-if="(i.marketshareMom*100 | number:1) == 0"/>
+                        <img ng-src="images/icon/02_06.png" ng-if="(i.marketshareMom*100 | number:1) > 0"/>
+                      </p></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row structure" id="content-show-box-5">
+              <div class="show-content">
+                <div class="font-title">
+                  <div class="title-left">
+                    <p>线<br>下<br>区<br>域</p>
+                  </div>
+                  <div class="title-right">
+                    <p ng-repeat="i in vm.provinceName" ng-click="vm.goRegion(i)"><span>{{i}}<img class="point-image" ng-src="images/point.png"></span></p>
+                  </div>
+                </div>
+                <div class="font-right">
+                  <div class="content-right left-center-right" style="height: 100%;width: 14.28%;float: left" ng-repeat="lists in vm.areaLists">
+                    <ul>
+                      <li style="width: 100%;height: 20%" ng-repeat="i in lists[2] track by $index"><p><span>{{i.marketshare*100 | number:1}}</span><span>{{i.marketshareMom*100 | number:1}}</span>
+                        <img ng-src="images/icon/02_03.png" ng-if="i.marketshareMom < 0"/>
+                        <img ng-src="images/icon/02_08.png" ng-if="i.marketshareMom == 0"/>
+                        <img ng-src="images/icon/02_06.png" ng-if="i.marketshareMom > 0"/></p></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

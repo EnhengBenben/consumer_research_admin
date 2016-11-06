@@ -1,0 +1,109 @@
+<div class="ibox" style="height: 100%">
+  <div style="position: relative;height: 100%;width: 100%">
+    <div class="box-item" id="mark-share-list">
+      <div class="show-item" style="height: 100%;">
+        <div class="move-box box-2" style="width: 100%">
+          <div class="row">
+            <div class="back-button" ng-click="vm.runBack()">
+              <p><img ng-src="images/icon/return.png" style="height: 20px;">返回</p>
+            </div>
+            <div class="-box-title" style="width: 96%">
+              <ul>
+                <li ng-repeat="i in vm.sortName"><p>{{i}}</p></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row" style="height: 90%">
+            <div class="row market-share market-share-list-top" style="height: 30%">
+              <div class="show-content" style="height: 96%;position: relative">
+                <div class="row tab-line" style="width: 100%">
+                  <p style="text-align: left;position: relative;z-index: 100">
+                    <span>
+                      <select name="" ng-model="vm.filter.product" ng-options="i.id as i.name for i in vm.products"></select>
+                    </span>
+                    <span>
+                    <select name="" ng-model="vm.filter.line" ng-options="i.id as i.name for i in vm.lines"></select>
+                    </span>
+                  </p>
+                </div>
+                <div style="clear: both"></div>
+                <div class="row tab-line-content">
+                  <div class="font-title" style="width: 5%;position: absolute">
+                    <div class="title-right title-right-top" ng-if="vm.filter.product === 'guaji'">
+                      <p style="cursor: inherit"><span>挂机</span></p>
+                      <p style="cursor: inherit"><span>变频</span></p>
+                      <p style="cursor: inherit"><span>定频</span></p>
+                    </div>
+                    <div class="title-right title-right-top" ng-if="vm.filter.product === 'guiji'">
+                      <p style="cursor: inherit"><span>柜机</span></p>
+                      <p style="cursor: inherit"><span>变频</span></p>
+                      <p style="cursor: inherit"><span>定频</span></p>
+                    </div>
+                    <div class="title-right title-right-top" ng-if="vm.filter.product === 'bianpin'">
+                      <p style="cursor: inherit"><span>变频</span></p>
+                      <p style="cursor: inherit"><span>挂机</span></p>
+                      <p style="cursor: inherit"><span>柜机</span></p>
+                    </div>
+                    <div class="title-right title-right-top" ng-if="vm.filter.product === 'dingpin'">
+                      <p style="cursor: inherit"><span>定频</span></p>
+                      <p style="cursor: inherit"><span>挂机</span></p>
+                      <p style="cursor: inherit"><span>柜机</span></p>
+                    </div>
+                  </div>
+                  <div class="font-right" style="width: 96%;float: right">
+                    <div class="content-right left-center-right" style="width: 14.28%;height: 100%;float: left" ng-repeat="lists in vm.listTop">
+                      <ul>
+                        <li style="width: 100%;height: 33.3%;" ng-repeat="i in lists track by $index"><p><span>{{i.priceAvg}}</span><span>{{i.priceMom| number: 1}}</span>
+                          <img ng-src="images/icon/02_03.png" ng-if="i.priceMom < 0"/>
+                          <img ng-src="images/icon/02_08.png" ng-if="i.priceMom == 0"/>
+                          <img ng-src="images/icon/02_06.png" ng-if="i.priceMom > 0"/></p></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row show-content" style="height: 70%">
+              <div class="row" style="height: 100%;position: relative">
+                <div class="back-button" style="margin-top: 20px">
+                  <p>Top10型号</p>
+                </div>
+                <div class="row channel-box">
+                  <div class="font-title" style="width: 10%;position: absolute;">
+                    <div class="title-right title-right-top num-left">
+                      <p style="cursor: inherit"><span>1</span></p>
+                      <p style="cursor: inherit"><span>2</span></p>
+                      <p style="cursor: inherit"><span>3</span></p>
+                      <p style="cursor: inherit"><span>4</span></p>
+                      <p style="cursor: inherit"><span>5</span></p>
+                    </div>
+                  </div>
+                  <div class="font-right" style="width: 96%;float: right">
+                    <div class="content-right" style="width: 14.28%;height: 100%;float: left" ng-repeat="lists in vm.topTenLists">
+                      <ul>
+                        <li style="width: 100%;height: 20%;" ng-repeat="i in lists track by $index">
+                         <!-- <p>{{i.model}}<br><span>{{i.priceAvg}}</span><span>{{i.modelRanking}}</span><span>{{i.marketShare*100 | number: 1}}</span></p>-->
+                          <p>
+                             <span class="overview-model-box">
+                            <span class="overview-model">{{i.model}}</span></span>
+                            <span class="overview-model-num"><span>{{i.priceAvg}}</span><span>{{i.modelRanking}}</span><span>{{i.marketShare*100 | number:1}}</span></span>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="pull-right" style="margin-right: 30px">
+                    <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === 0}" ng-click="vm.setPage(0)">1</div>
+                    <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === 1}" ng-click="vm.setPage(1)">2</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

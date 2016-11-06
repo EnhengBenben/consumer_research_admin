@@ -1,0 +1,94 @@
+<div class="ibox" style="height: 100%">
+  <div style="position: relative;height: 100%;width: 100%">
+    <div class="box-item" id="mark-share-list">
+      <div class="show-item" style="height: 100%;">
+        <div class="move-box box-2" style="width: 100%">
+          <div class="row" style="height: 5%">
+            <div class="back-button" ng-click="vm.runBack()" style="width: 5%">
+              <p><img ng-src="images/icon/return.png" style="height: 20px;">返回</p>
+            </div>
+            <div style="width: 95%;height: 100%;float: right">
+              <div class="-box-title" style="width: 96%">
+                <ul>
+                  <li ng-repeat="i in vm.sortName"><p>{{i}}</p></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="height: 95%">
+            <div class="row show-content" style="height:100%">
+              <div class="row" style="height: 100%;position: relative">
+                <div style="width: 6%;height: 100%;float: left;position: relative">
+                  <div class="back-button" style="margin-top: 20px;width: 100%;height: 10%;position: relative">
+                    <p>{{vm.line}}<br>Top10型号</p>
+                  </div>
+                  <div class="left-btn">
+                    <div class="btn-box">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === '整体'}"
+                           ng-click="vm.setPage('整体')">整体
+                      </div>
+                    </div>
+                    <div class="btn-box">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === '挂机'}"
+                           ng-click="vm.setPage('挂机')">挂机
+                      </div>
+                    </div>
+                    <div class="btn-box">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === '柜机'}"
+                           ng-click="vm.setPage('柜机')">柜机
+                      </div>
+                    </div>
+                    <div class="btn-box">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === '变频'}"
+                           ng-click="vm.setPage('变频')">变频
+                      </div>
+                    </div>
+                    <div class="btn-box">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === '定频'}"
+                           ng-click="vm.setPage('定频')">定频
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="width: 94%;height: 100%;float: left;position: relative">
+                  <div class="row channel-box" style="height: 97%;margin-top: 1%;margin-bottom: 1%">
+                    <div class="font-title" style="width: 3%;position: absolute;">
+                      <div class="title-right title-right-top">
+                        <p style="cursor: inherit;height: 10% !important;"><span>1</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>2</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>3</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>4</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>5</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>6</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>7</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>8</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>9</span></p>
+                        <p style="cursor: inherit;height: 10% !important;"><span>10</span></p>
+                      </div>
+                    </div>
+                    <div class="font-right" style="width: 96%;float: right">
+                      <div class="content-right" style="height: 100%;width: 14.28%;float: left"
+                           ng-repeat="lists in vm.lists">
+                        <ul style="height: 100%;width: 100%;">
+                          <li style="height: 10%;width: 100%" ng-repeat="i in lists track by $index">
+                            <!--<p>{{i.model}}<br><span>{{i.marketshare | number:1}}</span><span>{{i.modelPrice.toFixed(0)}}</span></p>-->
+                            <p>
+                               <span class="overview-model-box">
+                              <span class="overview-model">{{i.model}}</span></span>
+                              <span class="overview-model-num"><span>{{i.marketshare | number:1}}</span><span>{{i.modelPrice.toFixed(0)}}</span></span>
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="ibox" style="height: 100%">
+  <div style="position: relative;height: 100%;width: 100%">
+    <div class="box-item" style="margin-left: 2%;width: 96%">
+      <div class="box-3" style="height: 100%">
+        <div class="row" style="height: 100%">
+          <div class="back-button" ng-click="vm.runBack()" style="left: -5%">
+            <p><img ng-src="images/icon/return.png" style="height: 20px;">返回</p>
+          </div>
+          <div class="col-md-5 col-xs-5 market-share-percent" style="padding: 0">
+            <div class="market-share-percent-content" id="whole-percent">
+              <div id="region-grid">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7 col-xs-7 market-share-percent" style="padding: 0">
+            <div class="market-share-percent-content" id="whole-change">
+              <div class="row" style="height: 100%">
+                <div class="row" style="height: 100%;position: relative">
+                  <div class="back-button" style="margin-top: 20px;height: 12%;position: relative">
+                    <p >{{vm.status}}</p>
+                  </div>
+                  <div class="-box-title" style="width: 90%;height: 12%;padding: 0; margin-top: 20px;">
+                    <ul>
+                      <li ng-repeat="i in vm.sortName"><p>{{i}}</p></li>
+                    </ul>
+                  </div>
+                  <div class="row channel-box" style="height: 88%">
+                    <div class="font-title" style="width: 10%;position: relative;height: 88%;padding-left: 10px;float: left">
+                      <div class="title-right title-right-top table-content" style="height: 100%">
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>市占</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>同比增减</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>均价</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>同比增长率</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>单店效率</span></p>
+                      </div>
+                    </div>
+                    <div class="font-right" style="width: 90%;float: right;height: 90%">
+                      <div class="content-right" style="height: 100%;width: 14.28%;float: left" ng-repeat="i in vm.topDataLists">
+                        <ul>
+                          <li style="width: 100%;height: 20%"><p>{{i.marketshare*100 | number:1}}</p></li>
+                          <li style="width: 100%;height: 20%"><p>{{i.marketshareMom*100 | number:1}}</p></li>
+                          <li style="width: 100%;height: 20%"><p>{{i.avgPrice}}</p></li>
+                          <li style="width: 100%;height: 20%"><p>{{i.tb | number: 1}}</p></li>
+                          <li style="width: 100%;height: 20%"><p>{{i.singleshoptb | number: 1}}</p></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12  col-xs-12 market-share-percent" >
+            <div class="market-share-percent-content" id="online-percent" style="padding-right: 0">
+              <div class="row" style="height: 75%">
+                <div class="row" style="height: 100%;position: relative">
+                  <div class="back-button" style="margin-top: 15px;width: 6%">
+                    <p>Top10型号</p>
+                  </div>
+                  <div class="-box-title" style="width: 96%;height: 12%;padding: 0; margin-top: 15px;">
+                    <ul>
+                      <li ng-repeat="i in vm.sortName"><p>{{i}}</p></li>
+                    </ul>
+                  </div>
+                  <div class="row channel-box top-ten-product" style="height: 92%;margin-top: 3%">
+                    <div class="font-title num-left" style="width: 4%;position: absolute;height: 90%;">
+                      <div class="title-right title-right-top" style="height: 100%">
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>1</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>2</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>3</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>4</span></p>
+                        <p style="cursor: inherit;color: #1b9a9f;"><span>5</span></p>
+                      </div>
+                    </div>
+                    <div class="font-right" style="width: 96%;float: right;height: 90%">
+                      <div class="content-right" style="width: 14.28%;height: 100%;float: left" ng-repeat=" lists in vm.topTenLists">
+                        <ul>
+                          <li style="height: 20%;width: 100%" ng-repeat="i in lists track by $index"><p>
+                            <span class="overview-model-box">
+                            <span class="overview-model">{{i.model}}</span></span>
+                            <span class="overview-model-num"><span>{{i.marketshare*100 | number: 2}}</span><span>{{i.modelRanking}}</span><span>{{i.avgPrice.toFixed(0)}}</span></span>
+                          </p></li>
+                        </ul>
+                      </div>
+                      <!--<div class="content-right" style="width: 14.28%;height: 100%;float: left" ng-repeat="lists in vm.topTenLists">-->
+                        <!--<ul>-->
+                          <!--<li style="height: 20%;width: 100%" ng-repeat="i in lists track by $index">-->
+                            <!--<div>-->
+                              <!--<div>{{i.model}}</div>-->
+                              <!--<div>-->
+                                <!--<span>{{i.avgPrice.toFixed(0)}}</span><span>{{i.modelRanking}}</span><span>{{i.marketshare*100 | number: 1}}</span>-->
+                              <!--</div>-->
+                            <!--</div>-->
+                          <!--</li>-->
+                        <!--</ul>-->
+                      <!--</div>-->
+                     <!-- <table style="height: 100%;width: 100%;">
+                        <thead>
+                        <tr>
+                          <td width="8%">top10</td>
+                          <td ng-repeat="i in vm.sortName">{{i}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr >
+                          <td>{{5*vm.page + 1}}</td>
+                          <td ng-repeat="lists in vm.topTenLists">
+                            {{lists[0].model}}
+                            {{lists[0].modelRankling}}
+                          </td>
+                        </tr>
+                        <tr >
+                          <td>{{5*vm.page + 2}}</td>
+                          <td ng-repeat="lists in vm.topTenLists">
+                            {{lists[1].model}}
+                          </td>
+                        </tr>
+                        <tr >
+                          <td>{{5*vm.page + 3}}</td>
+                          <td ng-repeat="lists in vm.topTenLists">
+                            {{lists[2].model}}
+                          </td>
+                        </tr>
+                        <tr >
+                          <td>{{5*vm.page + 4}}</td>
+                          <td ng-repeat="lists in vm.topTenLists">
+                            {{lists[3].model}}
+                          </td>
+                        </tr>
+                        <tr >
+                          <td>{{5*vm.page + 5}}</td>
+                          <td ng-repeat="lists in vm.topTenLists">
+                            {{lists[4].model}}
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>-->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="pull-right" style="margin-right: 30px">
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === 0}" ng-click="vm.setPage(0)">1</div>
+                      <div class="btn btn-sm btn-primary" ng-class="{'btn-active':vm.page === 1}" ng-click="vm.setPage(1)">2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
