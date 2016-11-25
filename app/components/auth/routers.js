@@ -41,4 +41,29 @@ angular.module('app')
         templateUrl: 'components/auth/freeworker/resume.html',
         controller: 'FreeResumeCtrl as vm'
       })
+      .state('company',{
+        url: '/company',
+        templateUrl: 'components/auth/company/layout.html',
+        abstract: true
+      })
+      .state('company.base',{
+        url: '/base',
+        templateUrl: 'components/auth/company/base.html',
+        controller: 'CompanyBaseCtrl as vm'
+      })
+      .state('company.experience',{
+        url: '/experience',
+        templateUrl: 'components/auth/company/experience.html',
+        controller: 'CompanyExperienceCtrl as vm'
+      })
+      .state('company.skill',{
+        url: '/skill',
+        templateUrl: 'components/auth/company/skill.html',
+        controller: 'CompanySkillCtrl as vm'
+      })
+      .state('company.qualifications',{
+        url: '/qualifications',
+        templateUrl: 'components/auth/company/qualifications.html',
+        controller: 'CompanyQualificationCtrl as vm'
+      })
   });

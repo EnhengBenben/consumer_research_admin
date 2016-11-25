@@ -1,0 +1,58 @@
+<div class="row free-base">
+  <div class="col-md-12" style="text-align: center">
+    <div class="circle circle-active">
+      <div>1</div>
+      <span class="help-block">企业基本信息</span>
+    </div>
+    <div class="circle-line">
+      <div></div>
+    </div>
+    <div class="circle">
+      <div>2</div>
+      <span class="help-block">行业经验</span>
+    </div>
+    <div class="circle-line">
+      <div></div>
+    </div>
+    <div class="circle">
+      <div>3</div>
+      <span class="help-block">擅长技能</span>
+    </div>
+    <div class="circle-line">
+      <div></div>
+    </div>
+    <div class="circle">
+      <div>4</div>
+      <span class="help-block">企业资质</span>
+    </div>
+  </div>
+</div>
+<form class="form-container form-horizontal" style="padding-right: 0">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2 font-prompt">
+      <p>您过去项目所在的行业有哪些？</p>
+      <p>这便于企业作为资深的经验者，更好的承接新项目</p>
+    </div>
+  </div>
+  <hr/>
+  <div class="form-group" style="border-bottom: none">
+    <div class="col-md-2 control-label" style="padding-top: 0">
+      <label>行业经验选择</label>
+    </div>
+    <div class="col-md-10">
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.network" ng-true-value="'IT'"/><span> IT | 通信 | 互联网</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.money" ng-true-value="'money'"/><span> 金融业</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type3" ng-true-value="'type3'"/><span>  房地产 | 建筑业</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type4" ng-value="type4"/><span> 商业服务</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type5" ng-value="type5"/><span> 贸易 | 批发 | 零售 | 租赁业</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type6" ng-value="type6"/><span> 文体教育 | 工艺美术</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type7" ng-value="type7"/><span> 生产 | 加工 | 制造</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type8" ng-value="type8"/><span> 交通 | 运输 | 物流 |仓储</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type9" ng-value="type9"/><span>  服务业</span></label><br>
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type0" ng-value="type0"/><span> 文化 | 传媒 | 娱乐 | 体育</span></label><br>
+    </div>
+    <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
+      <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+    </div>
+  </div>
+</form>

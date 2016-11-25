@@ -19,7 +19,12 @@
     }
 
     function regist(){
-      $state.go('free.base');
+      if(vm.register.type === 1){
+        $state.go('free.base');
+      }else if(vm.register.type === 2){
+        $state.go('company.base');
+      }
+
       toaster.pop('success','请先填写信息，完成后即注册成功');
     }
   }

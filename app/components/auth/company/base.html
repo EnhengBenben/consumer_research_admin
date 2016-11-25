@@ -1,0 +1,201 @@
+<script>
+  var thisPage=false;
+  window.onbeforeunload=function checkLeave(e){
+    var evt = e ? e : (window.event ? window.event : null);  //此方法为了在firefox中的兼容
+    if(!thisPage)evt.returnValue='离开后将不会保存账户信息。';
+  };
+</script>
+<div class="row free-base">
+  <div class="col-md-12" style="text-align: center">
+    <div class="circle">
+      <div>1</div>
+      <span class="help-block">企业基本信息</span>
+    </div>
+    <div class="circle-line ">
+      <div></div>
+    </div>
+    <div class="circle">
+      <div>2</div>
+      <span class="help-block">行业经验</span>
+    </div>
+    <div class="circle-line skill-line">
+      <div></div>
+    </div>
+    <div class="circle circle-skill">
+      <div>3</div>
+      <span class="help-block">擅长技能</span>
+    </div>
+    <div class="circle-line circle-resume">
+      <div></div>
+    </div>
+    <div class="circle">
+      <div>4</div>
+      <span class="help-block">企业资质</span>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="form-container" style="margin-top: 70px">
+  <form class="form-horizontal" name="base">
+    <div class="form-group" style="position: relative;margin-top: -78px;border-bottom: none">
+      <div class="col-md-5 col-md-offset-2">
+        <label><input type="radio" name="type" ng-model="vm.company.type"/><span class="normal-weight"> 我要发布项目，想找承包方</span></label>
+      </div>
+      <div class="col-md-5">
+        <label><input type="radio" name="type" ng-model="vm.company.type"/><span class="normal-weight"> 我要承接项目，想找发包方</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>单位类型</label>
+      </div>
+      <div class="col-md-10" style="padding-top: 4px">
+        <div class="col-md-2 no-padding-left">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 企业</span></label>
+        </div>
+        <div class="col-md-2">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 事业单位</span></label>
+        </div>
+        <div class="col-md-2">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 民办非企业单位</span></label>
+        </div>
+        <div class="col-md-2">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 个体工商户</span></label>
+        </div>
+        <div class="col-md-2">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 社会团体</span></label>
+        </div>
+        <div class="col-md-2">
+          <label><input type="radio" name="companyType"/><span class="normal-weight"> 党政及国家单位</span></label>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>证件类型</label>
+      </div>
+      <div class="col-md-5">
+        <label><input type="radio" name="book"/><span class="normal-weight"> 普通营业执照( 存在独立的组织机构代码证)</span></label>
+      </div>
+      <div class="col-md-5">
+        <label><input type="radio" name="book"/><span class="normal-weight"> 多证合一营业执照( 不存在独立的组织机构代码证)</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>企业名称</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" ng-class="{'error-input': (base.name.$error.required && base.name.$touched)}" name="name" class="form-control" ng-model="vm.base.name" placeholder="请输入企业名称" required/>
+        <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">企业名称不能为空</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">密码</label>
+      </div>
+      <div class="col-md-10">
+        <input type="password" id="" name="password" ng-model="vm.base.password" class="form-control" placeholder="密码必须为字母+数字,长度为8位" ng-maxlength="8" ng-minlength="8" required/>
+        <div class="help-block error-font" ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">密码长度必须为8位</div>
+        <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">密码不能为空</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">确认密码</label>
+      </div>
+      <div class="col-md-10">
+        <input type="password" id="" class="form-control" placeholder="再次输入密码" maxlength="8" minlength="8" ng-required=""/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>单位所在地</label>
+      </div>
+      <div class="col-md-5">
+        <select name="" id="" class="form-control">
+          <option value=""></option>
+        </select>
+      </div>
+      <div class="col-md-5">
+        <select name="" id="" class="form-control">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">营业期限</label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" id="" class="form-control" placeholder="请输入营业期限,若是长期请勾选"/>
+      </div>
+      <div class="col-md-5" style="padding-top: 4px">
+        <label><input type="checkbox" name="time" ng-true-value = 'forever'/><span class="normal-weight"> 长期</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">组织机构代码</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" id="" class="form-control" placeholder="请输入正确的组织机构代码" ng-required=""/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">法定代表人姓名</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" id="" class="form-control" placeholder="请输入法定代表人姓名" ng-required=""/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">身份证号</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" id="" class="form-control" ng-minlength="18" ng-maxlength="18" placeholder="请输入正确的身份证号" ng-required=""/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">证件有效期</label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" id="" class="form-control" placeholder="如: 2016-8-20~2026-8-20"/>
+      </div>
+      <div class="col-md-5" style="padding-top: 4px">
+        <label><input type="checkbox" name="time" ng-true-value = 'forever'/><span class="normal-weight"> 长期</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>填写人身份</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 我是法定代表人</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 我是代理人</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>实际控制人类型</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 个人</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 企业</span></label>
+      </div>
+    </div>
+    <div class="form-group" style="border-bottom: none">
+      <div class="col-md-10 col-md-offset-2">
+        <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+      </div>
+    </div>
+  </form>
+</div>
