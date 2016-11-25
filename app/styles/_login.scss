@@ -1,0 +1,52 @@
+
+.bg-image {
+  background-image: url('../images/bg_login.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.name-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.intruduce {
+  text-align: center;
+  color: #FFF;
+  font-size: 18px;
+}
+.login-choice{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid #FFF;
+  font-size: 16px;
+  cursor: pointer;
+}
+.login-choice-active{
+  border-bottom: none;
+  border-right: none;
+}
+.register-choice-active{
+  border-bottom: none;
+  border-left: none;
+}
+.login-content{
+  border: 1px solid #FFF;
+  border-top: none;
+}
+.username{
+  margin-top: 20px;
+}
+.form-container{
+  width: 1200px;
+  margin:0 auto;
+  border: 1px solid #eee;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+
+}
