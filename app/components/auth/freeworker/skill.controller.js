@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .controller('FreeExperienceCtrl', Controller);
+    .controller('FreeSkillCtrl', Controller);
 
   /* @ngInject */
   function Controller($localStorage, $state, toaster, $scope, $rootScope) {
@@ -19,8 +19,8 @@
 
     function next(){
       console.log(vm.chioce);
-      $state.go('free.skill');
-      //toaster.pop('success','已保存，请继续完成注册');
+      $state.go('free.resume');
+      toaster.pop('success','已保存，请继续完成注册');
     }
   }
 })();

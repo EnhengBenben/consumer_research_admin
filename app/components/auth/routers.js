@@ -31,4 +31,14 @@ angular.module('app')
         templateUrl: 'components/auth/freeworker/experience.html',
         controller: 'FreeExperienceCtrl as vm'
       })
+      .state('free.skill',{
+        url: '/skill',
+        templateUrl: 'components/auth/freeworker/skill.html',
+        controller: 'FreeSkillCtrl as vm'
+      })
+      .state('free.resume',{
+        url: '/resume',
+        templateUrl: 'components/auth/freeworker/resume.html',
+        controller: 'FreeResumeCtrl as vm'
+      })
   });
