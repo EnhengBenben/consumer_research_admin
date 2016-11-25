@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>消费者研究</title>
+    <title>软盈SoftTrade</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -22,7 +22,7 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="app" style="min-width: 1200px">
+<body ng-app="app">
     <!--[if lte IE 8]>
     <p class="browsehappy">
         You are using an <strong>outdated</strong>
@@ -57,10 +57,6 @@
     <script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
-    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script src="bower_components/echarts/dist/echarts.js"></script>
-    <script src="bower_components/echarts/map/js/china.js"></script>
-    <script src="bower_components/echarts/theme/shine.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -71,43 +67,26 @@
     <script src="scripts/config/nonangular.js"></script>
     <script src="scripts/config/utils.js"></script>
     <script src="scripts/config/fullscreen.directive.js"></script>
-    <script src="components/auth/login.controller.js"></script>
-    <script src="components/auth/auth_service.js"></script>
 
     <script src="scripts/config/api.config.js"></script>
     <script src="scripts/config/loading_bar.config.js"></script>
     <script src="scripts/config/http.config.js"></script>
     <script src="scripts/interceptors/auth_interceptor.js"></script>
     <script src="components/app/app.controller.js"></script>
+    <script src="components/uploader/single_uploader.directive.js"></script>
     <!--courses-->
     <!--overviews-->
     <script src="components/overviews/list.controller.js"></script>
     <script src="components/overviews/overviews_service.js"></script>
-    <!--market-share-->
-    <script src="components/market_share/routes.js"></script>
-    <script src="components/market_share/list.controller.js"></script>
-    <script src="components/market_share/product.controller.js"></script>
-    <script src="components/market_share/channel.controller.js"></script>
-    <script src="components/market_share/region.controller.js"></script>
-    <script src="components/market_share/market.service.js"></script>
+    <!--auth-->
+    <script src="components/auth/routers.js"></script>
+    <script src="components/auth/register.controller.js"></script>
+    <script src="components/auth/login.controller.js"></script>
+    <script src="components/auth/auth_service.js"></script>
+    <script src="components/auth/freeworker/base.controller.js"></script>
+    <script src="components/auth/freeworker/experience.controller.js"></script>
 
-   <!-- average-->
-    <script src="components/average_price/routes.js"></script>
-    <script src="components/average_price/list.controller.js"></script>
-    <script src="components/average_price/channel.controller.js"></script>
-    <script src="components/average_price/product.controller.js"></script>
-    <script src="components/average_price/region.controller.js"></script>
-    <script src="components/average_price/average.service.js"></script>
-    <!--reputation-->
-    <script src="components/reputation/routes.js"></script>
-    <script src="components/reputation/list.controller.js"></script>
-    <script src="components/reputation/reputation.service.js"></script>
 
-    <!--structure-->
-    <script src="components/structure/routes.js"></script>
-    <script src="components/structure/list.controller.js"></script>
-    <script src="components/structure/channel.controller.js"></script>
-    <script src="components/structure/structure.service.js"></script>
     <!-- endbuild -->
 </body>
 

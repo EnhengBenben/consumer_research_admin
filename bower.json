@@ -1,5 +1,5 @@
 {
-  "name": "cus_web_user",
+  "name": "web_app",
   "version": "0.0.0",
   "dependencies": {
     "jquery": "~2.1.4",
@@ -21,9 +21,7 @@
     "ngstorage": "~0.3.9",
     "AngularJS-Toaster": "angularjs-toaster#~0.4.16",
     "animate.css": "~3.4.0",
-    "ngInfiniteScroll": "~1.2.1",
-    "moment": "~2.13.0",
-    "echarts": "^3.2.3"
+    "moment": "~2.13.0"
   },
   "devDependencies": {
     "angular-mocks": "1.5.7"
@@ -40,13 +38,6 @@
       "main": [
         "moment.js",
         "locale/zh-cn.js"
-      ]
-    },
-    "echarts": {
-      "main": [
-        "./dist/echarts.js",
-        "./map/js/china.js",
-        "./theme/shine.js"
       ]
     }
   }

@@ -21,6 +21,5 @@ angular
         'ui.bootstrap',
         'angular-confirm',
         'ngLocale',
-        'ui.router',
-        'infinite-scroll'
+        'ui.router'
     ]);

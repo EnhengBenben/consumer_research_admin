@@ -5,46 +5,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 // Variables, Mixins
-@import "variables";
-@import "mixins";
 
-// INSPINIA Theme Elements
-@import "typography";
-@import "navigation";
-@import "top_navigation";
-@import "buttons";
-@import "badgets_labels";
-@import "elements";
-@import "sidebar";
 @import "base";
-@import "pages";
-@import "chat";
-@import "metismenu";
-@import "spinners";
-
-
-// Landing page
-@import "landing";
-
-// RTL Support
-@import "rtl";
-
-// For demo only - config box style
-@import "theme-config";
-
-// INSPINIA Skins
-@import "skins";
-
-// Media query style
-@import "media";
-
-// Custom style
-// Your custom style to override base style
-@import "custom";
-@import "progressbar";
-@import "mpmenu";
-@import "users";
-@import "overview";
+@import "public";
+@import "login";
 
 .table>tbody>tr>td,
 .table>tbody>tr>th,
