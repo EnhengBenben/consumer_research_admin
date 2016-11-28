@@ -3,10 +3,11 @@
 
   angular
     .module('app')
-    .controller('FreeBaseCtrl', Controller);
+    .controller('AppController', Controller);
 
   /* @ngInject */
   function Controller( $state, $scope) {
     var vm = this;
+    $scope.$state = $state;
   }
 })();

@@ -21,12 +21,12 @@
     }
 
     function login() {
+      //alert(1);
+     // $state.go('app.company.manage');
       AuthService
         .login(vm.account)
         .success(function (response) {
-          $localStorage.token = response.result_data[0].token;
-          $localStorage.type = response.result_data[0].type;
-          $state.go('app.overview.list');
+          //$state.go('app.overview.list');
         })
         .error(function (response) {
           toaster.pop('error', '登陆失败');

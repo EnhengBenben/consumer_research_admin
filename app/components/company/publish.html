@@ -1,0 +1,238 @@
+<!--<script>
+  var thisPage=false;
+  window.onbeforeunload=function checkLeave(e){
+    var evt = e ? e : (window.event ? window.event : null);  //此方法为了在firefox中的兼容
+    if(!thisPage)evt.returnValue='离开后将不会保存账户信息。';
+  };
+</script>-->
+<div class="base-container">
+<div class="row no-margin">
+  <span class="normal-title">发布需求</span>
+  <div class="pull-right">
+    <div class="btn btn-primary" ui-sref="app.company.manage">返回</div>
+  </div>
+</div>
+<div class="form-container" style="margin-top: 70px">
+  <form class="form-horizontal" name="base">
+    <div class="form-group" style="position: relative;margin-top: -78px;border-bottom: none">
+      <div class="col-md-2 col-md-offset-3">
+        <label><input type="radio" name="type" ng-model="vm.soft.type" ng-value="1" ng-init="vm.soft.type = 1"/><span class="normal-weight"> 整体项目</span></label>
+      </div>
+      <div class="col-md-2">
+        <label><input type="radio" name="type" ng-model="vm.soft.type" ng-value="2"/><span class="normal-weight"> 驻场开发</span></label>
+      </div>
+      <div class="col-md-2">
+        <label><input type="radio" name="type" ng-model="vm.soft.type" ng-value="3"/><span class="normal-weight"> 自由职业者</span></label>
+      </div>
+    </div>
+<!--    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>证件类型</label>
+      </div>
+      <div class="col-md-5">
+        <label><input type="radio" name="book"/><span class="normal-weight"> 普通营业执照( 存在独立的组织机构代码证)</span></label>
+      </div>
+      <div class="col-md-5">
+        <label><input type="radio" name="book"/><span class="normal-weight"> 多证合一营业执照( 不存在独立的组织机构代码证)</span></label>
+      </div>
+    </div>-->
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>项目名称</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" ng-class="{'error-input': (base.name.$error.required && base.name.$touched)}" name="name" class="form-control" ng-model="vm.base.name" placeholder="请输入项目名称" required/>
+        <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">项目名称不能为空</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">简介</label>
+      </div>
+      <div class="col-md-10">
+        <textarea class="form-control" placeholder="请输入项目简介,不得少于20个字" minlength="20" required>
+
+        </textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label for="">项目地点</label>
+      </div>
+      <div class="col-md-5">
+        <select class="form-control" ng-model="vm.add.degree_max_id" ng-options="r.id as r.name for r in vm.settings.degree">
+          <option value="">省份</option>
+        </select>
+      </div>
+      <div class="col-md-5">
+        <select class="form-control" ng-model="vm.add.degree_max_id" ng-options="r.id as r.name for r in vm.settings.degree">
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 1">
+      <div class="col-md-2 control-label">
+        <label>项目当前状态</label>
+      </div>
+      <div class="col-md-10">
+        <select name="" id="" class="form-control">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 1">
+      <div class="col-md-2 control-label">
+        <label>项目开始时间</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" required ng-model="vm.add.graduate_date" format="YYYY-MM-DD" date-time min-view="date" timezone="Asia/Shanghai" auto-close="true"
+               class="form-control"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 1">
+      <div class="col-md-2 control-label">
+        <label for="">项目结束时间</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" required ng-model="vm.add.graduate_date" format="YYYY-MM-DD" date-time min-view="date" timezone="Asia/Shanghai" auto-close="true"
+               class="form-control"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 1">
+      <div class="col-md-2 control-label">
+        <label for="">项目价格</label>
+      </div>
+      <div class="col-md-5">
+        <input type="number" id="" class="form-control" placeholder="请输入项目价格"/>
+      </div>
+      <div class="col-md-5" style="padding-top: 4px">
+       <span>元</span>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 1">
+      <div class="col-md-2 control-label">
+        <label for="">项目说明</label>
+      </div>
+      <div class="col-md-10">
+        <textarea class="form-control" placeholder="请输入项目简介"></textarea>
+      </div>
+    </div>
+
+    <!--驻场项目-->
+
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>付款方式</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 月付</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 季付</span></label>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>工程师年限</label>
+      </div>
+      <div class="col-md-10">
+        <select name="" id="" class="form-control">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>工程师类型</label>
+      </div>
+      <div class="col-md-10">
+        <select name="" id="" class="form-control">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label for="">工程师人数</label>
+      </div>
+      <div class="col-md-10">
+        <input type="number" id="" class="form-control" ng-required=""/>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label for="">预算</label>
+      </div>
+      <div class="col-md-5">
+        <input type="number" id="" class="form-control" placeholder="请输入预算价格"/>
+      </div>
+      <div class="col-md-5 margin-seven">
+        <span>/人/天</span>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label for="">入项时间</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" required ng-model="vm.add.graduate_date" format="YYYY-MM-DD" date-time min-view="date" timezone="Asia/Shanghai" auto-close="true"
+               class="form-control"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label for="">出项时间</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" required ng-model="vm.add.graduate_date" format="YYYY-MM-DD" date-time min-view="date" timezone="Asia/Shanghai" auto-close="true"
+               class="form-control"  placeholder="">
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label for="">任职要求</label>
+      </div>
+      <div class="col-md-10">
+        <textarea class="form-control" placeholder="请输任职要求"></textarea>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>面试方式</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 电话</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 现场</span></label>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>是否承担差旅费</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 是</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 否</span></label>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.soft.type === 2 || vm.soft.type === 3">
+      <div class="col-md-2 control-label">
+        <label>是否承担住宿费</label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 是</span></label>
+      </div>
+      <div class="col-md-5">
+        <label class="margin-seven"><input type="radio" name="book"/><span class="normal-weight"> 否</span></label>
+      </div>
+    </div>
+    <div class="form-group" style="border-bottom: none">
+      <div class="col-md-10 col-md-offset-2">
+        <div class="btn btn-primary" ng-click="vm.publish()">发布</div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

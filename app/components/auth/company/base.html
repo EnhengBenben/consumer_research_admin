@@ -36,7 +36,7 @@
 </div>
 <hr>
 <div class="form-container" style="margin-top: 70px">
-  <form class="form-horizontal" name="base">
+  <form class="form-horizontal" name="base" ng-submit="vm.next()">
     <div class="form-group" style="position: relative;margin-top: -78px;border-bottom: none">
       <div class="col-md-5 col-md-offset-2">
         <label><input type="radio" name="type" ng-model="vm.company.type"/><span class="normal-weight"> 我要发布项目，想找承包方</span></label>
@@ -194,7 +194,7 @@
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+        <button type="submit" class="btn btn-primary">下一步</button>
       </div>
     </div>
   </form>

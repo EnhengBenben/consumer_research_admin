@@ -9,6 +9,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "base";
 @import "public";
 @import "login";
+@import "contractors";
+@import "freelance";
+@import "company";
 
 .table>tbody>tr>td,
 .table>tbody>tr>th,
