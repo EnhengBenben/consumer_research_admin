@@ -14,7 +14,7 @@
     function login(data) {
       return $http({
         method: 'POST',
-        url: ENDPOINT + '/user/login.do',
+        url: ENDPOINT + '/stproject/checkName.action',
         data: data
       });
     }
