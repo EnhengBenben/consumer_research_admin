@@ -1,0 +1,112 @@
+<div class="base-container">
+  <div class="row no-margin soft-filter">
+    <ul class="list-unstyled no-margin">
+      <li><span>项目类型 ：</span></li>
+      <li><span ng-click="vm.choice(1,'不限')" ng-class="{'filter-active': vm.filter[1] === '不限'}">不限</span></li>
+      <li><span ng-click="vm.choice(1,'整体项目')" ng-class="{'filter-active': vm.filter[1] === '整体项目'}">整体项目</span></li>
+      <li><span ng-click="vm.choice(1,'驻场项目')" ng-class="{'filter-active': vm.filter[1] === '驻场项目'}">驻场项目</span></li>
+      <li><span ng-click="vm.choice(1,'自由职业者')" ng-class="{'filter-active': vm.filter[1] === '自由职业者'}">自由职业者项目</span></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>工作地点 ：</span></li>
+      <li><span ng-click="vm.choice(2,'全国')" ng-class="{'filter-active': vm.filter[2] === '全国'}">全国</span></li>
+      <li><span ng-click="vm.choice(2,'北京')" ng-class="{'filter-active': vm.filter[2] === '北京'}">北京</span></li>
+      <li><span ng-click="vm.choice(2,'上海')" ng-class="{'filter-active': vm.filter[2] === '上海'}">上海</span></li>
+      <li><span ng-click="vm.choice(2,'天津')" ng-class="{'filter-active': vm.filter[2] === '天津'}">天津</span></li>
+      <li><span ng-click="vm.choice(2,'深圳')" ng-class="{'filter-active': vm.filter[2] === '深圳'}">深圳</span></li>
+      <li><span ng-click="vm.choice(2,'成都')" ng-class="{'filter-active': vm.filter[2] === '成都'}">成都</span></li>
+      <li><span ng-click="vm.choice('更多')">更多</span></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>项目周期 ：</span></li>
+      <li><span ng-click="vm.choice(3,'不限')" ng-class="{'filter-active': vm.filter[3] === '不限'}">不限</span></li>
+      <li style="width: 400px"><input type="date"/><span>至</span><input type="date"/></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>工作经验 ：</span></li>
+      <li><span ng-click="vm.choice(4,'不限')" ng-class="{'filter-active': vm.filter[4] === '不限'}">不限</span></li>
+      <li><span ng-click="vm.choice(4,'应届生')" ng-class="{'filter-active': vm.filter[4] === '应届生'}">应届生</span></li>
+      <li><span ng-click="vm.choice(4,'1-3年')" ng-class="{'filter-active': vm.filter[4] === '1-3年'}">1-3年</span></li>
+      <li><span ng-click="vm.choice(4,'4-6年')" ng-class="{'filter-active': vm.filter[4] === '4-6年'}">4-6年</span></li>
+      <li><span ng-click="vm.choice(4,'7-10年')" ng-class="{'filter-active': vm.filter[4] === '7-10年'}">7-10年</span></li>
+      <li><span ng-click="vm.choice(4,'10年以上')" ng-class="{'filter-active': vm.filter[4] === '10年以上'}">10年以上</span></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>工作经验 ：</span></li>
+      <li><span ng-click="vm.choice(5,'不限')" ng-class="{'filter-active': vm.filter[5] === '不限'}">不限</span></li>
+      <li><span ng-click="vm.choice(5,'500以下')" ng-class="{'filter-active': vm.filter[5] === '500以下'}">500以下</span></li>
+      <li><span ng-click="vm.choice(5,'500-1000')" ng-class="{'filter-active': vm.filter[5] === '500-1000'}">500-1000</span></li>
+      <li><span ng-click="vm.choice(5,'1000-1500')" ng-class="{'filter-active': vm.filter[5] === '1000-1500'}">1000-1500</span></li>
+      <li><span ng-click="vm.choice(5,'1500-2000')" ng-class="{'filter-active': vm.filter[5] === '1500-2000'}">1500-2000</span></li>
+      <li><span ng-click="vm.choice(5,'2000-2500')" ng-class="{'filter-active': vm.filter[5] === '2000-2500'}">2000-2500</span></li>
+      <li><span ng-click="vm.choice(5,'2500以上')" ng-class="{'filter-active': vm.filter[5] === '2500以上'}">2500以上</span></li>
+    </ul>
+    <!--<p><span>项目类型 ：</span><span>不限</span><span>整体项目</span><span>驻场项目</span><span>自由职业者项目</span></p>
+    <p><span>工作地点 ：</span><span>全国</span><span>北京</span><span>上海</span><span>天津</span><span>深圳</span><span>成都</span></p>
+    <p><span>项目周期 ：</span><input type="date"/><span>至</span><input type="date"/></p>
+    <p><span>工作经验 ：</span><span>不限</span><span>应届生</span><span>1-3年</span><span>4-6年</span><span>7-10年</span><span>10年以上</span></p>
+    <p><span>驻场价格 ：</span><span>不限</span><span>500以下</span><span>500-1000</span><span>1000-1500</span><span>1500-2000</span><span>2000-2500</span><span>2500以上</span></p>-->
+  </div>
+  <div class="row no-margin soft-list" ui-sref="app.company.show({id: 1})">
+    <h4 class="normal-title" style="font-size: 15px">FLTK和CodeSys用户界面实现开发外包</h4>
+    <p class="overflow-p">
+      会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
+    <ul class="list-unstyled no-margin">
+      <li><span>北京营私创痛有限公司</span></li>
+      <li><strong>项目预算：</strong><span>10000元</span></li>
+      <li><strong>项目开始日期：</strong><span>2016-12-12</span></li>
+      <li><strong>项目结束日期：</strong><span>2017-12-12</span></li>
+    </ul>
+  </div>
+  <div class="row no-margin soft-list">
+    <h4 class="normal-title" style="font-size: 15px">FLTK和CodeSys用户界面实现开发外包</h4>
+    <p class="overflow-p">
+      会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
+    <ul class="list-unstyled no-margin">
+      <li><span>北京营私创痛有限公司</span></li>
+      <li><strong>项目预算：</strong><span>10000元</span></li>
+      <li><strong>项目开始日期：</strong><span>2016-12-12</span></li>
+      <li><strong>项目结束日期：</strong><span>2017-12-12</span></li>
+    </ul>
+  </div>
+  <div class="row no-margin soft-list">
+    <h4 class="normal-title" style="font-size: 15px">FLTK和CodeSys用户界面实现开发外包</h4>
+    <p class="overflow-p">
+      会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
+    <ul class="list-unstyled no-margin">
+      <li><span>北京营私创痛有限公司</span></li>
+      <li><strong>项目预算：</strong><span>10000元</span></li>
+      <li><strong>项目开始日期：</strong><span>2016-12-12</span></li>
+      <li><strong>项目结束日期：</strong><span>2017-12-12</span></li>
+    </ul>
+  </div>
+  <div class="row no-margin soft-list">
+    <h4 class="normal-title" style="font-size: 15px">FLTK和CodeSys用户界面实现开发外包</h4>
+    <p class="overflow-p">
+      会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
+    <ul class="list-unstyled no-margin">
+      <li><span>北京营私创痛有限公司</span></li>
+      <li><strong>项目预算：</strong><span>10000元</span></li>
+      <li><strong>项目开始日期：</strong><span>2016-12-12</span></li>
+      <li><strong>项目结束日期：</strong><span>2017-12-12</span></li>
+    </ul>
+  </div>
+  <div class="row no-margin soft-list">
+    <h4 class="normal-title" style="font-size: 15px">FLTK和CodeSys用户界面实现开发外包</h4>
+    <p class="overflow-p">
+      会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
+    <ul class="list-unstyled no-margin">
+      <li><span>北京营私创痛有限公司</span></li>
+      <li><strong>项目预算：</strong><span>10000元</span></li>
+      <li><strong>项目开始日期：</strong><span>2016-12-12</span></li>
+      <li><strong>项目结束日期：</strong><span>2017-12-12</span></li>
+    </ul>
+  </div>
+  <nav>
+    <ul class="pagination pull-right">
+      <li><a ng-click="vm.first()">首页</a></li>
+      <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a ng-class="{'filter-active': vm.nowPage == i}">{{i}}</a></li>
+      <li><a ng-click="vm.last()">末页</a></li>
+    </ul>
+  </nav>
+</div>
