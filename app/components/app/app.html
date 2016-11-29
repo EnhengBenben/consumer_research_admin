@@ -1,7 +1,11 @@
-<div ng-include="'components/app/menu.html'"></div>
-<div id="wrapper">
-  <div class="base-container" style="padding:20px 0" ui-view></div>
+<div style="position: relative;min-height: 500px">
+  <div ng-include="'components/app/menu.html'"></div>
+  <div id="wrapper">
+    <div class="base-container" style="padding:20px 0" ui-view></div>
+  </div>
+  <div class="footer" ng-include="'components/app/footer.html'"></div>
 </div>
+
 
 
 

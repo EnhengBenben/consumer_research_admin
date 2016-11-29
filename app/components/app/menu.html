@@ -6,14 +6,14 @@
       </div>
       <div class="col-md-8 col-xs-8 company-menu">
         <ul class="list-unstyled no-margin">
-          <li ng-class="{'active' : $state.includes('app.company')}"><a ui-sref="app.company.manage" ui-sref-active="active">管理中心</a></li>
-          <li><a>平台项目一览</a></li>
-          <li><a>承包方一览</a></li>
-          <li><a>自由职业者一览</a></li>
+          <li ng-class="{'active' : $state.includes('app.manage')}"><a ui-sref="app.manage.company.list" ui-sref-active="active">管理中心</a></li>
+          <li ng-class="{'active' : $state.includes('app.company')}"><a ui-sref="app.company.list" ui-sref-active="active">平台项目一览</a></li>
+          <li ng-class="{'active' : $state.includes('app.contractors')}"><a ui-sref="app.contractors.list" ui-sref-active="active">承包方一览</a></li>
+          <li ng-class="{'active' : $state.includes('app.freelance')}"><a ui-sref="app.freelance.list" ui-sref-active="active">自由职业者一览</a></li>
         </ul>
       </div>
       <div class="col-md-2 col-xs-2 register-name">
-        <span>983001487@qq.com</span>
+        <span>983001487@qq.com <i class="fa fa-caret-down" aria-hidden="true"></i></span>
       </div>
     </div>
   </div>
