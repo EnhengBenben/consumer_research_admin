@@ -26,6 +26,11 @@
       AuthService
         .login(vm.account)
         .success(function (response) {
+         if(response === '密码错误' || response === '用户名不存在'){
+           toaster.pop('error',response)
+         }else {
+           $localStorage.user = response;
+         }
           //$state.go('app.overview.list');
         })
         .error(function (response) {

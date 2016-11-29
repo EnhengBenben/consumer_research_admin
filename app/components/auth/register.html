@@ -1,4 +1,4 @@
-<form class="form-horizontal" ng-submit="vm.login()">
+<form class="form-horizontal" ng-submit="vm.regist()">
   <div class="form-group username" style="margin-top: 30px">
    <div class="col-md-6 col-xs-6 white-center">
      <label><input type="radio" name="item" ng-model="vm.register.type" ng-value="1"/>&nbsp;自由职业者</label>
@@ -12,7 +12,7 @@
       <label for="username" class="white-center">邮箱</label>
     </div>
     <div class="col-md-9 col-xs-9">
-      <input id="email" ng-model="vm.register.email" type="text" class="form-control" ng-focus="" placeholder="请输入邮箱"/>
+      <input id="email" ng-model="vm.register.email" type="email" class="form-control" required ng-focus="" placeholder="请输入邮箱"/>
     </div>
   </div>
   <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.type === 1">
@@ -20,7 +20,7 @@
       <label for="username" class="white-center">手机号</label>
     </div>
     <div class="col-md-9 col-xs-9">
-      <input id="username" ng-model="vm.register.mobile" type="text" class="form-control" ng-focus="" placeholder="请输入手机号"/>
+      <input id="username" ng-model="vm.register.mobile" required type="tel" class="form-control" ng-focus="" placeholder="请输入手机号"/>
     </div>
   </div>
   <div class="form-group username" ng-if="vm.register.type === 1">
@@ -28,7 +28,7 @@
       <label for="password" class="white-center">验证码</label>
     </div>
     <div class="col-md-6 col-xs-6" style="padding-right: 0">
-      <input id="password" ng-model="vm.register.code" type="password" class="form-control" ng-focus="" placeholder="请输入密码"/>
+      <input id="password" ng-model="vm.register.code" type="password" class="form-control" ng-focus="" placeholder="请输入验证码"/>
     </div>
     <div class="col-md-3 col-xs-3" style="padding-left: 0">
       <div class="btn btn-primary">获取验证码</div>
@@ -36,7 +36,7 @@
   </div>
   <div class="form-group username">
     <div class="col-md-offset-3 col-xs-offset-3 username" style="padding-bottom: 30px;padding-left: 15px">
-      <div class="btn btn-primary btn-default" ng-click="vm.regist()">注册</div>
+      <button type="submit" class="btn btn-primary btn-default">注册</button>
     </div>
   </div>
 </form>
