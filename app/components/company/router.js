@@ -6,19 +6,14 @@ angular.module('app')
         templateUrl: 'components/company/layout.html',
         abstract: true
       })
-      .state('app.company.manage',{
-        url: '/manage',
-        templateUrl: 'components/company/manage.html',
-        controller: 'CompanyManageCtrl as vm'
+      .state('app.company.list',{
+        url: '/list',
+        templateUrl: 'components/company/list.html',
+        controller: 'CompanyListCtrl as vm'
       })
-      .state('app.company.more',{
-        url: '/more',
-        templateUrl: 'components/company/more.html',
-        controller: 'CompanyMoreCtrl as vm',
-      })
-      .state('app.company.publish',{
-        url: '/publish',
-        templateUrl: 'components/company/publish.html',
-        controller: 'CompanyPublishCtrl as vm'
+      .state('app.company.show',{
+        url: '/show/:id',
+        templateUrl: 'components/company/show.html',
+        controller: 'CompanyShowCtrl as vm'
       })
   });
