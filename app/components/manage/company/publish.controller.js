@@ -3,11 +3,14 @@
 
   angular
     .module('app')
-    .controller('CompanyManageCtrl', Controller);
+    .controller('ManageCompanyPublishCtrl', Controller);
 
   /* @ngInject */
   function Controller($localStorage, $state, toaster, $scope, $rootScope) {
     var vm = this;
+    vm.sort = {
+      type: 1
+    };
 
 
     return init();

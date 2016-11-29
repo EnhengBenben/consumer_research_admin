@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .controller('CompanyMoreCtrl', Controller);
+    .controller('ManageCompanyMoreCtrl', Controller);
 
   /* @ngInject */
   function Controller($localStorage, $state, toaster, $scope, $rootScope) {
