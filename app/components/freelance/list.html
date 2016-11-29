@@ -1,0 +1,155 @@
+<div class="base-container">
+  <div class="row no-margin soft-filter">
+    <ul class="list-unstyled no-margin">
+      <li><span>区域选择 ：</span></li>
+      <li><span ng-click="vm.choice(1,'全国')" ng-class="{'filter-active': vm.filter[1] === '全国'}">全国</span></li>
+      <li><span ng-click="vm.choice(1,'北京')" ng-class="{'filter-active': vm.filter[1] === '北京'}">北京</span></li>
+      <li><span ng-click="vm.choice(1,'上海')" ng-class="{'filter-active': vm.filter[1] === '上海'}">上海</span></li>
+      <li><span ng-click="vm.choice(1,'天津')" ng-class="{'filter-active': vm.filter[1] === '天津'}">天津</span></li>
+      <li><span ng-click="vm.choice(1,'深圳')" ng-class="{'filter-active': vm.filter[1] === '深圳'}">深圳</span></li>
+      <li><span ng-click="vm.choice(1,'成都')" ng-class="{'filter-active': vm.filter[1] === '成都'}">成都</span></li>
+      <li><span ng-click="vm.choice('更多')">更多</span></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>工作经验 ：</span></li>
+      <li><span ng-click="vm.choice(2,'不限')" ng-class="{'filter-active': vm.filter[2] === '不限'}">不限</span></li>
+      <li><span ng-click="vm.choice(2,'应届生')" ng-class="{'filter-active': vm.filter[2] === '应届生'}">应届生</span></li>
+      <li><span ng-click="vm.choice(2,'1-3年')" ng-class="{'filter-active': vm.filter[2] === '1-3年'}">1-3年</span></li>
+      <li><span ng-click="vm.choice(2,'4-6年')" ng-class="{'filter-active': vm.filter[2] === '4-6年'}">4-6年</span></li>
+      <li><span ng-click="vm.choice(2,'7-10年')" ng-class="{'filter-active': vm.filter[2] === '7-10年'}">7-10年</span></li>
+      <li><span ng-click="vm.choice(2,'10年以上')" ng-class="{'filter-active': vm.filter[2] === '10年以上'}">10年以上</span></li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>每日薪酬 ：</span></li>
+      <li><span ng-click="vm.choice(3,'不限')" ng-class="{'filter-active': vm.filter[3] === '不限'}">不限</span></li>
+      <li><span ng-click="vm.choice(3,'500以下')" ng-class="{'filter-active': vm.filter[3] === '500以下'}">500以下</span></li>
+      <li><span ng-click="vm.choice(3,'500-1000')"
+                ng-class="{'filter-active': vm.filter[3] === '500-1000'}">500-1000</span></li>
+      <li><span ng-click="vm.choice(3,'1000-1500')"
+                ng-class="{'filter-active': vm.filter[3] === '1000-1500'}">1000-1500</span></li>
+      <li><span ng-click="vm.choice(3,'1500-2000')"
+                ng-class="{'filter-active': vm.filter[3] === '1500-2000'}">1500-2000</span></li>
+      <li><span ng-click="vm.choice(3,'2000-2500')"
+                ng-class="{'filter-active': vm.filter[3] === '2000-2500'}">2000-2500</span></li>
+      <li><span ng-click="vm.choice(3,'2500以上')" ng-class="{'filter-active': vm.filter[3] === '2500以上'}">2500以上</span>
+      </li>
+    </ul>
+    <ul class="list-unstyled no-margin"
+        style="border-bottom: 1px solid #eee;border-top: 1px solid #eee;padding: 15px 0;margin-top: 15px;width: 100%">
+      <li><span>排列方式 ：</span></li>
+      <li><span ng-click="vm.choice(4,'推荐')" ng-class="{'filter-active': vm.filter[4] === '推荐'}">推荐</span></li>
+      <li><span ng-click="vm.choice(4,'最新')" ng-class="{'filter-active': vm.filter[4] === '最新'}">最新</span></li>
+      <li><span ng-click="vm.choice(4,'薪酬')" ng-class="{'filter-active': vm.filter[4] === '薪酬'}">薪酬</span></li>
+      <li><span ng-click="vm.choice(4,'经验')" ng-class="{'filter-active': vm.filter[4] === '经验'}">经验</span></li>
+    </ul>
+
+    <!--<p><span>项目类型 ：</span><span>不限</span><span>整体项目</span><span>驻场项目</span><span>自由职业者项目</span></p>
+    <p><span>工作地点 ：</span><span>全国</span><span>北京</span><span>上海</span><span>天津</span><span>深圳</span><span>成都</span></p>
+    <p><span>项目周期 ：</span><input type="date"/><span>至</span><input type="date"/></p>
+    <p><span>工作经验 ：</span><span>不限</span><span>应届生</span><span>1-3年</span><span>4-6年</span><span>7-10年</span><span>10年以上</span></p>
+    <p><span>驻场价格 ：</span><span>不限</span><span>500以下</span><span>500-1000</span><span>1000-1500</span><span>1500-2000</span><span>2000-2500</span><span>2500以上</span></p>-->
+  </div>
+  <!--  <div class="row no-margin soft-list">
+      <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+      <ul class="list-unstyled no-margin">
+        <li><strong>最低希望收入：</strong><span>500</span></li>
+        <li><strong>工作经验：</strong><span>3年</span></li>
+        <li><strong>期望职位：</strong><span>JAVA工程师</span></li>
+        <li><strong>发布时间：</strong><span>2016-12-12</span></li>
+      </ul>
+    </div>-->
+
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:1})">
+    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <strong>最低希望收入：</strong><span>500</span>
+      </div>
+      <div class="col-md-3">
+        <strong>工作经验：</strong><span>3年</span>
+      </div>
+      <div class="col-md-3">
+        <strong>期望职位：</strong><span>JAVA工程师</span>
+      </div>
+      <div class="col-md-3">
+        <strong>发布时间：</strong><span>2016-12-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:2})">
+    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <strong>最低希望收入：</strong><span>500</span>
+      </div>
+      <div class="col-md-3">
+        <strong>工作经验：</strong><span>3年</span>
+      </div>
+      <div class="col-md-3">
+        <strong>期望职位：</strong><span>JAVA工程师</span>
+      </div>
+      <div class="col-md-3">
+        <strong>发布时间：</strong><span>2016-12-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:3})">
+    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <strong>最低希望收入：</strong><span>500</span>
+      </div>
+      <div class="col-md-3">
+        <strong>工作经验：</strong><span>3年</span>
+      </div>
+      <div class="col-md-3">
+        <strong>期望职位：</strong><span>JAVA工程师</span>
+      </div>
+      <div class="col-md-3">
+        <strong>发布时间：</strong><span>2016-12-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:4})">
+    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <strong>最低希望收入：</strong><span>500</span>
+      </div>
+      <div class="col-md-3">
+        <strong>工作经验：</strong><span>3年</span>
+      </div>
+      <div class="col-md-3">
+        <strong>期望职位：</strong><span>JAVA工程师</span>
+      </div>
+      <div class="col-md-3">
+        <strong>发布时间：</strong><span>2016-12-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:5})">
+    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <strong>最低希望收入：</strong><span>500</span>
+      </div>
+      <div class="col-md-3">
+        <strong>工作经验：</strong><span>3年</span>
+      </div>
+      <div class="col-md-3">
+        <strong>期望职位：</strong><span>JAVA工程师</span>
+      </div>
+      <div class="col-md-3">
+        <strong>发布时间：</strong><span>2016-12-12</span>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul class="pagination pull-right">
+      <li><a ng-click="vm.first()">首页</a></li>
+      <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a
+        ng-class="{'filter-active': vm.nowPage == i}">{{i}}</a></li>
+      <li><a ng-click="vm.last()">末页</a></li>
+    </ul>
+  </nav>
+</div>
