@@ -6,14 +6,20 @@
     .controller('CompanySkillCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, $rootScope) {
+  function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
-
+    console.log(1);
 
     return init();
 
     function init(){
+      console.log(2);
+      AuthService
+        .skill()
+        .then(function(res){
+          console.log(res);
+        });
 
     }
 

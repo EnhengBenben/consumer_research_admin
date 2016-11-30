@@ -4,7 +4,7 @@
   angular
     .module('app')
     //.constant('ENDPOINT', '/api') //部署服务器
-    .constant('ENDPOINT','http://192.168.0.113:8080') //本地测试
+    .constant('ENDPOINT','http://192.168.0.113:8080/stproject') //本地测试
     .run(function () {
       moment.locale('zh-CN');
       moment.tz.setDefault("Asia/Hong_Kong");

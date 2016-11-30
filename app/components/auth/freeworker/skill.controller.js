@@ -6,7 +6,7 @@
     .controller('FreeSkillCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, $rootScope) {
+  function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
 
@@ -14,7 +14,11 @@
     return init();
 
     function init(){
-
+      AuthService
+        .skill()
+        .then(function(res){
+          console.log(res);
+        });
     }
 
     function next(){

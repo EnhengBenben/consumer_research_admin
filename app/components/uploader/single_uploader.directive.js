@@ -29,19 +29,23 @@
     return directive;
   }
 
-  Controller.$inject = ['$scope', '$http', 'FileUploader', 'ENDPOINT'];
+  Controller.$inject = ['$scope', '$http', 'FileUploader', 'ENDPOINT', 'toaster'];
 
   /* @ngInject */
-  function Controller($scope, $http, FileUploader, ENDPOINT) {
+  function Controller($scope, $http, FileUploader, ENDPOINT,toaster) {
     $scope.uploader = new FileUploader({
-      url: ENDPOINT + '/files',
+      url: ENDPOINT + '/uploadFile.action',
       method: 'POST',
       autoUpload: true,
       removeAfterUpload: true,
       onSuccessItem: function(item, response, status, headers) {
-        $scope.url = response.data.file.url;
-        $scope.name = response.data.file.name;
-        $scope.attachmentId = response.data.file['attachment_id'];
+        console.log(response);
+        $scope.url = response;
+        if(response){
+          toaster.pop('success','上传成功');
+        }
+        /*$scope.name = response.data.file.name;
+        $scope.attachmentId = response.data.file['attachment_id'];*/
       }
     });
   }
