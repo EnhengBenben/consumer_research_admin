@@ -28,7 +28,13 @@
   </div>
 </div>
 <form class="form-container form-horizontal" style="padding-right: 0">
-    <div class="row">
+  <experience lists = 'vm.lists' model="vm.experience" is-button="true" next='vm.next()'></experience>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
+      <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+    </div>
+  </div>
+  <!--  <div class="row">
       <div class="col-md-10 col-md-offset-2 font-prompt">
         <p>您过去项目所在的行业有哪些？</p>
         <p>这便于您作为资深的经验者，更好的承接新项目</p>
@@ -40,19 +46,13 @@
       <label>行业经验选择</label>
     </div>
     <div class="col-md-10">
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.network" ng-true-value="'IT'"/><span> IT | 通信 | 互联网</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.money" ng-true-value="'money'"/><span> 金融业</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type3" ng-true-value="'type3'"/><span>  房地产 | 建筑业</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type4" ng-value="type4"/><span> 商业服务</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type5" ng-value="type5"/><span> 贸易 | 批发 | 零售 | 租赁业</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type6" ng-value="type6"/><span> 文体教育 | 工艺美术</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type7" ng-value="type7"/><span> 生产 | 加工 | 制造</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type8" ng-value="type8"/><span> 交通 | 运输 | 物流 |仓储</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type9" ng-value="type9"/><span>  服务业</span></label><br>
-      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.chioce.type0" ng-value="type0"/><span> 文化 | 传媒 | 娱乐 | 体育</span></label><br>
-    </div>
+      <div ng-repeat="i in vm.lists">
+        <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.experience[$index]" ng-true-value="{{i.id}}"/>
+          <span> {{i.name}}</span></label>
+      </div>
+       </div>
     <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
       <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
     </div>
-  </div>
+  </div>-->
 </form>

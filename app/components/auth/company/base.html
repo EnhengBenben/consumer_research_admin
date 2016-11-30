@@ -1,10 +1,10 @@
-<script>
+<!--<script>
   var thisPage=false;
   window.onbeforeunload=function checkLeave(e){
     var evt = e ? e : (window.event ? window.event : null);  //此方法为了在firefox中的兼容
     if(!thisPage)evt.returnValue='离开后将不会保存账户信息。';
   };
-</script>
+</script>-->
 <div class="row free-base">
   <div class="col-md-12" style="text-align: center">
     <div class="circle">
@@ -114,13 +114,13 @@
         <label>单位所在地</label>
       </div>
       <div class="col-md-5">
-        <select name="" id="" class="form-control">
-          <option value=""></option>
+        <select name="" id="" class="form-control" ng-model="vm.base.province" ng-options="i.id as i.name for i in vm.provinces">
+          <option value="">请选择省份</option>
         </select>
       </div>
       <div class="col-md-5">
-        <select name="" id="" class="form-control">
-          <option value=""></option>
+        <select name="" id="" class="form-control" ng-model="vm.base.city" ng-options="i.id as i.name for i in vm.cities">
+          <option value="">请选择市</option>
         </select>
       </div>
     </div>
