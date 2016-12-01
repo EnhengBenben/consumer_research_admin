@@ -1,19 +1,19 @@
-.menu-container{
+.menu-container {
   min-width: 1200px;
   width: 100%;
   background-color: #3285ff;
   height: 58px;
-  .menu-box{
+  .menu-box {
     width: 1200px;
     height: 100%;
     margin: 0 auto;
-    .logo{
+    .logo {
       height: 58px;
       line-height: 58px;
       font-size: 18px;
       color: #FFF;
     }
-    .register-name{
+    .register-name {
       height: 58px;
       line-height: 58px;
       font-size: 14px;
@@ -22,9 +22,10 @@
     }
   }
 }
-.circle{
+
+.circle {
   display: inline-block;
-  div{
+  div {
     width: 40px;
     height: 40px;
     text-align: center;
@@ -35,16 +36,17 @@
     display: inline-block;
     margin: 0 10px;
   }
-  span{
+  span {
     font-size: 16px;
   }
 }
-.circle-line{
+
+.circle-line {
   display: inline-block;
   height: 40px;
   position: relative;
   top: -40px;
-  div{
+  div {
     width: 200px;
     height: 1px;
     background-color: #bfbfbf;
@@ -52,25 +54,109 @@
     padding-left: 10px;
   }
 }
-.circle-active{
-  div{
+
+.circle-active {
+  div {
     background-color: #3285ff;
   }
-  span{
+  span {
     color: #3285ff;
   }
 }
-.circle-line-active{
-  div{
+
+.circle-line-active {
+  div {
     background-color: #3285ff;
   }
 }
-.free-base{
+
+.free-base {
   margin-top: 20px;
 }
-.font-prompt{
- p{
-   font-size: 16px;
-   font-weight: 700;
- }
+
+.font-prompt {
+  p {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.personal-center {
+  cursor: pointer;
+  position: relative;
+  .fa-caret-up{
+    display: none;
+  }
+  ul{
+    position: relative;
+    z-index: 100;
+    display: none;
+    overflow: auto;
+    background-color: #e0e0e0;
+    box-shadow: 0 0 5px 2px #aaa;
+    li{
+      cursor: pointer;
+      margin:1px auto;
+      float: inherit;
+      text-align: center;
+      background-color: #FFF;
+      a{
+        color: #4d4d4d;
+      }
+    }
+    li:hover{
+      background-color: #eee;
+    }
+  }
+}
+.personal-center:hover{
+  ul{
+    display: block;
+  }
+  .fa-caret-down{
+    display: none;
+  }
+  .fa-caret-up{
+    display: inline-block;
+  }
+}
+.letter-list-title{
+  div{
+    text-align: center;
+    color: #3285ff;
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+.letter-list{
+  div{
+    text-align: center;
+  }
+}
+.base-list{
+  position: relative;
+  margin-top: 50px;
+  .base-list-name{
+    position: relative;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    background-color: #FFF;
+  }
+  hr{
+    position: absolute;
+    top: -10px;
+    width: 100%;
+  }
+  .base-list-btn{
+    width: 60px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background-color: #FFF;
+    padding-left: 4px;
+    color: #3285ff;
+    cursor: pointer;
+  }
 }
