@@ -19,7 +19,6 @@
     }
 
     function regist(){
-
       AuthService
         .register(vm.register)
         .then(function(res){

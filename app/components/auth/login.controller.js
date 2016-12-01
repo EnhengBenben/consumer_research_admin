@@ -28,7 +28,18 @@
         .success(function (response) {
          if(response === '密码错误' || response === '用户名不存在'){
            toaster.pop('error',response)
-         }else {
+         }else if(response.type === 0) {
+           if(response.basetype === 0){
+             toaster.pop('success','欢迎您' + response.username);
+             $state.go('app.freelance.list');
+           }else if(response.basetype === 1){
+             toaster.pop('success','欢迎您' + response.username);
+             $state.go('app.company.list');
+           }
+           $localStorage.user = response;
+         }else if(response.type === 1){
+           toaster.pop('success','欢迎您' + response.username);
+           $state.go('app.company.list');
            $localStorage.user = response;
          }
           //$state.go('app.overview.list');
