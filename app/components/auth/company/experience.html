@@ -27,11 +27,11 @@
     </div>
   </div>
 </div>
-<form class="form-container form-horizontal" style="padding-right: 0">
-  <experience lists = 'vm.lists' model="vm.experience" is-button="true" next='vm.next()'></experience>
+<form class="form-container form-horizontal" ng-submit="vm.next()" style="padding-right: 0">
+  <experience lists = 'vm.lists' model="vm.experience"></experience>
   <div class="row">
     <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
-      <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+      <button class="btn btn-primary" type="submit">下一步</button>
     </div>
   </div>
 </form>

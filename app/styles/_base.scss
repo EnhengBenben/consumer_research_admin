@@ -29,7 +29,6 @@ a:hover,a:link,a:active,a:focus{
    width: 1200px;
    margin: 0 auto;
    padding: 10px 0;
-   overflow: hidden;
  }
  .form-group{
    padding: 15px 0;
@@ -48,10 +47,15 @@ a:hover,a:link,a:active,a:focus{
  }
  .error-input{
    border: 1px solid #F00;
-   color: #FFF;
  }
  .error-font{
    color: #F00;
+ }
+ .input-result{
+   position: relative;
+   top: -26px;
+   left: 95%;
+   color: #3c763d;
  }
  .normal-title{
    font-size: 16px;

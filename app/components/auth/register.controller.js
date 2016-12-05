@@ -4,9 +4,9 @@
   angular.module('app')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$scope', 'toaster', 'AuthService', '$state'];
+  RegisterController.$inject = ['$scope', 'toaster', 'AuthService', '$state', '$localStorage'];
 
-  function RegisterController($scope, toaster, AuthService, $state) {
+  function RegisterController($scope, toaster, AuthService, $state, $localStorage) {
     var vm = this;
     vm.register = {
 
@@ -22,14 +22,15 @@
       AuthService
         .register(vm.register)
         .then(function(res){
-          if(res.data === 'false'){
+          if(res.data === 'true'){
             toaster.pop('success','请先填写信息，完成后即注册成功');
              if(vm.register.type === 0){
              $state.go('free.base');
              }else if(vm.register.type === 1){
              $state.go('company.base');
              }
-          }else if(res.data === 'true'){
+            $localStorage.username = vm.register;
+          }else if(res.data === 'false'){
             toaster.pop('error','该账号已注册');
           }
         });

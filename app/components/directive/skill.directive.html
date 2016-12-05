@@ -1,0 +1,16 @@
+<div class="form-group" ng-repeat="model in vm.lists">
+  <div class="col-md-2 control-label" style="padding-top: 0">
+    <label>{{model.remark}}</label>
+  </div>
+  <div class="col-md-2" ng-repeat="i in model.diclist track by $index" ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
+    <label class="normal-weight"><input type="checkbox" name="choice" ng-init="vm.model[model.pid] = []" ng-model="vm.model[model.pid][i.id]" ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-2 control-label" style="padding-top: 0">
+    <label>其他</label>
+  </div>
+  <div class="col-md-9">
+    <input class="form-control" type="text" ng-model="vm.skill.other" placeholder="如果还有其他技能,请输入"/>
+  </div>
+</div>

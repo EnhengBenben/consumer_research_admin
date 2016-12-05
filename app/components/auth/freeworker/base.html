@@ -28,13 +28,24 @@
   </div>
 </div>
 <div class="form-container">
-  <form class="form-horizontal">
+  <form class="form-horizontal" name="base">
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>姓名</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text"
+               class="form-control"
+               ng-model="vm.base.name"
+               placeholder="请输入姓名" required/>
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
         <label>上传照片</label>
       </div>
       <div class="col-md-3">
-        <single-uploader url="vm.base.url"></single-uploader>
+        <single-uploader url="vm.base.imageurl"></single-uploader>
       </div>
       <div class="col-md-7">
         <p>点击左边加号区域，添加一张照片！</p>
@@ -45,18 +56,16 @@
     </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
-        <label>电子邮箱</label>
-      </div>
-      <div class="col-md-10">
-        <input type="email" class="form-control" ng-required="">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-md-2 control-label">
         <label>密码</label>
       </div>
       <div class="col-md-10">
-        <input type="password" class="form-control" ng-required="">
+        <input type="password"
+               class="form-control"
+               required
+               ng-model="vm.base.password"
+               minlength="8"
+               maxlength="8"
+        />
       </div>
     </div>
     <div class="form-group">
@@ -64,7 +73,43 @@
         <label>确认密码</label>
       </div>
       <div class="col-md-10">
-        <input type="password" class="form-control" ng-required="">
+        <input type="password"
+               class="form-control"
+               required
+               ng-model="vm.base.passwordagin"
+               minlength="8"
+               maxlength="8"
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>现居住地</label>
+      </div>
+      <div class="col-md-5">
+        <select name="province" id="province" class="form-control" ng-model="vm.unitaddr.province"
+                ng-options="i.id as i.name for i in vm.provinces" required>
+          <option value="">请选择省份</option>
+        </select>
+      </div>
+      <div class="col-md-5">
+        <select name="city" id="city" class="form-control" ng-model="vm.unitaddr.city"
+                ng-options="i.id as i.name for i in vm.cities" required>
+          <option value="">请选择市</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>电子邮箱</label>
+      </div>
+      <div class="col-md-10">
+        <input type="email"
+               class="form-control"
+               required
+               ng-model="vm.base.emailaddr"
+               placeholder="请输入电子邮箱"
+        />
       </div>
     </div>
     <div class="form-group">
@@ -72,15 +117,41 @@
         <label>工作职位</label>
       </div>
       <div class="col-md-10">
-        <input type="password" class="form-control" ng-required="">
+        <input type="password"
+               class="form-control"
+              required
+              ng-model="vm.base.job"
+
+        />
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="base.jobage.$valid">
       <div class="col-md-2 control-label">
         <label>工作年限</label>
       </div>
       <div class="col-md-10">
-        <input type="password" class="form-control" ng-required="">
+        <select name="jobage" class="form-control" ng-model="vm.base.jobage" ng-options="i.id as i.name for i in vm.jobAges" required>
+          <option value="">请选择工作年限</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-success': base.wage.$valid}">
+      <div class="col-md-2 control-label">
+        <label>期望日薪</label>
+      </div>
+      <div class="col-md-5">
+        <input type="text"
+               class="form-control"
+               name="wage"
+               ng-model="vm.base.wage"
+               placeholder="请输入期望日薪"
+               required
+        />
+        <div class="help-block error-font" ng-if="(base.wage.$error.required) && base.wage.$touched">期望日薪不能为空</div>
+        <span class="input-result" ng-if="base.wage.$valid"><i class="fa fa-check"></i></span>
+      </div>
+      <div class="col-md-5 margin-seven">
+        <span>元/天</span>
       </div>
     </div>
     <div class="form-group">
@@ -88,12 +159,14 @@
         <label>英语能力</label>
       </div>
       <div class="col-md-10">
-        <input type="password" class="form-control" ng-required="">
+        <select class="form-control" ng-model="vm.base.engrade" ng-options="i.id as i.name for i in vm.EnglishLevel">
+          <option value="">请选择</option>
+        </select>
       </div>
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
+        <button type="submit" class="btn btn-primary" ng-click="vm.next()">下一步</button>
       </div>
     </div>
   </form>

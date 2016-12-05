@@ -20,7 +20,6 @@
           $state.go('go.login');
         }
       }, true);
-
     }
 
     function logout(){

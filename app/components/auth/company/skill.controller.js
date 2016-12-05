@@ -9,23 +9,41 @@
   function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
-    console.log(1);
+    vm.skill = {};
 
     return init();
 
-    function init(){
-      console.log(2);
+    function init() {
       AuthService
         .skill()
-        .then(function(res){
+        .then(function (res) {
           console.log(res);
+          vm.lists = res.data;
         });
-
     }
 
-    function next(){
+    function next() {
+      for (var i in vm.skill) {
+        if (!vm.skill[i].length) {
+          delete vm.skill[i];
+        } else {
+          vm.skill[i] = vm.skill[i].filter(function(n){
+            return n;
+          })
+        }
+      }
+      vm.data = {
+        skills: []
+      };
+      console.log(vm.skill);
+      for(var i in vm.skill){
+        vm.data.skills.push(vm.skill[i]);
+        vm.data.skills[vm.data.skills.length - 1].unshift(i);
+      }
+      console.log(vm.data);
+      $localStorage.skill = vm.data;
       $state.go('company.qualifications');
-      toaster.pop('success','已保存，请继续完成注册');
+      toaster.pop('success', '已保存，请继续完成注册');
     }
   }
 })();

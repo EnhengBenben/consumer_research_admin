@@ -19,7 +19,8 @@ angular.module('app')
       .state('free',{
         url: '/free',
         abstract: true,
-        templateUrl: 'components/auth/freeworker/layout.html'
+        templateUrl: 'components/auth/freeworker/layout.html',
+        controller: 'FreeLayoutCtrl as vm'
       })
       .state('free.base',{
         url: '/base',
@@ -44,7 +45,8 @@ angular.module('app')
       .state('company',{
         url: '/company',
         templateUrl: 'components/auth/company/layout.html',
-        abstract: true
+        abstract: true,
+        controller: 'CompanyLayoutCtrl as vm'
       })
       .state('company.base',{
         url: '/base',

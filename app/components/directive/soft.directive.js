@@ -1,15 +1,14 @@
 (function(){
   angular.module('app')
-    .directive('skill', directive);
+    .directive('soft', directive);
 
 
   function directive(){
     var directive = {
       restrict: 'AE',
-      templateUrl: 'components/directive/skill.directive.html',
+      templateUrl: 'components/directive/soft.directive.html',
       scope: {
         lists: '=lists',
-        model: '=model'
       },
       controller: Controller,
       controllerAs: 'vm',
@@ -23,6 +22,5 @@
 
   function Controller($scope){
     var vm = this;
-    vm.lists = [];
   }
 })();

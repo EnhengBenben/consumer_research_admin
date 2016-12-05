@@ -22,8 +22,25 @@
     }
 
     function next(){
-      $state.go('company.skill');
-      toaster.pop('success','已保存，请继续完成注册');
+      if(vm.experience){
+        var str = '';
+       angular.forEach(vm.experience,function(i){
+         if(i){
+           str += i + ',';
+         }
+       });
+        str = str.slice(0,str.length - 1);
+        $localStorage.experience = {
+          experience: str
+        };
+        $state.go('company.skill');
+        toaster.pop('success','已保存，请继续完成注册');
+      }
+
+
+     // $localStorage.experience = vm.experience;
+     // $state.go('company.skill');
+    //  toaster.pop('success','已保存，请继续完成注册');
     }
   }
 })();

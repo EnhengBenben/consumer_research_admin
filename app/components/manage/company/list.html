@@ -1,61 +1,15 @@
 <div class="base-container">
   <div class="row no-margin">
-    <span class="normal-title">已发布项目</span>
-    <div class="pull-right">
+    <span class="normal-title" ng-if="vm.user.type === 0 && vm.user.basetype === 0">已发布项目</span>
+    <span class="normal-title" ng-if="vm.user.type === 1 || vm.user.basetype === 1">已接收项目</span>
+    <div class="pull-right" ng-if="vm.user.type === 0 && vm.user.basetype === 0">
       <div class="btn btn-danger" ui-sref="app.manage.company.publish">发布需求</div>
     </div>
   </div>
-  <div class="row no-margin soft-list">
-    <h4 class="normal-title" style="font-size: 15px">北京营私创痛有限公司</h4>
-    <p class="overflow-p">会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
-    <ul class="list-unstyled no-margin">
-      <li><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目预算：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目开始日期：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目结束日期：</strong><span>阿克江收到货乐山大佛</span></li>
-    </ul>
+  <div class="row no-margin soft-list" ui-sref="app.company.show({id: i})" ng-repeat="i in vm.lists">
+    <soft lists="i"></soft>
   </div>
-  <div class="row no-margin soft-list">
-    <h4 class="normal-title" style="font-size: 15px">北京营私创痛有限公司</h4>
-    <p class="overflow-p">会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
-    <ul class="list-unstyled no-margin">
-      <li><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目预算：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目开始日期：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目结束日期：</strong><span>阿克江收到货乐山大佛</span></li>
-    </ul>
-  </div>
-  <div class="row no-margin soft-list">
-    <h4 class="normal-title" style="font-size: 15px">北京营私创痛有限公司</h4>
-    <p class="overflow-p">会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
-    <ul class="list-unstyled no-margin">
-      <li><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目预算：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目开始日期：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目结束日期：</strong><span>阿克江收到货乐山大佛</span></li>
-    </ul>
-  </div>
-  <div class="row no-margin soft-list">
-    <h4 class="normal-title" style="font-size: 15px">北京营私创痛有限公司</h4>
-    <p class="overflow-p">会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
-    <ul class="list-unstyled no-margin">
-      <li><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目预算：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目开始日期：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目结束日期：</strong><span>阿克江收到货乐山大佛</span></li>
-    </ul>
-  </div>
-  <div class="row no-margin soft-list">
-    <h4 class="normal-title" style="font-size: 15px">北京营私创痛有限公司</h4>
-    <p class="overflow-p">会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂>会计师的合肥坚实的花费了考试的；飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂飞啥都看；法考试的返回撒的疯狂；撒的飞三闾大夫是东方红是东方红是电话费了考试的合肥啊撒的疯狂</p>
-    <ul class="list-unstyled no-margin">
-      <li><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目预算：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目开始日期：</strong><span>阿克江收到货乐山大佛</span></li>
-      <li><strong>项目结束日期：</strong><span>阿克江收到货乐山大佛</span></li>
-    </ul>
-  </div>
-  <div>
+  <div ng-if="vm.user.type === 0 && vm.user.basetype === 0">
     <div class="pull-right" style="color: red;cursor: pointer;margin-top: 20px" ui-sref="app.manage.company.more">更多 >></div>
   </div>
 </div>

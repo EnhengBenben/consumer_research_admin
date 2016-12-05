@@ -1,12 +1,12 @@
 <div class="base-container">
   <h3>个人中心</h3>
-  <div class="row no-margin base-list">
+  <div class="row no-margin base-list dropdown">
     <div class="base-list-name"><strong>基本信息</strong></div>
     <hr>
-    <div class="base-list-btn">
+    <div class="base-list-btn" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
       <i class="fa fa-x fa-pencil-square-o" aria-hidden="true"></i> 编辑
     </div>
-    <div class="row">
+    <div class="row dropdown-menu" role="menu" style="position: relative;margin-top: 20px">
       <div class="form-container" style="margin-top: 20px">
         <form class="form-horizontal" name="base" ng-submit="vm.next()">
           <div class="form-group">
@@ -163,7 +163,6 @@
           </div>
         </form>
       </div>
-
     </div>
   </div>
   <div class="row no-margin base-list">
