@@ -1,5 +1,7 @@
 <div class="row no-margin" style="margin-bottom: 20px">
-  <div class="pull-right btn btn-primary" ui-sref="app.contractors.list"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
+  <div class="pull-right btn btn-primary" ui-sref="app.contractors.list"><i class="fa fa-angle-left"
+                                                                            aria-hidden="true"></i> 返回
+  </div>
 </div>
 <div class="form-container" style="position: relative">
   <form class="form-horizontal">
@@ -8,7 +10,7 @@
         <label>企业名称</label>
       </div>
       <div class="col-md-8">
-        <p class="margin-seven">张三</p>
+        <p class="margin-seven">{{vm.show.name}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -16,7 +18,7 @@
         <label>工作地址</label>
       </div>
       <div class="col-md-8">
-        <p class="margin-seven">JAVA工程师</p>
+        <p class="margin-seven">{{vm.show.unitaddr}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -24,7 +26,7 @@
         <label>公司简介</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+        <p class="margin-seven">{{i.proscope}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -32,7 +34,7 @@
         <label>单位类型</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">一般</p>
+        <p class="margin-seven">{{vm.show.flattype}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -40,23 +42,23 @@
         <label>行业经验</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">张三</p>
+        <p class="margin-seven">{{vm.show.experience}}</p>
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-md-2 control-label">
-        <label>项目范围</label>
-      </div>
-      <div class="col-md-10">
-        <p class="margin-seven">张三</p>
-      </div>
-    </div>
+    <!--    <div class="form-group">
+          <div class="col-md-2 control-label">
+            <label>项目范围</label>
+          </div>
+          <div class="col-md-10">
+            <p class="margin-seven">张三</p>
+          </div>
+        </div>-->
     <div class="form-group">
       <div class="col-md-2 control-label">
         <label>企业资质</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">张三</p>
+        <p class="margin-seven" ng-repeat="i in vm.show.zname" ng-if="$index % 2 === 0">{{i}}</p>
       </div>
     </div>
     <div class="form-group" style="border-bottom: none">

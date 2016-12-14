@@ -21,7 +21,6 @@
         }
       }, true);
     }
-
     function logout(){
       $localStorage.user = {};
       app.user = '';

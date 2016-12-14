@@ -3,7 +3,7 @@
     <span class="normal-title">已发布项目</span>
     <div class="btn btn-primary pull-right" ui-sref="app.manage.company.list">返回</div>
   </div>
-  <div class="row no-margin soft-filter">
+  <!-- <div class="row no-margin soft-filter">
     <ul class="list-unstyled no-margin">
       <li><span>项目类型 ：</span></li>
       <li><span ng-click="vm.choice(1,'不限')" ng-class="{'filter-active': vm.filter[1] === '不限'}">不限</span></li>
@@ -50,15 +50,24 @@
     <p><span>项目周期 ：</span><input type="date"/><span>至</span><input type="date"/></p>
     <p><span>工作经验 ：</span><span>不限</span><span>应届生</span><span>1-3年</span><span>4-6年</span><span>7-10年</span><span>10年以上</span></p>
     <p><span>驻场价格 ：</span><span>不限</span><span>500以下</span><span>500-1000</span><span>1000-1500</span><span>1500-2000</span><span>2000-2500</span><span>2500以上</span></p>-->
-  </div>
-  <div class="row no-margin soft-list" ng-repeat=" i in vm.lists">
-   <soft lists="i"></soft>
-  </div>
-  <nav style="padding-bottom: 20px">
-    <ul class="pagination pull-right">
-      <li><a ng-click="vm.first()">首页</a></li>
-      <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a ng-class="{'filter-active': vm.nowPage == i}">{{i}}</a></li>
-      <li><a ng-click="vm.last()">末页</a></li>
-    </ul>
-  </nav>
+</div>
+<div class="row no-margin soft-list" ng-repeat="i in vm.lists">
+  <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.company.show({id: i.id})">{{i.proname}}</a></h4>
+  <p class="overflow-p">
+    {{i.intro}}</p>
+  <ul class="list-unstyled no-margin">
+    <li class="col-md-3 no-padding-left"><span>{{i.name}}</span></li>
+    <li class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span></li>
+    <li class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></li>
+    <li class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></li>
+  </ul>
+</div>
+<nav style="padding-bottom: 20px" boundary-link-numbers="true">
+  <ul class="pagination pull-right">
+    <li><a ng-click="vm.first()" ng-disabled="vm.pageList.currentPage === 1" ng-class="{'disabled': vm.pageList.currentPage === 1}">首页</a></li>
+    <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a
+      ng-class="{'filter-active': vm.pageList.currentPage == i}">{{i}}</a></li>
+    <li><a ng-click="vm.last()" ng-disabled="vm.pageList.currentPage === vm.pageArr.length"  ng-class="{'disabled': vm.pageList.currentPage === vm.pageArr.length}">末页</a></li>
+  </ul>
+</nav>
 </div>

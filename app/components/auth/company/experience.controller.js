@@ -36,11 +36,6 @@
         $state.go('company.skill');
         toaster.pop('success','已保存，请继续完成注册');
       }
-
-
-     // $localStorage.experience = vm.experience;
-     // $state.go('company.skill');
-    //  toaster.pop('success','已保存，请继续完成注册');
     }
   }
 })();

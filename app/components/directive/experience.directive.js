@@ -9,7 +9,7 @@
       templateUrl: 'components/directive/experience.directive.html',
       scope: {
         lists: '=lists',
-        model: '=model'
+        model: '=model',
       },
       controller: Controller,
       controllerAs: 'vm',
@@ -25,5 +25,6 @@
     var vm = this;
     vm.lists = [];
     vm.model = [];
+    vm.show = true;
   }
 })();

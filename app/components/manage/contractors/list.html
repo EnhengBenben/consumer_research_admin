@@ -1,0 +1,16 @@
+<div class="base-container">
+  <div class="row no-margin">
+    <span class="normal-title">已接收项目</span>
+  </div>
+  <div class="row no-margin soft-list" ng-repeat="i in vm.lists">
+    <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.contractors.show({id: i.id})">{{i.proname}}</a></h4>
+    <p class="overflow-p">
+      {{i.intro}}</p>
+    <ul class="list-unstyled no-margin">
+      <li class="col-md-3 no-padding-left"><span>{{i.name}}</span></li>
+      <li class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span></li>
+      <li class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></li>
+      <li class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></li>
+    </ul>
+  </div>
+</div>

@@ -26,4 +26,39 @@ angular.module('app')
         templateUrl: 'components/manage/company/publish.html',
         controller: 'ManageCompanyPublishCtrl as vm'
       })
+      .state('app.manage.company.show',{
+        url: '/show/:id?requesttype',
+        templateUrl: 'components/manage/company/show.html',
+        controller: 'ManageCompanyShowCtrl as vm'
+      })
+      .state('app.manage.contractors',{
+        url: '/contractors',
+        templateUrl: 'components/manage/contractors/layout.html',
+        abstract: true
+      })
+      .state('app.manage.contractors.list',{
+        url: '/list',
+        templateUrl: 'components/manage/contractors/list.html',
+        controller: 'ManageContractorsListCtrl as vm'
+      })
+      .state('app.manage.contractors.show',{
+        url: '/show/:id?requesttype',
+        templateUrl: 'components/manage/contractors/show.html',
+        controller: 'ManageContractorsShowCtrl as vm'
+      })
+      .state('app.manage.freelance',{
+        url: '/freelance',
+        templateUrl: 'components/manage/freelance/layout.html',
+        abstract: true
+      })
+      .state('app.manage.freelance.list',{
+        url: '/list',
+        templateUrl: 'components/manage/freelance/list.html',
+        controller: 'ManageFreelanceListCtrl as vm'
+      })
+      .state('app.manage.freelance.show',{
+        url: '/show/:id?requesttype',
+        templateUrl: 'components/manage/freelance/show.html',
+        controller: 'ManageFreelanceShowCtrl as vm'
+      })
   });

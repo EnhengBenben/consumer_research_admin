@@ -6,8 +6,9 @@
     .controller('FreelanceListCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, $rootScope) {
+  function Controller($localStorage, $state, toaster, $scope, FreelanceService) {
     var vm = this;
+    vm.user = $localStorage.user;
     vm.choice = choice;
     vm.first = first;
     vm.last = last;
@@ -21,19 +22,22 @@
     };
     vm.pageArr = [];
     vm.pageList = {
-      nowPage: 1,
-      total: 12
+      currentPage: 1, //当前页数
+      pageSize: 10 //每页条数
     };
-    vm.nowPage = vm.pageList.nowPage;
-    for(var i =1;i<= vm.pageList.total; i++){
-      vm.pageArr.push(i);
-    }
 
 
     return init();
 
     function init(){
-
+      FreelanceService
+        .list(vm.pageList)
+        .then(function(res){
+          vm.lists = res.data.jsonArray;
+          for (var i = 1; i <= res.data.totalPage; i++) {
+            vm.pageArr.push(i);
+          }
+        })
     }
 
     function choice(index,data){

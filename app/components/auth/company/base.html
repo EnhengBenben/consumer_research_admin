@@ -50,25 +50,9 @@
         <label>单位类型</label>
       </div>
       <div class="col-md-10" style="padding-top: 4px">
-        <div class="col-md-2 no-padding-left">
-          <label><input type="radio" name="flattype" ng-value="0" ng-model="vm.base.flattype" required/><span class="normal-weight"> 企业</span></label>
+        <div class="col-md-2" ng-repeat="i in vm.flattypeArr" ng-class="{'no-padding-left': $index === 0}">
+          <label><input type="radio" name="flattype" ng-value="i.id" ng-model="vm.base.flattype" required/><span class="normal-weight"> {{i.name}}</span></label>
         </div>
-        <div class="col-md-2">
-          <label><input type="radio" name="flattype" ng-value="1" ng-model="vm.base.flattype" required/><span class="normal-weight"> 事业单位</span></label>
-        </div>
-        <div class="col-md-2">
-          <label><input type="radio" name="flattype" ng-value="2" ng-model="vm.base.flattype" required/><span class="normal-weight"> 民办非企业单位</span></label>
-        </div>
-        <div class="col-md-2">
-          <label><input type="radio" name="flattype" ng-value="3" ng-model="vm.base.flattype" required/><span class="normal-weight"> 个体工商户</span></label>
-        </div>
-        <div class="col-md-2">
-          <label><input type="radio" name="flattype" ng-value="4" ng-model="vm.base.flattype" required/><span class="normal-weight"> 社会团体</span></label>
-        </div>
-        <div class="col-md-2">
-          <label><input type="radio" name="flattype" ng-value="5" ng-model="vm.base.flattype" required/><span class="normal-weight"> 党政及国家单位</span></label>
-        </div>
-
       </div>
     </div>
     <div class="form-group">
@@ -84,7 +68,7 @@
     </div>
     <div class="form-group" ng-class="{'has-success': base.name.$valid}">
       <div class="col-md-2 control-label">
-        <label>企业名称</label>
+        <label>单位名称</label>
       </div>
       <div class="col-md-10">
         <input type="text"
@@ -93,9 +77,18 @@
                class="form-control"
                ng-model="vm.base.name"
                placeholder="请输入企业名称"
+               ng-pattern="/^[u4e00-u9fa5],{0,}$/"
                required/>
         <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">企业名称不能为空</div>
         <span ng-if="base.name.$valid" class="input-result"><i class="fa fa-check"></i></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>单位简介</label>
+      </div>
+      <div class="col-md-10">
+        <textarea class="form-control" ng-model="vm.base.proscope" placeholder="请输入单位简介，不得少于10个字符"></textarea>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-success':base.password.$valid}">
@@ -121,7 +114,7 @@
         <label for="">确认密码</label>
       </div>
       <div class="col-md-10">
-        <input type="password" id="" name="reqpassword" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
+        <input type="password" name="reqpassword" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
       </div>
     </div>
     <div class="form-group">

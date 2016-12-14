@@ -14,6 +14,9 @@
     return init();
 
     function init(){
+      vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'},
+                        {id: 2, name: '民办非企业单位'}, {id: 3, name: '个体工商户'},
+                        {id: 4, name: '社会团体'}, {id: 5, name: '党政及国家单位'}];
       AuthService
         .province()
         .then(function(res){
@@ -33,7 +36,7 @@
 
     function next(){
       console.log(vm.base);
-      angular.extend(vm.base,{unitaddr: vm.unitaddr.province + vm.unitaddr.city});
+      angular.extend(vm.base,{unitaddr: vm.unitaddr.province + ',' + vm.unitaddr.city});
       $localStorage.base = vm.base;
       $state.go('company.experience');
       toaster.pop('success','已保存，请继续完成注册');

@@ -6,33 +6,20 @@
     .controller('ManageCompanyListCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, $rootScope) {
+  function Controller($localStorage, $state, toaster, $scope, ManageService) {
     var vm = this;
     vm.user = $localStorage.user;
+    console.log(vm.user);
 
     return init();
 
     function init(){
-      vm.lists = [{
-        id: 1,
-        proname: '项目名称项目名称项目名称',
-        intro: '项目简介项目简介',
-        addr: '北京',
-        company: '北京科技有限责任公司',
-        price: 1000,
-        starttime: '2016-12-12',
-        endtime: '2016-12-13'
-      },
-        {
-          id: 2,
-          proname: '项目名称项目名称项目名称',
-          intro: '项目简介项目简介',
-          addr: '北京',
-          company: '北京科技有限责任公司',
-          price: 1000,
-          starttime: '2016-12-12',
-          endtime: '2016-12-13'
-        }]
+        ManageService
+        .list(vm.user)
+        .then(function(res){
+          vm.lists = res.data.jsonArray;
+          console.log(res);
+        })
     }
   }
 })();

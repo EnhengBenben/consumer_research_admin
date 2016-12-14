@@ -34,6 +34,8 @@ a:hover,a:link,a:active,a:focus{
    padding: 15px 0;
    border-bottom: 1px dashed #EEE;
    margin-bottom: 0;
+   margin-left: 0 !important;
+   margin-right: -10px !important;
  }
  .btn-primary{
    background-color: #3285ff;
@@ -65,7 +67,7 @@ a:hover,a:link,a:active,a:focus{
  .strong{
    font-weight: 600;
  }
-.active {
+.menu-active {
   background-color: #2e77e6;
 }
 .filter-active{
@@ -90,4 +92,7 @@ ul{
     text-align: center;
   }
 
+}
+.disabled{
+  cursor: no-drop;
 }

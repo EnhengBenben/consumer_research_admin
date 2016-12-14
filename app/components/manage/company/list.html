@@ -1,13 +1,20 @@
 <div class="base-container">
   <div class="row no-margin">
     <span class="normal-title" ng-if="vm.user.type === 0 && vm.user.basetype === 0">已发布项目</span>
-    <span class="normal-title" ng-if="vm.user.type === 1 || vm.user.basetype === 1">已接收项目</span>
     <div class="pull-right" ng-if="vm.user.type === 0 && vm.user.basetype === 0">
       <div class="btn btn-danger" ui-sref="app.manage.company.publish">发布需求</div>
     </div>
   </div>
-  <div class="row no-margin soft-list" ui-sref="app.company.show({id: i})" ng-repeat="i in vm.lists">
-    <soft lists="i"></soft>
+  <div class="row no-margin soft-list" ng-repeat="i in vm.lists">
+    <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.company.show({id: i.id})">{{i.proname}}</a></h4>
+    <p class="overflow-p">
+      {{i.intro}}</p>
+    <ul class="list-unstyled no-margin">
+      <li class="col-md-3 no-padding-left"><span>{{i.name}}</span></li>
+      <li class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span></li>
+      <li class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></li>
+      <li class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></li>
+    </ul>
   </div>
   <div ng-if="vm.user.type === 0 && vm.user.basetype === 0">
     <div class="pull-right" style="color: red;cursor: pointer;margin-top: 20px" ui-sref="app.manage.company.more">更多 >></div>

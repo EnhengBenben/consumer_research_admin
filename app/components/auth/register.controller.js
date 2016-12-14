@@ -24,9 +24,9 @@
         .then(function(res){
           if(res.data === 'true'){
             toaster.pop('success','请先填写信息，完成后即注册成功');
-             if(vm.register.type === 0){
+             if(vm.register.acctype === 1){
              $state.go('free.base');
-             }else if(vm.register.type === 1){
+             }else if(vm.register.acctype === 0){
              $state.go('company.base');
              }
             $localStorage.username = vm.register;

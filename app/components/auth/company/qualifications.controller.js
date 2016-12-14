@@ -39,20 +39,29 @@
       };
     }
     function next(){
-      console.log(vm.add);
-      if($localStorage.username.email){
-        vm.add['username'] = $localStorage.username.email;
-      }else if($localStorage.username.tel){
-
-      }
+      angular.extend(vm.add,$localStorage.username);
       angular.extend(vm.add,$localStorage.base);
       angular.extend(vm.add,$localStorage.experience);
       angular.extend(vm.add,$localStorage.skill);
-      console.log(vm.add);
+      var str = [];
+      angular.forEach(vm.add.skills,function(i){
+        str.push(i.ids);
+      });
+      vm.add.skills = str.join(',');
+      var qualificationsArr = [];
+      angular.forEach(vm.add.qualifications,function(i){
+        qualificationsArr.push(i.zname + ',' + i.zzurl);
+      });
+      vm.add.qualificationll = qualificationsArr.join('-');
+
       AuthService
         .qualifications(vm.add)
         .then(function(res){
           console.log(res);
+          delete $localStorage.username;
+          delete $localStorage.base;
+          delete $localStorage.experience;
+          delete $localStorage.skill;
           $state.go('go.login');
           toaster.pop('success','恭喜！注册已完成');
         });

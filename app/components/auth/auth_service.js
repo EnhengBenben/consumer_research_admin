@@ -15,12 +15,27 @@
       province: province,//获取省级列表
       city: city, //获取市级列表
       qualifications: qualifications,//上传企业注册
+      findJob: findJob,//获取工作下拉列表findJob.action
+      personal: personal,//注册自由职业者
     };
     function login(data) {
       return $http({
         method: 'POST',
         url: ENDPOINT + '/checkName.action',
         data: data
+      });
+    }
+    function personal(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/toPersonRegisterPage.action',
+        data: data
+      });
+    }
+    function findJob() {
+      return $http({
+        method: 'GET',
+        url: ENDPOINT + '/findJob.action'
       });
     }
     function qualifications(data) {
@@ -32,7 +47,7 @@
     }
     function province() {
       return $http({
-        method: 'POST',
+        method: 'PUT',
         url: ENDPOINT + '/findCity.action'
       });
     }

@@ -59,88 +59,20 @@
       </ul>
     </div>-->
 
-  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:1})">
-    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
+  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:i.id})" ng-repeat="i in vm.lists">
+    <h4 class="normal-title" style="font-size: 15px">{{i.pname}}【{{i.address}}】</h4>
     <div class="row">
       <div class="col-md-3">
-        <strong>最低希望收入：</strong><span>500</span>
+        <strong>最低希望收入：</strong><span>{{i.money}}</span>
       </div>
       <div class="col-md-3">
-        <strong>工作经验：</strong><span>3年</span>
+        <strong>工作经验：</strong><span>{{i.jobage}}</span>
       </div>
       <div class="col-md-3">
-        <strong>期望职位：</strong><span>JAVA工程师</span>
+        <strong>期望职位：</strong><span>{{i.expectjob}}</span>
       </div>
       <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
-      </div>
-    </div>
-  </div>
-  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:2})">
-    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
-    <div class="row">
-      <div class="col-md-3">
-        <strong>最低希望收入：</strong><span>500</span>
-      </div>
-      <div class="col-md-3">
-        <strong>工作经验：</strong><span>3年</span>
-      </div>
-      <div class="col-md-3">
-        <strong>期望职位：</strong><span>JAVA工程师</span>
-      </div>
-      <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
-      </div>
-    </div>
-  </div>
-  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:3})">
-    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
-    <div class="row">
-      <div class="col-md-3">
-        <strong>最低希望收入：</strong><span>500</span>
-      </div>
-      <div class="col-md-3">
-        <strong>工作经验：</strong><span>3年</span>
-      </div>
-      <div class="col-md-3">
-        <strong>期望职位：</strong><span>JAVA工程师</span>
-      </div>
-      <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
-      </div>
-    </div>
-  </div>
-  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:4})">
-    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
-    <div class="row">
-      <div class="col-md-3">
-        <strong>最低希望收入：</strong><span>500</span>
-      </div>
-      <div class="col-md-3">
-        <strong>工作经验：</strong><span>3年</span>
-      </div>
-      <div class="col-md-3">
-        <strong>期望职位：</strong><span>JAVA工程师</span>
-      </div>
-      <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
-      </div>
-    </div>
-  </div>
-  <div class="row no-margin soft-list" ui-sref="app.freelance.show({id:5})">
-    <h4 class="normal-title" style="font-size: 15px">张三【上海】</h4>
-    <div class="row">
-      <div class="col-md-3">
-        <strong>最低希望收入：</strong><span>500</span>
-      </div>
-      <div class="col-md-3">
-        <strong>工作经验：</strong><span>3年</span>
-      </div>
-      <div class="col-md-3">
-        <strong>期望职位：</strong><span>JAVA工程师</span>
-      </div>
-      <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
+        <strong>发布时间：</strong><span>{{i.regtime}}</span>
       </div>
     </div>
   </div>

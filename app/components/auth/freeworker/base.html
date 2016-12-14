@@ -36,7 +36,8 @@
       <div class="col-md-10">
         <input type="text"
                class="form-control"
-               ng-model="vm.base.name"
+               ng-model="vm.base.pname"
+               ng-pattern="/^[u4e00-u9fa5],{1,5}$/"
                placeholder="请输入姓名" required/>
       </div>
     </div>
@@ -117,12 +118,9 @@
         <label>工作职位</label>
       </div>
       <div class="col-md-10">
-        <input type="password"
-               class="form-control"
-              required
-              ng-model="vm.base.job"
-
-        />
+      <select ng-model="vm.base.job" class="form-control" ng-options="i.name as i.name for i in vm.jobs">
+        <option value="">请选择</option>
+      </select>
       </div>
     </div>
     <div class="form-group" ng-class="base.jobage.$valid">
@@ -133,25 +131,6 @@
         <select name="jobage" class="form-control" ng-model="vm.base.jobage" ng-options="i.id as i.name for i in vm.jobAges" required>
           <option value="">请选择工作年限</option>
         </select>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-success': base.wage.$valid}">
-      <div class="col-md-2 control-label">
-        <label>期望日薪</label>
-      </div>
-      <div class="col-md-5">
-        <input type="text"
-               class="form-control"
-               name="wage"
-               ng-model="vm.base.wage"
-               placeholder="请输入期望日薪"
-               required
-        />
-        <div class="help-block error-font" ng-if="(base.wage.$error.required) && base.wage.$touched">期望日薪不能为空</div>
-        <span class="input-result" ng-if="base.wage.$valid"><i class="fa fa-check"></i></span>
-      </div>
-      <div class="col-md-5 margin-seven">
-        <span>元/天</span>
       </div>
     </div>
     <div class="form-group">

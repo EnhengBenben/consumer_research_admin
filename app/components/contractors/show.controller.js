@@ -6,14 +6,26 @@
     .controller('ContractorsShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, $rootScope) {
+  function Controller(ContractorsService, $state, toaster, $scope, $stateParams) {
     var vm = this;
-
+    vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'}, {id: 2, name: '民办非企业单位'},
+      {id: 3, name: '个体工商户'}, {id: 4, name: '社会团体'}, {id: 5, name: '党政及国家单位'}];
 
     return init();
 
-    function init(){
-
+    function init() {
+      ContractorsService
+        .show({id: $stateParams.id})
+        .then(function (res) {
+          console.log(res);
+          vm.show = res.data;
+          vm.show.zname = vm.show.zname.split('-').join(',').split(',');
+          vm.flattypeArr.map(function (i) {
+            if (vm.show.flattype === i.id) {
+               vm.show.flattype = i.name;
+            }
+          })
+        })
     }
   }
 })();

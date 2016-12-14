@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">发送私信</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="form-container"  style="width: inherit">
+    <form class="form-horizontal">
+      <div class="form-group" style="border: none">
+        <div class="col-xs-12">
+          <textarea class="form-control" style="min-height: 200px" placeholder="请输入3-20个字"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="vm.ok()">发送</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">取消</button>
+</div>

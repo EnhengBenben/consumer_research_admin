@@ -23,7 +23,7 @@
 
     function next(){
       console.log(vm.experience);
-      $localStorage.register = vm.experience;
+      $localStorage.experience = vm.experience;
       $state.go('free.skill');
       toaster.pop('success','已保存，请继续完成注册');
     }

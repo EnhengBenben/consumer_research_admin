@@ -37,8 +37,7 @@
       };
       console.log(vm.skill);
       for(var i in vm.skill){
-        vm.data.skills.push(vm.skill[i]);
-        vm.data.skills[vm.data.skills.length - 1].unshift(i);
+        vm.data.skills.push({pid: i,ids: vm.skill[i].join(',')});
       }
       console.log(vm.data);
       $localStorage.skill = vm.data;

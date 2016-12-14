@@ -12,7 +12,7 @@ angular.module('app')
         controller: 'CompanyListCtrl as vm'
       })
       .state('app.company.show',{
-        url: '/show/:id',
+        url: '/show/:id?requesttype',
         templateUrl: 'components/company/show.html',
         controller: 'CompanyShowCtrl as vm'
       })

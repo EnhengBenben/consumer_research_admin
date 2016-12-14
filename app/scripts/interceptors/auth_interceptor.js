@@ -22,7 +22,6 @@ angular.module('app')
                           detail += '\n' + response.data.errors[p][0];
                         }
                       }
-
                       return $q.reject(response);
                     }
                   },

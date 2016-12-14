@@ -42,6 +42,12 @@
           console.log(res);
           vm.provinces = res.data;
         });
+      AuthService
+        .findJob()
+        .then(function(res){
+          console.log(res);
+          vm.jobs = res.data;
+        });
       $scope.$watch('vm.unitaddr.province',function(newValue, oldValue){
         if(newValue != oldValue){
           AuthService
@@ -54,9 +60,15 @@
     }
 
     function next(){
-      angular.extend(vm.base,{unitaddr: vm.unitaddr.province + vm.unitaddr.city});
-      $state.go('free.experience');
-      toaster.pop('success','已保存，请继续完成注册');
+      if(vm.unitaddr.province && vm.unitaddr.city){
+        angular.extend(vm.base,{address: vm.unitaddr.province + ',' + vm.unitaddr.city});
+        console.log(vm.base);
+        $localStorage.base = vm.base;
+        $state.go('free.experience');
+        toaster.pop('success','已保存，请继续完成注册');
+      }else {
+        toaster.pop('error','请选择地址');
+      }
     }
   }
 })();
