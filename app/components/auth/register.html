@@ -4,7 +4,8 @@
       <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="1"/>&nbsp;自由职业者</label>
     </div>
     <div class="col-md-6 col-xs-6 white-center">
-      <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="0" ng-init="vm.register.acctype=0"/>&nbsp;企业</label>
+      <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="0"
+                    ng-init="vm.register.acctype=0"/>&nbsp;企业</label>
     </div>
   </div>
   <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 0"
@@ -14,30 +15,32 @@
     </div>
     <div class="col-md-9 col-xs-9">
       <input id="email"
-             ng-class="{'error-input': (register.email.$error.email || register.email.$error.required) && register.email.$touched}"
+             ng-class="{'error-input': (register.email.$error.email || register.email.$error.required || register.email.$error.pattern) && register.email.$touched}"
              ng-model="vm.register.username" type="email" class="form-control" name="email" required ng-focus=""
+             ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)$/"
              placeholder="请输入邮箱"/>
       <span class="help-block error-font"
             ng-if="register.email.$error.required && register.email.$touched">邮箱不能为空</span>
       <span class="help-block error-font"
-            ng-if="register.email.$error.email && register.email.$touched">请输入正确的邮箱格式</span>
+            ng-if="register.email.$touched && (register.email.$error.email || register.email.$error.pattern)">请输入正确的邮箱格式</span>
       <span class="input-result" ng-if="register.email.$valid"><i class="fa fa-check"></i></span>
     </div>
   </div>
-  <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 1" ng-class="{'has-success': register.tel.$valid}">
+  <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 1"
+       ng-class="{'has-success': register.tel.$valid}">
     <div class="col-md-3 col-xs-3 control-label">
       <label for="tel" class="white-center">手机号</label>
     </div>
     <div class="col-md-9 col-xs-9">
       <input id="tel" name="tel" ng-model="vm.register.username" ng-maxlength="11" ng-minlength="11" required type="tel"
-             ng-class="{'error-input': (register.tel.$error.tel || register.tel.$error.minlength || register.tel.$error.maxlength || register.tel.$error.required) && register.tel.$touched}"
-             class="form-control" placeholder="请输入手机号" ng-focus="(register.tel.$error.tel || register.tel.$error.minlength || register.tel.$error.maxlength || register.tel.$error.required) && register.tel.$touched"/>
+             ng-class="{'error-input': (register.tel.$error.pattern  || register.tel.$error.required) && register.tel.$touched}"
+             class="form-control" placeholder="请输入手机号"
+             ng-pattern="/^[0-9]{11}/"
+             ng-focus="(register.tel.$error.tel || register.tel.$error.minlength || register.tel.$error.maxlength || register.tel.$error.required) && register.tel.$touched"/>
        <span class="help-block error-font"
              ng-if="register.tel.$error.required && register.tel.$touched">手机号不能为空</span>
       <span class="help-block error-font"
-            ng-if="(register.tel.$error.minlength || register.tel.$error.maxlength)&& register.tel.$touched">手机号必须为11位</span>
-      <span class="help-block error-font"
-            ng-if="register.tel.$error.tel && register.tel.$touched">请输入正确的手机号</span>
+            ng-if="(register.tel.$error.tel || register.tel.$error.pattern) && register.tel.$touched">请输入正确的手机号</span>
       <span class="input-result" ng-if="register.tel.$valid"><i class="fa fa-check"></i></span>
     </div>
   </div>

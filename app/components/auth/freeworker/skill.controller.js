@@ -38,10 +38,13 @@
       for(var i in vm.skill){
         vm.data.skills.push({pid: i,ids: vm.skill[i].join(',')});
       }
-      console.log(vm.data);
-      $localStorage.skill = vm.data;
-      $state.go('free.resume');
-      toaster.pop('success','已保存，请继续完成注册');
+      if(vm.data.skills.length){
+        $localStorage.skill = vm.data;
+        $state.go('free.resume');
+        toaster.pop('success','已保存，请继续完成注册');
+      }else {
+        toaster.pop('error','请至少选择一项技能,刷新浏览器后重试');
+      }
     }
   }
 })();

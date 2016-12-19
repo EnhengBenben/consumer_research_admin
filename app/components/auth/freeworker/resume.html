@@ -28,23 +28,25 @@
   </div>
 </div>
 <div class="form-container">
-  <form class="form-horizontal" name="resume">
-    <div class="form-group">
+  <form class="form-horizontal" name="resume" ng-submit="vm.next()">
+    <div class="form-group" ng-class="{'has-success': resume.levels.$valid}">
       <div class="col-md-2 control-label">
         <label>能力级别</label>
       </div>
       <div class="col-md-10">
-        <select class="form-control" ng-model="vm.resume.levels" ng-options="i.id as i.name for i in vm.levels">
+        <select class="form-control" required name="levels" ng-model="vm.resume.levels"
+                ng-options="i.id as i.name for i in vm.levels">
           <option value="">请选择</option>
         </select>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': resume.expectjob.$valid}">
       <div class="col-md-2 control-label">
         <label>期望职位</label>
       </div>
       <div class="col-md-10">
-        <select ng-model="vm.resume.expectjob" class="form-control" ng-options="i.name as i.name for i in vm.jobs">
+        <select ng-model="vm.resume.expectjob" required name="expectjob" class="form-control"
+                ng-options="i.name as i.name for i in vm.jobs">
           <option value="">请选择</option>
         </select>
       </div>
@@ -58,6 +60,7 @@
                class="form-control"
                name="wage"
                ng-model="vm.resume.money"
+               ng-class="{'error-input': resume.wage.$error.required && resume.wage.$touched}"
                placeholder="请输入期望日薪"
                required
         />
@@ -68,38 +71,55 @@
         <span>元/天</span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': resume.history.$valid}">
       <div class="col-md-2 control-label">
         <label>雇佣历史</label>
       </div>
       <div class="col-md-10">
-        <textarea class="form-control" placeholder="请输入雇佣历史,不得少于10个字符" minlength="10" ng-model="vm.resume.history"></textarea>
+        <textarea class="form-control"
+                  ng-class="{'error-input': (resume.history.$error.minlength || resume.history.$error.required) && resume.history.$touched}"
+                  name="history" required placeholder="请输入雇佣历史,不得少于10个字符" minlength="10"
+                  ng-model="vm.resume.history"></textarea>
+        <div class="help-block error-font" ng-if="resume.history.$error.required && resume.history.$touched">雇佣历史不能为空
+        </div>
+        <div class="help-block error-font" ng-if="resume.history.$error.minlength && resume.history.$touched">不得少于10个字
+        </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': resume.proexperience.$valid}">
       <div class="col-md-2 control-label">
         <label>项目履历</label>
       </div>
       <div class="col-md-10">
-        <textarea class="form-control" ng-model="vm.resume.proexperience" placeholder="请输入项目履历,不得少于10个字符" minlength="10" required="required"></textarea>
+        <textarea class="form-control"
+                  ng-class="{'error-input': (resume.proexperience.$error.minlength || resume.proexperience.$error.required) && resume.proexperience.$touched}"
+                  name="proexperience" ng-model="vm.resume.proexperience" placeholder="请输入项目履历,不得少于10个字符" minlength="10"
+                  required="required"></textarea>
+        <div class="help-block error-font" ng-if="resume.proexperience.$error.required && resume.proexperience.$touched">项目履历不能为空</div>
+        <div class="help-block error-font" ng-if="resume.proexperience.$error.minlength && resume.proexperience.$touched">不得少于10个字</div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': resume.educational.$valid}">
       <div class="col-md-2 control-label">
         <label>教育背景</label>
       </div>
       <div class="col-md-10">
-        <textarea class="form-control" ng-model="vm.resume.educational" placeholder="请输入教育背景,不得少于10个字符" minlength="10" required="required"></textarea>
+        <textarea class="form-control" name="educational" ng-model="vm.resume.educational"
+                  ng-class="{'error-input': (resume.educational.$error.minlength || resume.educational.$error.required) && resume.educational.$touched}"
+                  placeholder="请输入教育背景,不得少于10个字符" minlength="10" required="required"></textarea>
+        <div class="help-block error-font" ng-if="resume.educational.$error.required && resume.educational.$touched">项目履历不能为空</div>
+        <div class="help-block error-font" ng-if="resume.educational.$error.minlength && resume.educational.$touched">不得少于10个字</div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': resume.certificate.$valid}">
       <div class="col-md-2 control-label">
         <label>资格证书</label>
       </div>
       <div class="col-md-10">
-       <select class="form-control" ng-model="vm.resume.certificate" ng-options="i.id as i.name for i in vm.certificates">
-         <option value="">请选择资格证书</option>
-       </select>
+        <select class="form-control" name="certificate" required ng-model="vm.resume.certificate"
+                ng-options="i.id as i.name for i in vm.certificates">
+          <option value="">请选择资格证书</option>
+        </select>
       </div>
     </div>
     <div class="form-group">
@@ -107,12 +127,12 @@
         <label>其他信息</label>
       </div>
       <div class="col-md-10">
-       <textarea class="form-control" ng-model="vm.resume.other" placeholder="请输入其他信息"></textarea>
+        <textarea class="form-control" name="other" ng-model="vm.resume.other" placeholder="请输入其他信息"></textarea>
       </div>
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <div class="btn btn-primary" ng-click="vm.next()">完成</div>
+        <button type="submit" class="btn btn-primary" ng-disabled="resume.$invalid">完成</button>
       </div>
     </div>
   </form>

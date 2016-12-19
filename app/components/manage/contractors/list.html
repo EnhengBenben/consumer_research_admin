@@ -3,7 +3,7 @@
     <span class="normal-title">已接收项目</span>
   </div>
   <div class="row no-margin soft-list" ng-repeat="i in vm.lists">
-    <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.contractors.show({id: i.id})">{{i.proname}}</a></h4>
+    <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.contractors.show({id: i.id,requesttype: i.requesttype})">{{i.proname}}</a></h4>
     <p class="overflow-p">
       {{i.intro}}</p>
     <ul class="list-unstyled no-margin">

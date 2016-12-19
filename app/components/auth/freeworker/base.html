@@ -36,9 +36,13 @@
       <div class="col-md-10">
         <input type="text"
                class="form-control"
+               ng-class="{'error-input': (base.pname.$error.pattern || base.pname.$error.required)  && base.pname.$touched}"
+               name = 'pname'
                ng-model="vm.base.pname"
-               ng-pattern="/^[u4e00-u9fa5],{1,5}$/"
+               ng-pattern="/^[\u2e80-\u9fff]+$/"
                placeholder="请输入姓名" required/>
+        <span ng-if="base.pname.$error.pattern && base.pname.$touched" class="help-block error-font">请输入中文名</span>
+        <span ng-if="base.pname.$error.required && base.pname.$touched" class="help-block error-font">姓名不能为空</span>
       </div>
     </div>
     <div class="form-group">
@@ -55,18 +59,24 @@
         <p>文件只支持JPG,PNG,PDF格式的图片 </p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success':base.password.$valid}">
       <div class="col-md-2 control-label">
-        <label>密码</label>
+        <label for="">密码</label>
       </div>
       <div class="col-md-10">
         <input type="password"
-               class="form-control"
-               required
+               name="password"
                ng-model="vm.base.password"
-               minlength="8"
-               maxlength="8"
-        />
+               class="form-control"
+               ng-pattern="/^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{8}$/"
+               placeholder="密码必须为字母+数字,长度为8位"
+               ng-maxlength="8"
+               ng-minlength="8"
+               required/>
+        <div class="help-block error-font" ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">密码长度必须为8位</div>
+        <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">密码不能为空</div>
+        <div class="help-block error-font" ng-if="(base.password.$error.pattern) && base.password.$touched">密码必须为字母数字组合</div>
+        <span class="input-result" ng-if="base.password.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
     <div class="form-group">
@@ -107,10 +117,15 @@
       <div class="col-md-10">
         <input type="email"
                class="form-control"
+               name="emailaddr"
                required
+               ng-class="{'error-input': (base.emailaddr.$error.required || base.emailaddr.$error.pattern) &&  base.emailaddr.$touched}"
                ng-model="vm.base.emailaddr"
                placeholder="请输入电子邮箱"
+               ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)$/"
         />
+        <div class="help-block error-font" ng-if="(base.emailaddr.$error.required) && base.emailaddr.$touched">邮箱不能为空</div>
+        <div class="help-block error-font" ng-if="(base.emailaddr.$error.pattern) && base.emailaddr.$touched">请输入正确的邮箱</div>
       </div>
     </div>
     <div class="form-group">
@@ -118,7 +133,7 @@
         <label>工作职位</label>
       </div>
       <div class="col-md-10">
-      <select ng-model="vm.base.job" class="form-control" ng-options="i.name as i.name for i in vm.jobs">
+      <select ng-model="vm.base.job" class="form-control" name="job" required ng-options="i.name as i.name for i in vm.jobs">
         <option value="">请选择</option>
       </select>
       </div>
@@ -138,14 +153,14 @@
         <label>英语能力</label>
       </div>
       <div class="col-md-10">
-        <select class="form-control" ng-model="vm.base.engrade" ng-options="i.id as i.name for i in vm.EnglishLevel">
+        <select class="form-control" ng-model="vm.base.engrade" name="engrade" required ng-options="i.id as i.name for i in vm.EnglishLevel">
           <option value="">请选择</option>
         </select>
       </div>
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <button type="submit" class="btn btn-primary" ng-click="vm.next()">下一步</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="base.$invalid" ng-click="vm.next()">下一步</button>
       </div>
     </div>
   </form>

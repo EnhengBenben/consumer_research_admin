@@ -9,8 +9,8 @@
   /* @ngInject */
   function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams, $uibModal) {
     var vm = this;
-    vm.sendLetter = sendLetter;
-    vm.undertake = undertake;
+    //vm.sendLetter = sendLetter;
+    //vm.undertake = undertake;
     vm.user = $localStorage.user;
     vm.params = {};
     angular.extend(vm.params,vm.user);
@@ -61,31 +61,6 @@
             return data.id == vm.show.ages;
           });
           console.log(vm.show);
-        })
-    }
-
-    function sendLetter(){
-      var modalInstance = $uibModal.open({
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'components/company/model.html',
-        //controller: 'ModalInstanceCtrl',
-        // controllerAs: 'vm',
-        size: 'md',
-        resolve: {
-          items: function () {
-            return vm.items;
-          }
-        }
-      })
-    }
-
-    function undertake(){
-      CompanyService
-        .undertake(vm.params)
-        .then(function(res){
-          toaster.pop('success', res.data);
-          $state.go('app.company.list');
         })
     }
   }

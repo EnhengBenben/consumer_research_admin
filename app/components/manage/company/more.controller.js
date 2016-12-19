@@ -57,28 +57,6 @@
             })
         }
       }, true);
-
-
-      /*   vm.lists = [{
-       id: 1,
-       proname: '项目名称项目名称项目名称',
-       intro: '项目简介项目简介',
-       addr: '北京',
-       company: '北京科技有限责任公司',
-       price: 1000,
-       starttime: '2016-12-12',
-       endtime: '2016-12-13'
-       },
-       {
-       id: 2,
-       proname: '项目名称项目名称项目名称',
-       intro: '项目简介项目简介',
-       addr: '北京',
-       company: '北京科技有限责任公司',
-       price: 1000,
-       starttime: '2016-12-12',
-       endtime: '2016-12-13'
-       }]*/
     }
 
     function choice(index, data) {

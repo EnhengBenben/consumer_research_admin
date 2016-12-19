@@ -26,6 +26,7 @@
       angular.extend(vm.resume, $localStorage.base);
       angular.extend(vm.resume, $localStorage.experience);
       angular.extend(vm.resume, $localStorage.skill);
+      console.log()
       var str = [];
       angular.forEach(vm.resume.skills, function (i) {
         str.push(i.ids);

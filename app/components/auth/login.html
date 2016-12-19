@@ -1,26 +1,42 @@
 <form class="form-horizontal" name="login" ng-submit="vm.login()">
-  <div class="form-group username" style="margin-top: 30px">
+  <div class="form-group username" ng-class="{'has-success': login.username.$valid}" style="margin-top: 30px">
     <div class="col-md-3 col-xs-3 control-label">
       <label for="username" class="white-center">用户名</label>
     </div>
     <div class="col-md-9 col-xs-9">
-      <input id="username" ng-class="{'error-input': (login.username.$error.required && login.username.$touched)}"
-             name="username" ng-model="vm.account.username" type="text" class="form-control" ng-focus=""
+      <input id="username"
+             ng-class="{'error-input': ((login.username.$error.required || login.username.$error.pattern) && login.username.$touched)}"
+             name="username"
+             ng-model="vm.account.username"
+             type="text"
+             class="form-control" ng-focus=""
+             ng-pattern= "/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)|[0-9]{11}$/"
              placeholder="请输入手机号/邮箱" required/>
+      <span class="input-result" ng-if="login.username.$valid"><i class="fa fa-check"></i></span>
       <div ng-if="login.username.$error.required && login.username.$touched" class="error-font help-block"><p>
         用户名不能为空</p></div>
+      <div ng-if="login.username.$error.pattern && login.username.$touched" class="error-font help-block"><p>
+        请输入正确的手机号或者邮箱</p></div>
     </div>
   </div>
-  <div class="form-group username">
+  <div class="form-group username"  ng-class="{'has-success': login.password.$valid}">
     <div class="col-md-3 col-xs-3 control-label">
       <label for="password" class="white-center">密码</label>
     </div>
     <div class="col-md-9 col-xs-9">
-      <input id="password" name="password" ng-model="vm.account.password" type="password" class="form-control"
-             ng-class="{'error-input': (login.password.$error.required && login.password.$touched)}"
-             ng-focus="" placeholder="请输入密码" minlength="8" maxlength="8" required/>
-      <div ng-if="login.password.$error.required && login.password.$touched" class="error-font help-block"><p>密码不能为空</p>
-      </div>
+      <input id="password"
+             name="password"
+             ng-model="vm.account.password"
+             type="password" class="form-control"
+             ng-class="{'error-input': ((login.password.$error.required || login.password.$error.pattern) && login.password.$touched)}"
+             placeholder="请输入密码"
+             minlength="8"
+             maxlength="8"
+             ng-pattern="/^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{8}$/"
+             required/>
+        <div ng-if="login.password.$error.required && login.password.$touched" class="error-font help-block"><p>密码不能为空</p></div>
+        <div ng-if="login.password.$error.pattern && login.password.$touched" class="error-font help-block"><p>密码必须为8位字母数字组合</p></div>
+      <span class="input-result" ng-if="login.password.$valid"><i class="fa fa-check"></i></span>
     </div>
   </div>
   <div class="form-group username">

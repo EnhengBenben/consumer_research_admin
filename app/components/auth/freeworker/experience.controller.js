@@ -22,10 +22,25 @@
     }
 
     function next(){
-      console.log(vm.experience);
-      $localStorage.experience = vm.experience;
-      $state.go('free.skill');
-      toaster.pop('success','已保存，请继续完成注册');
+      if(vm.experience){
+        var str = '';
+        angular.forEach(vm.experience,function(i){
+          if(i){
+            str += i + ',';
+          }
+        });
+        str = str.slice(0,str.length - 1);
+        $localStorage.experience = {
+          experience: str
+        };
+        if(str.length){
+          $state.go('free.skill');
+          toaster.pop('success','已保存，请继续完成注册');
+        }else {
+          toaster.pop('error','请至少选择一项');
+        }
+
+      }
     }
   }
 })();

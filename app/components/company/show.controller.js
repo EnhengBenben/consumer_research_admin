@@ -68,12 +68,14 @@
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'components/company/model.html',
-        //controller: 'ModalInstanceCtrl',
-       // controllerAs: 'vm',
+        controller: 'ModalInstanceCtrl',
+        controllerAs: 'vm',
         size: 'md',
         resolve: {
           items: function () {
-            return vm.items;
+            return {
+              id: $stateParams.id
+            };
           }
         }
     })

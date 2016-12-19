@@ -1,0 +1,92 @@
+<div class="row no-margin" style="margin-bottom: 20px">
+  <div class="pull-right btn btn-primary" ui-sref="app.manage.contractors.list"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
+</div>
+<div class="form-container" style="position: relative">
+  <form class="form-horizontal">
+    <div class="form-group" style="position: relative">
+      <div class="col-md-10 col-md-offset-2">
+        <p><strong style="font-size: 16px">{{vm.show.proname}}</strong></p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>发包类型</label>
+      </div>
+      <div class="col-md-8">
+        <p class="margin-seven">{{vm.show.requesttype[0].name}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>地址</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.addr}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>付款方式</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.pricetype === 1? '月付' : '季付'}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>工程师年限</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.ages[0].name}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>工程师类型</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.mantypr[0].name}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>项目状态</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.stauts[0].name}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>预算</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.price}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>入项时间</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.starttime}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>出项时间</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.endtime}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>任职要求</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.requirements}}</p>
+      </div>
+    </div>
+  </form>
+</div>

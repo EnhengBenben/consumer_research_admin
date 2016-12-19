@@ -30,11 +30,16 @@
          }
        });
         str = str.slice(0,str.length - 1);
+        console.log(str);
         $localStorage.experience = {
           experience: str
         };
-        $state.go('company.skill');
-        toaster.pop('success','已保存，请继续完成注册');
+       if(str.length){
+         $state.go('company.skill');
+         toaster.pop('success','已保存，请继续完成注册');
+       }else {
+         toaster.pop('error','请至少选择一项');
+       }
       }
     }
   }
