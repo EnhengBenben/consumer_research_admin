@@ -6,7 +6,7 @@
 <div class="form-container" style="position: relative">
   <div class="show-photo">
     <div class="img-box">
-
+      <img ng-src="vm.show.imageurl" style="width: 100%;height: 100%"/>
     </div>
   </div>
   <form class="form-horizontal">
@@ -16,6 +16,14 @@
       </div>
       <div class="col-md-8">
         <p class="margin-seven">{{vm.show.pname}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>现居住地</label>
+      </div>
+      <div class="col-md-8">
+        <p class="margin-seven">{{vm.show.addrname}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -47,7 +55,7 @@
         <label>技术技能</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.skills}}</p>
+        <p class="margin-seven">{{vm.show.skillname | limitTo: vm.show.skillname.length -1}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -55,7 +63,7 @@
         <label>工作年限</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.jobage}}</p>
+        <p class="margin-seven">{{vm.show.jobage[0].name}}</p>
       </div>
     </div>
     <div class="form-group">

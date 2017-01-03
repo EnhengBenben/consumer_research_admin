@@ -7,7 +7,7 @@
 </script>-->
 <div class="row free-base">
   <div class="col-md-12" style="text-align: center">
-    <div class="circle">
+    <div class="circle circle-active">
       <div>1</div>
       <span class="help-block">企业基本信息</span>
     </div>
@@ -45,7 +45,7 @@
         <label><input type="radio" name="baseType" ng-model="vm.base.basetype" ng-value="1" required/><span class="normal-weight"> 我要承接项目，想找发包方</span></label>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': base.flattype.$valid}">
       <div class="col-md-2 control-label">
         <label>单位类型</label>
       </div>
@@ -55,15 +55,28 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': base.idType.$valid}">
       <div class="col-md-2 control-label">
-        <label>证件类型</label>
+        <label>营业执照类型</label>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 margin-seven">
         <label><input type="radio" name="idType" ng-model="vm.base.idtype" ng-value="0" required/><span class="normal-weight"> 普通营业执照( 存在独立的组织机构代码证)</span></label>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 margin-seven">
         <label><input type="radio" name="idType" ng-model="vm.base.idtype" ng-value="1" required/><span class="normal-weight"> 多证合一营业执照( 不存在独立的组织机构代码证)</span></label>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-success': vm.base.idimage}">
+      <div class="col-md-2 control-label">
+        <label>上传营业执照</label>
+      </div>
+      <div class="col-md-5">
+        <single-uploader url="vm.base.idimage"></single-uploader>
+      </div>
+      <div class="col-md-5">
+        <div style="height: 100px;width: 80px;background-color: #00b3ee">
+          <img alt="请上传照片" ng-src="{{vm.base.idimage}}" style="width: 100%;height: 100%"/>
+        </div>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-success': base.name.$valid}">
@@ -86,14 +99,14 @@
     </div>
     <div class="form-group" ng-class="{'has-success':base.proscope.$valid}">
       <div class="col-md-2 control-label">
-        <label>单位简介</label>
+        <label>营业范围</label>
       </div>
       <div class="col-md-10">
         <textarea name="proscope"
                   ng-class="{'error-input': ((base.proscope.$error.required || base.proscope.$error.minlength) && base.proscope.$touched)}"
-                  ng-minlength="10" class="form-control" ng-model="vm.base.proscope" placeholder="请输入单位简介，不得少于10个字符" required=""></textarea>
-        <div class="help-block error-font" ng-if="base.proscope.$error.required && base.proscope.$touched">单位简介不能为空</div>
-        <div class="help-block error-font" ng-if="base.proscope.$error.minlength && base.proscope.$touched">单位简介不得少于10个字</div>
+                  ng-minlength="10" class="form-control" ng-model="vm.base.proscope" placeholder="请输入营业范围，不得少于10个字符" required=""></textarea>
+        <div class="help-block error-font" ng-if="base.proscope.$error.required && base.proscope.$touched">营业范围不能为空</div>
+        <div class="help-block error-font" ng-if="base.proscope.$error.minlength && base.proscope.$touched">营业范围不得少于10个字</div>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-success':base.password.$valid}">
@@ -105,6 +118,7 @@
                name="password"
                ng-model="vm.base.password"
                class="form-control"
+               ng-class="{'error-input':base.password.$invalid && base.password.$touched}"
                ng-pattern="/^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{8}$/"
                placeholder="密码必须为字母+数字,长度为8位"
                ng-maxlength="8"
@@ -116,16 +130,19 @@
         <span class="input-result" ng-if="base.password.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
-    <div class="form-group"   ng-class="{'has-success': base.reqpassword.$valid}">
+    <div class="form-group"   ng-class="{'has-success': base.reqpassword.$valid && vm.base.reqpassword === vm.base.password }">
       <div class="col-md-2 control-label">
         <label for="">确认密码</label>
       </div>
       <div class="col-md-10">
         <input type="password"
+               ng-class="{'error-input': vm.base.reqpassword != vm.base.password &&  base.reqpassword.$touched}"
                name="reqpassword" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
+        <div class="help-block error-font" ng-if="(vm.base.reqpassword != vm.base.password) && base.reqpassword.$touched">请与原密码保持一致</div>
+        <span class="input-result" ng-if="(vm.base.reqpassword === vm.base.password)  && base.reqpassword.$touched && base.reqpassword.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success':vm.unitaddr.province && vm.unitaddr.city}">
       <div class="col-md-2 control-label">
         <label>单位所在地</label>
       </div>
@@ -140,27 +157,22 @@
         </select>
       </div>
     </div>
-    <div class="form-group"  ng-class="{'has-success': base.dobusiness.$valid && base.dobusiness.$touched}">
+    <div class="form-group"  ng-class="{'has-success': base.dobusiness.$valid}">
       <div class="col-md-2 control-label">
         <label for="">营业期限</label>
       </div>
       <div class="col-md-5">
-        <input type="text"
-               class="form-control"
-               name="dobusiness"
-               ng-model="vm.base.dobusiness"
-               placeholder="请输入营业期限,若是长期请勾选"
-               ng-class="{'error-input': ((base.dobusiness.$error.required) && base.dobusiness.$touched)}"
-               required
-        />
+        <input type="text" name="dobusiness" required ng-model="vm.base.dobusiness" format="YYYY-MM-DD" date-time min-view="date"
+               timezone="Asia/Shanghai" auto-close="true"
+               class="form-control" placeholder="">
         <div class="help-block error-font" ng-if="(base.dobusiness.$error.required) && base.dobusiness.$touched">营业期限不能为空</div>
         <span class="input-result" ng-if="base.dobusiness.$valid && base.dobusiness.$touched"><i class="fa fa-check"></i></span>
       </div>
       <div class="col-md-5" style="padding-top: 4px">
-        <label><input type="checkbox" ng-model="vm.base.dobusiness" ng-true-value = "'长期'" ng-false-value="" /><span class="normal-weight"> 长期</span></label>
+        <label><input type="checkbox" ng-model="vm.base.dobusiness" ng-true-value = "'2099-12-31'" ng-false-value="" /><span class="normal-weight"> 长期</span></label>
       </div>
     </div>
-    <div class="form-group" ng-class="{'has-success': base.orgcode.$valid}">
+    <div class="form-group" ng-class="{'has-success': base.orgcode.$valid}" ng-if="vm.base.idtype === 0">
       <div class="col-md-2 control-label">
         <label for="">组织机构代码</label>
       </div>
@@ -171,6 +183,22 @@
                ng-class="{'error-input': ((base.orgcode.$error.required) && base.orgcode.$touched)}"
                class="form-control"
                placeholder="请输入正确的组织机构代码" required
+        />
+        <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">组织机构代码不能为空</div>
+        <span class="input-result" ng-if="base.orgcode.$valid"><i class="fa fa-check"></i></span>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-success': base.orgcode.$valid}" ng-if="vm.base.idtype === 1">
+      <div class="col-md-2 control-label">
+        <label for="">统一社会信用代码</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text"
+               ng-model="vm.base.orgcode"
+               name="orgcode"
+               ng-class="{'error-input': ((base.orgcode.$error.required) && base.orgcode.$touched)}"
+               class="form-control"
+               placeholder="请输入正确的统一社会信用代码" required
         />
         <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">组织机构代码不能为空</div>
         <span class="input-result" ng-if="base.orgcode.$valid"><i class="fa fa-check"></i></span>
@@ -216,15 +244,17 @@
         <label>证件有效期</label>
       </div>
       <div class="col-md-5">
-        <input type="text" class="form-control" ng-model="vm.base.validity" name="validity" placeholder="如: 2016-8-20~2026-8-20" required/>
+        <input type="text" name="validity" required ng-model="vm.base.validity" format="YYYY-MM-DD" date-time min-view="date"
+               timezone="Asia/Shanghai" auto-close="true"
+               class="form-control" placeholder="">
         <div class="help-block error-font" ng-if="(base.validity.$error.required) && base.validity.$touched">证件有效期不能为空</div>
         <span class="input-result" ng-if="base.validity.$valid"><i class="fa fa-check"></i></span>
       </div>
       <div class="col-md-5" style="padding-top: 4px">
-        <label><input type="checkbox" ng-true-value = "'长期'" ng-false-value="" ng-model="vm.base.validity"/><span class="normal-weight"> 长期</span></label>
+        <label><input type="checkbox" ng-true-value = "'2099-12-31'" ng-false-value="" ng-model="vm.base.validity"/><span class="normal-weight"> 长期</span></label>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': base.rank.$valid}">
       <div class="col-md-2 control-label">
         <label>填写人身份</label>
       </div>
@@ -233,17 +263,6 @@
       </div>
       <div class="col-md-5">
         <label class="margin-seven"><input type="radio" name="rank" ng-model="vm.base.rank" ng-value="'我是代理人'" required/><span class="normal-weight"> 我是代理人</span></label>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-md-2 control-label">
-        <label>实际控制人类型</label>
-      </div>
-      <div class="col-md-5">
-        <label class="margin-seven"><input type="radio" name="conperson" ng-model="vm.base.conperson" ng-value="'个人'" required/><span class="normal-weight"> 个人</span></label>
-      </div>
-      <div class="col-md-5">
-        <label class="margin-seven"><input type="radio" name="conperson" ng-model="vm.base.conperson" ng-value="'企业'" required/><span class="normal-weight"> 企业</span></label>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-success': base.telnum.$valid}">

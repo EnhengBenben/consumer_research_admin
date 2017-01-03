@@ -10,7 +10,7 @@
   function Service(ENDPOINT, $http){
     return{
       list: list,//自由职业者列表
-      show: show,//自由职业者详情
+      show: show,//公司详情
       searchInfo: searchInfo, //获取企业注册信息
       updateBase: updateBase, // 保存企业基本信息
       updateCompanyExp: updateCompanyExp,//保存企业行业经验
@@ -20,7 +20,43 @@
       updateFreelanceExp: updateFreelanceExp, //保存自由职业者行业经验
       updateFreelanceSkill: updateFreelanceSkill, //保存自由职业者擅长技能
       updateFreelanceResume: updateFreelanceResume, //保存自由职业者履历
+      findInBox: findInBox,//查询收件箱
+      findOutbox: findOutbox, //查询发件箱
+      deleteInBox: deleteInBox, // 删除私信
+      deleteOutBox: deleteOutBox, // 删除私信
     };
+
+    function deleteInBox(data){
+      return  $http({
+        url: ENDPOINT + '/toDeleteInMessageById.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function deleteOutBox(data){
+      return  $http({
+        url: ENDPOINT + '/toDeleteOutMessageById.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function findInBox(data){
+      return  $http({
+        url: ENDPOINT + '/findInBox.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function findOutbox(data){
+      return  $http({
+        url: ENDPOINT + '/findOutbox.action',
+        method: 'POST',
+        data: data
+      })
+    }
 
     function updateCompanyExp(data){
       return  $http({
@@ -98,7 +134,7 @@
 
     function show(params){
     return  $http({
-        url: ENDPOINT + '',
+        url: ENDPOINT + '/findQYInfoAndById.action',
         method: 'GET',
         params: params
       })

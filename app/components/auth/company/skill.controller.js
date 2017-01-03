@@ -9,7 +9,15 @@
   function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
+    vm.back = back;
     vm.skill = {};
+    if($localStorage.skill){
+      var array = $localStorage.skill.skills.split(',');
+      for(var i=0;i<array.length;i++){
+        vm.skill[array[i]] = parseInt(array[i]);
+      }
+    }
+
 
     return init();
 
@@ -17,36 +25,29 @@
       AuthService
         .skill()
         .then(function (res) {
-          console.log(res);
-          vm.lists = res.data;
+          vm.skills = res.data;
         });
     }
 
     function next() {
+      var str = [];
       for (var i in vm.skill) {
-        if (!vm.skill[i].length) {
-          delete vm.skill[i];
-        } else {
-          vm.skill[i] = vm.skill[i].filter(function(n){
-            return n;
-          })
+        if (vm.skill[i] != false) {
+          str.push(i);
         }
       }
-      vm.data = {
-        skills: []
-      };
-      console.log(vm.skill);
-      for(var i in vm.skill){
-        vm.data.skills.push({pid: i,ids: vm.skill[i].join(',')});
+      str = str.join(',');
+      if (str.length && str.split(',').length > 0 && str.split(',').length <= 20) {
+        $localStorage.skill = {skills: str};
+        $state.go('company.qualifications');
+        toaster.pop('success', '已保存，请继续完成注册');
+      } else {
+        toaster.pop('error', '请至少选择一项技能');
       }
-      console.log(vm.data);
-     if(vm.data.skills.length){
-       $localStorage.skill = vm.data;
-       $state.go('company.qualifications');
-       toaster.pop('success', '已保存，请继续完成注册');
-     }else {
-       toaster.pop('error','请至少选择一项技能,刷新浏览器后重试');
-     }
+    }
+
+    function back(){
+      history.back(-1);
     }
   }
 })();

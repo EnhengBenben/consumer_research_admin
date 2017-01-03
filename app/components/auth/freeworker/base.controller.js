@@ -31,7 +31,18 @@
         name: '10年以上'
       }];
     vm.EnglishLevel = [{id: 0, name: '一般'},{id: 1, name:  '良好'}];
-
+    if($localStorage.base){
+      vm.base = $localStorage.base;
+      AuthService
+        .city({provinceId: parseInt(vm.base.address.split(',')[0])})
+        .then(function(res){
+          vm.unitaddr = {
+            province: parseInt(vm.base.address.split(',')[0]),
+            city: parseInt(vm.base.address.split(',')[1]),
+          }
+          vm.cities = res.data;
+        });
+    }
 
     return init();
 
@@ -39,13 +50,11 @@
       AuthService
         .province()
         .then(function(res){
-          console.log(res);
           vm.provinces = res.data;
         });
       AuthService
         .findJob()
         .then(function(res){
-          console.log(res);
           vm.jobs = res.data;
         });
       $scope.$watch('vm.unitaddr.province',function(newValue, oldValue){
@@ -62,7 +71,6 @@
     function next(){
       if(vm.unitaddr.province && vm.unitaddr.city){
         angular.extend(vm.base,{address: vm.unitaddr.province + ',' + vm.unitaddr.city});
-        console.log(vm.base);
         $localStorage.base = vm.base;
         $state.go('free.experience');
         toaster.pop('success','已保存，请继续完成注册');

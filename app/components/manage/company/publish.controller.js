@@ -42,7 +42,6 @@
       AuthService
         .province()
         .then(function (res) {
-          console.log(res);
           vm.provinces = res.data;
         });
       $scope.$watch('vm.unitaddr.province', function (newValue, oldValue) {
@@ -63,12 +62,10 @@
        vm.publish.endtime = vm.publish.endtime.format('YYYY-MM-DD');
      }
      vm.publish.addr = vm.unitaddr.province + ',' + vm.unitaddr.city;
-      console.log(vm.publish);
       vm.publish['userid'] = vm.user.userid;
       ManageService
         .publish(vm.publish)
         .then(function(res){
-          console.log(res);
           vm.publish = {};
           $state.go('app.manage.company.list');
           toaster.pop('success','发布成功');

@@ -1,28 +1,38 @@
+<!--<div class="row no-margin">
+  <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'accept'})" style="margin-right: 20px">收件箱</div>
+  <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'send'})">发件箱</div>
+</div>-->
+<div class="row no-margin">
+  <div class="btn btn-default" ui-sref-active="btn-primary" style="margin-right: 20px" ng-if="vm.user.type === 0&& vm.user.basetype === 0">收件箱</div>
+  <div class="btn btn-default" ui-sref-active="btn-primary" ng-if="vm.user.type === 1 || vm.user.basetype === 1">发件箱</div>
+</div>
 <div class="base-container" style="margin-top: 30px">
   <div class="row letter-list-title">
     <div class="col-md-2">
-      <p ng-if="vm.status === 'accept'">发件方</p>
-      <p ng-if="vm.status === 'send'">收件方</p>
+      <p ng-if="vm.user.type === 0 && vm.user.basetype === 0">发件方</p>
+      <p ng-if="vm.user.type === 1 || vm.user.basetype === 1">收件方</p>
     </div>
     <div class="col-md-6"><p>主题</p></div>
     <div class="col-md-2">
-      <p  ng-if="vm.status === 'send'">发送时间</p>
-      <p  ng-if="vm.status === 'accept'">接收时间</p>
+      <p  ng-if="vm.user.type === 1 || vm.user.basetype === 1">发送时间</p>
+      <p  ng-if="vm.user.type === 0 && vm.user.basetype === 0">接收时间</p>
     </div>
     <div class="col-md-2">
       <p>操作</p>
     </div>
   </div>
-  <div class="row letter-list">
+  <div class="row letter-list" ng-repeat="i in vm.lists" style="margin-top: 10px">
     <div class="col-md-2">
-      <p>发件方姓名</p>
+      <a ng-if="i.acctype === 1" ui-sref="app.freelance.show({id:i.sid})">{{i.sname || i.gname}}</a>
+      <a ng-if="i.basetype === 1" ui-sref="app.contractors.show({id: i.sid})">{{i.sname || i.gname}}</a>
+      <a ng-if="i.acctype === 0 && i.basetype === 0" ui-sref="app.personal.letter.show({id: i.gid})">{{i.sname || i.gname}}</a>
     </div>
-    <div class="col-md-6"><p>主题主题主题主题主题主题主题主题主题主题主题主题主题主题主题主题主题主题</p></div>
+    <div class="col-md-6"><p>{{i.info}}</p></div>
     <div class="col-md-2">
-     <p>2015-12-02 12:32:23</p>
+     <p>{{i.gettime || i.sendtime}}</p>
     </div>
     <div class="col-md-2">
-      <div class="btn btn-sm btn-danger" confirm="确认删除？">删除</div>
+      <div class="btn btn-sm btn-danger" confirm="确认删除" ng-click="vm.remove(i)">删除</div>
     </div>
   </div>
 </div>

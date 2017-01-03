@@ -9,42 +9,45 @@
   function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
-
+    vm.back = back;
 
     return init();
 
-    function init(){
+    function init() {
+      vm.skill = {};
+      if($localStorage.skill){
+        var array = $localStorage.skill.skills.split(',');
+        for(var i=0;i<array.length;i++){
+          vm.skill[array[i]] = parseInt(array[i]);
+        }
+      }
+
       AuthService
         .skill()
         .then(function (res) {
-          vm.lists = res.data;
+          vm.skills = res.data;
         });
     }
 
-    function next(){
+    function next() {
+      var str = [];
       for (var i in vm.skill) {
-        if (!vm.skill[i].length) {
-          delete vm.skill[i];
-        } else {
-          vm.skill[i] = vm.skill[i].filter(function(n){
-            return n;
-          })
+        if (vm.skill[i] != false) {
+          str.push(i);
         }
       }
-      vm.data = {
-        skills: []
-      };
-      console.log(vm.skill);
-      for(var i in vm.skill){
-        vm.data.skills.push({pid: i,ids: vm.skill[i].join(',')});
-      }
-      if(vm.data.skills.length){
-        $localStorage.skill = vm.data;
+      str = str.join(',');
+      if (str.length && str.split(',').length > 0 && str.split(',').length <= 20) {
+        $localStorage.skill = {skills: str};
         $state.go('free.resume');
-        toaster.pop('success','已保存，请继续完成注册');
-      }else {
-        toaster.pop('error','请至少选择一项技能,刷新浏览器后重试');
+        toaster.pop('success', '已保存，请继续完成注册');
+      } else {
+        toaster.pop('error', '请至少选择一项技能,最多选择20项');
       }
+    }
+
+    function back(){
+      history.back(-1);
     }
   }
 })();

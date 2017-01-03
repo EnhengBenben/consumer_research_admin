@@ -79,14 +79,27 @@
       <!--</div>-->
     <!--</div>-->
   <!--</div>-->
-  <div class="row no-margin soft-list" ng-repeat="i in vm.lists">
+  <!--加载动画-->
+  <div class="spinner" ng-if="!vm.lists">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+  <div class="row" ng-if="vm.lists && !vm.lists.length">
+    <div class="static-box">
+      <p>没有符合条件的结果，请更换检索条件重新检索!</p>
+    </div>
+  </div>
+  <div class="row no-margin soft-list" ng-repeat="i in vm.lists" ng-if="vm.lists.length">
     <h4 class="normal-title" style="font-size: 15px"><a ui-sref="app.contractors.show({id:i.id})">{{i.name}}</a></h4>
     <p class="overflow-p">{{i.proscope}}</p>
     <div class="row">
       <div class="col-md-3">
         <strong>单位类型：</strong><span>{{i.flattype}}</span>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 overflow-text-hidden">
         <strong>行业经验：</strong><span>{{i.experience}}</span>
       </div>
     <!--  <div class="col-md-3">
@@ -98,7 +111,7 @@
     </div>
   </div>
 
-  <nav style="padding-bottom: 20px" boundary-link-numbers="true">
+  <nav style="padding-bottom: 20px" boundary-link-numbers="true" ng-if="vm.lists.length">
     <ul class="pagination pull-right">
       <li><a ng-click="vm.first()" ng-disabled="vm.pageList.currentPage === 1" ng-class="{'disabled': vm.pageList.currentPage === 1}">首页</a></li>
       <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a

@@ -17,11 +17,29 @@
       qualifications: qualifications,//上传企业注册
       findJob: findJob,//获取工作下拉列表findJob.action
       personal: personal,//注册自由职业者
+      toCheckCode: toCheckCode,//获取验证码
+      compareCheckCode: compareCheckCode, //注册
     };
+    function compareCheckCode(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/compareCheckCode.action',
+        data: data
+      });
+    }
+
     function login(data) {
       return $http({
         method: 'POST',
         url: ENDPOINT + '/checkName.action',
+        data: data
+      });
+    }
+
+    function toCheckCode(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/toCheckCode.action',
         data: data
       });
     }
@@ -62,6 +80,7 @@
     function skill() {
       return $http({
         method: 'GET',
+        catch: true,
         url: ENDPOINT + '/searchKills.action',
       });
     }

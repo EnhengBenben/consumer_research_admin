@@ -4,10 +4,10 @@
       <div>1</div>
       <span class="help-block">企业基本信息</span>
     </div>
-    <div class="circle-line">
+    <div class="circle-line circle-line-active">
       <div></div>
     </div>
-    <div class="circle">
+    <div class="circle circle-active">
       <div>2</div>
       <span class="help-block">行业经验</span>
     </div>
@@ -28,10 +28,36 @@
   </div>
 </div>
 <form class="form-container form-horizontal" ng-submit="vm.next()" style="padding-right: 0">
-  <experience lists = 'vm.lists' model="vm.experience"></experience>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2 font-prompt">
+      <p>您过去项目所在的行业有哪些？</p>
+      <p>这便于贵司作为行业的资深公司，更好的承接项目</p>
+    </div>
+  </div>
+  <hr/>
+  <div class="form-group" style="border-bottom: none">
+    <div class="col-md-2 control-label" style="padding-top: 0">
+      <label>行业经验选择</label>
+    </div>
+    <div class="col-md-10">
+      <div ng-repeat="i in vm.lists">
+        <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.experience[$index]" ng-true-value="{{i.id}}" ng-false-value="null"/>
+          <span> {{i.name}}</span></label>
+      </div>
+    </div>
+   <!-- <div class="col-md-10">
+      <div ng-repeat="i in vm.lists">
+        <label class="normal-weight"><input type="checkbox" name="choice" checklist-model="vm.checkList" checklist-value="i.id"/>
+          <span> {{i.name}}</span></label>
+      </div>
+    </div>-->
+  </div>
   <div class="row">
     <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
+      <button class="btn btn-default" type="button" ng-click="vm.back()">上一步</button>
+      <!--<button class="btn btn-primary" type="submit" ng-disabled="!vm.checkList.length">下一步</button>-->
       <button class="btn btn-primary" type="submit">下一步</button>
+
     </div>
   </div>
 </form>

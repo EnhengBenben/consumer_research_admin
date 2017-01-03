@@ -40,10 +40,17 @@
       removeAfterUpload: true,
       onSuccessItem: function(item, response, status, headers) {
         console.log(response);
-        $scope.url = response;
-        if(response){
-          toaster.pop('success','上传成功');
+        console.log(item.file);
+        if(item.file.type === 'application/pdf' || item.file.type === 'image/png' || item.file.type === 'image/jpeg'){
+          $scope.url = response;
+          if(response){
+            toaster.pop('success','上传成功');
+          }
+        }else {
+          toaster.pop('warning','请上传pdf、png或者jpg图片');
         }
+
+
         /*$scope.name = response.data.file.name;
         $scope.attachmentId = response.data.file['attachment_id'];*/
       }

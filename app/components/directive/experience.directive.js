@@ -19,10 +19,12 @@
     return directive;
   }
 
-  Controller.$inject = ['$scope'];
+  Controller.$inject = ['$scope', '$localStorage'];
 
-  function Controller($scope){
+  function Controller($scope, $localStorage){
     var vm = this;
+    console.log($localStorage.username.acctype);
+    vm.usertype = $localStorage.username.acctype;
     vm.lists = [];
     vm.model = [];
     vm.show = true;

@@ -109,7 +109,6 @@
             vm.unitaddr.province = parseInt(vm.settingObj.address.split(',')[0]);
             vm.unitaddr.city = parseInt(vm.settingObj.address.split(',')[1]);
           }
-          console.log(vm.unitaddr);
           vm.model = {};
           vm.skill = {};
           for(var i= 0;i< arrayExp.length; i++){
@@ -123,7 +122,6 @@
            for( var i= 0;i< znameArr.length; i++){
              znameArr[i] = znameArr[i].split(',');
            }
-           console.log(znameArr);
            for(var i= 0;i<znameArr.length;i++){
              vm.add.qualifications.push({
                zname: znameArr[i][0],
@@ -133,6 +131,18 @@
            vm.add.qualifications.splice(0,1);
          }
         })
+      $scope.$watch('vm.add.qualifications',function(newVal, oldVal){
+        if(newVal != oldVal){
+          for (var i = 0; i < vm.add.qualifications.length; i++) {
+            if (vm.add.qualifications[i].zname === "" || vm.add.qualifications[i].zzurl === "") {
+              vm.addTag = true;
+              break;
+            }else {
+              vm.addTag = false;
+            }
+          }
+        }
+      }, true);
     }
 
    function removeOption(index) {
@@ -144,13 +154,24 @@
     }
 
     function addOption() {
-      if(!vm.add.qualifications){
-        vm.add.qualifications = [];
+      if(!vm.addTag){
+        if (!vm.add.qualifications) {
+          vm.add.qualifications = [];
+        }
+        for (var i = 0; i < vm.add.qualifications.length; i++) {
+          if (vm.add.qualifications[i].zname === "") {
+            toaster.pop('error', '资质名称不能为空');
+            break;
+          } else if (vm.add.qualifications[i].zzurl === "") {
+            toaster.pop('error', '请上传企业资质');
+            break;
+          }
+        }
+        vm.add.qualifications.push({
+          zname: '',
+          zzurl: '',
+        });
       }
-      vm.add.qualifications.push({
-        zname: '',
-        zzurl:''
-      });
     }
 
     function saveExperience(){
@@ -228,7 +249,6 @@
     }
 
     function saveQua(){
-      console.log(vm.add.qualifications);
       var qualificationsArr = [];
       angular.forEach(vm.add.qualifications,function(i){
         qualificationsArr.push(i.zname + ',' + i.zzurl);

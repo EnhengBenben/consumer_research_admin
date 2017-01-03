@@ -9,8 +9,17 @@
   function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
-
-
+    vm.back = back;
+    vm.checkList = [];
+    vm.usertype = $localStorage.username.acctype;
+    vm.experience = {};
+    if($localStorage.experience){
+      var array = {};
+      array = $localStorage.experience.experience.split(',');
+      for(var i=0; i< array.length; i++){
+        vm.experience[parseInt(array[i]) - 1] = parseInt(array[i]);
+      }
+    }
     return init();
 
     function init(){
@@ -30,7 +39,6 @@
          }
        });
         str = str.slice(0,str.length - 1);
-        console.log(str);
         $localStorage.experience = {
           experience: str
         };
@@ -41,6 +49,10 @@
          toaster.pop('error','请至少选择一项');
        }
       }
+    }
+
+    function back(){
+      history.back(-1);
     }
   }
 })();

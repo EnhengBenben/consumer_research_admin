@@ -1,6 +1,6 @@
 <div class="row free-base">
   <div class="col-md-12" style="text-align: center">
-    <div class="circle">
+    <div class="circle circle-active">
       <div>1</div>
       <span class="help-block">基本信息</span>
     </div>
@@ -29,9 +29,9 @@
 </div>
 <div class="form-container">
   <form class="form-horizontal" name="base">
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': base.pname.$valid}">
       <div class="col-md-2 control-label">
-        <label>姓名</label>
+        <label>真实姓名</label>
       </div>
       <div class="col-md-10">
         <input type="text"
@@ -43,6 +43,7 @@
                placeholder="请输入姓名" required/>
         <span ng-if="base.pname.$error.pattern && base.pname.$touched" class="help-block error-font">请输入中文名</span>
         <span ng-if="base.pname.$error.required && base.pname.$touched" class="help-block error-font">姓名不能为空</span>
+        <span class="input-result" ng-if="base.pname.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
     <div class="form-group">
@@ -52,11 +53,14 @@
       <div class="col-md-3">
         <single-uploader url="vm.base.imageurl"></single-uploader>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-4">
         <p>点击左边加号区域，添加一张照片！</p>
         <p>一张友好,职业的照片能让人更信任，更薄接触你。</p>
         <p>与你沟通的人的数量会5位于羞于展示自我我的人。</p>
         <p>文件只支持JPG,PNG,PDF格式的图片 </p>
+      </div>
+      <div class="col-md-3">
+        <img ng-src="{{vm.base.imageurl}}" style="width: 80px;height: 120px;" ng-if="vm.base.imageurl"/>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-success':base.password.$valid}">
@@ -79,21 +83,19 @@
         <span class="input-result" ng-if="base.password.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group"   ng-class="{'has-success': base.passwordagin.$valid && vm.base.passwordagin === vm.base.password }">
       <div class="col-md-2 control-label">
-        <label>确认密码</label>
+        <label for="">确认密码</label>
       </div>
       <div class="col-md-10">
         <input type="password"
-               class="form-control"
-               required
-               ng-model="vm.base.passwordagin"
-               minlength="8"
-               maxlength="8"
-        >
+               ng-class="{'error-input': vm.base.passwordagin != vm.base.password &&  base.passwordagin.$touched}"
+               name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
+        <div class="help-block error-font" ng-if="(vm.base.passwordagin != vm.base.password) && base.passwordagin.$touched">请与原密码保持一致</div>
+        <span class="input-result" ng-if="(vm.base.passwordagin === vm.base.password)  && base.passwordagin.$touched && base.passwordagin.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success':vm.unitaddr.province && vm.unitaddr.city}">
       <div class="col-md-2 control-label">
         <label>现居住地</label>
       </div>
@@ -110,7 +112,7 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': base.emailaddr.$valid}">
       <div class="col-md-2 control-label">
         <label>电子邮箱</label>
       </div>
@@ -122,13 +124,14 @@
                ng-class="{'error-input': (base.emailaddr.$error.required || base.emailaddr.$error.pattern) &&  base.emailaddr.$touched}"
                ng-model="vm.base.emailaddr"
                placeholder="请输入电子邮箱"
-               ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)$/"
+               ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,}.(com)$/"
         />
         <div class="help-block error-font" ng-if="(base.emailaddr.$error.required) && base.emailaddr.$touched">邮箱不能为空</div>
         <div class="help-block error-font" ng-if="(base.emailaddr.$error.pattern) && base.emailaddr.$touched">请输入正确的邮箱</div>
+        <span class="input-result" ng-if="base.emailaddr.$valid"><i class="fa fa-check"></i></span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-success': vm.base.job}">
       <div class="col-md-2 control-label">
         <label>工作职位</label>
       </div>
@@ -138,7 +141,7 @@
       </select>
       </div>
     </div>
-    <div class="form-group" ng-class="base.jobage.$valid">
+    <div class="form-group" ng-class="{'has-success': base.jobage.$valid}">
       <div class="col-md-2 control-label">
         <label>工作年限</label>
       </div>
@@ -148,7 +151,7 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group"  ng-class="{'has-success': base.engrade.$valid}">
       <div class="col-md-2 control-label">
         <label>英语能力</label>
       </div>

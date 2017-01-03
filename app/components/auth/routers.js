@@ -4,7 +4,8 @@ angular.module('app')
       .state('go', {
         abstract:true,
         url: '/go',
-        templateUrl: 'components/auth/layout.html'
+        templateUrl: 'components/auth/layout.html',
+        controller: 'GoLayoutController as vm',
       })
       .state('go.login', {
         url: '/login',
@@ -67,5 +68,10 @@ angular.module('app')
         url: '/qualifications',
         templateUrl: 'components/auth/company/qualifications.html',
         controller: 'CompanyQualificationCtrl as vm'
+      })
+      .state('company.finish',{
+        url: '/finish',
+        templateUrl: 'components/auth/finish.html',
+        controller: 'RegisterFinishCtrl as vm'
       })
   });

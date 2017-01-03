@@ -13,7 +13,16 @@
       more: more,//更多项目列表
       companyShow: companyShow, //管理中心项目详情
       search: search, // 查看已承接项目
+      searchCjList: searchCjList, //查询承接该项目的人或者企业
     };
+    function searchCjList(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/searchCjList.action',
+        data: data
+      });
+    }
+
     function publish(data) {
       return $http({
         method: 'POST',

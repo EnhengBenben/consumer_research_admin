@@ -26,4 +26,9 @@ angular.module('app')
         templateUrl: 'components/personal/setting/list.html',
         controller: 'PersonalSettingListCtrl as vm'
       })
+      .state('app.personal.letter.show',{
+        url: '/show/:id',
+        templateUrl: 'components/personal/letter/show.html',
+        controller: 'PersonalLetterShowCtrl as vm'
+      })
   });

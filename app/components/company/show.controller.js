@@ -14,6 +14,7 @@
     vm.params = {};
     angular.extend(vm.params,vm.user);
     vm.params['rid'] = $stateParams.id;
+    vm.requesttype = $stateParams.requesttype;
 
     return init();
 
@@ -59,7 +60,6 @@
           vm.show.ages = vm.jobAges.filter(function(data){
             return data.id == vm.show.ages;
           });
-          console.log(vm.show);
         })
     }
 

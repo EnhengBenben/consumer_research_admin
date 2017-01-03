@@ -33,7 +33,6 @@
       ContractorsService
         .list(vm.page)
         .then(function(res){
-          console.log(res);
           vm.lists = res.data.jsonArray;
           for (var i = 1; i <= res.data.total; i++) {
             vm.pageArr.push(i);

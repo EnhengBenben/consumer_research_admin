@@ -57,7 +57,6 @@
           vm.show.ages = vm.jobAges.filter(function(data){
             return data.id == vm.show.ages;
           });
-          console.log(vm.show);
         })
     }
   }

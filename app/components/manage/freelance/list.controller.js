@@ -18,7 +18,6 @@
         .search(vm.user)
         .then(function(res){
           vm.lists = res.data;
-          console.log(res);
         })
     }
   }

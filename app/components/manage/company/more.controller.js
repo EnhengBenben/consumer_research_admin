@@ -13,7 +13,6 @@
     vm.last = last;
     vm.filterPage = filterPage;
     vm.user = $localStorage.user;
-    console.log();
     vm.filter = {
       1: '不限',
       2: '全国',
@@ -39,9 +38,7 @@
       ManageService
         .more(vm.params)
         .then(function (res) {
-          console.log(res);
           vm.lists = res.data.jsonArray;
-          console.log(vm.lists);
           for (var i = 1; i <= res.data.total; i++) {
             vm.pageArr.push(i);
           }
@@ -60,9 +57,7 @@
     }
 
     function choice(index, data) {
-      console.log(data);
       vm.filter[index] = data;
-      console.log(vm.filter);
       vm.active = data;
     }
 

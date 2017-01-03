@@ -44,15 +44,18 @@
             vm.pageArr.push(i);
           }
         });
-      $scope.$watch('vm.filter', function (newValue, oldValue, scope) {
+      $scope.$watch('vm.filter', function (newValue, oldValue) {
         if (newValue != oldValue) {
           var data = {
-            addr: vm.filter[2],
+            addrs: vm.filter[2],
             requesttype: vm.filter[1],
             cycle: vm.filter[3],
           };
+          if(vm.filter[1] != 0 && vm.filter[1] != null){
+            data['ages'] = vm.filter[4];
+            data['price'] = vm.filter[5];
+          }
           angular.extend(data,vm.pageList);
-          console.log(data);
           CompanyService
             .list(data)
             .then(function (res) {
@@ -84,7 +87,6 @@
     }
 
     function choice(index, data) {
-      console.log(index);
       vm.filter[index] = data;
       vm.active = data;
     }
@@ -95,7 +97,7 @@
 
     function selectCity(data) {
       vm.select = data;
-      vm.filter[1] = data.id;
+      vm.filter[2] = data.id;
       vm.tag = !vm.tag;
     }
   }

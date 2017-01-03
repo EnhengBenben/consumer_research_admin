@@ -18,10 +18,10 @@
       <div>3</div>
       <span class="help-block">擅长技能</span>
     </div>
-    <div class="circle-line">
+    <div class="circle-line circle-line-active">
       <div></div>
     </div>
-    <div class="circle">
+    <div class="circle circle-active">
       <div>4</div>
       <span class="help-block">履历&经验</span>
     </div>
@@ -132,6 +132,7 @@
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
+        <button type="submit" class="btn btn-default" ng-click="vm.back()">上一步</button>
         <button type="submit" class="btn btn-primary" ng-disabled="resume.$invalid">完成</button>
       </div>
     </div>

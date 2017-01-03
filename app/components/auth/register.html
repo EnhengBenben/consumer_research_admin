@@ -17,7 +17,7 @@
       <input id="email"
              ng-class="{'error-input': (register.email.$error.email || register.email.$error.required || register.email.$error.pattern) && register.email.$touched}"
              ng-model="vm.register.username" type="email" class="form-control" name="email" required ng-focus=""
-             ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)$/"
+             ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,}.(com)$/"
              placeholder="请输入邮箱"/>
       <span class="help-block error-font"
             ng-if="register.email.$error.required && register.email.$touched">邮箱不能为空</span>
@@ -49,11 +49,11 @@
       <label for="password" class="white-center">验证码</label>
     </div>
     <div class="col-md-6 col-xs-6" style="padding-right: 0">
-      <input id="password" ng-model="vm.register.code" type="password" class="form-control" ng-focus=""
+      <input id="password" ng-model="vm.register.code" type="password" class="form-control" required
              placeholder="请输入验证码"/>
     </div>
     <div class="col-md-3 col-xs-3" style="padding-left: 0">
-      <div class="btn btn-primary">获取验证码</div>
+      <div class="btn btn-primary" ng-click="vm.sendCode()" ng-class="{'disabled': !vm.paraevent}">{{vm.paracont}}</div>
     </div>
   </div>
   <div class="form-group username">

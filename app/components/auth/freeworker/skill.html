@@ -11,10 +11,10 @@
       <div>2</div>
       <span class="help-block">行业经验</span>
     </div>
-    <div class="circle-line">
+    <div class="circle-line circle-line-active">
       <div></div>
     </div>
-    <div class="circle">
+    <div class="circle circle-active">
       <div>3</div>
       <span class="help-block">擅长技能</span>
     </div>
@@ -35,9 +35,19 @@
     </div>
   </div>
   <hr/>
-  <skill lists="vm.lists" model="vm.skill"></skill>
+  <div class="form-group" ng-repeat="skill in vm.skills">
+    <div class="col-md-2 control-label" style="padding-top: 0">
+      <label>{{skill.remark}}</label>
+    </div>
+    <div class="col-md-2" ng-repeat="i in skill.diclist track by $index"
+         ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.skill[i.id]"
+                                          ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+    </div>
+  </div>
  <div class="form-group" style="border-bottom: none">
    <div class="col-md-offset-2 col-md-10" style="margin-top: 30px">
+     <button class="btn btn-default" type="button" ng-click="vm.back()">上一步</button>
      <div class="btn btn-primary" ng-click="vm.next()">下一步</div>
    </div>
  </div>

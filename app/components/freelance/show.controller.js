@@ -8,7 +8,27 @@
   /* @ngInject */
   function Controller($localStorage, $state, toaster, $scope, FreelanceService, $stateParams) {
     var vm = this;
-
+    vm.jobAges = [
+      {
+        id:0,
+        name: '应届毕业生'
+      },
+      {
+        id:1,
+        name: '1-3年'
+      },
+      {
+        id:2,
+        name: '4-6年'
+      },
+      {
+        id:3,
+        name: '7-10年'
+      },
+      {
+        id:4,
+        name: '10年以上'
+      }];
 
     return init();
 
@@ -16,8 +36,10 @@
       FreelanceService
         .show({id: $stateParams.id})
         .then(function(res){
-          console.log(res);
           vm.show = res.data;
+          vm.show.jobage = vm.jobAges.filter(function(i){
+            return vm.show.jobage === i.id;
+          })
         })
     }
   }
