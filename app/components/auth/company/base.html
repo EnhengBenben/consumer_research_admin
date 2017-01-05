@@ -73,7 +73,7 @@
       <div class="col-md-5">
         <single-uploader url="vm.base.idimage"></single-uploader>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5" ng-if="vm.base.idimage">
         <div style="height: 100px;width: 80px;background-color: #00b3ee">
           <img alt="请上传照片" ng-src="{{vm.base.idimage}}" style="width: 100%;height: 100%"/>
         </div>

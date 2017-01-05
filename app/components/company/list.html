@@ -14,8 +14,11 @@
       <li><span ng-click="vm.choice(2,73)" ng-class="{'filter-active': vm.filter[2] === 73}">上海</span></li>
       <li><span ng-click="vm.choice(2,2)" ng-class="{'filter-active': vm.filter[2] === 2}">天津</span></li>
       <li><span ng-click="vm.choice(2,200)" ng-class="{'filter-active': vm.filter[2] === 200}">深圳</span></li>
-      <li ng-if="!(vm.filter[2] === 1 || vm.filter[2] === 73 || vm.filter[2] === 2|| vm.filter[2] === 200)"><span
-        ng-click="vm.choice(2,vm.select.id)" ng-class="{'filter-active': vm.filter[2] === vm.select.id}">{{vm.select.name}}</span>
+      <li ng-if="!(vm.filter[2] === 1 || vm.filter[2] === 73 || vm.filter[2] === 2|| vm.filter[2] === 200) && !vm.filter[2].flag">
+        <span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[1] === vm.select.id}">{{vm.select.name}}</span>
+      </li>
+      <li ng-if="(vm.filter[2].flag)">
+        <span class="filter-active">{{vm.filter[2].name}}</span>
       </li>
       <li style="color: #3285ff;"><span ng-click="vm.more()">更多 <i class="fa fa-caret-down" aria-hidden="true"
                                                                    ng-if="!vm.tag"></i>
@@ -28,18 +31,39 @@
           ng-mouseover="over = true">
         <span><span style="padding: 0;color: #3285ff;">{{i.flag}}</span> {{i.name}}</span>
         <ul class="list-unstyled no-margin animated fadeInLeft">
-          <li ng-click="vm.selectCity({id: i.id})" ng-if="i.cityList.length != 1">全部</li>
+          <li ng-click="vm.selectProvince(i)" ng-if="i.cityList.length != 1">全部</li>
           <li class="width-inherit margin-seven" ng-repeat="list in i.cityList" ng-click="vm.selectCity(list)"><span>{{list.name}}</span>
           </li>
         </ul>
       </li>
     </ul>
     <ul class="list-unstyled no-margin">
-      <li><span>入项时间 ：</span></li>
+      <li><span>项目发布时间 ：</span></li>
       <li><span ng-click="vm.choice(3,null)" ng-class="{'filter-active': vm.filter[3] === null}">不限</span></li>
       <li><span ng-click="vm.choice(3,7)" ng-class="{'filter-active': vm.filter[3] === 7}">一周内</span></li>
       <li><span ng-click="vm.choice(3,14)" ng-class="{'filter-active': vm.filter[3] === 14}">两周内</span></li>
       <li><span ng-click="vm.choice(3,30)" ng-class="{'filter-active': vm.filter[3] === 30}">一个月内</span></li>
+      <li style="cursor: text"><span>   </span></li>
+      <li  style="width: 300px"><strong ng-class="{'filter-active': vm.filter[3] === vm.dataTime.publishtime}">指定日期:</strong>
+        <input type="text" name="endtime" ng-model="vm.dataTime.publishtime" format="YYYY-MM-DD" date-time
+               min-view="date"
+               timezone="Asia/Shanghai" auto-close="true"
+                placeholder="可选择指定时间" readonly/>
+      </li>
+    </ul>
+    <ul class="list-unstyled no-margin">
+      <li><span>项目开始时间 ：</span></li>
+      <li><span ng-click="vm.choice(6,null)" ng-class="{'filter-active': vm.filter[6] === null}">不限</span></li>
+      <li><span ng-click="vm.choice(6,7)" ng-class="{'filter-active': vm.filter[6] === 7}">未来一周内</span></li>
+      <li><span ng-click="vm.choice(6,14)" ng-class="{'filter-active': vm.filter[6] === 14}">未来两周内</span></li>
+      <li><span ng-click="vm.choice(6,30)" ng-class="{'filter-active': vm.filter[6] === 30}">未来一个月内</span></li>
+      <li><span ng-click="vm.choice(6,60)" ng-class="{'filter-active': vm.filter[6] === 60}">已经开始</span></li>
+      <li style="width: 300px"><strong ng-class="{'filter-active': vm.filter[6] === vm.dataTime.starttime && vm.filter[6] != null}">指定日期:</strong>
+        <input type="text" name="endtime" ng-model="vm.dataTime.starttime" format="YYYY-MM-DD" date-time
+               min-view="date"
+               timezone="Asia/Shanghai" auto-close="true"
+               placeholder="可选择指定时间" readonly/>
+      </li>
     </ul>
     <ul class="list-unstyled no-margin" ng-if="vm.filter[1] === 1 || vm.filter[1] === 2">
       <li><span>工作年限 ：</span></li>
@@ -51,7 +75,7 @@
       <li><span ng-click="vm.choice(4,4)" ng-class="{'filter-active': vm.filter[4] === 4}">10年以上</span></li>
     </ul>
     <ul class="list-unstyled no-margin" ng-if="vm.filter[1] === 1 || vm.filter[1] === 2">
-      <li><span>期望薪资 ：</span></li>
+      <li><span>支付价格 ：</span></li>
       <li><span ng-click="vm.choice(5,null)" ng-class="{'filter-active': vm.filter[5] === null}">不限</span></li>
       <li><span ng-click="vm.choice(5,1)" ng-class="{'filter-active': vm.filter[5] === 1}">500以下</span></li>
       <li><span ng-click="vm.choice(5,2)" ng-class="{'filter-active': vm.filter[5] === 2}">500-1000</span></li>
@@ -80,9 +104,10 @@
     <p class="overflow-p">{{i.intro}}</p>
     <ul class="list-unstyled no-margin">
       <li class="col-md-3 no-padding-left"><span>{{i.name}}</span></li>
-      <li class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></li>
-      <li class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></li>
-      <li class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></li>
+      <li class="col-md-2"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></li>
+      <li class="col-md-2 no-padding-right"><strong>项目发布日期：</strong><span>{{i.createtime}}</span></li>
+      <li class="col-md-2 no-padding-right"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></li>
+      <li class="col-md-2 no-padding-right"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></li>
     </ul>
   </div>
   <nav style="padding-bottom: 20px" boundary-link-numbers="true" ng-if="vm.lists.length">

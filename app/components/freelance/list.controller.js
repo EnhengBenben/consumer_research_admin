@@ -15,6 +15,7 @@
     vm.filterPage = filterPage;
     vm.more = more;
     vm.selectCity = selectCity;
+    vm.selectProvince = selectProvince;
     vm.tag = false;
     vm.params = {
       address: '',
@@ -52,6 +53,7 @@
       currentPage: 1, //当前页数
       pageSize: 10 //每页条数
     };
+    angular.extend(vm.params, vm.pageList);
 
 
     return init();
@@ -59,11 +61,21 @@
     function init() {
       $scope.$watch('vm.filter', function (newValue, oldValue) {
         if (newValue != oldValue) {
-          vm.params.address = vm.filter[1];
+          if(vm.filter[1] && vm.filter[1].flag){
+            vm.params['provinceid'] = vm.filter[1].id;
+            if(vm.params.address){
+              delete vm.params.address;
+            }
+          }else {
+            vm.params.address = vm.filter[1];
+            delete vm.params.provinceid;
+          }
           vm.params.jobage = vm.filter[2];
           vm.params.money = vm.filter[3];
           vm.params['currentPage'] = 1;
           vm.params['pageSize'] = 10;
+          vm.pageList.currentPage = 1;
+          vm.pageList.pageSize = 10;
           FreelanceService
             .list(vm.params)
             .then(function (res) {
@@ -144,6 +156,12 @@
     function selectCity(data) {
       vm.select = data;
       vm.filter[1] = data.id;
+      vm.tag = !vm.tag;
+    }
+
+    function selectProvince(data){
+      console.log(data);
+      vm.filter[1] = data;
       vm.tag = !vm.tag;
     }
   }

@@ -19,7 +19,7 @@
     return init();
 
     function init(){
-      vm.stauts = [{id: 0, name: '需求分析'}, {id: 1, name: '概要设计'}, {id: 2, name: '详细设计'}, {id: 3, name: '已开发'}];
+      vm.status = [{id: 1, name: '开放'}, {id: 2, name: '关闭'}];
       vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
       vm.jobAges = [
         {

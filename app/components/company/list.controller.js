@@ -12,6 +12,7 @@
     vm.choice = choice;
     vm.last = last;
     vm.more = more;
+    vm.selectProvince = selectProvince;
     vm.selectCity = selectCity;
     vm.filterPage = filterPage;
     vm.pageArr = [];
@@ -24,7 +25,8 @@
         2: null,
         3: null,
         4: null,
-        5: null
+        5: null,
+        6: null
       };
       vm.pageArr = [];
       vm.pageList = {
@@ -47,10 +49,32 @@
       $scope.$watch('vm.filter', function (newValue, oldValue) {
         if (newValue != oldValue) {
           var data = {
-            addrs: vm.filter[2],
             requesttype: vm.filter[1],
-            cycle: vm.filter[3],
           };
+          if((typeof vm.filter[3] === 'number' || vm.filter[3] === null)){
+            data['publishTime'] = vm.filter[3];
+            if(vm.dataTime && vm.dataTime.publishtime){
+              delete  vm.dataTime.publishtime;
+            }
+          }else {
+            data['zdPublishTime'] = vm.filter[3].format('YYYY-MM-DD');
+            //项目发布时间选择指定时间
+            console.log(vm.filter[3]);
+          }
+          if((typeof vm.filter[6] === 'number'  || vm.filter[6] === null)){
+            data['startTime'] = vm.filter[6];
+            if(vm.dataTime && vm.dataTime.starttime)
+              delete  vm.dataTime.starttime;
+          }else {
+            data['zdStartTime'] = vm.filter[6].format('YYYY-MM-DD');
+            //项目开始时间选择指定时间
+            //console.log(vm.filter[6]);
+          }
+          if(vm.filter[2] && vm.filter[2].flag){
+            data['provinceid'] = vm.filter[2].id;
+          }else if(vm.filter[2]){
+            data['addrs'] = vm.filter[2].id;
+          }
           if(vm.filter[1] != 0 && vm.filter[1] != null){
             data['ages'] = vm.filter[4];
             data['price'] = vm.filter[5];
@@ -63,7 +87,21 @@
             })
         }
       }, true);
-      $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue, scope) {
+      $scope.$watch('vm.dataTime', function (newValue, oldValue) {
+        if (newValue != oldValue) {
+          if(vm.dataTime.publishtime){
+            vm.filter[3] = vm.dataTime.publishtime;
+          }else {
+          delete  vm.dataTime.publishtime;
+          }
+          if(vm.dataTime.starttime){
+            vm.filter[6] = vm.dataTime.starttime;
+          }else {
+          delete  vm.dataTime.starttime ;
+          }
+        }
+      }, true);
+      $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue) {
         if (newValue != oldValue) {
           CompanyService
             .list(vm.pageList)
@@ -97,8 +135,18 @@
 
     function selectCity(data) {
       vm.select = data;
+      if(data.provinceId){
+        vm.provinceId = data.provinceId;
+      }
       vm.filter[2] = data.id;
       vm.tag = !vm.tag;
     }
+
+    function selectProvince(data){
+      console.log(data);
+      vm.filter[2] = data;
+      vm.tag = !vm.tag;
+    }
+
   }
 })();

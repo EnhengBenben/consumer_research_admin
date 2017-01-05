@@ -39,40 +39,47 @@
           <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">项目名称不能为空</div>
         </div>
       </div>
-      <div class="form-group"  ng-class="{'has-success': base.intro.$valid}">
+      <div class="form-group" ng-class="{'has-success': base.intro.$valid}">
         <div class="col-md-2 control-label">
           <label for="">项目简介</label>
         </div>
         <div class="col-md-10">
-        <textarea name="intro" ng-class="{'error-input': base.intro.$error && base.intro.$touched}" class="form-control" ng-model="vm.publish.intro" placeholder="请输入项目简介,不得少于10个字" minlength="10" required>
+        <textarea name="intro" ng-class="{'error-input': base.intro.$error && base.intro.$touched}" class="form-control"
+                  ng-model="vm.publish.intro" placeholder="请输入项目简介,不得少于10个字" minlength="10" required>
         </textarea>
           <span class="error-font help-block" ng-if="base.intro.$error.required && base.intro.$touched">请输入项目简介</span>
-          <span class="error-font help-block" ng-if="base.intro.$error.minlength && base.intro.$touched">请至少输入10个字</span>
+          <span class="error-font help-block"
+                ng-if="base.intro.$error.minlength && base.intro.$touched">请至少输入10个字</span>
         </div>
       </div>
-      <div class="form-group"  ng-class="{'has-success': base.city.$valid}">
+      <div class="form-group" ng-class="{'has-success': base.city.$valid}">
         <div class="col-md-2 control-label">
           <label>项目地址</label>
         </div>
         <div class="col-md-5">
-          <select name="province" id="province" class="form-control" ng-model="vm.unitaddr.province" ng-options="i.id as i.name for i in vm.provinces" required>
+          <select name="province" id="province" class="form-control" ng-model="vm.unitaddr.province"
+                  ng-options="i.id as i.name for i in vm.provinces" required>
             <option value="">请选择省份</option>
           </select>
         </div>
         <div class="col-md-5">
-          <select name="city" id="city" class="form-control" ng-model="vm.unitaddr.city" ng-options="i.id as i.name for i in vm.cities" required>
+          <select name="city" id="city" class="form-control" ng-model="vm.unitaddr.city"
+                  ng-options="i.id as i.name for i in vm.cities" required>
             <option value="">请选择市</option>
           </select>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 0" ng-class="{'has-success': base.status.$valid}">
+      <div class="form-group" ng-class="{'has-success': base.status.$valid}">
         <div class="col-md-2 control-label">
-          <label>项目当前状态</label>
+          <label>项目状态</label>
         </div>
-        <div class="col-md-10">
-          <select name="status" id="" class="form-control" ng-model="vm.publish.status" ng-options="i.id as i.name for i in vm.status" required>
-            <option value="">请选择当前状态</option>
+        <div class="col-md-5">
+          <select name="status" id="" class="form-control" ng-init="vm.publish.status = 1" ng-model="vm.publish.status"
+                  ng-options="i.id as i.name for i in vm.status" required>
           </select>
+        </div>
+        <div class="col-md-5">
+          <span class="margin-seven">“开放”状态，您的项目可以被各承包方看到。“关闭”状态，您的项目不能被各承包方看到。</span>
         </div>
       </div>
       <div class="form-group" ng-if="vm.publish.requesttype === 0" ng-class="{'has-success': base.starttime.$valid}">
@@ -80,7 +87,8 @@
           <label>项目开始时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" required name="starttime" ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time min-view="date"
+          <input type="text" required name="starttime" ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time
+                 min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
                  class="form-control" placeholder="请选择项目开始时间" readonly style="background-color: #FFF"/>
         </div>
@@ -90,7 +98,8 @@
           <label for="">项目结束时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" required name="endtime" ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time min-view="date"
+          <input type="text" required name="endtime" ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
+                 min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
                  class="form-control" placeholder="请选择项目结束时间" readonly style="background-color: #FFF"/>
         </div>
@@ -100,72 +109,88 @@
           <label for="">项目价格</label>
         </div>
         <div class="col-md-5">
-          <input type="number" ng-class="{'error-input': base.price.$error.required && base.price.$touched}" name="price" class="form-control" ng-model="vm.publish.price" placeholder="请输入项目价格" required/>
+          <input type="number"
+                 ng-class="{'error-input': base.price.$error.required && base.price.$touched}"
+                 name="price" class="form-control" ng-model="vm.publish.price" placeholder="请输入项目价格" required ng-change="vm.changeMoney(vm.publish.price)"/>
           <span class="error-font help-block" ng-if="base.price.$error.required && base.price.$touched">项目价格不能为空</span>
         </div>
         <div class="col-md-5" style="padding-top: 4px">
           <span>元</span>
+          <span style="color: red" ng-if="vm.money">---{{vm.money}}</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 0" ng-class="{'has-success': base.odeclare.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 0">
         <div class="col-md-2 control-label">
           <label for="">项目说明</label>
         </div>
         <div class="col-md-10">
-          <textarea class="form-control" minlength="10" ng-class="{'error-input': (base.odeclare.$error.required || base.odeclare.$error.minlength) && base.odeclare.$touched}" name="odeclare" ng-model="vm.publish.odeclare" placeholder="请输入项目说明，不得少于10个字" required></textarea>
-          <span class="error-font help-block" ng-if="base.odeclare.$error.required && base.odeclare.$touched">请输入项目说明</span>
-          <span class="error-font help-block" ng-if="base.odeclare.$error.minlength && base.odeclare.$touched">请至少输入10个字</span>
+          <textarea class="form-control" minlength="10" name="odeclare" ng-model="vm.publish.odeclare"
+                    placeholder="请输入项目说明(可选)"></textarea>
         </div>
       </div>
 
       <!--驻场项目-->
 
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"  ng-class="{'has-success': vm.publish.pricetype}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': vm.publish.pricetype}">
         <div class="col-md-2 control-label">
           <label>付款方式</label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="pricetype" ng-model="vm.publish.pricetype" ng-value="1"/><span class="normal-weight"> 月付</span></label>
+          <label class="margin-seven"><input type="radio" name="pricetype" ng-model="vm.publish.pricetype"
+                                             ng-value="1"/><span class="normal-weight"> 月付</span></label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="pricetype" ng-model="vm.publish.pricetype" ng-value="2"/><span class="normal-weight"> 季付</span></label>
+          <label class="margin-seven"><input type="radio" name="pricetype" ng-model="vm.publish.pricetype"
+                                             ng-value="2"/><span class="normal-weight"> 季付</span></label>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"  ng-class="{'has-success': base.jobage.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': base.jobage.$valid}">
         <div class="col-md-2 control-label">
           <label>工程师年限</label>
         </div>
         <div class="col-md-10">
-          <select name="jobage" class="form-control" ng-model="vm.publish.ages" ng-options="i.id as i.name for i in vm.jobAges" required>
+          <select name="jobage" class="form-control" ng-model="vm.publish.ages"
+                  ng-options="i.id as i.name for i in vm.jobAges" required>
             <option value="">请选择工程师年限</option>
           </select>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success': base.mantypr.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': base.mantypr.$valid}">
         <div class="col-md-2 control-label">
           <label>工程师类型</label>
         </div>
         <div class="col-md-10">
-          <select name="mantypr" class="form-control" ng-model="vm.publish.mantypr" ng-options="i.id as i.name for i in vm.mantyprs" required>
+          <select name="mantypr" class="form-control" ng-model="vm.publish.mantypr"
+                  ng-options="i.id as i.name for i in vm.mantyprs" required>
             <option value="">请选择工程师类型</option>
           </select>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success': base.pernum.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': base.pernum.$valid}">
         <div class="col-md-2 control-label">
           <label for="">工程师人数</label>
         </div>
         <div class="col-md-10">
-          <input type="number" placeholder="请输入工程师人数，如: 3" ng-class="{'error-input': base.pernum.$error.required && base.pernum.$touched}" name="pernum" class="form-control" ng-model="vm.publish.pernum" required/>
-          <span class="error-font help-block" ng-if="base.pernum.$error.required && base.pernum.$touched">工程师人数不能为空</span>
+          <input type="number" placeholder="请输入工程师人数，如: 3"
+                 ng-class="{'error-input': base.pernum.$error.required && base.pernum.$touched}" name="pernum"
+                 class="form-control" ng-model="vm.publish.pernum" required/>
+          <span class="error-font help-block"
+                ng-if="base.pernum.$error.required && base.pernum.$touched">工程师人数不能为空</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"  ng-class="{'has-success': base.price.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': base.price.$valid}">
         <div class="col-md-2 control-label">
           <label for="">预算</label>
         </div>
         <div class="col-md-5">
-          <input type="number" name="price" ng-class="{'error-input': base.price.$error.required && base.price.$touched}" ng-model="vm.publish.price" class="form-control" placeholder="请输入预算价格,如：1000" required/>
+          <input type="number" name="price"
+                 ng-class="{'error-input': base.price.$error.required && base.price.$touched}"
+                 ng-model="vm.publish.price" class="form-control" placeholder="请输入预算价格,如：1000" required/>
           <span class="error-font help-block" ng-if="base.price.$error.required && base.price.$touched">预算价格不能为空</span>
         </div>
         <div class="col-md-5 margin-seven" ng-if="vm.publish.requesttype === 2">
@@ -175,69 +200,89 @@
           <span>/人/月</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success':base.starttime.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success':base.starttime.$valid}">
         <div class="col-md-2 control-label">
           <label for="">入项时间</label>
         </div>
         <div class="col-md-10">
           <input type="text" required ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time min-view="date"
-                 timezone="Asia/Shanghai" auto-close="true" ng-class="{'error-input': base.starttime.$error.required && base.starttime.$touched}"
+                 timezone="Asia/Shanghai" auto-close="true"
+                 ng-class="{'error-input': base.starttime.$error.required && base.starttime.$touched}"
                  class="form-control" placeholder="请选择入项时间" name="starttime" readonly style="background-color: #FFF">
-          <span class="error-font help-block" ng-if="base.starttime.$error.required && base.starttime.$touched">入项时间不能为空</span>
+          <span class="error-font help-block"
+                ng-if="base.starttime.$error.required && base.starttime.$touched">入项时间不能为空</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success':base.endtime.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success':base.endtime.$valid}">
         <div class="col-md-2 control-label">
           <label for="">出项时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" name="endtime" required ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time min-view="date"
-                 timezone="Asia/Shanghai" auto-close="true" ng-class="{'error-input': base.endtime.$error.required && base.endtime.$touched}"
+          <input type="text" name="endtime" required ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
+                 min-view="date"
+                 timezone="Asia/Shanghai" auto-close="true"
+                 ng-class="{'error-input': base.endtime.$error.required && base.endtime.$touched}"
                  class="form-control" placeholder="请选择出项时间" readonly style="background-color: #FFF">
-          <span class="error-font help-block" ng-if="base.endtime.$error.required && base.endtime.$touched">出项时间不能为空</span>
+          <span class="error-font help-block"
+                ng-if="base.endtime.$error.required && base.endtime.$touched">出项时间不能为空</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success': base.requirements.$valid}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': base.requirements.$valid}">
         <div class="col-md-2 control-label">
           <label for="">任职要求</label>
         </div>
         <div class="col-md-10">
-          <textarea class="form-control" ng-class="{'error-input': (base.requirements.$error.required || base.requirements.$error.minlength) && base.requirements.$touched}" name="requirements" ng-model="vm.publish.requirements" placeholder="请输任职要求" required minlength="10"></textarea>
+          <textarea class="form-control"
+                    ng-class="{'error-input': (base.requirements.$error.required || base.requirements.$error.minlength) && base.requirements.$touched}"
+                    name="requirements" ng-model="vm.publish.requirements" placeholder="请输任职要求" required
+                    minlength="10"></textarea>
           <span class="error-font help-block" ng-if="base.requirements.$error.required && base.requirements.$touched">任职要求不能为空</span>
           <span class="error-font help-block" ng-if="base.requirements.$error.minlength && base.requirements.$touched">不得少于10个字</span>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success': vm.publish.mstype}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': vm.publish.mstype}">
         <div class="col-md-2 control-label">
           <label>面试方式</label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="mstype" ng-model="vm.publish.mstype" ng-value="1"/><span class="normal-weight"> 电话</span></label>
+          <label class="margin-seven"><input type="radio" name="mstype" ng-model="vm.publish.mstype" ng-value="1"/><span
+            class="normal-weight"> 电话</span></label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="mstype" ng-model="vm.publish.mstype" ng-value="2"/><span class="normal-weight"> 现场</span></label>
+          <label class="margin-seven"><input type="radio" name="mstype" ng-model="vm.publish.mstype" ng-value="2"/><span
+            class="normal-weight"> 现场</span></label>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1" ng-class="{'has-success': vm.publish.cl}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': vm.publish.cl}">
         <div class="col-md-2 control-label">
           <label>是否承担差旅费</label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="cl"  ng-model="vm.publish.cl" ng-value="1"/><span class="normal-weight"> 是</span></label>
+          <label class="margin-seven"><input type="radio" name="cl" ng-model="vm.publish.cl" ng-value="1"/><span
+            class="normal-weight"> 是</span></label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="cl"  ng-model="vm.publish.cl" ng-value="2"/><span class="normal-weight"> 否</span></label>
+          <label class="margin-seven"><input type="radio" name="cl" ng-model="vm.publish.cl" ng-value="2"/><span
+            class="normal-weight"> 否</span></label>
         </div>
       </div>
-      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"  ng-class="{'has-success': vm.publish.sf}">
+      <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
+           ng-class="{'has-success': vm.publish.sf}">
         <div class="col-md-2 control-label">
           <label>是否承担住宿费</label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="sf"  ng-model="vm.publish.sf" ng-value="1"/><span class="normal-weight"> 是</span></label>
+          <label class="margin-seven"><input type="radio" name="sf" ng-model="vm.publish.sf" ng-value="1"/><span
+            class="normal-weight"> 是</span></label>
         </div>
         <div class="col-md-5">
-          <label class="margin-seven"><input type="radio" name="sf"  ng-model="vm.publish.sf" ng-value="2"/><span class="normal-weight"> 否</span></label>
+          <label class="margin-seven"><input type="radio" name="sf" ng-model="vm.publish.sf" ng-value="2"/><span
+            class="normal-weight"> 否</span></label>
         </div>
       </div>
       <div class="form-group" style="border-bottom: none">

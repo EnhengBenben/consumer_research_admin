@@ -41,16 +41,14 @@
       onSuccessItem: function(item, response, status, headers) {
         console.log(response);
         console.log(item.file);
-        if(item.file.type === 'application/pdf' || item.file.type === 'image/png' || item.file.type === 'image/jpeg'){
+        if( item.file.type === 'image/png' || item.file.type === 'image/jpeg'){
           $scope.url = response;
           if(response){
             toaster.pop('success','上传成功');
           }
         }else {
-          toaster.pop('warning','请上传pdf、png或者jpg图片');
+          toaster.pop('warning','请上传png或者jpg格式的图片');
         }
-
-
         /*$scope.name = response.data.file.name;
         $scope.attachmentId = response.data.file['attachment_id'];*/
       }

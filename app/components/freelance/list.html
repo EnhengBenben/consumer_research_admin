@@ -7,7 +7,12 @@
       <li><span ng-click="vm.choice(1,73)" ng-class="{'filter-active': vm.filter[1] === 73}">上海</span></li>
       <li><span ng-click="vm.choice(1,2)" ng-class="{'filter-active': vm.filter[1] === 2}">天津</span></li>
       <li><span ng-click="vm.choice(1,200)" ng-class="{'filter-active': vm.filter[1] === 200}">深圳</span></li>
-      <li ng-if="!(vm.filter[1] === 1 || vm.filter[1] === 73 || vm.filter[1] === 2|| vm.filter[1] === 200)"><span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[1] === vm.select.id}">{{vm.select.name}}</span></li>
+      <li ng-if="!(vm.filter[1] === 1 || vm.filter[1] === 73 || vm.filter[1] === 2|| vm.filter[1] === 200) && !vm.filter[1].flag">
+        <span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[1] === vm.select.id}">{{vm.select.name}}</span>
+      </li>
+      <li ng-if="(vm.filter[1].flag)">
+        <span class="filter-active">{{vm.filter[1].name}}</span>
+      </li>
       <li style="color: #3285ff;"><span ng-click="vm.more()">更多 <i class="fa fa-caret-down" aria-hidden="true" ng-if="!vm.tag"></i>
         <i ng-if="vm.tag" class="fa fa-caret-up" aria-hidden="true"></i></span></li>
     </ul>
@@ -18,7 +23,7 @@
           ng-mouseover="over = true">
         <span><span style="padding: 0;color: #3285ff;">{{i.flag}}</span> {{i.name}}</span>
         <ul class="list-unstyled no-margin animated fadeInLeft">
-          <li ng-click="vm.selectCity({id: i.id})">全部</li>
+          <li ng-click="vm.selectProvince(i)"  ng-if="i.cityList.length != 1">全部</li>
           <li class="width-inherit margin-seven" ng-repeat="list in i.cityList" ng-click="vm.selectCity(list)"><span>{{list.name}}</span></li>
         </ul>
       </li>

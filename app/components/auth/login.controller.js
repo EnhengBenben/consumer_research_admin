@@ -31,7 +31,7 @@
          }else if(response.type === 0) {                                       //企业用户
            if(response.basetype === 0){                                        //发包方企业
              toaster.pop('success','欢迎您' + response.username);
-             $state.go('app.freelance.list');
+             $state.go('app.manage.company.list');
            }else if(response.basetype === 1){                                 //承包方企业
              toaster.pop('success','欢迎您' + response.username);
              $state.go('app.company.list');

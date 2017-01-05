@@ -20,7 +20,6 @@
       vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'},
         {id: 2, name: '民办非企业单位'}, {id: 3, name: '个体工商户'},
         {id: 4, name: '社会团体'}, {id: 5, name: '党政及国家单位'}];
-      vm.stauts = [{id: 0, name: '需求分析'}, {id: 1, name: '概要设计'}, {id: 2, name: '详细设计'}, {id: 3, name: '已开发'}];
       vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
       vm.jobAges = [
         {
@@ -59,11 +58,9 @@
         .show({id: $stateParams.id, requesttype: $stateParams.requesttype})
         .then(function (res) {
           vm.show = res.data;
+          //vm.show.cstatus = vm.show.cstatus === 1? '开启':'关闭';
           vm.show.requesttype = vm.requesttypes.filter(function (data) {
             return data.id === vm.show.requesttype;
-          });
-          vm.show.stauts = vm.stauts.filter(function (data) {
-            return data.id === vm.show.stauts;
           });
           vm.show.mantypr = vm.mantyprs.filter(function (data) {
             return data.id == vm.show.mantypr;
