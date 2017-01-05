@@ -6,10 +6,11 @@
     .controller('ManageContractorsShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, $stateParams, $scope, CompanyService) {
+  function Controller($localStorage, $state, $stateParams, $scope, CompanyService, $uibModal) {
     var vm = this;
     vm.user = $localStorage.user;
     vm.params = {};
+    vm.sendLetter = sendLetter;
     angular.extend(vm.params,vm.user);
     vm.params['rid'] = $stateParams.id;
 
@@ -58,6 +59,25 @@
             return data.id == vm.show.ages;
           });
         })
+    }
+
+    function sendLetter(){
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'components/company/model.html',
+        controller: 'ModalInstanceCtrl',
+        controllerAs: 'vm',
+        size: 'md',
+        resolve: {
+          items: function () {
+            return {
+              id: $stateParams.id,
+              name: vm.show.name
+            };
+          }
+        }
+      })
     }
   }
 })();

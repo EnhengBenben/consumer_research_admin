@@ -6,7 +6,7 @@
     .controller('CompanyShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams, $uibModal) {
+  function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams) {
     var vm = this;
     vm.sendLetter = sendLetter;
     vm.undertake = undertake;
@@ -51,8 +51,8 @@
           vm.show.requesttype = vm.requesttypes.filter(function(data){
             return data.id === vm.show.requesttype;
           });
-          vm.show.stauts = vm.stauts.filter(function(data){
-              return data.id === vm.show.stauts;
+          vm.show.cstatus = vm.status.filter(function(data){
+              return data.id === vm.show.cstatus;
           });
           vm.show.mantypr = vm.mantyprs.filter(function(data){
             return data.id == vm.show.mantypr;
@@ -63,23 +63,7 @@
         })
     }
 
-    function sendLetter(){
-      var modalInstance = $uibModal.open({
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'components/company/model.html',
-        controller: 'ModalInstanceCtrl',
-        controllerAs: 'vm',
-        size: 'md',
-        resolve: {
-          items: function () {
-            return {
-              id: $stateParams.id
-            };
-          }
-        }
-    })
-  }
+
 
     function undertake(){
       CompanyService

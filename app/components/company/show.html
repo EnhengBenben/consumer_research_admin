@@ -32,12 +32,12 @@
         <p class="margin-seven">{{vm.show.odeclare}}</p>
       </div>
     </div>
-    <div class="form-group" ng-if="vm.show.requesttype[0].id === 0">
+    <div class="form-group">
       <div class="col-md-2 control-label">
         <label>项目当前状态</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.stauts[0].name}}</p>
+        <p class="margin-seven">{{vm.show.cstatus[0].name}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
@@ -69,7 +69,7 @@
         <label>项目价格</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.price}} 元</p>
+        <p class="margin-seven important-font">{{vm.show.price}} 元</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id === 1">
@@ -77,14 +77,14 @@
         <label>项目预算</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.price}} /人/月</p>
+        <p class="margin-seven important-font">{{vm.show.price}} /人/月</p>
       </div>
     </div> <div class="form-group"  ng-if="vm.show.requesttype[0].id === 2">
     <div class="col-md-2 control-label">
       <label>项目预算</label>
     </div>
     <div class="col-md-10">
-      <p class="margin-seven">{{vm.show.price}} /人/天</p>
+      <p class="margin-seven important-font">{{vm.show.price}} /人/天</p>
     </div>
   </div>
     <div class="form-group">
@@ -113,8 +113,7 @@
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <div class="btn btn-primary" ng-click="vm.undertake()" confirm="您确定要承接此项目？">我想承接此项目</div>
-        <div class="btn btn-default" ng-click="vm.sendLetter()">发私信</div>
+        <div class="btn btn-primary" ng-click="vm.undertake()">付费承接此项目</div>
       </div>
     </div>
   </form>

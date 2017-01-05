@@ -5,7 +5,26 @@
   <div class="form-container"  style="width: inherit">
     <form class="form-horizontal">
       <div class="form-group" style="border: none">
-        <div class="col-xs-12">
+        <div class="col-xs-2 control-label">
+          <label>发送至</label>
+        </div>
+        <div class="col-xs-10">
+          <p class="margin-seven">{{vm.sendInfo.name}}</p>
+        </div>
+      </div>
+      <div class="form-group" style="border: none">
+        <div class="col-xs-2 control-label">
+          <label>主题</label>
+        </div>
+        <div class="col-xs-10">
+          <input type="text" class="form-control" placeholder="请输入私信标题" required ng-model="vm.model.title"/>
+        </div>
+      </div>
+      <div class="form-group" style="border: none">
+        <div class="col-xs-2 control-label">
+          <label>私信内容</label>
+        </div>
+        <div class="col-xs-10">
           <textarea class="form-control" style="min-height: 200px" required name="info" ng-model="vm.model.info" placeholder="请输入3-20个字"></textarea>
         </div>
       </div>

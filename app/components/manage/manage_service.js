@@ -14,7 +14,16 @@
       companyShow: companyShow, //管理中心项目详情
       search: search, // 查看已承接项目
       searchCjList: searchCjList, //查询承接该项目的人或者企业
+      updateCstatus: updateCstatus //更改发布项目状态
     };
+    function updateCstatus(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/toUpdateCstatusByRid.action',
+        data: data
+      });
+    }
+
     function searchCjList(data) {
       return $http({
         method: 'POST',

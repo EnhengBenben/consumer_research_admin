@@ -10,6 +10,9 @@
     var vm = this;
     vm.ok = ok;
     vm.cancel = cancel;
+    vm.sendInfo = {
+      name: items.name
+    };
     vm.model = {
       info: '',
       requestPlanId: parseInt(items.id),

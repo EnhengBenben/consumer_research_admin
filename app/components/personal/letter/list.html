@@ -1,25 +1,19 @@
-<!--<div class="row no-margin">
+<div class="row no-margin">
   <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'accept'})" style="margin-right: 20px">收件箱</div>
   <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'send'})">发件箱</div>
-</div>-->
-<div class="row no-margin">
-  <div class="btn btn-default" ui-sref-active="btn-primary" style="margin-right: 20px" ng-if="vm.user.type === 0&& vm.user.basetype === 0">收件箱</div>
-  <div class="btn btn-default" ui-sref-active="btn-primary" ng-if="vm.user.type === 1 || vm.user.basetype === 1">发件箱</div>
 </div>
 <div class="base-container" style="margin-top: 30px">
   <div class="row letter-list-title">
     <div class="col-md-2">
-      <p ng-if="vm.user.type === 0 && vm.user.basetype === 0">发件方</p>
-      <p ng-if="vm.user.type === 1 || vm.user.basetype === 1">收件方</p>
+      <p>来自</p>
     </div>
     <div class="col-md-6"><p>主题</p></div>
     <div class="col-md-2">
-      <p  ng-if="vm.user.type === 1 || vm.user.basetype === 1">发送时间</p>
-      <p  ng-if="vm.user.type === 0 && vm.user.basetype === 0">接收时间</p>
+      <p>发送时间</p>
     </div>
-    <div class="col-md-2">
+  <!--  <div class="col-md-2">
       <p>操作</p>
-    </div>
+    </div>-->
   </div>
   <div class="row letter-list" ng-repeat="i in vm.lists" style="margin-top: 10px">
     <div class="col-md-2">
@@ -31,8 +25,8 @@
     <div class="col-md-2">
      <p>{{i.gettime || i.sendtime}}</p>
     </div>
-    <div class="col-md-2">
+  <!--  <div class="col-md-2">
       <div class="btn btn-sm btn-danger" confirm="确认删除" ng-click="vm.remove(i)">删除</div>
-    </div>
+    </div>-->
   </div>
 </div>
