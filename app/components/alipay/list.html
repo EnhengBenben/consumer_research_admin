@@ -1,0 +1,52 @@
+<div class="form-container" style="margin-top: 70px">
+  <form class="form-horizontal" name="base" ng-submit="vm.next()">
+    <div class="form-group">
+      <div class="col-md-6 col-md-offset-3">
+        <h3 class="text-center">支付宝即时到账交易接口快速通道</h3>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+        <label>商户订单号:</label>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control"/>
+        <span class="help-block">注意：商户订单号(out_trade_no).必填(建议是英文字母和数字,不能含有特殊字符)</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+        <label>商品名称:</label>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control"/>
+        <span class="help-block">注意：产品名称(subject)，必填(建议中文，英文，数字，不能含有特殊字符)</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+        <label>付款金额:</label>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control"/>
+        <span class="help-block">注意：付款金额(total_fee)，必填(格式如：1.00,请精确到分)</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+        <label>商品描述:</label>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control"/>
+        <span class="help-block">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</span>
+      </div>
+    </div>
+
+    <div class="form-group" style="border-bottom: none">
+      <div class="col-md-6 col-md-offset-3">
+        <button type="submit" class="btn btn-primary">下一步</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="formData"></div>

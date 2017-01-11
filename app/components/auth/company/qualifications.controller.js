@@ -72,11 +72,6 @@
       angular.extend(vm.add, $localStorage.base);
       angular.extend(vm.add, $localStorage.experience);
       angular.extend(vm.add, $localStorage.skill);
-      var str = [];
-      angular.forEach(vm.add.skills, function (i) {
-        str.push(i.ids);
-      });
-      vm.add.skills = str.join(',');
       var qualificationsArr = [];
       angular.forEach(vm.add.qualifications, function (i) {
         qualificationsArr.push(i.zname + ',' + i.zzurl);

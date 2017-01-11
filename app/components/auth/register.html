@@ -24,6 +24,8 @@
       <span class="help-block error-font"
             ng-if="register.email.$touched && (register.email.$error.email || register.email.$error.pattern)">请输入正确的邮箱格式</span>
       <span class="input-result" ng-if="register.email.$valid"><i class="fa fa-check"></i></span>
+      <span class="help-block"><input type="checkbox" class="checkbox-inline" name="read" ng-true-value="true" ng-model="vm.read"/>
+        <span>我同意</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
     </div>
   </div>
   <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 1"
@@ -51,6 +53,8 @@
     <div class="col-md-6 col-xs-6" style="padding-right: 0">
       <input id="password" ng-model="vm.register.code" type="password" class="form-control" required
              placeholder="请输入验证码"/>
+      <span class="help-block"><input type="checkbox" class="checkbox-inline" name="read" ng-true-value="true" ng-model="vm.read"/>
+        <span>我同意</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
     </div>
     <div class="col-md-3 col-xs-3" style="padding-left: 0">
       <div class="btn btn-primary" ng-click="vm.sendCode()" ng-class="{'disabled': !vm.paraevent}">{{vm.paracont}}</div>

@@ -74,4 +74,8 @@ angular.module('app')
         templateUrl: 'components/auth/finish.html',
         controller: 'RegisterFinishCtrl as vm'
       })
+      .state('service',{
+        url: '/service',
+        templateUrl: 'components/auth/service.html'
+      })
   });

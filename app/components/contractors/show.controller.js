@@ -8,6 +8,7 @@
   /* @ngInject */
   function Controller(ContractorsService, $state, toaster, $scope, $stateParams) {
     var vm = this;
+    vm.showContact = showContact;
     vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'}, {id: 2, name: '民办非企业单位'},
       {id: 3, name: '个体工商户'}, {id: 4, name: '社会团体'}, {id: 5, name: '党政及国家单位'}];
 
@@ -25,6 +26,9 @@
             }
           })
         })
+    }
+    function showContact(){
+      $state.go('alipay.list',{id: $stateParams.id,type: 2});
     }
   }
 })();

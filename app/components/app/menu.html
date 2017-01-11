@@ -9,9 +9,9 @@
           <li ng-class="{'menu-active' : $state.includes('app.manage')}" ng-if="app.user.type === 0 && app.user.basetype === 0"><a ui-sref="app.manage.company.list" ui-sref-active="menu-active">管理中心</a></li>
           <li ng-class="{'menu-active' : $state.includes('app.manage')}"  ng-if="(app.user.type === 0 && app.user.basetype === 1) || app.user.type === 1"><a ui-sref="app.manage.contractors.list" ui-sref-active="menu-active">管理中心</a></li>
           <!--<li ng-class="{'menu-active' : $state.includes('app.manage')}"  ng-if="app.user.type === 1"><a ui-sref="app.manage.freelance.list" ui-sref-active="menu-active">管理中心</a></li>-->
-          <li ng-class="{'menu-active' : $state.includes('app.company')}" ng-if="app.user.basetype === 1 || app.user.type === 1"><a ui-sref="app.company.list" ui-sref-active="menu-active">平台项目一览</a></li>
-          <li ng-class="{'menu-active' : $state.includes('app.contractors')}" ng-if="app.user.basetype === 0 && app.user.type === 0"><a ui-sref="app.contractors.list" ui-sref-active="menu-active">承包方一览</a></li>
-          <li ng-class="{'menu-active' : $state.includes('app.freelance')}"  ng-if="app.user.basetype === 0  && app.user.type === 0"><a ui-sref="app.freelance.list" ui-sref-active="menu-active">自由职业者一览</a></li>
+          <li ng-class="{'menu-active' : $state.includes('app.company')}" ng-if="app.user.basetype === 1 || app.user.type === 1"><a ui-sref="app.company.list" ui-sref-active="menu-active">平台项目资源</a></li>
+          <li ng-class="{'menu-active' : $state.includes('app.contractors')}" ng-if="app.user.basetype === 0 && app.user.type === 0"><a ui-sref="app.contractors.list" ui-sref-active="menu-active">承包方资源</a></li>
+          <li ng-class="{'menu-active' : $state.includes('app.freelance')}"  ng-if="app.user.basetype === 0  && app.user.type === 0"><a ui-sref="app.freelance.list" ui-sref-active="menu-active">自由职业者资源</a></li>
         </ul>
       </div>
       <div class="col-md-2 col-xs-2 register-name">

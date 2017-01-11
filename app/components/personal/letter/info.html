@@ -1,0 +1,21 @@
+<div class="row letter-title">
+  <div class="pull-right btn btn-primary" ng-click="vm.goBack()">返回</div>
+ <p>发件人：{{vm.letter.realname}}</p>
+  <p>时间：{{vm.letter.sendtime || vm.letter.gettime}}</p>
+  <p>收件人：{{vm.letter.gname}}</p>
+</div>
+
+<div class="form-container" style="position: relative;min-height: 300px;">
+  <form class="form-horizontal" style="padding-left: 20px;padding-right: 20px">
+    <div class="row">
+      <h2 style="text-align: center;margin-bottom: 30px;">{{vm.letter.title}}</h2>
+    </div>
+    <div class="row letter-title">
+      <p>{{vm.letter.info}}</p>
+    </div>
+    <div class="row letter-response">
+      <div class="btn btn-danger" ng-click="vm.remove()">删除</div>
+      <div class="btn btn-primary" ng-click="vm.reBack()" ng-if="vm.status === 'accept'">回复</div>
+    </div>
+  </form>
+</div>

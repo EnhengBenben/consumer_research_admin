@@ -6,10 +6,11 @@
     .controller('ModalInstanceCtrl', Controller);
 
   /* @ngInject */
-  function Controller($uibModal, items, $localStorage, $uibModalInstance, CompanyService) {
+  function Controller($state, items, $localStorage, $uibModalInstance, CompanyService, toaster) {
     var vm = this;
     vm.ok = ok;
     vm.cancel = cancel;
+    vm.show = true;
     vm.sendInfo = {
       name: items.name
     };
@@ -25,11 +26,23 @@
     }
 
     function ok(){
-      CompanyService
-        .sendMessages(vm.model)
-        .then(function(res){
-          $uibModalInstance.close(vm.model);
-        });
+      if(items.returnMse){
+        CompanyService
+          .returnMsg(vm.model)
+          .then(function(res){
+            vm.show = false;
+            toaster.pop('success', '回复成功');
+            $uibModalInstance.close(vm.model);
+            $state.go('app.personal.letter.list',{status: 'send'});
+          })
+      }else {
+        CompanyService
+          .sendMessages(vm.model)
+          .then(function(res){
+            toaster.pop('success', '发送成功');
+            $uibModalInstance.close(vm.model);
+          });
+      }
     }
 
     function cancel(){

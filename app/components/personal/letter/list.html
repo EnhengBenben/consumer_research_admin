@@ -1,28 +1,41 @@
 <div class="row no-margin">
   <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'accept'})" style="margin-right: 20px">收件箱</div>
   <div class="btn btn-default" ui-sref-active="btn-primary" ui-sref="app.personal.letter.list({status: 'send'})">发件箱</div>
+  <div class="btn btn-danger" ng-if="vm.checkList.ids.length" confirm="确认删除? 删除后不可恢复！" ng-click="vm.removeAll()">删除</div>
 </div>
 <div class="base-container" style="margin-top: 30px">
-  <div class="row letter-list-title">
-    <div class="col-md-2">
-      <p>来自</p>
+  <div class="row letter-list-title" ng-if="vm.lists.length">
+    <div class="col-md-3">
+      <p ng-if="vm.status === 'accept'"><label><input type="checkbox" ng-click="vm.selectAll()" ng-if="vm.lists.length"></label>来自</p>
+      <p ng-if="vm.status === 'send'"><label><input type="checkbox"  ng-click="vm.selectAll()"  ng-if="vm.lists.length"></label>送至</p>
     </div>
     <div class="col-md-6"><p>主题</p></div>
-    <div class="col-md-2">
-      <p>发送时间</p>
+    <div class="col-md-3">
+      <p ng-if="vm.status === 'accept'">接收时间</p>
+      <p ng-if="vm.status === 'send'">发送时间</p>
     </div>
-  <!--  <div class="col-md-2">
-      <p>操作</p>
-    </div>-->
   </div>
-  <div class="row letter-list" ng-repeat="i in vm.lists" style="margin-top: 10px">
-    <div class="col-md-2">
-      <a ng-if="i.acctype === 1" ui-sref="app.freelance.show({id:i.sid})">{{i.sname || i.gname}}</a>
-      <a ng-if="i.basetype === 1" ui-sref="app.contractors.show({id: i.sid})">{{i.sname || i.gname}}</a>
-      <a ng-if="i.acctype === 0 && i.basetype === 0" ui-sref="app.personal.letter.show({id: i.gid})">{{i.sname || i.gname}}</a>
+  <div class="spinner" ng-if="!vm.lists">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+  <div class="row" ng-if="vm.lists && !vm.lists.length">
+    <div class="static-box">
+      <p>暂时没有信息</p>
     </div>
-    <div class="col-md-6"><p>{{i.info}}</p></div>
-    <div class="col-md-2">
+  </div>
+  <div class="row letter-list" ng-if="vm.lists.length" ng-repeat="i in vm.lists" style="margin-top: 10px">
+    <div class="col-md-3">
+      <label><input type="checkbox" checklist-model="vm.checkList.ids" checklist-value="i.id"></label>
+      <a ng-if="i.acctype === 1" ui-sref="app.personal.letter.freelanceShow({id:i.sid || i.gid})">{{i.sname || i.gname}}</a>
+      <a ng-if="i.acctype != 1" ui-sref="app.personal.letter.show({id: i.gid || i.sid})">{{i.sname || i.gname}}</a>
+    </div>
+    <div class="col-md-6" ng-if="i.sendtime"><a ui-sref="app.personal.letter.info({id: i.id,status: 'send'})">{{i.title}}</a></div>
+    <div class="col-md-6" ng-if="i.gettime"><a ui-sref="app.personal.letter.info({id: i.id,status: 'accept'})">{{i.title}}</a></div>
+    <div class="col-md-3">
      <p>{{i.gettime || i.sendtime}}</p>
     </div>
   <!--  <div class="col-md-2">

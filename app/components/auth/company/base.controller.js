@@ -9,23 +9,24 @@
   function Controller($localStorage, $state, toaster, $scope, AuthService) {
     var vm = this;
     vm.next = next;
-
+    vm.unitaddr = {
+      province: null,
+      city: null
+    };
     return init();
 
     function init(){
-
-      if($localStorage.base){
+      if($localStorage.base != undefined){
         vm.base = $localStorage.base;
         AuthService
           .city({provinceId: parseInt(vm.base.unitaddr.split(',')[0])})
           .then(function(res){
             vm.unitaddr = {
               province: parseInt(vm.base.unitaddr.split(',')[0]),
-              city: parseInt(vm.base.unitaddr.split(',')[1]),
-            }
+              city: parseInt(vm.base.unitaddr.split(',')[1])
+            };
             vm.cities = res.data;
           });
-
       }else {
         vm.base = {};
       }

@@ -10,11 +10,16 @@
     var vm = this;
     vm.status = $stateParams.status;
     vm.user = $localStorage.user;
-    vm.remove = remove;
+    vm.removeAll = removeAll;
+    vm.tag = false;
+    vm.checkList = {
+      ids: []
+    };
+    vm.selectAll = selectAll;
     return init();
 
     function init() {
-      if (vm.user.type === 1 || vm.user.basetype === 1) {
+      if (vm.status === 'send') {
         PersonalService
           .findOutbox(vm.user)
           .then(function (res) {
@@ -29,19 +34,33 @@
       }
     }
 
-    function remove(data) {
-      if ((data.acctype || data.basetype)) {
-        PersonalService
-          .deleteInBox(data)
-          .then(function (res) {
-            init();
-          })
-      } else {
-        PersonalService
-          .deleteOutBox(data)
-          .then(function (res) {
-            init();
-          })
+    function removeAll() {
+      var data = {
+        ids: vm.checkList.ids.join(',')
+      };
+    if(vm.status === 'send'){
+      PersonalService
+        .delSendAllMessage(data)
+        .then(function(res){
+          toaster.pop('success','私信已删除');
+          init();
+        })
+    }else {
+      PersonalService
+        .delAcceptAllMessage(data)
+        .then(function(res){
+          toaster.pop('success','私信已删除');
+          init();
+        })
+    }
+    }
+
+    function selectAll(){
+      vm.tag = !vm.tag;
+      if(vm.tag){
+        vm.checkList.ids = vm.lists.map(function(item) { return item.id; });
+      }else {
+        vm.checkList.ids = [];
       }
     }
   }

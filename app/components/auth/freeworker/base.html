@@ -90,7 +90,7 @@
       <div class="col-md-10">
         <input type="password"
                ng-class="{'error-input': vm.base.passwordagin != vm.base.password &&  base.passwordagin.$touched}"
-               name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
+               name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.base.passwordagin" maxlength="8" minlength="8" required/>
         <div class="help-block error-font" ng-if="(vm.base.passwordagin != vm.base.password) && base.passwordagin.$touched">请与原密码保持一致</div>
         <span class="input-result" ng-if="(vm.base.passwordagin === vm.base.password)  && base.passwordagin.$touched && base.passwordagin.$valid"><i class="fa fa-check"></i></span>
       </div>

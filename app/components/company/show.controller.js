@@ -6,9 +6,8 @@
     .controller('CompanyShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams) {
+  function Controller($localStorage, $state, toaster, $uibModal, CompanyService, $stateParams, $log) {
     var vm = this;
-    vm.sendLetter = sendLetter;
     vm.undertake = undertake;
     vm.user = $localStorage.user;
     vm.params = {};
@@ -45,7 +44,7 @@
       vm.requesttypes = [{id: 0, name: '整体项目'}, {id: 1, name: '驻场开发项目'}, {id: 2, name: '自由职业者项目'}];
 
       CompanyService
-        .show({id: $stateParams.id,requesttype: $stateParams.requesttype})
+        .show({id: $stateParams.id,requesttype: $stateParams.requesttype,userid: $localStorage.user.userid})
         .then(function(res){
           vm.show = res.data;
           vm.show.requesttype = vm.requesttypes.filter(function(data){
@@ -66,12 +65,29 @@
 
 
     function undertake(){
-      CompanyService
-        .undertake(vm.params)
-        .then(function(res){
-          toaster.pop('success', res.data);
-          $state.go('app.company.list');
-        })
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'components/alipay/model.html',
+        controller: 'AlipayModalCtrl',
+        controllerAs: 'vm',
+        backdrop: true,
+        backdropClass: 'backDrop1',
+        size: 'md',
+        resolve: {
+          items: function () {
+            return {
+              id: $stateParams.id,
+              type: 3
+            };
+          }
+        }
+      });
+      modalInstance.result.then(function (selectedItem) {
+        console.log(selectedItem)
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
     }
   }
 })();

@@ -1,0 +1,54 @@
+<div class="modal-header" ng-if="!vm.wating">
+  <h3 class="modal-title" id="modal-title" ng-if="!vm.loading">承接项目付款订单详情</h3>
+  <h3 class="modal-title" id="modal-title" ng-if="vm.loading && !vm.wating">正在为您跳转到第三方支付平台.....</h3>
+</div>
+<div class="modal-body" ng-if="vm.loading && !vm.wating">
+  <uib-progressbar max="100" value="vm.value"><span style="color:white; white-space:nowrap;">{{vm.value}} / 100</span></uib-progressbar>
+</div>
+<div class="modal-body" ng-if="!vm.loading">
+  <div class="row no-margin">
+    <div class="col-md-2">
+      <p>订单号</p>
+    </div>
+    <div class="col-md-8">
+      <p>{{vm.showInfo.orderid}}</p>
+    </div>
+  </div>
+  <div class="no-margin row">
+    <div class="col-md-2">
+      <p>订单名称</p>
+    </div>
+    <div class="col-md-8">
+      <p>{{vm.showInfo.title}}</p>
+    </div>
+  </div>
+ <!-- <div class="no-margin row">
+    <div class="col-md-2">
+      <p>订单描述</p>
+    </div>
+    <div class="col-md-8">
+      <p>该付款为查找门槛</p>
+    </div>
+  </div>-->
+  <div class="row no-margin" style="border-top: 1px dashed #eee;padding-top: 10px;padding-left: 15px">
+    <p class="important-font">应付金额：<span>{{vm.showInfo.price}}元</span></p>
+    <div class="alipay-icon-box" ng-click="vm.select = ! vm.select" ng-init="vm.select = true">
+      <img ng-src="../images/alipay_icon.png" alt="请刷新获取支付方式">
+      <i class="fa fa-check" aria-hidden="true" ng-if="vm.select"></i>
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal-footer" ng-if="!vm.loading">
+  <button class="btn btn-primary" type="button" ng-click="vm.ok()">确认付款</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.cancel()">取消</button>
+</div>
+ <div class="modal-body" ng-if="vm.wating">
+   <p style="text-align: center;margin: 10px 0;font-size: 18px"><strong>尊敬的 <span class="important-font">{{vm.user.username}}</span>,您的订单支付成功了吗？</strong></p>
+   <div class="row  no-margin" style="padding: 10px">
+     <div class="col-md-10 col-md-offset-1" style="text-align: center">
+       <div class="btn btn-primary" ng-click="vm.showContect()">已付款，立即查看联系方式</div>
+       <div class="btn btn-default" ng-click="vm.reBack()">失败，重新支付</div>
+     </div>
+   </div>
+ </div>

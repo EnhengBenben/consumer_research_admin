@@ -24,7 +24,42 @@
       findOutbox: findOutbox, //查询发件箱
       deleteInBox: deleteInBox, // 删除私信
       deleteOutBox: deleteOutBox, // 删除私信
+      infoAcceptBox: infoAcceptBox, // 收件箱详情
+      infoSendBox: infoSendBox,//发件箱详情
+      delSendAllMessage: delSendAllMessage, //批量删除发件箱
+      delAcceptAllMessage: delAcceptAllMessage, //批量删除发件箱
     };
+    function delAcceptAllMessage(data){
+      return  $http({
+        url: ENDPOINT + '/toDelAllInBoxMessage.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function delSendAllMessage(data){
+      return  $http({
+        url: ENDPOINT + '/toDelAllOutBoxMessage.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function infoAcceptBox(data){
+      return  $http({
+        url: ENDPOINT + '/toFindInBoxMessageById.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function infoSendBox(data){
+      return  $http({
+        url: ENDPOINT + '/tofindOutBoxMessageById.action',
+        method: 'POST',
+        data: data
+      })
+    }
 
     function deleteInBox(data){
       return  $http({

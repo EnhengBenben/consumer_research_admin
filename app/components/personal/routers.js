@@ -31,4 +31,14 @@ angular.module('app')
         templateUrl: 'components/personal/letter/show.html',
         controller: 'PersonalLetterShowCtrl as vm'
       })
+      .state('app.personal.letter.info',{
+        url: '/info/:id?status',
+        templateUrl: 'components/personal/letter/info.html',
+        controller: 'PersonalInfoShowCtrl as vm'
+      })
+      .state('app.personal.letter.freelanceShow',{
+        url: '/freelance-show/:id',
+        templateUrl: 'components/personal/letter/freelance-show.html',
+        controller: 'PersonalFreelanceShowCtrl as vm'
+      })
   });

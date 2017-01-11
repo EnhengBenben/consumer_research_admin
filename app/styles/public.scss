@@ -123,17 +123,24 @@
 }
 
 .letter-list-title {
+  border-bottom: 1px solid #bbb;
   div {
     text-align: center;
     color: #3285ff;
     font-size: 15px;
     font-weight: 700;
   }
+  div:nth-child(1){
+    text-align: left;
+  }
 }
 
 .letter-list {
   div {
     text-align: center;
+  }
+  div:nth-child(1){
+    text-align: left;
   }
 }
 
@@ -176,6 +183,46 @@
   }
 }
 
-.important-font{
+.important-font {
   color: #d44950;
+}
+
+.letter-title {
+  position: relative;
+  p {
+    width: 100%;
+    font-size: 17px;
+    color: #444;
+    padding-left: 15px;;
+  }
+  .pull-right{
+    margin-right: 10px;
+  }
+}
+
+.letter-response {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .btn{
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: right;
+  }
+}
+
+.alipay-icon-box{
+  display: inline-block;
+  padding: 15px;
+  position: relative;
+  border: 1px solid #f76c09;
+  cursor: pointer;
+  i{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #FFF;
+    background-color: orange;
+    padding: 1px;
+  }
 }

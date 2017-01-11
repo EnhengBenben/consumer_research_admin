@@ -11,8 +11,17 @@
       list: list,//平台项目一览
       show: show,//平台项目详情
       undertake: undertake,//承接项目
-      sendMessages: sendMessages //发私信列表
+      sendMessages: sendMessages, //发私信列表
+      returnMsg: returnMsg, // 回复私信
     };
+
+    function returnMsg(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/toReturnMessage.action',
+        data: data
+      });
+    }
 
     function sendMessages(data) {
       return $http({

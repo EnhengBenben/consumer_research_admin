@@ -73,7 +73,7 @@
           if(vm.filter[2] && vm.filter[2].flag){
             data['provinceid'] = vm.filter[2].id;
           }else if(vm.filter[2]){
-            data['addrs'] = vm.filter[2].id;
+            data['addrs'] = vm.filter[2];
           }
           if(vm.filter[1] != 0 && vm.filter[1] != null){
             data['ages'] = vm.filter[4];

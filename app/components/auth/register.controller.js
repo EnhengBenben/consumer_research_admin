@@ -11,6 +11,7 @@
     vm.register = {};
     vm.regist = regist;
     vm.sendCode = sendCode;
+    vm.read = true;
     return init();
 
     function init() {
@@ -19,34 +20,38 @@
     }
 
     function regist() {
-      AuthService
-        .register(vm.register)
-        .then(function (res) {
-          if (vm.register.acctype === 1) {
-            if(vm.register.Mcode && vm.obj === vm.register.username){
-              //验证验证码是否正确
-              AuthService
-                .compareCheckCode(vm.register)
-                .then(function (res) {
-                  if(res.data === '验证码正确'){
-                    $localStorage.username = vm.register;
-                    $state.go('free.base');
-                  }else {
-                    toaster.pop('error','验证码错误');
-                  }
-                });
-            }else {
-              toaster.pop('warning','请输入与手机号匹配的验证码');
-            }
-          } else if (vm.register.acctype === 0) {
-            if (res.data === 'false') {
-              toaster.pop('error', '该账号已注册');
-            }else {
-              $localStorage.username = vm.register;
-              $state.go('company.base');
-            }
-          }
-        });
+     if(vm.read){
+       AuthService
+         .register(vm.register)
+         .then(function (res) {
+           if (vm.register.acctype === 1) {
+             if(vm.register.Mcode && vm.obj === vm.register.username){
+               //验证验证码是否正确
+               AuthService
+                 .compareCheckCode(vm.register)
+                 .then(function (res) {
+                   if(res.data === '验证码正确'){
+                     $localStorage.username = vm.register;
+                     $state.go('free.base');
+                   }else {
+                     toaster.pop('error','验证码错误');
+                   }
+                 });
+             }else {
+               toaster.pop('warning','请输入与手机号匹配的验证码');
+             }
+           } else if (vm.register.acctype === 0) {
+             if (res.data === 'false') {
+               toaster.pop('error', '该账号已注册');
+             }else {
+               $localStorage.username = vm.register;
+               $state.go('company.base');
+             }
+           }
+         });
+     }else {
+       alert('请选择同意用户协议后再注册');
+     }
     }
 
     function sendCode(){
