@@ -34,14 +34,6 @@
         <p class="margin-seven">{{vm.show.job}}</p>
       </div>
     </div>
-    <!--   <div class="form-group">
-         <div class="col-md-2 control-label">
-           <label>概述</label>
-         </div>
-         <div class="col-md-10">
-           <p class="margin-seven">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
-         </div>
-       </div>-->
     <div class="form-group">
       <div class="col-md-2 control-label">
         <label>行业经验</label>
@@ -106,9 +98,26 @@
         <p class="margin-seven">{{vm.show.other}}</p>
       </div>
     </div>
+    <div class="form-group important-font"  ng-if="vm.show.iscment == '2'">
+      <div class="col-md-2 control-label">
+        <label>手机号</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.username}}</p>
+      </div>
+    </div>
+    <div class="form-group important-font"  ng-if="vm.show.iscment == '2'">
+      <div class="col-md-2 control-label">
+        <label>邮箱</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.emailaddr}}</p>
+      </div>
+    </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
-        <div class="btn btn-primary" ng-click="vm.showContact()">查看联系方式</div>
+        <div  ng-if="vm.show.iscment != '2'" class="btn btn-primary" ng-click="vm.showContact()">查看联系方式</div>
+        <div ng-if="vm.show.iscment === '2'" class="btn btn-default" ng-click="vm.sendLetter()">发私信</div>
       </div>
     </div>
   </form>

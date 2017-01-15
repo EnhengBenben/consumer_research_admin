@@ -22,5 +22,6 @@ angular
     'angular-confirm',
     'ngLocale',
     'ui.router',
-    'checklist-model'
+    'checklist-model',
+    'ui.bootstrap.datetimepicker'
   ]);

@@ -9,11 +9,12 @@
     .controller('PersonalInfoShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller(PersonalService, $state, toaster, $uibModal, $stateParams) {
+  function Controller(PersonalService, $localStorage, toaster, $uibModal, $stateParams) {
     var vm = this;
     vm.goBack = goBack;
     vm.reBack = reBack;
     vm.remove = remove;
+    vm.user = $localStorage.user;
     vm.status = $stateParams.status;
     return init();
 

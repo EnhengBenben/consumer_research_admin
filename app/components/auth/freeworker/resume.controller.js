@@ -30,7 +30,11 @@
       AuthService
         .personal(vm.resume)
         .then(function (res) {
-            $state.go('go.login');
+          delete $localStorage.username;
+          delete $localStorage.base;
+          delete $localStorage.experience;
+          delete $localStorage.skill;
+            $state.go('finish');
             toaster.pop('success', '已保存，请继续完成注册');
         });
     }

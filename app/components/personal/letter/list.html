@@ -29,7 +29,7 @@
   </div>
   <div class="row letter-list" ng-if="vm.lists.length" ng-repeat="i in vm.lists" style="margin-top: 10px">
     <div class="col-md-3">
-      <label><input type="checkbox" checklist-model="vm.checkList.ids" checklist-value="i.id"></label>
+      <label><input type="checkbox" checklist-model="vm.checkList.ids" checklist-value="i.id">{{i.name}}</label>
       <a ng-if="i.acctype === 1" ui-sref="app.personal.letter.freelanceShow({id:i.sid || i.gid})">{{i.sname || i.gname}}</a>
       <a ng-if="i.acctype != 1" ui-sref="app.personal.letter.show({id: i.gid || i.sid})">{{i.sname || i.gname}}</a>
     </div>

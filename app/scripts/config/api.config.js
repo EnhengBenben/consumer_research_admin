@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .constant('ENDPOINT', 'http://121.43.106.58:8080/stproject') //部署服务器
+     .constant('ENDPOINT', 'http://121.43.106.58:8080/stproject') //部署服务器
     // .constant('ENDPOINT','http://192.168.0.119:8080/stproject') //本地测试
     // .constant('ENDPOINT','http://192.168.0.116:8080/stproject') //本地测试
     .run(function () {

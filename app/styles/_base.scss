@@ -179,3 +179,48 @@ ul {
 .text-sp-db{
   text-indent:4em;
 }
+.show-skills {
+  position: relative;
+  width: 190px !important;
+  ul {
+    padding: 10px;
+    margin: 15px 0 !important;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    right: 10px;
+    top: 10px;
+    width: 100%;
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 2px #aaa;
+    li{
+      text-align: center !important;
+      width: 100% !important;
+      font-weight: 400 !important;
+      span{
+        padding: 0 !important;
+      }
+    }
+    li:hover{
+      background-color: #3285ff;
+      color: #FFF;
+    }
+  }
+}
+
+.null-of-date{
+  border: 1px solid red;
+}
+.check-date-picker{
+    border: 1px solid red;
+}
+.show-accept-person{
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

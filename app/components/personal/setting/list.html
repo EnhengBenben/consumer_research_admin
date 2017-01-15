@@ -9,23 +9,24 @@
       <div class="row" style="position: relative;margin-top: 20px">
         <div class="form-container" ng-if="vm.user.type === 0" style="margin-top: 70px">
           <form class="form-horizontal" name="base" ng-submit="vm.saveBase()">
-            <div class="form-group" style="position: relative;margin-top: -78px;border-bottom: none">
-              <div class="col-md-5 col-md-offset-2">
-                <label><input type="radio" name="baseType" ng-model="vm.settingObj.basetype" ng-value="0"
-                              disabled/><span class="normal-weight"> 我要发布项目，想找承包方</span></label>
-              </div>
-              <div class="col-md-5">
-                <label><input type="radio" name="baseType" ng-model="vm.settingObj.basetype" ng-value="1"
-                              disabled/><span class="normal-weight"> 我要承接项目，想找发包方</span></label>
-              </div>
-            </div>
+            <!--<div class="form-group" style="position: relative;margin-top: -78px;border-bottom: none">-->
+            <!--<div class="col-md-5 col-md-offset-2">-->
+            <!--<label><input type="radio" name="baseType" ng-model="vm.settingObj.basetype" ng-value="0"-->
+            <!--disabled/><span class="normal-weight"> 我要发布项目，想找承包方</span></label>-->
+            <!--</div>-->
+            <!--<div class="col-md-5">-->
+            <!--<label><input type="radio" name="baseType" ng-model="vm.settingObj.basetype" ng-value="1"-->
+            <!--disabled/><span class="normal-weight"> 我要承接项目，想找发包方</span></label>-->
+            <!--</div>-->
+            <!--</div>-->
             <div class="form-group" ng-class="{'has-success': base.flattype.$valid}">
               <div class="col-md-2 control-label">
                 <label>单位类型</label>
               </div>
               <div class="col-md-10" style="padding-top: 4px">
                 <div class="col-md-2" ng-repeat="i in vm.flattypeArr" ng-class="{'no-padding-left': $index === 0}">
-                  <label><input type="radio" name="flattype" ng-value="i.id" ng-model="vm.settingObj.flattype" required/><span class="normal-weight"> {{i.name}}</span></label>
+                  <label><input type="radio" name="flattype" ng-value="i.id" ng-model="vm.settingObj.flattype"
+                                required/><span class="normal-weight"> {{i.name}}</span></label>
                 </div>
               </div>
             </div>
@@ -34,10 +35,12 @@
                 <label>营业执照类型</label>
               </div>
               <div class="col-md-5 margin-seven">
-                <label><input type="radio" name="idType" ng-model="vm.settingObj.idtype" ng-value="0" required/><span class="normal-weight"> 普通营业执照( 存在独立的组织机构代码证)</span></label>
+                <label><input type="radio" name="idType" ng-model="vm.settingObj.idtype" ng-value="0" required/><span
+                  class="normal-weight"> 普通营业执照( 存在独立的组织机构代码证)</span></label>
               </div>
               <div class="col-md-5 margin-seven">
-                <label><input type="radio" name="idType" ng-model="vm.settingObj.idtype" ng-value="1" required/><span class="normal-weight"> 多证合一营业执照( 不存在独立的组织机构代码证)</span></label>
+                <label><input type="radio" name="idType" ng-model="vm.settingObj.idtype" ng-value="1" required/><span
+                  class="normal-weight"> 多证合一营业执照( 不存在独立的组织机构代码证)</span></label>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': vm.settingObj.idimage}">
@@ -49,7 +52,7 @@
               </div>
               <div class="col-md-5">
                 <div style="height: 100px;width: 80px;background-color: #00b3ee">
-                  <img alt="请上传照片" ng-src="{{vm.settingObj.idimage}}" style="width: 100%;height: 100%"/>
+                  <img alt="图片加载失败" ng-src="{{vm.settingObj.idimage}}" style="width: 100%;height: 100%"/>
                 </div>
               </div>
             </div>
@@ -65,7 +68,8 @@
                        ng-model="vm.settingObj.name"
                        placeholder="请输入企业名称"
                        required/>
-                <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">企业名称不能为空</div>
+                <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">企业名称不能为空
+                </div>
                 <span ng-if="base.name.$valid" class="input-result"><i class="fa fa-check"></i></span>
               </div>
             </div>
@@ -76,9 +80,14 @@
               <div class="col-md-10">
         <textarea name="proscope"
                   ng-class="{'error-input': ((base.proscope.$error.required || base.proscope.$error.minlength) && base.proscope.$touched)}"
-                  ng-minlength="10" class="form-control" ng-model="vm.settingObj.proscope" placeholder="请输入营业范围，不得少于10个字符" required=""></textarea>
-                <div class="help-block error-font" ng-if="base.proscope.$error.required && base.proscope.$touched">营业范围不能为空</div>
-                <div class="help-block error-font" ng-if="base.proscope.$error.minlength && base.proscope.$touched">营业范围不得少于10个字</div>
+                  ng-minlength="10" class="form-control" ng-model="vm.settingObj.proscope"
+                  placeholder="请输入营业范围，不得少于10个字符" required=""></textarea>
+                <div class="help-block error-font" ng-if="base.proscope.$error.required && base.proscope.$touched">
+                  营业范围不能为空
+                </div>
+                <div class="help-block error-font" ng-if="base.proscope.$error.minlength && base.proscope.$touched">
+                  营业范围不得少于10个字
+                </div>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success':base.password.$valid}">
@@ -95,22 +104,36 @@
                        ng-maxlength="8"
                        ng-minlength="8"
                        required/>
-                <div class="help-block error-font" ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">密码长度必须为8位</div>
-                <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">密码不能为空</div>
-                <div class="help-block error-font" ng-if="(base.password.$error.pattern) && base.password.$touched">密码必须为字母数字组合</div>
+                <div class="help-block error-font"
+                     ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">
+                  密码长度必须为8位
+                </div>
+                <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">
+                  密码不能为空
+                </div>
+                <div class="help-block error-font" ng-if="(base.password.$error.pattern) && base.password.$touched">
+                  密码必须为字母数字组合
+                </div>
                 <span class="input-result" ng-if="base.password.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
-            <div class="form-group"   ng-class="{'has-success': base.reqpassword.$valid && vm.settingObj.reqpassword === vm.settingObj.password }">
+            <div class="form-group"
+                 ng-class="{'has-success': base.reqpassword.$valid && vm.settingObj.reqpassword === vm.settingObj.password }">
               <div class="col-md-2 control-label">
                 <label for="">确认密码</label>
               </div>
               <div class="col-md-10">
                 <input type="password"
                        ng-class="{'error-input': vm.settingObj.reqpassword != vm.settingObj.password &&  base.reqpassword.$touched}"
-                       name="reqpassword" class="form-control" placeholder="再次输入密码" ng-model="vm.settingObj.reqpassword" maxlength="8" minlength="8" required/>
-                <div class="help-block error-font" ng-if="(vm.settingObj.reqpassword != vm.settingObj.password) && base.reqpassword.$touched">请与原密码保持一致</div>
-                <span class="input-result" ng-if="(vm.settingObj.reqpassword === vm.settingObj.password)  && base.reqpassword.$touched && base.reqpassword.$valid"><i class="fa fa-check"></i></span>
+                       name="reqpassword" class="form-control" placeholder="再次输入密码" ng-model="vm.settingObj.reqpassword"
+                       maxlength="8" minlength="8" required/>
+                <div class="help-block error-font"
+                     ng-if="(vm.settingObj.reqpassword != vm.settingObj.password) && base.reqpassword.$touched">
+                  请与原密码保持一致
+                </div>
+                <span class="input-result"
+                      ng-if="(vm.settingObj.reqpassword === vm.settingObj.password)  && base.reqpassword.$touched && base.reqpassword.$valid"><i
+                  class="fa fa-check"></i></span>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success':vm.unitaddr.province && vm.unitaddr.city}">
@@ -118,30 +141,38 @@
                 <label>单位所在地</label>
               </div>
               <div class="col-md-5">
-                <select name="province" class="form-control" ng-model="vm.unitaddr.province" ng-options="i.id as i.name for i in vm.provinces" required>
+                <select name="province" class="form-control" ng-model="vm.unitaddr.province"
+                        ng-options="i.id as i.name for i in vm.provinces" required>
                   <option value="">请选择省份</option>
                 </select>
               </div>
               <div class="col-md-5">
-                <select name="city" class="form-control" ng-model="vm.unitaddr.city" ng-options="i.id as i.name for i in vm.cities" required>
+                <select name="city" class="form-control" ng-model="vm.unitaddr.city"
+                        ng-options="i.id as i.name for i in vm.cities" required>
                   <option value="">请选择市</option>
                 </select>
               </div>
             </div>
 
-            <div class="form-group"  ng-class="{'has-success': base.dobusiness.$valid}">
+            <div class="form-group" ng-class="{'has-success': base.dobusiness.$valid || vm.settingObj.dobusiness === '2099-12-31'}">
               <div class="col-md-2 control-label">
                 <label for="">营业期限</label>
               </div>
-              <div class="col-md-5">
-                <input type="text" name="dobusiness" required ng-model="vm.settingObj.dobusiness" format="YYYY-MM-DD" date-time min-view="date"
-                       timezone="Asia/Shanghai" auto-close="true"
-                       class="form-control" placeholder="">
-                <div class="help-block error-font" ng-if="(base.dobusiness.$error.required) && base.dobusiness.$touched">营业期限不能为空</div>
-                <span class="input-result" ng-if="base.dobusiness.$valid && base.dobusiness.$touched"><i class="fa fa-check"></i></span>
+              <div class="col-md-5" ng-if="vm.settingObj.dobusiness != '2099-12-31'">
+                <div class="input-group">
+                  <input type="text" name="dobusiness" class="form-control input-sm" datetime-picker="yyyy-MM-dd" enable-time="false"
+                         save-as="true" ng-model="vm.settingObj.dobusiness" is-open="dateOptions.showStartTime"
+                         datepicker-options="vm.dateOptions" placeholder="请选择营业期限"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showStartTime = !dateOptions.showStartTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                </div>
               </div>
               <div class="col-md-5" style="padding-top: 4px">
-                <label><input type="checkbox" ng-model="vm.settingObj.dobusiness" ng-true-value = "'2099-12-31'" ng-false-value="" /><span class="normal-weight"> 长期</span></label>
+                <label><input type="checkbox" ng-model="vm.settingObj.dobusiness" ng-true-value="'2099-12-31'"
+                              ng-false-value=""/><span class="normal-weight"> 长期</span></label>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': base.orgcode.$valid}" ng-if="vm.settingObj.idtype == 0">
@@ -156,7 +187,9 @@
                        class="form-control"
                        placeholder="请输入正确的组织机构代码" required
                 />
-                <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">组织机构代码不能为空</div>
+                <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">
+                  组织机构代码不能为空
+                </div>
                 <span class="input-result" ng-if="base.orgcode.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
@@ -172,7 +205,9 @@
                        class="form-control"
                        placeholder="请输入正确的统一社会信用代码" required
                 />
-                <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">组织机构代码不能为空</div>
+                <div class="help-block error-font" ng-if="(base.orgcode.$error.required) && base.orgcode.$touched">
+                  组织机构代码不能为空
+                </div>
                 <span class="input-result" ng-if="base.orgcode.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
@@ -191,7 +226,9 @@
                 <div class="help-block error-font" ng-if="(base.legname.$error.required) && base.legname.$touched">
                   法定代表人姓名不能为空
                 </div>
-                <div class="help-block error-font" ng-if="base.legname.$error.pattern && base.legname.$touched">请输入中文姓名</div>
+                <div class="help-block error-font" ng-if="base.legname.$error.pattern && base.legname.$touched">
+                  请输入中文姓名
+                </div>
                 <!--<div class="help-block error-font" ng-if="(base.legname.$error.minlength || base.legname.$error.maxlength) && base.legname.$touched">长度应在2-5个字符</div>-->
                 <span class="input-result" ng-if="base.legname.$valid"><i class="fa fa-check"></i></span>
               </div>
@@ -209,8 +246,13 @@
                        ng-maxlength="18"
                        ng-class="{'error-input': ((base.cardnum.$error.required || base.cardnum.$error.minlength) && base.cardnum.$touched)}"
                        placeholder="请输入正确的身份证号" required/>
-                <div class="help-block error-font" ng-if="(base.cardnum.$error.required) && base.cardnum.$touched">身份证号不能为空</div>
-                <div class="help-block error-font" ng-if="(base.cardnum.$error.minlength || base.cardnum.$error.maxlength) && base.cardnum.$touched">长度必须为18位</div>
+                <div class="help-block error-font" ng-if="(base.cardnum.$error.required) && base.cardnum.$touched">
+                  身份证号不能为空
+                </div>
+                <div class="help-block error-font"
+                     ng-if="(base.cardnum.$error.minlength || base.cardnum.$error.maxlength) && base.cardnum.$touched">
+                  长度必须为18位
+                </div>
                 <span class="input-result" ng-if="base.cardnum.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
@@ -218,18 +260,25 @@
               <div class="col-md-2 control-label">
                 <label>证件有效期</label>
               </div>
-              <div class="col-md-5">
-                <input type="text" name="validity" required ng-model="vm.settingObj.validity" format="YYYY-MM-DD" date-time min-view="date"
-                       timezone="Asia/Shanghai" auto-close="true"
-                       readonly
-                       ng-class="{'error-input': (base.validity.$error.required && base.validity.$touched)}"
-                       style="background-color: #FFF"
-                       class="form-control" placeholder="">
-                <div class="help-block error-font" ng-if="(base.validity.$error.required) && base.validity.$touched">证件有效期不能为空</div>
-                <span class="input-result" ng-if="base.validity.$valid"><i class="fa fa-check"></i></span>
+              <div class="col-md-5" ng-if="vm.settingObj.validity != '2099-12-31'">
+                <div class="input-group">
+                  <input type="text" name="validity" class="form-control input-sm"
+                         datetime-picker="yyyy-MM-dd" enable-time="false"
+                         ng-class="{'error-input': (base.starttime.$invalid && base.starttime.$touched)}"
+                         save-as="true" ng-model="vm.settingObj.validity" is-open="dateOptions.showEndTime"
+                         datepicker-options="vm.dateOptions" required placeholder="请选择证件有效期" readonly
+                         style="background-color: #FFF"/>
+           <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showEndTime = !dateOptions.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                </div>
+                <!-- <div date-picker-self dt="vm.settingObj.validity"></div>-->
               </div>
               <div class="col-md-5" style="padding-top: 4px">
-                <label><input type="checkbox" ng-true-value = "'2099-12-31'" ng-false-value="" ng-model="vm.settingObj.validity"/><span class="normal-weight"> 长期</span></label>
+                <label><input type="checkbox" ng-true-value="'2099-12-31'" ng-false-value=""
+                              ng-model="vm.settingObj.validity"/><span class="normal-weight"> 长期</span></label>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': base.rank.$valid}">
@@ -237,10 +286,14 @@
                 <label>填写人身份</label>
               </div>
               <div class="col-md-5">
-                <label class="margin-seven"><input type="radio" name="rank" ng-model="vm.settingObj.rank" ng-value="'我是法定代表人'" required/><span class="normal-weight"> 我是法定代表人</span></label>
+                <label class="margin-seven"><input type="radio" name="rank" ng-model="vm.settingObj.rank"
+                                                   ng-value="'我是法定代表人'" required/><span
+                  class="normal-weight"> 我是法定代表人</span></label>
               </div>
               <div class="col-md-5">
-                <label class="margin-seven"><input type="radio" name="rank" ng-model="vm.settingObj.rank" ng-value="'我是代理人'" required/><span class="normal-weight"> 我是代理人</span></label>
+                <label class="margin-seven"><input type="radio" name="rank" ng-model="vm.settingObj.rank"
+                                                   ng-value="'我是代理人'" required/><span
+                  class="normal-weight"> 我是代理人</span></label>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': base.telnum.$valid}">
@@ -285,12 +338,14 @@
                 <input type="text"
                        class="form-control"
                        ng-class="{'error-input': (base.pname.$error.pattern || base.pname.$error.required)  && base.pname.$touched}"
-                       name = 'pname'
+                       name='pname'
                        ng-model="vm.settingObj.pname"
                        ng-pattern="/^[\u2e80-\u9fff]+$/"
                        placeholder="请输入姓名" required readonly/>
-                <span ng-if="base.pname.$error.pattern && base.pname.$touched" class="help-block error-font">请输入中文名</span>
-                <span ng-if="base.pname.$error.required && base.pname.$touched" class="help-block error-font">姓名不能为空</span>
+                <span ng-if="base.pname.$error.pattern && base.pname.$touched"
+                      class="help-block error-font">请输入中文名</span>
+                <span ng-if="base.pname.$error.required && base.pname.$touched"
+                      class="help-block error-font">姓名不能为空</span>
                 <span class="input-result" ng-if="base.pname.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
@@ -308,7 +363,8 @@
                 <p>文件只支持JPG,PNG,PDF格式的图片 </p>
               </div>
               <div class="col-md-3">
-                <img ng-src="{{vm.settingObj.imageurl}}" style="width: 80px;height: 120px;" ng-if="vm.settingObj.imageurl"/>
+                <img ng-src="{{vm.settingObj.imageurl}}" style="width: 80px;height: 120px;"
+                     ng-if="vm.settingObj.imageurl"/>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success':base.password.$valid}">
@@ -325,22 +381,36 @@
                        ng-maxlength="8"
                        ng-minlength="8"
                        required/>
-                <div class="help-block error-font" ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">密码长度必须为8位</div>
-                <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">密码不能为空</div>
-                <div class="help-block error-font" ng-if="(base.password.$error.pattern) && base.password.$touched">密码必须为字母数字组合</div>
+                <div class="help-block error-font"
+                     ng-if="(base.password.$error.minlength || base.password.$error.maxlength) && base.password.$touched">
+                  密码长度必须为8位
+                </div>
+                <div class="help-block error-font" ng-if="(base.password.$error.required) && base.password.$touched">
+                  密码不能为空
+                </div>
+                <div class="help-block error-font" ng-if="(base.password.$error.pattern) && base.password.$touched">
+                  密码必须为字母数字组合
+                </div>
                 <span class="input-result" ng-if="base.password.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
-            <div class="form-group"   ng-class="{'has-success': base.passwordagin.$valid && vm.settingObj.passwordagin === vm.settingObj.password }">
+            <div class="form-group"
+                 ng-class="{'has-success': base.passwordagin.$valid && vm.settingObj.passwordagin === vm.settingObj.password }">
               <div class="col-md-2 control-label">
                 <label for="">确认密码</label>
               </div>
               <div class="col-md-10">
                 <input type="password"
                        ng-class="{'error-input': vm.settingObj.passwordagin != vm.settingObj.password &&  base.passwordagin.$touched}"
-                       name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword" maxlength="8" minlength="8" required/>
-                <div class="help-block error-font" ng-if="(vm.settingObj.passwordagin != vm.settingObj.password) && base.passwordagin.$touched">请与原密码保持一致</div>
-                <span class="input-result" ng-if="(vm.settingObj.passwordagin === vm.settingObj.password)  && base.passwordagin.$touched && base.passwordagin.$valid"><i class="fa fa-check"></i></span>
+                       name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.base.reqpassword"
+                       maxlength="8" minlength="8" required/>
+                <div class="help-block error-font"
+                     ng-if="(vm.settingObj.passwordagin != vm.settingObj.password) && base.passwordagin.$touched">
+                  请与原密码保持一致
+                </div>
+                <span class="input-result"
+                      ng-if="(vm.settingObj.passwordagin === vm.settingObj.password)  && base.passwordagin.$touched && base.passwordagin.$valid"><i
+                  class="fa fa-check"></i></span>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success':vm.unitaddr.province && vm.unitaddr.city}">
@@ -374,12 +444,16 @@
                        placeholder="请输入电子邮箱"
                        ng-pattern="/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,}.(com)$/"
                 />
-                <div class="help-block error-font" ng-if="(base.emailaddr.$error.required) && base.emailaddr.$touched">邮箱不能为空</div>
-                <div class="help-block error-font" ng-if="(base.emailaddr.$error.pattern) && base.emailaddr.$touched">请输入正确的邮箱</div>
+                <div class="help-block error-font" ng-if="(base.emailaddr.$error.required) && base.emailaddr.$touched">
+                  邮箱不能为空
+                </div>
+                <div class="help-block error-font" ng-if="(base.emailaddr.$error.pattern) && base.emailaddr.$touched">
+                  请输入正确的邮箱
+                </div>
                 <span class="input-result" ng-if="base.emailaddr.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
-            <div class="form-group"  ng-class="{'has-success': vm.settingObj.job}">
+            <div class="form-group" ng-class="{'has-success': vm.settingObj.job}">
               <div class="col-md-2 control-label">
                 <label>工作职位</label>
               </div>
@@ -390,7 +464,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group"  ng-class="{'has-success': base.jobage.$valid}">
+            <div class="form-group" ng-class="{'has-success': base.jobage.$valid}">
               <div class="col-md-2 control-label">
                 <label>工作年限</label>
               </div>
@@ -401,12 +475,13 @@
                 </select>
               </div>
             </div>
-            <div class="form-group"  ng-class="{'has-success': base.engrade.$valid}">
+            <div class="form-group" ng-class="{'has-success': base.engrade.$valid}">
               <div class="col-md-2 control-label">
                 <label>英语能力</label>
               </div>
               <div class="col-md-10">
-                <select class="form-control" ng-model="vm.settingObj.engrade" name="engrade" required ng-options="i.id as i.name for i in vm.EnglishLevel">
+                <select class="form-control" ng-model="vm.settingObj.engrade" name="engrade" required
+                        ng-options="i.id as i.name for i in vm.EnglishLevel">
                   <option value="">请选择</option>
                 </select>
               </div>
@@ -476,14 +551,14 @@
                                                     ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
               </div>
             </div>
-           <!-- <div class="form-group">
-              <div class="col-md-2 control-label" style="padding-top: 0">
-                <label>其他</label>
-              </div>
-              <div class="col-md-9">
-                <input class="form-control" type="text" ng-model="vm.skill.other" placeholder="如果还有其他技能,请输入"/>
-              </div>
-            </div>-->
+            <!-- <div class="form-group">
+               <div class="col-md-2 control-label" style="padding-top: 0">
+                 <label>其他</label>
+               </div>
+               <div class="col-md-9">
+                 <input class="form-control" type="text" ng-model="vm.skill.other" placeholder="如果还有其他技能,请输入"/>
+               </div>
+             </div>-->
             <div class="form-group" style="border-bottom: none">
               <div class="col-md-10 col-md-offset-2">
                 <button type="submit" class="btn btn-primary">保存</button>
@@ -508,11 +583,15 @@
               <div class="col-md-2 control-label">
                 <label>企业资质</label>
               </div>
-              <div class="col-md-4"  style="text-align: center">
-                <label>上传企业资质</label>
-              </div>
-              <div class="col-md-4"  style="text-align: center">
+              <div class="col-md-3" style="text-align: center">
                 <label>资质名称</label>
+              </div>
+              <div class="col-md-3" style="text-align: center">
+                <label>上传资质</label>
+                <!--<single-uploader url="vm.base.url"></single-uploader>-->
+              </div>
+              <div class="col-md-2" style="text-align: center">
+                <label>资质展示</label>
                 <!--<single-uploader url="vm.base.url"></single-uploader>-->
               </div>
               <div class="col-md-2">
@@ -520,14 +599,19 @@
               </div>
             </div>
             <div class="form-group" ng-repeat="i in vm.add.qualifications track by $index">
-              <div class="col-md-4 col-md-offset-2">
+              <div class="col-md-3 col-md-offset-2">
                 <input type="text" class="form-control" ng-model="i.zname" required placeholder="请输入企业资质名称">
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <single-uploader url="i.zzurl"></single-uploader>
               </div>
               <div class="col-md-2">
-                <div class="btn btn-danger" ng-disabled="vm.add.qualifications.length === 1" ng-click="vm.removeOption($index)">删除</div>
+                <img ng-src="{{i.zzurl}}" style="width: 100px; height: 70px;padding: 4px;"/>
+              </div>
+              <div class="col-md-2">
+                <div class="btn btn-danger" ng-disabled="vm.add.qualifications.length === 1"
+                     ng-click="vm.removeOption($index)">删除
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -579,7 +663,9 @@
                        placeholder="请输入期望日薪"
                        required
                 />
-                <div class="help-block error-font" ng-if="(resume.wage.$error.required) && resume.wage.$touched">期望日薪不能为空</div>
+                <div class="help-block error-font" ng-if="(resume.wage.$error.required) && resume.wage.$touched">
+                  期望日薪不能为空
+                </div>
                 <span class="input-result" ng-if="resume.wage.$valid"><i class="fa fa-check"></i></span>
               </div>
               <div class="col-md-5 margin-seven">
@@ -595,9 +681,11 @@
                   ng-class="{'error-input': (resume.history.$error.minlength || resume.history.$error.required) && resume.history.$touched}"
                   name="history" required placeholder="请输入雇佣历史,不得少于10个字符" minlength="10"
                   ng-model="vm.settingObj.history"></textarea>
-                <div class="help-block error-font" ng-if="resume.history.$error.required && resume.history.$touched">雇佣历史不能为空
+                <div class="help-block error-font" ng-if="resume.history.$error.required && resume.history.$touched">
+                  雇佣历史不能为空
                 </div>
-                <div class="help-block error-font" ng-if="resume.history.$error.minlength && resume.history.$touched">不得少于10个字
+                <div class="help-block error-font" ng-if="resume.history.$error.minlength && resume.history.$touched">
+                  不得少于10个字
                 </div>
               </div>
             </div>
@@ -608,10 +696,15 @@
               <div class="col-md-10">
         <textarea class="form-control"
                   ng-class="{'error-input': (resume.proexperience.$error.minlength || resume.proexperience.$error.required) && resume.proexperience.$touched}"
-                  name="proexperience" ng-model="vm.settingObj.proexperience" placeholder="请输入项目履历,不得少于10个字符" minlength="10"
+                  name="proexperience" ng-model="vm.settingObj.proexperience" placeholder="请输入项目履历,不得少于10个字符"
+                  minlength="10"
                   required="required"></textarea>
-                <div class="help-block error-font" ng-if="resume.proexperience.$error.required && resume.proexperience.$touched">项目履历不能为空</div>
-                <div class="help-block error-font" ng-if="resume.proexperience.$error.minlength && resume.proexperience.$touched">不得少于10个字</div>
+                <div class="help-block error-font"
+                     ng-if="resume.proexperience.$error.required && resume.proexperience.$touched">项目履历不能为空
+                </div>
+                <div class="help-block error-font"
+                     ng-if="resume.proexperience.$error.minlength && resume.proexperience.$touched">不得少于10个字
+                </div>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': resume.educational.$valid}">
@@ -622,8 +715,12 @@
         <textarea class="form-control" name="educational" ng-model="vm.settingObj.educational"
                   ng-class="{'error-input': (resume.educational.$error.minlength || resume.educational.$error.required) && resume.educational.$touched}"
                   placeholder="请输入教育背景,不得少于10个字符" minlength="10" required="required"></textarea>
-                <div class="help-block error-font" ng-if="resume.educational.$error.required && resume.educational.$touched">项目履历不能为空</div>
-                <div class="help-block error-font" ng-if="resume.educational.$error.minlength && resume.educational.$touched">不得少于10个字</div>
+                <div class="help-block error-font"
+                     ng-if="resume.educational.$error.required && resume.educational.$touched">项目履历不能为空
+                </div>
+                <div class="help-block error-font"
+                     ng-if="resume.educational.$error.minlength && resume.educational.$touched">不得少于10个字
+                </div>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success': resume.certificate.$valid}">
@@ -642,7 +739,8 @@
                 <label>其他信息</label>
               </div>
               <div class="col-md-10">
-                <textarea class="form-control" name="other" ng-model="vm.settingObj.other" placeholder="请输入其他信息"></textarea>
+                <textarea class="form-control" name="other" ng-model="vm.settingObj.other"
+                          placeholder="请输入其他信息"></textarea>
               </div>
             </div>
             <div class="form-group" style="border-bottom: none">

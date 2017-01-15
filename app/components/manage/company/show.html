@@ -2,192 +2,192 @@
   <div class="pull-right btn btn-primary" ui-sref="app.manage.company.list"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
 </div>
 <div class="form-container" style="position: relative">
-  <form class="form-horizontal">
+  <form class="form-horizontal" style="width: 50%">
     <div class="form-group" style="position: relative">
-      <div class="col-md-10 col-md-offset-2">
+      <div class="col-md-9 col-md-offset-3">
         <p><strong style="font-size: 16px">{{vm.show.proname}}</strong></p>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>发包类型</label>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.requesttype[0].name}}</p>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>地址</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.addrname}}</p>
       </div>
     </div>
     <div class="form-group" ng-if="vm.show.requesttype[0].id === 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目说明</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.odeclare}}</p>
       </div>
     </div>
     <div class="form-group" ng-if="vm.show.requesttype[0].id === 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目状态</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.cstatus === 1 ? '开启': '关闭'}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>付款方式</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.pricetype === 1? '月付' : '季付'}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>工程师年限</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.ages[0].name}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>工程师类型</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.mantypr[0].name}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id === 0">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目价格</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.price}} 元</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id === 1">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目预算</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.price}} /人/月</p>
       </div>
     </div> <div class="form-group"  ng-if="vm.show.requesttype[0].id === 2">
-    <div class="col-md-2 control-label">
+    <div class="col-md-3 control-label">
       <label>项目预算</label>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <p class="margin-seven">{{vm.show.price}} /人/天</p>
     </div>
   </div>
     <div class="form-group">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目开始时间</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.starttime}}</p>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-2 control-label">
+      <div class="col-md-3 control-label">
         <label>项目结束时间</label>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p class="margin-seven">{{vm.show.endtime}}</p>
       </div>
     </div>
     <div class="form-group" ng-if="vm.show.requesttype[0].id != 0">
-    <div class="col-md-2 control-label">
+    <div class="col-md-3 control-label">
       <label>任职要求</label>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <p class="margin-seven">{{vm.show.requirements}}</p>
     </div>
   </div>
-    <div class="form-group" ng-if="vm.show.requesttype[0].id != 0">
-      <div class="col-md-2 control-label">
-        <label>承接者</label>
+  </form>
+  <div style="width: 50%;height: 100%" class="show-accept-person">
+    <div class="form-group" ng-if="vm.show.requesttype[0].id != 0" style="padding: 41px 0;margin-bottom: 10px;">
+      <div class="col-md-6 control-label">
+        <label>承接者列表展示：</label>
       </div>
     </div>
-    <div class="form-group" style="border-bottom: none">
-      <uib-tabset style="background:white;">
-        <uib-tab heading="企业" style="text-align: right;margin-left: 11%">
-          <div class="row letter-list-title margin-seven">
-            <div class="col-md-3">
-              <p>企业名称</p>
-            </div>
-            <div class="col-md-3"><p>北京</p></div>
-            <div class="col-md-3">
-              <p>企业类型</p>
-            </div>
-            <div class="col-md-2">
-              <p>行业经验</p>
-            </div>
+    <uib-tabset style="background:white;">
+      <uib-tab heading="企业" style="text-align: right;margin-left: 11%">
+        <div class="row letter-list-title margin-seven">
+          <div class="col-md-3">
+            <p>企业名称</p>
           </div>
-          <div class="row" ng-if="!vm.undertakeC.length">
-            <div class="static-box">
-              <p>暂无数据</p>
-            </div>
+          <div class="col-md-3"><p>地址</p></div>
+          <div class="col-md-3">
+            <p>企业类型</p>
           </div>
-          <div class="row margin-seven" ng-repeat="list in vm.undertakeC">
-            <div class="col-md-3 -align-center">
-              <a>{{list.name}}</a>
-            </div>
-            <div class="col-md-3 -align-center"><p>{{list.unitaddr}}</p></div>
-            <div class="col-md-3 -align-center">
-              <p>{{list.flattype[0].name}}</p>
-            </div>
-            <div class="col-md-3 overflow-text-hidden -align-center">
-              <span>{{list.experience}}</span>
-            </div>
+          <div class="col-md-2">
+            <p>行业经验</p>
           </div>
-        </uib-tab>
-        <uib-tab heading="个人">
-          <div class="row letter-list-title margin-seven">
-            <div class="col-md-2">
-              <p>真实姓名</p>
-            </div>
-            <div class="col-md-2"><p>北京</p></div>
-            <div class="col-md-3">
-              <p>期望职位</p>
-            </div>
-            <div class="col-md-3">
-              <p>工作经验</p>
-            </div>
-            <div class="col-md-2">
-              <p>期望薪资</p>
-            </div>
+        </div>
+        <div class="row" ng-if="!vm.undertakeC.length">
+          <div class="static-box">
+            <p>暂无数据</p>
           </div>
-          <div class="row" ng-if="!vm.undertakeP.length">
-            <div class="static-box">
-              <p>暂无数据</p>
-            </div>
+        </div>
+        <div class="row margin-seven" ng-repeat="list in vm.undertakeC" style="margin: 5px 0;">
+          <div class="col-md-3 -align-center">
+            <a ui-sref="app.contractors.show({id: list.id,userid: vm.user.userid})">{{list.name}}</a>
           </div>
-          <div class="row" ng-repeat="list in vm.undertakeP">
-            <div class="col-md-2" style="text-align: center">
-              <a>{{list.pname}}</a>
-            </div>
-            <div class="col-md-2"  style="text-align: center"><p>{{list.address}}</p></div>
-            <div class="col-md-3"  style="text-align: center">
-              <p>{{list.job}}</p>
-            </div>
-            <div class="col-md-3"  style="text-align: center">
-              <p>{{list.experience}}</p>
-            </div>
-            <div class="col-md-2"  style="text-align: center">
-              <p>{{list.money}}</p>
-            </div>
+          <div class="col-md-3 -align-center"><p>{{list.unitaddr}}</p></div>
+          <div class="col-md-3 -align-center">
+            <p>{{list.flattype[0].name}}</p>
           </div>
-        </uib-tab>
-      </uib-tabset>
-    </div>
-  </form>
+          <div class="col-md-3 overflow-text-hidden -align-center">
+            <span>{{list.experience}}</span>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab heading="个人">
+        <div class="row letter-list-title margin-seven">
+          <div class="col-md-2">
+            <p>真实姓名</p>
+          </div>
+          <div class="col-md-2"><p>地址</p></div>
+          <div class="col-md-3">
+            <p>期望职位</p>
+          </div>
+          <div class="col-md-3">
+            <p>行业经验</p>
+          </div>
+          <div class="col-md-2">
+            <p>期望薪资</p>
+          </div>
+        </div>
+        <div class="row" ng-if="!vm.undertakeP.length">
+          <div class="static-box">
+            <p>暂无数据</p>
+          </div>
+        </div>
+        <div class="row" ng-repeat="list in vm.undertakeP" style="margin: 5px 0;">
+          <div class="col-md-2" style="text-align: center">
+            <a  ui-sref="app.freelance.show({id: list.id,userid: vm.user.userid})">{{list.pname}}</a>
+          </div>
+          <div class="col-md-2"  style="text-align: center"><p>{{list.address}}</p></div>
+          <div class="col-md-3"  style="text-align: center">
+            <p>{{list.job}}</p>
+          </div>
+          <div class="col-md-3"  style="text-align: center">
+            <p class="overflow-text-hidden">{{list.experience}}</p>
+          </div>
+          <div class="col-md-2"  style="text-align: center">
+            <p class="important-font">{{list.money}}元/天</p>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
 </div>
 

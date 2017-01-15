@@ -44,7 +44,7 @@
          }
         })
         .error(function (response) {
-          toaster.pop('error', '登陆失败');
+          toaster.pop('error', '登录失败');
         });
     }
   }

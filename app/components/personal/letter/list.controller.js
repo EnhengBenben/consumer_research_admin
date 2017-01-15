@@ -20,17 +20,26 @@
 
     function init() {
       if (vm.status === 'send') {
-        PersonalService
-          .findOutbox(vm.user)
-          .then(function (res) {
-            vm.lists = res.data;
-          })
+          PersonalService
+            .findOutbox(vm.user)
+            .then(function (res) {
+              vm.lists = res.data;
+            })
       } else {
-        PersonalService
-          .findInBox(vm.user)
-          .then(function (res) {
-            vm.lists = res.data;
-          })
+        if(vm.user.basetype === 1){
+          PersonalService
+            .findInBox2(vm.user)
+            .then(function (res) {
+              vm.lists = res.data;
+            })
+        }else {
+          PersonalService
+            .findInBox(vm.user)
+            .then(function (res) {
+              vm.lists = res.data;
+            })
+        }
+
       }
     }
 

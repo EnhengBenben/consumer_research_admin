@@ -43,7 +43,7 @@
       vm.requesttypes = [{id: 0, name: '整体项目'}, {id: 1, name: '驻场开发项目'}, {id: 2, name: '自由职业者项目'}];
 
       CompanyService
-        .show({id: $stateParams.id,requesttype: $stateParams.requesttype})
+        .show({id: $stateParams.id,requesttype: $stateParams.requesttype,userid: $localStorage.user.userid})
         .then(function(res){
           vm.show = res.data;
           vm.show.requesttype = vm.requesttypes.filter(function(data){

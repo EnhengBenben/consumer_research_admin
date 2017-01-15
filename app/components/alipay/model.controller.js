@@ -9,7 +9,7 @@
     .controller('AlipayModalCtrl', Controller);
 
   /* @ngInject */
-  function Controller($state, items, $localStorage, $uibModalInstance, $interval, toaster, AlipayService) {
+  function Controller($state, items, $localStorage, $uibModalInstance, $interval, toaster, AlipayService, ENDPOINT) {
     var vm = this;
     vm.ok = ok;//确定支付
     vm.cancel = cancel; //取消页面展示
@@ -34,7 +34,7 @@
       if(items.type === 2){                   /*查看承包方详情，获取相应订单信息*/
         vm.params = {
           userid: vm.user.userid,
-          rid: parseInt(items.id)
+          cid: parseInt(items.id)
         };
         AlipayService
           .contractorsInfo(vm.params)
@@ -45,7 +45,7 @@
       if(items.type === 1){                     /*查看自由职业者详情，获取相应订单信息*/
         vm.params = {
           userid: vm.user.userid,
-          rid: parseInt(items.id)
+          zid: parseInt(items.id)
         };
         AlipayService
           .freelanceInfo(vm.params)
@@ -73,17 +73,17 @@
       timer.then(function(){
         vm.wating = true; //等待付款
         if(items.type === 3){
-          window.open('http://192.168.0.116:8080/stproject/alipay/index.action?orderid=' + vm.showInfo.orderid
-            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc= 123&userid=' + vm.user.userid
+          window.open( ENDPOINT + '/alipay/index.action?orderid=' + vm.showInfo.orderid
+            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc=123&userid=' + vm.user.userid
             + '&rid=' + vm.showInfo.rid + '&alipaytype=' + 1, '_blank');
         }else if(items.type === 2){
-          window.open('http://192.168.0.116:8080/stproject/alipay/index.action?orderid =' + vm.showInfo.orderid
-            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc= 123&userid=' + vm.user.userid
-            + '&cid=' + vm.showInfo.cid + '&alipaytype=' + items.type, '_blank');
+          window.open( ENDPOINT + 'alipay/index.action?orderid=' + vm.showInfo.orderid
+            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc=123&userid=' + vm.user.userid
+            + '&lid=' + vm.showInfo.cid + '&alipaytype=' + items.type, '_blank');
         }else if(items.type === 1){
-          window.open('http://192.168.0.116:8080/stproject/alipay/index.action?orderid =' + vm.showInfo.orderid
-            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc= 123&userid=' + vm.user.userid
-            + '&zid=' + vm.showInfo.zid + '&alipaytype=' + 3, '_blank');
+          window.open( ENDPOINT + '/alipay/index.action?orderid=' + vm.showInfo.orderid
+            + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc=123&userid=' + vm.user.userid
+            + '&lid=' + vm.showInfo.zid + '&alipaytype=' + 3, '_blank');
         }
       })
     }
@@ -99,6 +99,7 @@
     }
 
     function showContect() {
+      //$uibModalInstance.dismiss();
       var params = {
         orderid: vm.showInfo.orderid
       };
@@ -110,6 +111,7 @@
             vm.reBack();
           }else if(res.data.data == 2){
             toaster.pop('success', '恭喜您支付成功');
+            $uibModalInstance.close({data: '2'});
           }else {
             toaster.pop('warning', '请确认订单已提交');
             vm.reBack();

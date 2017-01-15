@@ -30,12 +30,13 @@
         name: '10年以上'
       }];
     vm.showContact = showContact;
+    vm.sendLetter = sendLetter;
 
     return init();
 
     function init(){
       FreelanceService
-        .show({id: $stateParams.id})
+        .show({id: $stateParams.id, userid: $localStorage.user.userid})
         .then(function(res){
           vm.show = res.data;
           vm.show.jobage = vm.jobAges.filter(function(i){
@@ -57,17 +58,44 @@
           items: function () {
             return {
               id: $stateParams.id,
-              type: 3
+              type: 1
             };
           }
         }
       });
       modalInstance.result.then(function (selectedItem) {
         console.log(selectedItem)
+        init();
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+       // $log.info('Modal dismissed at: ' + new Date());
       });
      // $state.go('alipay.list',{id: $stateParams.id,type: 3});
+    }
+
+    function sendLetter(){
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'components/company/model.html',
+        controller: 'ModalInstanceCtrl',
+        controllerAs: 'vm',
+        size: 'md',
+        resolve: {
+          items: function () {
+            return {
+              id: $stateParams.id,
+              name: vm.show.pname,
+              returnMse: true,
+            };
+          }
+        }
+      });
+      modalInstance.result.then(function (selectedItem) {
+
+      }, function () {
+
+        // $log.info('Modal dismissed at: ' + new Date());
+      });
     }
   }
 })();

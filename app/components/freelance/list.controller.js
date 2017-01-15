@@ -6,7 +6,7 @@
     .controller('FreelanceListCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, FreelanceService) {
+  function Controller($localStorage, $state, toaster, $scope, FreelanceService, AuthService) {
     var vm = this;
     vm.user = $localStorage.user;
     vm.choice = choice;
@@ -124,7 +124,17 @@
         .province()
         .then(function (res) {
           vm.citys = res.data;
-        })
+        });
+      AuthService
+        .experience()
+        .then(function(res){
+          vm.experiences = res.data;
+        });
+      AuthService
+        .skill()
+        .then(function(res){
+          vm.skills = res.data;
+        });
     }
 
     function choice(index, data) {

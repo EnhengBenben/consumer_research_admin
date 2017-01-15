@@ -69,7 +69,7 @@ angular.module('app')
         templateUrl: 'components/auth/company/qualifications.html',
         controller: 'CompanyQualificationCtrl as vm'
       })
-      .state('company.finish',{
+      .state('finish',{
         url: '/finish',
         templateUrl: 'components/auth/finish.html',
         controller: 'RegisterFinishCtrl as vm'

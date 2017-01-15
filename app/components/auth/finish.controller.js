@@ -11,12 +11,16 @@
   /* @ngInject */
   function Controller($localStorage, $state, toaster) {
     var vm = this;
-
+    vm.finish = finish;
 
     return init();
 
     function init(){
 
+    }
+
+    function finish(){
+      $state.go('go.login');
     }
 
 

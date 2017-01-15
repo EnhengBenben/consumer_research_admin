@@ -55,7 +55,7 @@
           })
         });
       CompanyService
-        .show({id: $stateParams.id, requesttype: $stateParams.requesttype})
+        .show({id: $stateParams.id, requesttype: $stateParams.requesttype, userid: vm.user.userid})
         .then(function (res) {
           vm.show = res.data;
           //vm.show.cstatus = vm.show.cstatus === 1? '开启':'关闭';

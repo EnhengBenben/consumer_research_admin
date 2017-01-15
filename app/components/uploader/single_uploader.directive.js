@@ -44,6 +44,7 @@
         if( item.file.type === 'image/png' || item.file.type === 'image/jpeg'){
           $scope.url = response;
           if(response){
+            $scope.name = item.name;
             toaster.pop('success','上传成功');
           }
         }else {

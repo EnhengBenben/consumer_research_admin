@@ -13,10 +13,12 @@
       province: null,
       city: null
     };
+    vm.initDate = new Date();
+    vm.initDate.setFullYear(2099,11,30);
     return init();
 
     function init(){
-      if($localStorage.base != undefined){
+      if($localStorage.base){
         vm.base = $localStorage.base;
         AuthService
           .city({provinceId: parseInt(vm.base.unitaddr.split(',')[0])})

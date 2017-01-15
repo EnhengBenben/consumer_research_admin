@@ -14,6 +14,9 @@
     };
     vm.user = $localStorage.user;
     vm.published = published;
+    vm.publish = {
+      starttime: moment()
+    };
     vm.status = [{id: 1, name: '开放'}, {id: 2, name: '关闭'}];
     vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
     vm.jobAges = [
@@ -41,6 +44,9 @@
     return init();
 
     function init() {
+      vm.dateOptions = {
+        minDate: moment(vm.publish.starttime) || moment()
+      };
       AuthService
         .province()
         .then(function (res) {
@@ -54,15 +60,23 @@
               vm.cities = res.data;
             });
         }
-      }, true)
+      }, true);
+      $scope.$watch('vm.publish.starttime', function(newValue, oldValue){
+        if(newValue != oldValue){
+          vm.dateOptions = {
+            minDate: moment(vm.publish.starttime) || moment()
+          };
+          console.log(vm.publish);
+        }
+      }, true);
     }
     function published() {
-     if(vm.publish.starttime){
-       vm.publish.starttime = vm.publish.starttime.format('YYYY-MM-DD');
+   /*  if(vm.publish.starttime){
+       vm.publish.starttime = vm.publish.starttime.format('yyyy-MM-dd');
      }
      if(vm.publish.endtime){
-       vm.publish.endtime = vm.publish.endtime.format('YYYY-MM-DD');
-     }
+       vm.publish.endtime = vm.publish.endtime.format('yyyy-MM-dd');
+     }*/
      vm.publish.addr = vm.unitaddr.province + ',' + vm.unitaddr.city;
       vm.publish['userid'] = vm.user.userid;
       ManageService

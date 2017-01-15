@@ -1,6 +1,67 @@
 <div class="base-container">
   <div class="row no-margin soft-filter">
-
+    <ul class="list-unstyled no-margin">
+      <li><span>区域选择 ：</span></li>
+      <li><span ng-click="vm.choice(1,null)" ng-class="{'filter-active': vm.filter[1] === null}">全国</span></li>
+      <li><span ng-click="vm.choice(1,1)" ng-class="{'filter-active': vm.filter[1] === 1}">北京</span></li>
+      <li><span ng-click="vm.choice(1,73)" ng-class="{'filter-active': vm.filter[1] === 73}">上海</span></li>
+      <li><span ng-click="vm.choice(1,2)" ng-class="{'filter-active': vm.filter[1] === 2}">天津</span></li>
+      <li><span ng-click="vm.choice(1,200)" ng-class="{'filter-active': vm.filter[1] === 200}">深圳</span></li>
+      <li
+        ng-if="!(vm.filter[1] === 1 || vm.filter[1] === 73 || vm.filter[1] === 2|| vm.filter[1] === 200) && !vm.filter[1].flag">
+        <span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[1] === vm.select.id}">{{vm.select.name}}</span>
+      </li>
+      <li ng-if="(vm.filter[1].flag)">
+        <span class="filter-active">{{vm.filter[1].name}}</span>
+      </li>
+      <li style="color: #3285ff;"><span ng-click="vm.more()">更多 <i class="fa fa-caret-down" aria-hidden="true"
+                                                                   ng-if="!vm.tag"></i>
+        <i ng-if="vm.tag" class="fa fa-caret-up" aria-hidden="true"></i></span></li>
+    </ul>
+    <ul class="list-unstyled no-margin" ng-if="vm.tag">
+      <li class="width-inherit margin-seven show-city"
+          ng-mouseleave="over = false"
+          ng-repeat="i in vm.citys"
+          ng-mouseover="over = true">
+        <span><span style="padding: 0;color: #3285ff;">{{i.flag}}</span> {{i.name}}</span>
+        <ul class="list-unstyled no-margin animated fadeInLeft">
+          <li ng-click="vm.selectProvince(i)" ng-if="i.cityList.length != 1">全部</li>
+          <li class="width-inherit margin-seven" ng-repeat="list in i.cityList" ng-click="vm.selectCity(list)"><span>{{list.name}}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="list-unstyled no-margin row">
+      <li><span>区域选择 ：</span></li>
+      <li style="width: 190px" ng-repeat="i in vm.experiences track by $index"
+          ng-class="{'left-select': $index != 0&& $index%5 === 0}">
+        <div>
+          <label><input type="checkbox" checklist-model="vm.checkExp.ids" checklist-value="i.id">{{i.name}}</label>
+        </div>
+      </li>
+    </ul>
+    <ul class="list-unstyled no-margin row">
+      <li><span>技能选择 ：</span></li>
+      <li class="width-inherit margin-seven show-skills" ng-repeat="i in vm.skills track by $index"
+          ng-class="{'left-select': $index != 0&& $index%5 === 0}">
+        <label><input type="checkbox" checklist-model="vm.checkSkills.ids" checklist-value="i.pid" ng-click="i.selected = !i.selected;i.opened = !i.opened">{{i.remark}}</label>
+        <ul class="list-unstyled no-margin animated fadeInLeft" style="display: block" ng-if="i.opened">
+          <!-- <li ng-if="i.cityList.length != 1">全部</li>-->
+          <li style="width: 100% !important; float: left" class="width-inherit margin-seven"
+              ng-class="{'filter-active': list.selected}"
+              ng-repeat="list in i.diclist" ng-click="vm.selectSkills(list, i)"><span>{{list.name}}</span>
+          </li>
+          <li class="width-inherit margin-seven" style="background-color: #3285ff;">
+              <div class="btn" style="color: #FFF !important;" ng-click="vm.checkItems(i)">确认选择</div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="row no-margin">
+      <div class="col-md-12">
+        <label style="margin-left: 40px">已选择技能：</label>
+      </div>
+    </div>
   </div>
   <!--加载动画-->
   <div class="spinner" ng-if="!vm.lists">
@@ -25,21 +86,23 @@
       <div class="col-md-3 overflow-text-hidden">
         <strong>行业经验：</strong><span>{{i.experience}}</span>
       </div>
-    <!--  <div class="col-md-3">
-        <strong>企业资质：</strong><span>JAVA工程师</span>
-      </div>
-      <div class="col-md-3">
-        <strong>发布时间：</strong><span>2016-12-12</span>
-      </div>-->
+      <!--  <div class="col-md-3">
+          <strong>企业资质：</strong><span>JAVA工程师</span>
+        </div>
+        <div class="col-md-3">
+          <strong>发布时间：</strong><span>2016-12-12</span>
+        </div>-->
     </div>
   </div>
 
   <nav style="padding-bottom: 20px" boundary-link-numbers="true" ng-if="vm.lists.length">
     <ul class="pagination pull-right">
-      <li><a ng-click="vm.first()" ng-disabled="vm.pageList.currentPage === 1" ng-class="{'disabled': vm.pageList.currentPage === 1}">首页</a></li>
+      <li><a ng-click="vm.first()" ng-disabled="vm.pageList.currentPage === 1"
+             ng-class="{'disabled': vm.pageList.currentPage === 1}">首页</a></li>
       <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a
         ng-class="{'filter-active': vm.pageList.currentPage == i}">{{i}}</a></li>
-      <li><a ng-click="vm.last()" ng-disabled="vm.pageList.currentPage === vm.pageArr.length"  ng-class="{'disabled': vm.pageList.currentPage === vm.pageArr.length}">末页</a></li>
+      <li><a ng-click="vm.last()" ng-disabled="vm.pageList.currentPage === vm.pageArr.length"
+             ng-class="{'disabled': vm.pageList.currentPage === vm.pageArr.length}">末页</a></li>
     </ul>
   </nav>
 </div>

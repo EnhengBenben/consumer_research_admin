@@ -1,0 +1,19 @@
+<p class="input-group uib-datepicker-popup">
+  <input type="text"
+         ng-class="{ 'null-of-date': !vm.dt}"
+         class="form-control" uib-datepicker-popup="{{format}}"
+         placeholder="请输入时间，如：2017-01-01；可点击右边按钮进行选择"
+         ng-model="vm.dt" is-open="dropDate" datepicker-options="dateOptions"
+         ng-required="true" close-text="Close"/>
+<!--  <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.dt" is-open="dropDate"
+         datetime-picker="yyyy-MM-dd"
+         enable-time="false"
+         datepicker-popup
+         save-as="true"
+         datepicker-options="dateOptions" ng-required="true"/>-->
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="dropDate = !dropDate"><i
+              class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+</p>
+<span class="help-block error-font" ng-if="!vm.dt">时间不能为空值或者格式不正确</span>

@@ -87,10 +87,23 @@
           <label>项目开始时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" required name="starttime" ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time
+          <div class="input-group">
+            <input type="text" name="starttime" class="form-control input-sm"
+                   datetime-picker="yyyy-MM-dd" enable-time="false"
+                   ng-class="{'error-input': (base.starttime.$invalid && base.starttime.$touched)}"
+                   save-as="true" ng-model="vm.publish.starttime" is-open="dateOptions.showEndTime"
+                   datepicker-options="vm.dateOptions" required placeholder="请选择项目开始时间" readonly style="background-color: #FFF"/>
+           <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showEndTime = !dateOptions.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+          <!--<input type="text" required name="starttime" ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time
                  min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
-                 class="form-control" placeholder="请选择项目开始时间" readonly style="background-color: #FFF"/>
+                 class="form-control" placeholder="请选择项目开始时间" readonly style="background-color: #FFF"/>-->
+         <!-- <div date-picker-self  dt="vm.publish.starttime"></div>-->
         </div>
       </div>
       <div class="form-group" ng-if="vm.publish.requesttype === 0" ng-class="{'has-success': base.endtime.$valid}">
@@ -98,10 +111,23 @@
           <label for="">项目结束时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" required name="endtime" ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
+          <div class="input-group">
+            <input type="text" name="endtime" class="form-control input-sm"
+                   datetime-picker="yyyy-MM-dd" enable-time="false"
+                   ng-class="{'error-input': (base.endtime.$invalid && base.endtime.$touched)}"
+                   save-as="true" ng-model="vm.publish.endtime" is-open="dateOptions.showEndTime"
+                   datepicker-options="vm.dateOptions" required placeholder="请选择项目结束时间" readonly style="background-color: #FFF"/>
+           <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showEndTime = !dateOptions.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+          <!--<input type="text" required name="endtime" ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
                  min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
-                 class="form-control" placeholder="请选择项目结束时间" readonly style="background-color: #FFF"/>
+                 class="form-control" placeholder="请选择项目结束时间" readonly style="background-color: #FFF"/>-->
+          <!--<div date-picker-self  dt="vm.publish.endtime" min="vm.publish.starttime"></div>-->
         </div>
       </div>
       <div class="form-group" ng-if="vm.publish.requesttype === 0" ng-class="{'has-success': base.price.$valid}">
@@ -127,7 +153,7 @@
           <label for="">项目说明</label>
         </div>
         <div class="col-md-10">
-          <textarea class="form-control" minlength="10" name="odeclare" ng-model="vm.publish.odeclare"
+          <textarea class="form-control" name="odeclare" ng-model="vm.publish.odeclare"
                     placeholder="请输入项目说明(可选)"></textarea>
         </div>
       </div>
@@ -210,13 +236,28 @@
         <div class="col-md-2 control-label">
           <label for="">入项时间</label>
         </div>
-        <div class="col-md-10">
-          <input type="text" required ng-model="vm.publish.starttime" format="YYYY-MM-DD" date-time min-view="date"
+       <!-- <div class="col-md-10">
+          <input required  ng-model="vm.publish.starttime" min-date= "vm.moments" format="YYYY-MM-DD" date-time min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
                  ng-class="{'error-input': base.starttime.$error.required && base.starttime.$touched}"
-                 class="form-control" placeholder="请选择入项时间" name="starttime" readonly style="background-color: #FFF">
+                 class="form-control" placeholder="请选择入项时间" name="starttime" style="background-color: #FFF">
           <span class="error-font help-block"
                 ng-if="base.starttime.$error.required && base.starttime.$touched">入项时间不能为空</span>
+        </div>-->
+        <div class="col-md-10">
+          <div class="input-group">
+            <input type="text" name="starttime" class="form-control input-sm"
+                   datetime-picker="yyyy-MM-dd" enable-time="false"
+                   ng-class="{'error-input': (base.starttime.$invalid && base.starttime.$touched)}"
+                   save-as="true" ng-model="vm.publish.starttime" is-open="dateOptions.showEndTime"
+                   datepicker-options="vm.dateOptions" required placeholder="请选择入项时间" readonly style="background-color: #FFF"/>
+           <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showEndTime = !dateOptions.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+          <!--<div date-picker-self  dt="vm.publish.starttime"></div>-->
         </div>
       </div>
       <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"
@@ -225,13 +266,26 @@
           <label for="">出项时间</label>
         </div>
         <div class="col-md-10">
-          <input type="text" name="endtime" required ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
+          <div class="input-group">
+            <input type="text" name="endtime" class="form-control input-sm"
+                   datetime-picker="yyyy-MM-dd" enable-time="false"
+                   ng-class="{'error-input': (base.endtime.$invalid && base.endtime.$touched)}"
+                   save-as="true" ng-model="vm.publish.endtime" is-open="dateOptions.showEndTime"
+                   datepicker-options="vm.dateOptions" required placeholder="请选择出项时间" readonly style="background-color: #FFF"/>
+           <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions.showEndTime = !dateOptions.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+          <!--<input type="text" name="endtime" required ng-model="vm.publish.endtime" format="YYYY-MM-DD" date-time
                  min-view="date"
                  timezone="Asia/Shanghai" auto-close="true"
                  ng-class="{'error-input': base.endtime.$error.required && base.endtime.$touched}"
                  class="form-control" placeholder="请选择出项时间" readonly style="background-color: #FFF">
           <span class="error-font help-block"
-                ng-if="base.endtime.$error.required && base.endtime.$touched">出项时间不能为空</span>
+                ng-if="base.endtime.$error.required && base.endtime.$touched">出项时间不能为空</span>-->
+          <!--<div date-picker-self  dt="vm.publish.endtime"></div>-->
         </div>
       </div>
       <div class="form-group" ng-if="vm.publish.requesttype === 2 || vm.publish.requesttype === 1"

@@ -6,7 +6,7 @@
     .controller('PersonalSettingListCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, PersonalService, AuthService) {
+  function Controller($localStorage, $state, toaster, $scope, PersonalService, AuthService, $filter) {
     var vm = this;
     vm.user = $localStorage.user;
     vm.saveExperience = saveExperience; //保存行业经验
@@ -30,29 +30,34 @@
 
     return init();
 
-    function init(){
+    function init() {
+      var dateParse = $filter('date');
+      vm.dateOptions = {
+        now: dateParse(new Date, 'yyyy-MM-dd'),
+        minDate: moment()
+      };
       vm.jobAges = [
         {
-          id:0,
+          id: 0,
           name: '应届毕业生'
         },
         {
-          id:1,
+          id: 1,
           name: '1-3年'
         },
         {
-          id:2,
+          id: 2,
           name: '4-6年'
         },
         {
-          id:3,
+          id: 3,
           name: '7-10年'
         },
         {
-          id:4,
+          id: 4,
           name: '10年以上'
         }];
-      vm.EnglishLevel = [{id: 0, name: '一般'},{id: 1, name:  '良好'}];
+      vm.EnglishLevel = [{id: 0, name: '一般'}, {id: 1, name: '良好'}];
       vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'},
         {id: 2, name: '民办非企业单位'}, {id: 3, name: '个体工商户'},
         {id: 4, name: '社会团体'}, {id: 5, name: '党政及国家单位'}];
@@ -63,26 +68,26 @@
       //============================================================================//
       AuthService
         .province()
-        .then(function(res){
+        .then(function (res) {
           vm.provinces = res.data;
         });
       AuthService
         .findJob()
-        .then(function(res){
+        .then(function (res) {
           vm.jobs = res.data;
         });
-      $scope.$watch('vm.unitaddr.province',function(newValue, oldValue){
-        if(newValue != oldValue){
+      $scope.$watch('vm.unitaddr.province', function (newValue, oldValue) {
+        if (newValue != oldValue) {
           AuthService
-            .city({provinceId:vm.unitaddr.province})
-            .then(function(res){
+            .city({provinceId: vm.unitaddr.province})
+            .then(function (res) {
               vm.cities = res.data;
             });
         }
       }, true);
       AuthService
         .experience()
-        .then(function(res){
+        .then(function (res) {
           vm.experiences = res.data;
         });
       AuthService
@@ -95,49 +100,54 @@
       //============================================================================//
       PersonalService
         .searchInfo(vm.user)
-        .then(function(res){
+        .then(function (res) {
           vm.settingObj = res.data.qQYInfoQueryVo;
+          //============================================================================//
+          //****************************时间格式修改****************************************//
+         /* vm.settingObj.dobusiness = vm.settingObj.dobusiness.substring(0,vm.settingObj.dobusiness.length);
+          console.log(typeof  vm.settingObj.dobusiness);*/
+          //============================================================================//
           var arrayExp = [];
           var arraySkill = [];
           arrayExp = vm.settingObj.experience.split(',');
           arraySkill = vm.settingObj.skills.split(',');
-          if(vm.settingObj.unitaddr){
+          if (vm.settingObj.unitaddr) {
             vm.unitaddr.province = parseInt(vm.settingObj.unitaddr.split(',')[0]);
             vm.unitaddr.city = parseInt(vm.settingObj.unitaddr.split(',')[1]);
           }
-          if(vm.settingObj.address){
+          if (vm.settingObj.address) {
             vm.unitaddr.province = parseInt(vm.settingObj.address.split(',')[0]);
             vm.unitaddr.city = parseInt(vm.settingObj.address.split(',')[1]);
           }
           vm.model = {};
           vm.skill = {};
-          for(var i= 0;i< arrayExp.length; i++){
+          for (var i = 0; i < arrayExp.length; i++) {
             vm.model[arrayExp[i]] = parseInt(arrayExp[i]);
           }
-          for(var i= 0;i< arraySkill.length; i++){
+          for (var i = 0; i < arraySkill.length; i++) {
             vm.skill[arraySkill[i]] = parseInt(arraySkill[i]);
           }
-         if(vm.settingObj.zname){
-           var znameArr = vm.settingObj.zname.split('-');
-           for( var i= 0;i< znameArr.length; i++){
-             znameArr[i] = znameArr[i].split(',');
-           }
-           for(var i= 0;i<znameArr.length;i++){
-             vm.add.qualifications.push({
-               zname: znameArr[i][0],
-               zzurl: znameArr[i][1]
-             })
-           }
-           vm.add.qualifications.splice(0,1);
-         }
+          if (vm.settingObj.zname) {
+            var znameArr = vm.settingObj.zname.split('-');
+            for (var i = 0; i < znameArr.length; i++) {
+              znameArr[i] = znameArr[i].split(',');
+            }
+            for (var i = 0; i < znameArr.length; i++) {
+              vm.add.qualifications.push({
+                zname: znameArr[i][0],
+                zzurl: znameArr[i][1]
+              })
+            }
+            vm.add.qualifications.splice(0, 1);
+          }
         })
-      $scope.$watch('vm.add.qualifications',function(newVal, oldVal){
-        if(newVal != oldVal){
+      $scope.$watch('vm.add.qualifications', function (newVal, oldVal) {
+        if (newVal != oldVal) {
           for (var i = 0; i < vm.add.qualifications.length; i++) {
             if (vm.add.qualifications[i].zname === "" || vm.add.qualifications[i].zzurl === "") {
               vm.addTag = true;
               break;
-            }else {
+            } else {
               vm.addTag = false;
             }
           }
@@ -145,16 +155,16 @@
       }, true);
     }
 
-   function removeOption(index) {
-      if(vm.add.qualifications.length == 1){
+    function removeOption(index) {
+      if (vm.add.qualifications.length == 1) {
         vm.add.qualifications.splice(0, 1);
-      }else {
+      } else {
         vm.add.qualifications.splice(index, 1);
       }
     }
 
     function addOption() {
-      if(!vm.addTag){
+      if (!vm.addTag) {
         if (!vm.add.qualifications) {
           vm.add.qualifications = [];
         }
@@ -174,10 +184,10 @@
       }
     }
 
-    function saveExperience(){
+    function saveExperience() {
       var str = [];
-      for(var i in vm.model){
-        if(vm.model[i] != false){
+      for (var i in vm.model) {
+        if (vm.model[i] != false) {
           str.push(i);
         }
       }
@@ -185,25 +195,25 @@
         experience: str.join(','),
         userid: vm.user.userid,
       };
-      if(vm.user.type === 0){
+      if (vm.user.type === 0) {
         PersonalService
           .updateCompanyExp(params)
-          .then(function(res){
-            toaster.pop('success',res.data);
+          .then(function (res) {
+            toaster.pop('success', res.data);
           })
-      }else if(vm.user.type === 1){
+      } else if (vm.user.type === 1) {
         PersonalService
           .updateFreelanceExp(params)
-          .then(function(res){
-            toaster.pop('success',res.data);
+          .then(function (res) {
+            toaster.pop('success', res.data);
           })
       }
     }
 
-    function saveSkills(){
+    function saveSkills() {
       var str = [];
-      for(var i in vm.skill){
-        if(vm.skill[i] != false){
+      for (var i in vm.skill) {
+        if (vm.skill[i] != false) {
           str.push(i);
         }
       }
@@ -211,46 +221,46 @@
         skills: str.join(','),
         userid: vm.user.userid,
       };
-      if(vm.user.type === 0){
+      if (vm.user.type === 0) {
         PersonalService
           .updateCompanySkill(params)
-          .then(function(res){
-            toaster.pop('success',res.data);
+          .then(function (res) {
+            toaster.pop('success', res.data);
           })
-      }else if(vm.user.type === 1){
+      } else if (vm.user.type === 1) {
         PersonalService
           .updateFreelanceSkill(params)
-          .then(function(res){
-            toaster.pop('success',res.data);
+          .then(function (res) {
+            toaster.pop('success', res.data);
           })
       }
     }
 
-    function saveBase(){
+    function saveBase() {
       var data = angular.copy(vm.settingObj);
-      angular.extend(data,vm.user);
+      angular.extend(data, vm.user);
       data.unitaddr = vm.unitaddr.province + ',' + vm.unitaddr.city;
       PersonalService
         .updateBase(data)
-        .then(function(res){
-          toaster.pop('success',res.data);
+        .then(function (res) {
+          toaster.pop('success', res.data);
         })
     }
 
-    function saveFreelanceBase(){
+    function saveFreelanceBase() {
       var data = angular.copy(vm.settingObj);
-      angular.extend(data,vm.user);
+      angular.extend(data, vm.user);
       data.address = vm.unitaddr.province + ',' + vm.unitaddr.city;
       PersonalService
         .updateFreelanceBase(data)
-        .then(function(res){
-          toaster.pop('success',res.data);
+        .then(function (res) {
+          toaster.pop('success', res.data);
         })
     }
 
-    function saveQua(){
+    function saveQua() {
       var qualificationsArr = [];
-      angular.forEach(vm.add.qualifications,function(i){
+      angular.forEach(vm.add.qualifications, function (i) {
         qualificationsArr.push(i.zname + ',' + i.zzurl);
       });
       vm.add.qualificationll = qualificationsArr.join('-');
@@ -260,18 +270,18 @@
       };
       PersonalService
         .updateCompanyQua(params)
-        .then(function(res){
-          toaster.pop('success',res.data);
+        .then(function (res) {
+          toaster.pop('success', res.data);
         })
     }
 
-    function FreelanceResume(){
+    function FreelanceResume() {
       var data = angular.copy(vm.settingObj);
       data['userid'] = vm.user.userid;
       PersonalService
         .updateFreelanceResume(data)
-        .then(function(res){
-          toaster.pop('success',res.data);
+        .then(function (res) {
+          toaster.pop('success', res.data);
         })
     }
 

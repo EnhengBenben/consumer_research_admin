@@ -1,6 +1,18 @@
-<div>
-  <input class="form-control" type="file" nv-file-select uploader="uploader"/>
+<!--<div>
+  <input class="form-control" type="file" name="name" nv-file-select uploader="uploader"/>
   <div class="progress progress-small" ng-if="uploader.queue.length">
     <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+  </div>
+</div>-->
+<div>
+  <div id="hide" class="col-lg-8 col-xs-8">
+    <label class="hand-cursor">
+      <input type="file" nv-file-select uploader="uploader"/>
+      <span class="fa fa-plus"></span>
+      <span class="photo_text hidden-xs">上传图片</span>
+    </label>
+  </div>
+  <div class="progress progress-small col-md-12 no-padding" ng-if="uploader.queue.length">
+    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }">{{uploader.progress}}%</div>
   </div>
 </div>

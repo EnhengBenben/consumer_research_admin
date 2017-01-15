@@ -22,9 +22,11 @@
       <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.company.show({id: i.id,requesttype: i.requesttype})">{{i.proname}}</a></h4>
     </div>
     <div class="col-md-8">
+      <span class="pull-right margin-seven" style="display: inline-block;padding: 0 8px">开放</span>
       <div id="div1" class="open1 pull-right" ng-click="vm.openStatus(i)" ng-class="{'close1': i.cstatus === 2}">
         <div id="div2" class="open2"  ng-class="{'close2': i.cstatus === 2}"></div>
       </div>
+      <span class="pull-right margin-seven"  style="display: inline-block;padding: 0 8px">关闭</span>
     </div>
     <div class="col-md-12 no-padding-left">
       <p class="overflow-p">

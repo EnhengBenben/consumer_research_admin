@@ -9,6 +9,7 @@
   function Controller($localStorage, $state, toaster, $uibModal, CompanyService, $stateParams, $log) {
     var vm = this;
     vm.undertake = undertake;
+    vm.sendLetter = sendLetter;
     vm.user = $localStorage.user;
     vm.params = {};
     angular.extend(vm.params,vm.user);
@@ -84,9 +85,46 @@
         }
       });
       modalInstance.result.then(function (selectedItem) {
-        console.log(selectedItem)
+        console.log(selectedItem);
+        var params = {
+          rid: $stateParams.id,
+          userid: vm.user.userid
+        };
+        init();
+        CompanyService
+          .undertake(params)
+          .then(function(res){
+            $state.go('app.manage.contractors.list');
+          })
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+
+       // $log.info('Modal dismissed at: ' + new Date());
+      });
+    }
+
+    function sendLetter(){
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'components/company/model.html',
+        controller: 'ModalInstanceCtrl',
+        controllerAs: 'vm',
+        size: 'md',
+        resolve: {
+          items: function () {
+            return {
+              id: $stateParams.id,
+              name: vm.show.name,
+              returnMse: false
+            };
+          }
+        }
+      });
+      modalInstance.result.then(function (selectedItem) {
+
+      }, function () {
+
+        // $log.info('Modal dismissed at: ' + new Date());
       });
     }
   }

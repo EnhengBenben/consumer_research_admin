@@ -72,6 +72,9 @@
       angular.extend(vm.add, $localStorage.base);
       angular.extend(vm.add, $localStorage.experience);
       angular.extend(vm.add, $localStorage.skill);
+      if($localStorage.registertype){
+        vm.add['basetype'] = angular.copy($localStorage.registertype);
+      }
       var qualificationsArr = [];
       angular.forEach(vm.add.qualifications, function (i) {
         qualificationsArr.push(i.zname + ',' + i.zzurl);
@@ -102,7 +105,8 @@
             delete $localStorage.base;
             delete $localStorage.experience;
             delete $localStorage.skill;
-            $state.go('go.login');
+            delete $localStorage.registertype;
+            $state.go('finish');
             toaster.pop('success', '恭喜！注册已完成');
           });
       }

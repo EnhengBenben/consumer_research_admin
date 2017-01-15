@@ -28,7 +28,16 @@
       infoSendBox: infoSendBox,//发件箱详情
       delSendAllMessage: delSendAllMessage, //批量删除发件箱
       delAcceptAllMessage: delAcceptAllMessage, //批量删除发件箱
+      findInBox2: findInBox2, //承包方收件箱列表
     };
+    function findInBox2(data){
+      return  $http({
+        url: ENDPOINT + '/findInBox2.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
     function delAcceptAllMessage(data){
       return  $http({
         url: ENDPOINT + '/toDelAllInBoxMessage.action',

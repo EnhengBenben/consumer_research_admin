@@ -35,11 +35,11 @@
 
        // jQuery plugin example:
        $(document).ready(function() {
-      /* $('#particles').particleground({
+       $('#particles').particleground({
        dotColor: '#5cbdaa',
        lineColor: '#5cbdaa'
        });
-       $('.intro').css({
+      /* $('.intro').css({
        'margin-top': -($('.intro').height() / 2)
        });*/
        });

@@ -8,7 +8,7 @@
 
   function AuthService(ENDPOINT, $http) {
     return {
-      login: login,//登陆
+      login: login,//登录
       register:register,//检查注册信息
       experience: experience,//获取行业经验列表
       skill:skill,//获取擅长技能列表

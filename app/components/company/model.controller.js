@@ -27,6 +27,9 @@
 
     function ok(){
       if(items.returnMse){
+        if(items.flag){
+          vm.model['flag'] = items.flag;
+        }
         CompanyService
           .returnMsg(vm.model)
           .then(function(res){

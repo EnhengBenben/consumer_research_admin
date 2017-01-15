@@ -21,8 +21,17 @@
 
     function regist() {
      if(vm.read){
+       var params = angular.copy(vm.register);
+       if(params.acctype === 2){
+         params.acctype = 0;
+         $localStorage.registertype = 1;
+       }else if(params.acctype === 1){
+         delete $localStorage.registertype;
+       }else if(params.acctype === 0){
+         $localStorage.registertype = 0;
+       }
        AuthService
-         .register(vm.register)
+         .register(params)
          .then(function (res) {
            if (vm.register.acctype === 1) {
              if(vm.register.Mcode && vm.obj === vm.register.username){
@@ -31,6 +40,9 @@
                  .compareCheckCode(vm.register)
                  .then(function (res) {
                    if(res.data === '验证码正确'){
+                     delete $localStorage.base;
+                     delete $localStorage.experience;
+                     delete $localStorage.skill;
                      $localStorage.username = vm.register;
                      $state.go('free.base');
                    }else {
@@ -40,11 +52,14 @@
              }else {
                toaster.pop('warning','请输入与手机号匹配的验证码');
              }
-           } else if (vm.register.acctype === 0) {
+           } else if (vm.register.acctype === 0 || vm.register.acctype === 2) {
              if (res.data === 'false') {
                toaster.pop('error', '该账号已注册');
              }else {
-               $localStorage.username = vm.register;
+               delete $localStorage.base;
+               delete $localStorage.experience;
+               delete $localStorage.skill;
+               $localStorage.username = params;
                $state.go('company.base');
              }
            }
