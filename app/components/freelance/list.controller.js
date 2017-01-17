@@ -15,6 +15,7 @@
     vm.filterPage = filterPage;
     vm.more = more;
     vm.selectCity = selectCity;
+    vm.checkItems = checkItems;
     vm.selectProvince = selectProvince;
     vm.tag = false;
     vm.params = {
@@ -76,6 +77,26 @@
           vm.params['pageSize'] = 10;
           vm.pageList.currentPage = 1;
           vm.pageList.pageSize = 10;
+        }
+      }, true);
+      $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue, scope) {
+        if (newValue != oldValue) {
+          vm.params.currentPage = vm.pageList.currentPage;
+          /*FreelanceService
+            .list(vm.params)
+            .then(function (res) {
+              vm.lists = res.data.jsonArray;
+              angular.forEach(vm.lists,function(data){
+                data.jobage = vm.jobAges.filter(function(i){
+                  return data.jobage === i.id;
+                })
+              });
+            })*/
+        }
+      }, true);
+      $scope.$watch('vm.params', function (newValue, oldValue){
+        if(newValue != oldValue){
+          console.log(vm.params);
           FreelanceService
             .list(vm.params)
             .then(function (res) {
@@ -92,19 +113,29 @@
             })
         }
       }, true);
-      $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue, scope) {
+      $scope.$watch('vm.skills', function (newValue, oldValue) {
         if (newValue != oldValue) {
-          vm.params.currentPage = vm.pageList.currentPage;
-          FreelanceService
-            .list(vm.params)
-            .then(function (res) {
-              vm.lists = res.data.jsonArray;
-              angular.forEach(vm.lists,function(data){
-                data.jobage = vm.jobAges.filter(function(i){
-                  return data.jobage === i.id;
-                })
-              });
+          var params = [];
+          angular.forEach(vm.skills, function(lists){
+            angular.forEach(lists.diclist, function(data){
+              if(data.selected){
+                params.push(data.id);
+              }
             })
+          });
+          console.log(params);//选中技能
+          if(params.length)
+            vm.params['skills'] = params.join(',');
+          else {
+            delete vm.params.skills;
+          }
+        }
+      }, true);
+      $scope.$watch('vm.checkExp', function (newValue, oldValue) {
+        if (newValue != oldValue) {
+          vm.experienceList = vm.checkExp.ids.join(',');
+          console.log(vm.experienceList); //选中行业经验
+          vm.params['experences'] = vm.experienceList;
         }
       }, true);
       FreelanceService
@@ -173,6 +204,27 @@
       console.log(data);
       vm.filter[1] = data;
       vm.tag = !vm.tag;
+    }
+
+    function checkItems(data) {
+      /*angular.forEach(data.diclist,function(i){
+       if(i.selected){
+       vm.skillsItem.items.push(i.id);
+       }
+       });
+       var params = vm.skillsItem.items.join(',');*/
+      var params = [];
+      angular.forEach(vm.skills, function (lists) {
+        angular.forEach(lists.diclist, function (i) {
+          if (i.selected) {
+            i.selected = true;
+            params.push(data.id);
+          }else {
+            delete i.selected;
+          }
+        });
+      });
+      console.log(params.join(','));
     }
   }
 })();

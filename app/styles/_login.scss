@@ -1,8 +1,23 @@
 
-.bg-image {
+/*.bg-image {
   background-image: url('../images/bg_login.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
+}*/
+#particles {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+#intro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 20px;
+  width: 100%;
+  text-align: center;
 }
 
 .name-title {
@@ -11,18 +26,18 @@
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  color: #FFF;
+  color: #4d4d4d;
 }
 
 .intruduce {
   text-align: center;
-  color: #FFF;
+  color: #4d4d4d;
   font-size: 18px;
 }
 .login-choice{
   padding-top: 20px;
   padding-bottom: 20px;
-  border: 1px solid #FFF;
+  border: 1px solid #4d4d4d;
   font-size: 16px;
   cursor: pointer;
 }
@@ -35,7 +50,7 @@
   border-left: none;
 }
 .login-content{
-  border: 1px solid #FFF;
+  border: 1px solid #4d4d4d;
   border-top: none;
 }
 .username{
@@ -46,7 +61,7 @@
 .form-container{
   width: 1200px;
   margin:0 auto;
-  border: 1px solid #eee;
+  border: 1px solid #4d4d4d;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 10px;

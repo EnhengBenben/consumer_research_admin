@@ -4,6 +4,7 @@ body, body.full-height-layout #page-wrapper, body.full-height-layout #wrapper, h
 
 body {
   font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-y: auto;
 }
 
 a {
@@ -22,7 +23,7 @@ a:focus{
 
 .white-center {
   text-align: center;
-  color: #FFF;
+  color: #4d4d4d;
 }
 
 .no-padding {
@@ -223,4 +224,18 @@ ul {
   position: absolute;
   top: 0;
   right: 0;
+}
+.list-name{
+  .list-box{
+    p{
+      margin: 10px 0 10px 0;
+    }
+    span{
+      margin: 2px 2px;
+      display: inline-block;
+    }
+  }
+}
+.help-block{
+  text-align: left;
 }

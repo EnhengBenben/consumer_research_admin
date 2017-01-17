@@ -34,15 +34,18 @@
 
 
        // jQuery plugin example:
-       $(document).ready(function() {
-       $('#particles').particleground({
-       dotColor: '#5cbdaa',
-       lineColor: '#5cbdaa'
-       });
-      /* $('.intro').css({
-       'margin-top': -($('.intro').height() / 2)
-       });*/
-       });
+      // $(document).ready(function() {
+      // $('#particles').particleground({
+      // dotColor: '#5cbdaa',
+      // lineColor: '#5cbdaa'
+      // });
+      //   $('#register').on('click', function(){
+      //     $state.go('app.company.list');
+      //   })
+      ///* $('.intro').css({
+      // 'margin-top': -($('.intro').height() / 2)
+      // });*/
+      // });
     }
   }
 

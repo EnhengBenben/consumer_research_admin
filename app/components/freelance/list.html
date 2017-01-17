@@ -52,21 +52,35 @@
       <li><span ng-click="vm.choice(3,6)" ng-class="{'filter-active': vm.filter[3] === 6}">2500以上</span>
       </li>
     </ul>
-    <ul class="list-unstyled no-margin">
-      <li><span>行业经验 ：</span></li>
-      <li><span ng-click="vm.choice(3,null)" ng-class="{'filter-active': vm.filter[3] === null}">不限</span></li>
-      <li><span ng-click="vm.choice(3,1)" ng-class="{'filter-active': vm.filter[3] === 1}">500以下</span></li>
-      <li><span ng-click="vm.choice(3,2)"
-                ng-class="{'filter-active': vm.filter[3] === 2}">500-1000</span></li>
-      <li><span ng-click="vm.choice(3,3)"
-                ng-class="{'filter-active': vm.filter[3] === 3}">1000-1500</span></li>
-      <li><span ng-click="vm.choice(3,4)"
-                ng-class="{'filter-active': vm.filter[3] === 4}">1500-2000</span></li>
-      <li><span ng-click="vm.choice(3,5)"
-                ng-class="{'filter-active': vm.filter[3] === 5}">2000-2500</span></li>
-      <li><span ng-click="vm.choice(3,6)" ng-class="{'filter-active': vm.filter[3] === 6}">2500以上</span>
+    <ul class="list-unstyled no-margin row">
+      <li><span>行业经验选择 ：</span></li>
+      <li style="width: 190px" ng-repeat="i in vm.experiences track by $index"
+          ng-class="{'left-select': $index != 0&& $index%5 === 0}">
+        <div>
+          <label><input type="checkbox" checklist-model="vm.checkExp.ids" checklist-value="i.id">{{i.name}}</label>
+        </div>
       </li>
     </ul>
+    <ul class="list-unstyled no-margin row">
+      <li><span>技能选择 ：</span></li>
+      <li class="row" style="width: 1000px">
+        <div class="col-md-6">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 6">
+            <div class="list-box">
+              <p ng-click="show = !show">{{lists.remark}} <i class="fa fa-caret-square-o-right" aria-hidden="true"></i></p>
+              <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index > 6">
+            <div class="list-box">
+              <p  ng-click="show = !show">{{lists.remark}} <i class="fa fa-caret-square-o-right" aria-hidden="true"></i></p>
+              <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
   </div>
 
   <!--加载动画 <input type="checkbox" checklist-model="vm.checkList.ids" checklist-value="i.id">-->
@@ -96,6 +110,12 @@
       </div>
       <div class="col-md-3">
         <strong>注册时间：</strong><span>{{i.regtime}}</span>
+      </div>
+      <div class="col-md-3 overflow-text-hidden margin-seven">
+        <strong>擅长技能：</strong><span>{{i.experience}}</span>
+      </div>
+      <div class="col-md-3 overflow-text-hidden margin-seven">
+        <strong>擅长技能：</strong><span>{{i.skills}}</span>
       </div>
     </div>
   </div>

@@ -32,7 +32,7 @@
       </li>
     </ul>
     <ul class="list-unstyled no-margin row">
-      <li><span>区域选择 ：</span></li>
+      <li><span>行业经验选择 ：</span></li>
       <li style="width: 190px" ng-repeat="i in vm.experiences track by $index"
           ng-class="{'left-select': $index != 0&& $index%5 === 0}">
         <div>
@@ -42,11 +42,29 @@
     </ul>
     <ul class="list-unstyled no-margin row">
       <li><span>技能选择 ：</span></li>
-      <li class="width-inherit margin-seven show-skills" ng-repeat="i in vm.skills track by $index"
+      <li class="row" style="width: 1000px">
+        <div class="col-md-6">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 6">
+           <div class="list-box">
+             <p ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-caret-square-o-right': show,'fa-caret-square-o-left': !show}" class="fa" aria-hidden="true"></i></p>
+             <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
+           </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index > 6">
+            <div class="list-box">
+              <p  ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-caret-square-o-right': show,'fa-caret-square-o-left': !show}" class="fa" aria-hidden="true"></i></p>
+              <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!--<li class="width-inherit margin-seven show-skills" ng-repeat="i in vm.skills track by $index"
           ng-class="{'left-select': $index != 0&& $index%5 === 0}">
         <label><input type="checkbox" checklist-model="vm.checkSkills.ids" checklist-value="i.pid" ng-click="i.selected = !i.selected;i.opened = !i.opened">{{i.remark}}</label>
         <ul class="list-unstyled no-margin animated fadeInLeft" style="display: block" ng-if="i.opened">
-          <!-- <li ng-if="i.cityList.length != 1">全部</li>-->
+          &lt;!&ndash; <li ng-if="i.cityList.length != 1">全部</li>&ndash;&gt;
           <li style="width: 100% !important; float: left" class="width-inherit margin-seven"
               ng-class="{'filter-active': list.selected}"
               ng-repeat="list in i.diclist" ng-click="vm.selectSkills(list, i)"><span>{{list.name}}</span>
@@ -55,13 +73,8 @@
               <div class="btn" style="color: #FFF !important;" ng-click="vm.checkItems(i)">确认选择</div>
           </li>
         </ul>
-      </li>
+      </li>-->
     </ul>
-    <div class="row no-margin">
-      <div class="col-md-12">
-        <label style="margin-left: 40px">已选择技能：</label>
-      </div>
-    </div>
   </div>
   <!--加载动画-->
   <div class="spinner" ng-if="!vm.lists">
@@ -85,6 +98,9 @@
       </div>
       <div class="col-md-3 overflow-text-hidden">
         <strong>行业经验：</strong><span>{{i.experience}}</span>
+      </div>
+      <div class="col-md-3 overflow-text-hidden">
+        <strong>擅长技能：</strong><span>{{i.skills}}</span>
       </div>
       <!--  <div class="col-md-3">
           <strong>企业资质：</strong><span>JAVA工程师</span>

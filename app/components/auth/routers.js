@@ -2,8 +2,8 @@ angular.module('app')
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('go', {
-        abstract:true,
         url: '/go',
+        abstract: true,
         templateUrl: 'components/auth/layout.html',
         controller: 'GoLayoutController as vm',
       })
