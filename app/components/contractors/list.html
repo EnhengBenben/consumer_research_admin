@@ -46,7 +46,7 @@
         <div class="col-md-6">
           <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 6">
            <div class="list-box">
-             <p ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-caret-square-o-right': show,'fa-caret-square-o-left': !show}" class="fa" aria-hidden="true"></i></p>
+             <p ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-chevron-right': !show,'fa-chevron-left': show}" class="fa" aria-hidden="true"></i></p>
              <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
            </div>
           </div>
@@ -54,7 +54,7 @@
         <div class="col-md-6">
           <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index > 6">
             <div class="list-box">
-              <p  ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-caret-square-o-right': show,'fa-caret-square-o-left': !show}" class="fa" aria-hidden="true"></i></p>
+              <p  ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-chevron-right': !show,'fa-chevron-left': show}" class="fa" aria-hidden="true"></i></p>
               <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
             </div>
           </div>

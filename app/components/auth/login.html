@@ -10,9 +10,9 @@
              ng-model="vm.account.username"
              type="text"
              class="form-control" ng-focus=""
-             ng-pattern= "/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,3}.(com)|[0-9]{11}$/"
+             ng-pattern= "/^[0-9|A-z|_]{1,17}[@][0-9|A-z]{1,}.(com)|[0-9]{11}$/"
              placeholder="请输入手机号/邮箱" required/>
-      <span class="input-result" ng-if="login.username.$valid"><i class="fa fa-check"></i></span>
+     <!-- <span class="input-result" ng-if="login.username.$valid"><i class="fa fa-check"></i></span>-->
       <div ng-if="login.username.$error.required && login.username.$touched" class="error-font help-block"><p>
         用户名不能为空</p></div>
       <div ng-if="login.username.$error.pattern && login.username.$touched" class="error-font help-block"><p>
@@ -36,7 +36,7 @@
              required/>
         <div ng-if="login.password.$error.required && login.password.$touched" class="error-font help-block"><p>密码不能为空</p></div>
         <div ng-if="login.password.$error.pattern && login.password.$touched" class="error-font help-block"><p>密码必须为8位字母数字组合</p></div>
-      <span class="input-result" ng-if="login.password.$valid"><i class="fa fa-check"></i></span>
+      <!--<span class="input-result" ng-if="login.password.$valid"><i class="fa fa-check"></i></span>-->
     </div>
   </div>
   <div class="form-group username">

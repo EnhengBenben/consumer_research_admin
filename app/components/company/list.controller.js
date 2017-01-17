@@ -28,6 +28,12 @@
         5: null,
         6: null
       };
+      vm.dateOptions1 = {
+        maxDate: moment()
+      };
+      vm.dateOptions2 = {
+        minDate: moment()
+      };
       vm.pageArr = [];
       vm.pageList = {
         currentPage: 1, //当前页数
@@ -57,7 +63,7 @@
               delete  vm.dataTime.publishtime;
             }
           }else {
-            data['zdPublishTime'] = vm.filter[3].format('YYYY-MM-DD');
+            data['zdPublishTime'] = vm.filter[3];
             //项目发布时间选择指定时间
             console.log(vm.filter[3]);
           }
@@ -66,7 +72,7 @@
             if(vm.dataTime && vm.dataTime.starttime)
               delete  vm.dataTime.starttime;
           }else {
-            data['zdStartTime'] = vm.filter[6].format('YYYY-MM-DD');
+            data['zdStartTime'] = vm.filter[6];
             //项目开始时间选择指定时间
             //console.log(vm.filter[6]);
           }

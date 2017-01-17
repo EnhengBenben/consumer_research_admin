@@ -15,7 +15,7 @@
       <li><span ng-click="vm.choice(2,2)" ng-class="{'filter-active': vm.filter[2] === 2}">天津</span></li>
       <li><span ng-click="vm.choice(2,200)" ng-class="{'filter-active': vm.filter[2] === 200}">深圳</span></li>
       <li ng-if="!(vm.filter[2] === 1 || vm.filter[2] === 73 || vm.filter[2] === 2|| vm.filter[2] === 200) && !vm.filter[2].flag">
-        <span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[1] === vm.select.id}">{{vm.select.name}}</span>
+        <span ng-click="vm.choice(1,vm.select.id)" ng-class="{'filter-active': vm.filter[2] === vm.select.id}">{{vm.select.name}}</span>
       </li>
       <li ng-if="(vm.filter[2].flag)">
         <span class="filter-active">{{vm.filter[2].name}}</span>
@@ -44,11 +44,28 @@
       <li><span ng-click="vm.choice(3,14)" ng-class="{'filter-active': vm.filter[3] === 14}">两周内</span></li>
       <li><span ng-click="vm.choice(3,30)" ng-class="{'filter-active': vm.filter[3] === 30}">一个月内</span></li>
       <li style="cursor: text"><span>   </span></li>
-      <li  style="width: 300px"><strong ng-class="{'filter-active': vm.filter[3] === vm.dataTime.publishtime}">指定日期:</strong>
-        <input type="text" name="endtime" ng-model="vm.dataTime.publishtime" format="YYYY-MM-DD" date-time
-               min-view="date"
-               timezone="Asia/Shanghai" auto-close="true"
-                placeholder="可选择指定时间" readonly/>
+      <li  style="width: 300px">
+        <!--<input type="text" name="endtime" ng-model="vm.dataTime.publishtime" format="YYYY-MM-DD" date-time-->
+               <!--min-view="date"-->
+               <!--timezone="Asia/Shanghai" auto-close="true"-->
+                <!--placeholder="可选择指定时间" readonly/>-->
+        <div style="display: inline-block;float: left;margin:7px 8px 0 0;">
+          <strong ng-class="{'filter-active': vm.filter[3] === vm.dataTime.publishtime}">指定日期:</strong>
+        </div>
+       <div class="form-group" style="display: inline-block;width: 200px;padding: 0">
+         <div class="input-group">
+           <input type="text" name="validity" class="form-control input-sm"
+                  datetime-picker="yyyy-MM-dd" enable-time="false"
+                  save-as="true" ng-model="vm.dataTime.publishtime" is-open="dateOptions1.showStartTime"
+                  datepicker-options="vm.dateOptions1" required placeholder="可选择指定时间" readonly
+                  style="background-color: #FFF"/>
+           <span class="input-group-btn" style="padding: 0">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions1.showStartTime = !dateOptions1.showStartTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+         </div>
+       </div>
       </li>
     </ul>
     <ul class="list-unstyled no-margin">
@@ -58,11 +75,28 @@
       <li><span ng-click="vm.choice(6,14)" ng-class="{'filter-active': vm.filter[6] === 14}">未来两周内</span></li>
       <li><span ng-click="vm.choice(6,30)" ng-class="{'filter-active': vm.filter[6] === 30}">未来一个月内</span></li>
       <li><span ng-click="vm.choice(6,60)" ng-class="{'filter-active': vm.filter[6] === 60}">已经开始</span></li>
-      <li style="width: 300px"><strong ng-class="{'filter-active': vm.filter[6] === vm.dataTime.starttime && vm.filter[6] != null}">指定日期:</strong>
-        <input type="text" name="endtime" ng-model="vm.dataTime.starttime" format="YYYY-MM-DD" date-time
+      <li style="width: 300px">
+        <!--<input type="text" name="endtime" ng-model="vm.dataTime.starttime" format="YYYY-MM-DD" date-time
                min-view="date"
                timezone="Asia/Shanghai" auto-close="true"
-               placeholder="可选择指定时间" readonly/>
+               placeholder="可选择指定时间" readonly/>-->
+        <div style="display: inline-block;float: left;margin:7px 8px 0 0;">
+          <strong ng-class="{'filter-active': vm.filter[6] === vm.dataTime.starttime && vm.filter[6] != null}">指定日期:</strong>
+        </div>
+        <div class="form-group" style="display: inline-block;width: 200px;padding: 0">
+          <div class="input-group">
+            <input type="text" name="validity" class="form-control input-sm"
+                   datetime-picker="yyyy-MM-dd" enable-time="false"
+                   save-as="true" ng-model="vm.dataTime.starttime" is-open="dateOptions2.showEndTime"
+                   datepicker-options="vm.dateOptions2" required placeholder="可选择指定时间" readonly
+                   style="background-color: #FFF"/>
+           <span class="input-group-btn" style="padding: 0">
+                <button type="button" class="btn btn-default btn-sm"
+                        ng-click="dateOptions2.showEndTime = !dateOptions2.showEndTime"><i
+                  class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
       </li>
     </ul>
     <ul class="list-unstyled no-margin" ng-if="vm.filter[1] === 1 || vm.filter[1] === 2">

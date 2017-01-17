@@ -37,7 +37,7 @@
         }
       }
       str = str.join(',');
-      if (str.length && str.split(',').length > 0 && str.split(',').length <= 20) {
+      if (str.length && str.split(',').length > 0) {
         $localStorage.skill = {skills: str};
         $state.go('company.qualifications');
         toaster.pop('success', '已保存，请继续完成注册');

@@ -34,11 +34,11 @@
       var dateParse = $filter('date');
       vm.dateOptions = {
         now: dateParse(new Date, 'yyyy-MM-dd'),
-        minDate: moment()
+        minDate: moment(),
       };
       vm.jobAges = [
         {
-          id: 0,
+          id: 5,
           name: '应届毕业生'
         },
         {

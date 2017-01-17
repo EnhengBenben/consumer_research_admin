@@ -21,7 +21,7 @@
     vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
     vm.jobAges = [
       {
-        id: 0,
+        id: 5,
         name: '应届毕业生'
       },
       {

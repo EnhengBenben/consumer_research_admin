@@ -61,6 +61,15 @@
       width: 80px;
     }
   }
+  .dropdown-menu{
+    left: -200px !important;
+    li{
+      width: inherit !important;
+    }
+    li:nth-child(2){
+      display: none;
+    }
+  }
 }
 .pagination{
   li{

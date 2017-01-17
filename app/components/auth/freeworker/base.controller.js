@@ -11,7 +11,7 @@
     vm.next = next;
     vm.jobAges = [
       {
-      id:0,
+      id:5,
       name: '应届毕业生'
     },
       {

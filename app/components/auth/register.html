@@ -1,15 +1,15 @@
 <form class="form-horizontal" name="register" ng-submit="vm.regist()">
   <div class="form-group username" style="margin-top: 30px">
     <div class="col-md-4 col-xs-4 white-center">
-      <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="1"/>&nbsp;自由职业顾问</label>
-    </div>
-    <div class="col-md-4 col-xs-4 white-center">
       <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="0"
                     ng-init="vm.register.acctype=0"/>&nbsp;企业（找开发资源）</label>
     </div>
     <div class="col-md-4 col-xs-4 white-center">
       <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="2"
                     ng-init="vm.register.acctype=0"/>&nbsp;企业（找项目资源）</label>
+    </div>
+    <div class="col-md-4 col-xs-4 white-center">
+      <label><input type="radio" name="item" ng-model="vm.register.acctype" ng-value="1"/>&nbsp;自由职业顾问</label>
     </div>
   </div>
   <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 0 || vm.register.acctype === 2"
