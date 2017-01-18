@@ -226,7 +226,7 @@ module.exports = function (grunt) {
           }
       },
       sass: {
-        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        src: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
@@ -427,9 +427,9 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap-sass-official/assets/fonts/',
+          cwd: 'bower_components/bootstrap-sass/assets/fonts/',
           src: 'bootstrap/*',
-          dest: '<%= yeoman.dist %>/fonts/'
+          dest: '<%= yeoman.dist %>/bower_components/bootstrap-sass/assets/fonts/'
         }, {
           expand: true,
           cwd: 'bower_components/font-awesome/fonts/',
