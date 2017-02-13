@@ -24,7 +24,7 @@
     vm.pageArr = [];
     vm.pageList = {
       currentPage: 1, //当前页数
-      pageSize: 10 //每页条数
+      pageSize: 5 //每页条数
     };
     vm.nowPage = vm.pageList.nowPage;
     for (var i = 1; i <= vm.pageList.total; i++) {

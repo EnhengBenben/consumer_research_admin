@@ -12,11 +12,11 @@
     vm.saveExperience = saveExperience; //保存行业经验
     vm.saveSkills = saveSkills; //保存擅长技能
     vm.saveBase = saveBase; //保存企业基本信息
-    vm.saveFreelanceBase = saveFreelanceBase; //保存自由职业者基本信息
+    vm.saveFreelanceBase = saveFreelanceBase; //保存自由职业顾问基本信息
     vm.removeOption = removeOption; //删除企业资质选项
     vm.addOption = addOption; //添加企业资质
     vm.saveQua = saveQua; //保存企业资质
-    vm.FreelanceResume = FreelanceResume; //保存自由职业者履历
+    vm.FreelanceResume = FreelanceResume; //保存自由职业顾问履历
     vm.add = {
       qualifications: [{
         zname: '',
@@ -34,29 +34,10 @@
       var dateParse = $filter('date');
       vm.dateOptions = {
         now: dateParse(new Date, 'yyyy-MM-dd'),
-        minDate: moment(),
+        minDate: moment()
       };
-      vm.jobAges = [
-        {
-          id: 5,
-          name: '应届毕业生'
-        },
-        {
-          id: 1,
-          name: '1-3年'
-        },
-        {
-          id: 2,
-          name: '4-6年'
-        },
-        {
-          id: 3,
-          name: '7-10年'
-        },
-        {
-          id: 4,
-          name: '10年以上'
-        }];
+      vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
+        , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 10, name: '10年及以上'}];
       vm.EnglishLevel = [{id: 0, name: '一般'}, {id: 1, name: '良好'}];
       vm.flattypeArr = [{id: 0, name: '企业'}, {id: 1, name: '事业单位'},
         {id: 2, name: '民办非企业单位'}, {id: 3, name: '个体工商户'},
@@ -157,7 +138,7 @@
 
     function removeOption(index) {
       if (vm.add.qualifications.length == 1) {
-        vm.add.qualifications.splice(0, 1);
+       // vm.add.qualifications.splice(0, 1);
       } else {
         vm.add.qualifications.splice(index, 1);
       }
@@ -170,10 +151,10 @@
         }
         for (var i = 0; i < vm.add.qualifications.length; i++) {
           if (vm.add.qualifications[i].zname === "") {
-            toaster.pop('error', '资质名称不能为空');
+            toaster.pop('error', '请完善已有项');
             break;
           } else if (vm.add.qualifications[i].zzurl === "") {
-            toaster.pop('error', '请上传企业资质');
+            toaster.pop('error', '请完善已有项');
             break;
           }
         }
@@ -220,6 +201,7 @@
       var params = {
         skills: str.join(','),
         userid: vm.user.userid,
+        other: vm.settingObj.other
       };
       if (vm.user.type === 0) {
         PersonalService

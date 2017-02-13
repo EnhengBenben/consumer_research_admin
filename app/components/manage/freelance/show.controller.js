@@ -7,7 +7,7 @@
     .controller('ManageFreelanceShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams, $uibModal) {
+  function Controller($localStorage, $state, toaster, $scope, CompanyService, $stateParams, AuthService) {
     var vm = this;
     //vm.sendLetter = sendLetter;
     //vm.undertake = undertake;
@@ -20,29 +20,14 @@
 
     function init(){
       vm.stauts = [{id: 0, name: '需求分析'}, {id: 1, name: '概要设计'}, {id: 2, name: '详细设计'}, {id: 3, name: '已开发'}];
-      vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
-      vm.jobAges = [
-        {
-          id: 5,
-          name: '应届毕业生'
-        },
-        {
-          id: 1,
-          name: '1-3年'
-        },
-        {
-          id: 2,
-          name: '4-6年'
-        },
-        {
-          id: 3,
-          name: '7-10年'
-        },
-        {
-          id: 4,
-          name: '10年以上'
-        }];
-      vm.requesttypes = [{id: 0, name: '整体项目'}, {id: 1, name: '驻场开发项目'}, {id: 2, name: '自由职业者项目'}];
+      AuthService
+        .findJob()
+        .then(function(res){
+          vm.mantyprs = res.data;
+        });
+      vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
+        , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
+      vm.requesttypes = [{id: 0, name: '整体项目'}, {id: 1, name: '驻场开发项目'}, {id: 2, name: '自由职业顾问项目'}];
 
       CompanyService
         .show({id: $stateParams.id,requesttype: $stateParams.requesttype})

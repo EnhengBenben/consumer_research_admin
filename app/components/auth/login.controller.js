@@ -31,13 +31,13 @@
          }else if(response.type === 0) {                                       //企业用户
            if(response.basetype === 0){                                        //发包方企业
              toaster.pop('success','欢迎您' + response.username);
-             $state.go('app.manage.company.list');
+             $state.go('app.manage.company.more');
            }else if(response.basetype === 1){                                 //承包方企业
              toaster.pop('success','欢迎您' + response.username);
              $state.go('app.company.list');
            }
            $localStorage.user = response;
-         }else if(response.type === 1){                                      //自由职业者企业
+         }else if(response.type === 1){                                      //自由职业顾问企业
            toaster.pop('success','欢迎您' + response.username);
            $state.go('app.company.list');
            $localStorage.user = response;

@@ -27,9 +27,20 @@
             ng-if="register.email.$error.required && register.email.$touched">邮箱不能为空</span>
       <span class="help-block error-font"
             ng-if="register.email.$touched && (register.email.$error.email || register.email.$error.pattern)">请输入正确的邮箱格式</span>
-      <span class="input-result" ng-if="register.email.$valid"><i class="fa fa-check"></i></span>
+    </div>
+  </div>
+  <div class="form-group username"  ng-if="vm.register.acctype === 0 || vm.register.acctype === 2">
+    <div class="col-md-2 col-xs-2 control-label">
+      <label for="code" class="white-center">验证码</label>
+    </div>
+    <div class="col-md-7 col-xs-7" style="padding-right: 0">
+      <input id="code" ng-model="vm.register.validateCode" maxlength="4" type="text" class="form-control" required
+             placeholder="请输入验证码"/>
       <span class="help-block"><input type="checkbox" class="checkbox-inline" name="read" ng-true-value="true" ng-model="vm.read"/>
-        <span>我同意</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
+        <span>我同意并已阅读</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
+    </div>
+    <div class="col-md-2 col-xs-2" style="padding-left: 0" title="看不清？换一张">
+      <div style="width: 82px; height: 28px; padding: 2px;display: inline-block" ng-click="vm.getCode()"><img alt="点击获取验证码" ng-src="{{vm.image}}"></div>
     </div>
   </div>
   <div class="form-group username" style="margin-top: 30px" ng-if="vm.register.acctype === 1"
@@ -47,20 +58,19 @@
              ng-if="register.tel.$error.required && register.tel.$touched">手机号不能为空</span>
       <span class="help-block error-font"
             ng-if="(register.tel.$error.tel || register.tel.$error.pattern) && register.tel.$touched">请输入正确的手机号</span>
-      <span class="input-result" ng-if="register.tel.$valid"><i class="fa fa-check"></i></span>
     </div>
   </div>
   <div class="form-group username" ng-if="vm.register.acctype === 1">
     <div class="col-md-2 col-xs-2 control-label">
       <label for="password" class="white-center">验证码</label>
     </div>
-    <div class="col-md-6 col-xs-6" style="padding-right: 0">
+    <div class="col-md-7 col-xs-7" style="padding-right: 0">
       <input id="password" ng-model="vm.register.code" type="text" class="form-control" required
              placeholder="请输入验证码"/>
       <span class="help-block"><input type="checkbox" class="checkbox-inline" name="read" ng-true-value="true" ng-model="vm.read"/>
-        <span>我同意</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
+        <span>我同意并已阅读</span><a ui-sref="service" target="_blank">《服务协议》</a></span>
     </div>
-    <div class="col-md-3 col-xs-3" style="padding-left: 0">
+    <div class="col-md-2 col-xs-2" style="padding-left: 0">
       <div class="btn btn-primary" ng-click="vm.sendCode()" ng-class="{'disabled': !vm.paraevent}">{{vm.paracont}}</div>
     </div>
   </div>

@@ -53,12 +53,12 @@
         <p class="margin-seven">{{vm.show.skills}}</p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-if="vm.show.zname != '' && vm.show.zname != ','">
       <div class="col-md-2 control-label">
-        <label>企业资质</label>
+        <label>企业认证</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven" ng-repeat="i in vm.show.zname" ng-if="$index % 2 === 0">{{i}}</p>
+        <p class="margin-seven" ng-repeat="i in vm.show.zname track by $index" ng-if="$index % 2 === 0">{{i}}</p>
       </div>
     </div>
     <div class="form-group important-font"  ng-if="vm.show.iscment === '2'">
@@ -79,6 +79,7 @@
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
+        <div  class="btn btn-warning" ng-click="vm.freeShowContact()" ng-if="vm.show.iscment != '2'">免费让您的专属经纪人撮合沟通</div>
         <div ng-if="vm.show.iscment != '2'" class="btn btn-primary" ng-click="vm.showContact()">查看联系方式</div>
         <div ng-if="vm.show.iscment === '2'" class="btn btn-default" ng-click="vm.sendLetter()">发私信</div>
       </div>

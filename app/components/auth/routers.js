@@ -78,4 +78,19 @@ angular.module('app')
         url: '/service',
         templateUrl: 'components/auth/service.html'
       })
+      .state('forgetPassword',{
+        url: '/forget-password',
+        templateUrl: 'components/auth/forget-password.html',
+        controller: 'ForgetPasswordCtrl as vm'
+      })
+      .state('resetpassword',{
+        url: '/resetpassword?status&username',
+        templateUrl: 'components/auth/resetpassword.html',
+        controller: 'ResetPasswordCtrl as vm'
+      })
+      .state('checkusername',{
+        url: '/check-username?status&username',
+        templateUrl: 'components/auth/check-username.html',
+        controller: 'CheckUsernameCtrl as vm'
+      })
   });

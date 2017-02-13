@@ -3,7 +3,7 @@
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" is-open="status.open">
       <uib-accordion-heading>
-        基本信息 <i class="pull-right glyphicon"
+        基本信息 <i class="glyphicon"
                 ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
       </uib-accordion-heading>
       <div class="row" style="position: relative;margin-top: 20px">
@@ -51,7 +51,7 @@
                 <single-uploader url="vm.settingObj.idimage"></single-uploader>
               </div>
               <div class="col-md-5">
-                <div style="height: 100px;width: 80px;background-color: #00b3ee">
+                <div style="height: 100px;width: 80px;">
                   <img alt="图片加载失败" ng-src="{{vm.settingObj.idimage}}" style="width: 100%;height: 100%"/>
                 </div>
               </div>
@@ -66,27 +66,27 @@
                        name="name"
                        class="form-control"
                        ng-model="vm.settingObj.name"
-                       placeholder="请输入企业名称"
+                       placeholder="请输入单位名称"
                        required/>
-                <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">企业名称不能为空
+                <div class="help-block error-font" ng-if="base.name.$error.required && base.name.$touched">单位名称不能为空
                 </div>
                 <span ng-if="base.name.$valid" class="input-result"><i class="fa fa-check"></i></span>
               </div>
             </div>
             <div class="form-group" ng-class="{'has-success':base.proscope.$valid}">
               <div class="col-md-2 control-label">
-                <label>营业范围</label>
+                <label>单位简介</label>
               </div>
               <div class="col-md-10">
         <textarea name="proscope"
                   ng-class="{'error-input': ((base.proscope.$error.required || base.proscope.$error.minlength) && base.proscope.$touched)}"
                   ng-minlength="10" class="form-control" ng-model="vm.settingObj.proscope"
-                  placeholder="请输入营业范围，不得少于10个字符" required=""></textarea>
+                  placeholder="请输入单位简介，不得少于10个字符" required=""></textarea>
                 <div class="help-block error-font" ng-if="base.proscope.$error.required && base.proscope.$touched">
-                  营业范围不能为空
+                  单位简介不能为空
                 </div>
                 <div class="help-block error-font" ng-if="base.proscope.$error.minlength && base.proscope.$touched">
-                  营业范围不得少于10个字
+                  单位简介不得少于10个字
                 </div>
               </div>
             </div>
@@ -154,13 +154,15 @@
               </div>
             </div>
 
-            <div class="form-group" ng-class="{'has-success': base.dobusiness.$valid || vm.settingObj.dobusiness === '2099-12-31'}">
+            <div class="form-group"
+                 ng-class="{'has-success': base.dobusiness.$valid || vm.settingObj.dobusiness === '2099-12-31'}">
               <div class="col-md-2 control-label">
                 <label for="">营业期限</label>
               </div>
               <div class="col-md-5" ng-if="vm.settingObj.dobusiness != '2099-12-31'">
                 <div class="input-group">
-                  <input type="text" name="dobusiness" class="form-control input-sm" datetime-picker="yyyy-MM-dd" enable-time="false"
+                  <input type="text" name="dobusiness" class="form-control input-sm" datetime-picker="yyyy-MM-dd"
+                         enable-time="false"
                          save-as="true" ng-model="vm.settingObj.dobusiness" is-open="dateOptions.showStartTime"
                          datepicker-options="vm.dateOptions" placeholder="请选择营业期限"/>
             <span class="input-group-btn">
@@ -256,7 +258,8 @@
                 <span class="input-result" ng-if="base.cardnum.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
-            <div class="form-group" ng-class="{'has-success':base.validity.$valid || vm.settingObj.validity === '2099-12-31'}">
+            <div class="form-group"
+                 ng-class="{'has-success':base.validity.$valid || vm.settingObj.validity === '2099-12-31'}">
               <div class="col-md-2 control-label">
                 <label>证件有效期</label>
               </div>
@@ -402,9 +405,9 @@
               <div class="col-md-10">
                 <input type="password"
                        ng-class="{'error-input': vm.settingObj.passwordagin != vm.settingObj.password &&  base.passwordagin.$touched}"
-                       name="passwordagin" class="form-control" placeholder="再次输入密码" ng-model="vm.settingObj.passwordagin"
+                       name="passwordagin" class="form-control" placeholder="再次输入密码"
+                       ng-model="vm.settingObj.passwordagin"
                        maxlength="8" minlength="8" required/>
-                <pre>{{vm.base}}</pre>
                 <div class="help-block error-font"
                      ng-if="(vm.settingObj.passwordagin != vm.settingObj.password) && base.passwordagin.$touched">
                   请与原密码保持一致
@@ -454,7 +457,7 @@
                 <span class="input-result" ng-if="base.emailaddr.$valid"><i class="fa fa-check"></i></span>
               </div>
             </div>
-            <div class="form-group" ng-class="{'has-success': vm.settingObj.job}">
+          <!--  <div class="form-group" ng-class="{'has-success': vm.settingObj.job}">
               <div class="col-md-2 control-label">
                 <label>工作职位</label>
               </div>
@@ -464,7 +467,7 @@
                   <option value="">请选择</option>
                 </select>
               </div>
-            </div>
+            </div>-->
             <div class="form-group" ng-class="{'has-success': base.jobage.$valid}">
               <div class="col-md-2 control-label">
                 <label>工作年限</label>
@@ -500,7 +503,7 @@
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" is-open="status.open">
       <uib-accordion-heading>
-        行业经验 <i class="pull-right glyphicon"
+        行业经验 <i class="glyphicon"
                 ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
       </uib-accordion-heading>
       <div class="row" style="position: relative;margin-top: 20px">
@@ -533,16 +536,26 @@
       </div>
     </div>
   </uib-accordion>
-  <uib-accordion close-others="oneAtATime">
+  <uib-accordion close-others="oneAtATime" ng-if="!(vm.user.type === 0 && vm.user.basetype === 0)">
     <div uib-accordion-group class="panel-default" is-open="status.open">
       <uib-accordion-heading>
-        擅长技能 <i class="pull-right glyphicon"
+        擅长技能 <i class=" glyphicon"
                 ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
       </uib-accordion-heading>
       <div class="row" style="position: relative;margin-top: 20px">
         <div class="form-container" style="margin-top: 20px">
           <form class="form-horizontal" name="base" ng-submit="vm.saveSkills()">
-            <div class="form-group" ng-repeat="skill in vm.skills">
+            <!--  <div class="form-group" ng-repeat="skill in vm.skills">
+                <div class="col-md-2 control-label" style="padding-top: 0">
+                  <label>{{skill.remark}}</label>
+                </div>
+                <div class="col-md-2" ng-repeat="i in skill.diclist track by $index"
+                     ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
+                  <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.skill[i.id]"
+                                                      ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+                </div>
+              </div>-->
+            <div class="form-group" ng-repeat="skill in vm.skills" ng-if="$index < 2">
               <div class="col-md-2 control-label" style="padding-top: 0">
                 <label>{{skill.remark}}</label>
               </div>
@@ -552,14 +565,31 @@
                                                     ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
               </div>
             </div>
-            <!-- <div class="form-group">
-               <div class="col-md-2 control-label" style="padding-top: 0">
-                 <label>其他</label>
-               </div>
-               <div class="col-md-9">
-                 <input class="form-control" type="text" ng-model="vm.skill.other" placeholder="如果还有其他技能,请输入"/>
-               </div>
-             </div>-->
+            <div class="form-group">
+              <div class="col-md-2 control-label" style="padding-top: 0;color: #3285ff;cursor: pointer"
+                   ng-click="show = !show">
+                <label>更多技术细节</label><span> <i class="fa fa-plus" ng-if="!show"></i> <i class="fa fa-minus"
+                                                                                    ng-if="show"></i></span>
+              </div>
+            </div>
+            <div class="form-group" ng-repeat="skill in vm.skills" ng-if="$index >= 2 && show">
+              <div class="col-md-2 control-label" style="padding-top: 0">
+                <label>{{skill.remark}}</label>
+              </div>
+              <div class="col-md-2" ng-repeat="i in skill.diclist track by $index"
+                   ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
+                <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.skill[i.id]"
+                                                    ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+              </div>
+            </div>
+            <div class="form-group" ng-if="show">
+              <div class="col-md-2 control-label" style="padding-top: 0">
+                <label>其他</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" ng-model="vm.settingObj.other" class="form-control" placeholder="可输入其他技能，多个技能可用逗号分隔，例如：COBOL，Ruby">
+              </div>
+            </div>
             <div class="form-group" style="border-bottom: none">
               <div class="col-md-10 col-md-offset-2">
                 <button type="submit" class="btn btn-primary">保存</button>
@@ -573,8 +603,8 @@
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" is-open="status.open">
       <uib-accordion-heading>
-        <span ng-if="vm.user.type === 0">企业资质</span><span ng-if="vm.user.type === 1">履历&经验</span> <i
-        class="pull-right glyphicon"
+        <span ng-if="vm.user.type === 0">企业认证</span><span ng-if="vm.user.type === 1">履历&经验</span> <i
+        class="glyphicon"
         ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
       </uib-accordion-heading>
       <div class="row" style="position: relative;margin-top: 20px">
@@ -582,17 +612,17 @@
           <form class="form-horizontal" ng-submit="vm.saveQua()">
             <div class="form-group">
               <div class="col-md-2 control-label">
-                <label>企业资质</label>
+                <label>企业认证</label>
               </div>
               <div class="col-md-3" style="text-align: center">
-                <label>资质名称</label>
+                <label>企业认证名称</label>
               </div>
               <div class="col-md-3" style="text-align: center">
-                <label>上传资质</label>
+                <label>上传企业认证</label>
                 <!--<single-uploader url="vm.base.url"></single-uploader>-->
               </div>
               <div class="col-md-2" style="text-align: center">
-                <label>资质展示</label>
+                <label>企业认证展示</label>
                 <!--<single-uploader url="vm.base.url"></single-uploader>-->
               </div>
               <div class="col-md-2">
@@ -600,13 +630,16 @@
               </div>
             </div>
             <div class="form-group" ng-repeat="i in vm.add.qualifications track by $index">
-              <div class="col-md-3 col-md-offset-2">
-                <input type="text" class="form-control" ng-model="i.zname" required placeholder="请输入企业资质名称">
+              <div class="col-md-2" style="text-align: right">
+                <span>（可选）</span>
+              </div>
+              <div class="col-md-3">
+                <input type="text" class="form-control" ng-model="i.zname" required placeholder="例如：ISO9000质量体系认证">
               </div>
               <div class="col-md-3">
                 <single-uploader url="i.zzurl"></single-uploader>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 -align-center">
                 <img ng-src="{{i.zzurl}}" style="width: 100px; height: 70px;padding: 4px;"/>
               </div>
               <div class="col-md-2">
@@ -640,7 +673,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group" ng-class="{'has-success': resume.expectjob.$valid}">
+          <!--  <div class="form-group" ng-class="{'has-success': resume.expectjob.$valid}">
               <div class="col-md-2 control-label">
                 <label>期望职位</label>
               </div>
@@ -650,7 +683,7 @@
                   <option value="">请选择</option>
                 </select>
               </div>
-            </div>
+            </div>-->
             <div class="form-group" ng-class="{'has-success': resume.wage.$valid}">
               <div class="col-md-2 control-label">
                 <label>期望日薪</label>
@@ -724,7 +757,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group" ng-class="{'has-success': resume.certificate.$valid}">
+           <!-- <div class="form-group" ng-class="{'has-success': resume.certificate.$valid}">
               <div class="col-md-2 control-label">
                 <label>资格证书</label>
               </div>
@@ -734,14 +767,14 @@
                   <option value="">请选择资格证书</option>
                 </select>
               </div>
-            </div>
+            </div>-->
             <div class="form-group">
-              <div class="col-md-2 control-label">
-                <label>其他信息</label>
+              <div class="col-md-2 control-label" style="padding-left: 0">
+                <label>其他信息（可选填）</label>
               </div>
               <div class="col-md-10">
-                <textarea class="form-control" name="other" ng-model="vm.settingObj.other"
-                          placeholder="请输入其他信息"></textarea>
+                <textarea class="form-control" name="other" ng-model="vm.settingObj.oth"
+                          placeholder="请输入其他信息。例：取得过Oracle高级认证。"></textarea>
               </div>
             </div>
             <div class="form-group" style="border-bottom: none">

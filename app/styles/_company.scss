@@ -19,12 +19,17 @@
 .soft-list {
   border-bottom: 1px solid #eee;
   padding: 20px 0;
+  //padding-left: 20px;
   ul {
     li {
       float: left;
     }
   }
 }
+//.soft-list:hover{
+//  box-shadow: 3px 3px 8px #eee;
+//  border: 1px solid #eee;
+//}
 
 .overflow-p {
   max-height: 40px;
@@ -62,7 +67,7 @@
     }
   }
   .dropdown-menu{
-    left: -200px !important;
+    left: -300px !important;
     li{
       width: inherit !important;
     }

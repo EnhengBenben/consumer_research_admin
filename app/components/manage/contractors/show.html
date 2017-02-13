@@ -1,5 +1,7 @@
 <div class="row no-margin" style="margin-bottom: 20px">
-  <div class="pull-right btn btn-primary" ui-sref="app.manage.contractors.list"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
+  <div class="pull-right btn btn-primary" ui-sref="app.manage.contractors.list"><i class="fa fa-angle-left"
+                                                                                   aria-hidden="true"></i> 返回
+  </div>
 </div>
 <div class="form-container" style="position: relative">
   <form class="form-horizontal">
@@ -25,19 +27,19 @@
       </div>
     </div>
     <div class="form-group" ng-if="vm.show.requesttype[0].id === 0">
-      <div class="col-md-2 control-label">
-        <label>项目说明</label>
+      <div class="col-md-3 control-label">
+        <label>项目简介</label>
       </div>
-      <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.odeclare}}</p>
+      <div class="col-md-9">
+        <p class="margin-seven">{{vm.show.intro}}</p>
       </div>
     </div>
-    <div class="form-group" ng-if="vm.show.requesttype[0].id === 0">
+    <div class="form-group">
       <div class="col-md-2 control-label">
         <label>项目当前状态</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.cstatus === 1? '开放': '关闭'}}</p>
+        <p class="margin-seven">{{vm.show.cstatus[0].name}}</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
@@ -61,7 +63,15 @@
         <label>工程师类型</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.mantypr[0].name}}</p>
+        <p class="margin-seven">{{vm.show.mantypr}}</p>
+      </div>
+    </div>
+    <div class="form-group"  ng-if="vm.show.requesttype[0].id != 0">
+      <div class="col-md-2 control-label">
+        <label>工程师人数</label>
+      </div>
+      <div class="col-md-9">
+        <p class="margin-seven">{{vm.show.pernum}}人</p>
       </div>
     </div>
     <div class="form-group"  ng-if="vm.show.requesttype[0].id === 0">
@@ -89,7 +99,15 @@
   </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
-        <label>项目开始时间</label>
+        <label>项目发布日期</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven">{{vm.show.createtime}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>项目开始日期</label>
       </div>
       <div class="col-md-10">
         <p class="margin-seven">{{vm.show.starttime}}</p>
@@ -97,7 +115,7 @@
     </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
-        <label>项目结束时间</label>
+        <label>项目结束日期</label>
       </div>
       <div class="col-md-10">
         <p class="margin-seven">{{vm.show.endtime}}</p>
@@ -108,15 +126,47 @@
         <label>任职要求</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.requirements}}</p>
+        <p class="margin-seven" id="requirements"></p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.show.requesttype[0].id != 0">
+      <div class="col-md-2 control-label">
+        <label>面试方式</label>
+      </div>
+      <div class="col-md-9">
+        <p class="margin-seven">{{vm.show.mstype === 1?'现场':'电话'}}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.show.requesttype[0].id != 0">
+      <div class="col-md-2 control-label">
+        <label>是否承担差旅费</label>
+      </div>
+      <div class="col-md-9">
+        <p class="margin-seven">{{vm.show.cl === 1? '是': '否'}}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="vm.show.requesttype[0].id != 0">
+      <div class="col-md-2 control-label">
+        <label>是否承担住宿费</label>
+      </div>
+      <div class="col-md-9">
+        <p class="margin-seven">{{vm.show.sf === 1? '是': '否'}}</p>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
-        <label>联系方式</label>
+        <label>邮箱</label>
       </div>
       <div class="col-md-10">
         <p class="margin-seven important-font">{{vm.show.username}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-2 control-label">
+        <label>手机号</label>
+      </div>
+      <div class="col-md-10">
+        <p class="margin-seven important-font">{{vm.show.telnum}}</p>
       </div>
     </div>
     <div class="form-group" style="border-bottom: none">

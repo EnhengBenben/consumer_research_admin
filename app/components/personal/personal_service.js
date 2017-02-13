@@ -9,17 +9,17 @@
 
   function Service(ENDPOINT, $http){
     return{
-      list: list,//自由职业者列表
+      list: list,//自由职业顾问列表
       show: show,//公司详情
       searchInfo: searchInfo, //获取企业注册信息
       updateBase: updateBase, // 保存企业基本信息
       updateCompanyExp: updateCompanyExp,//保存企业行业经验
       updateCompanySkill: updateCompanySkill, //保存企业擅长技能
       updateCompanyQua: updateCompanyQua, //保存企业资质
-      updateFreelanceBase: updateFreelanceBase, //保存自由职业者基本信息
-      updateFreelanceExp: updateFreelanceExp, //保存自由职业者行业经验
-      updateFreelanceSkill: updateFreelanceSkill, //保存自由职业者擅长技能
-      updateFreelanceResume: updateFreelanceResume, //保存自由职业者履历
+      updateFreelanceBase: updateFreelanceBase, //保存自由职业顾问基本信息
+      updateFreelanceExp: updateFreelanceExp, //保存自由职业顾问行业经验
+      updateFreelanceSkill: updateFreelanceSkill, //保存自由职业顾问擅长技能
+      updateFreelanceResume: updateFreelanceResume, //保存自由职业顾问履历
       findInBox: findInBox,//查询收件箱
       findOutbox: findOutbox, //查询发件箱
       deleteInBox: deleteInBox, // 删除私信
@@ -29,10 +29,26 @@
       delSendAllMessage: delSendAllMessage, //批量删除发件箱
       delAcceptAllMessage: delAcceptAllMessage, //批量删除发件箱
       findInBox2: findInBox2, //承包方收件箱列表
+      countMessage: countMessage, //私信未读数目
+      updateMessageStatus: updateMessageStatus, //承包方收件箱列表
     };
     function findInBox2(data){
       return  $http({
         url: ENDPOINT + '/findInBox2.action',
+        method: 'POST',
+        data: data
+      })
+    }
+    function countMessage(data){
+      return  $http({
+        url: ENDPOINT + '/countMessage.action',
+        method: 'POST',
+        data: data
+      })
+    }
+    function updateMessageStatus(data){
+      return  $http({
+        url: ENDPOINT + '/updateMessageStatus.action',
         method: 'POST',
         data: data
       })

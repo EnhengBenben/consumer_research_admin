@@ -20,8 +20,15 @@
     return init();
 
     function init(){
-      if(items.type === 3){                   /*承接项目，获取相应订单信息*/
+      if(items.type === 3){     /*承接项目，获取相应订单信息*/
+        var usertype;
+        if(vm.user.type === 1){
+          usertype = 1;
+        }else {
+          usertype = 2;
+        }
         vm.params = {
+          usertype: usertype,
           userid: vm.user.userid,
           rid: parseInt(items.id)
         };
@@ -42,7 +49,7 @@
             vm.showInfo = res.data;
           })
       }
-      if(items.type === 1){                     /*查看自由职业者详情，获取相应订单信息*/
+      if(items.type === 1){                     /*查看自由职业顾问详情，获取相应订单信息*/
         vm.params = {
           userid: vm.user.userid,
           zid: parseInt(items.id)
@@ -77,7 +84,7 @@
             + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc=123&userid=' + vm.user.userid
             + '&rid=' + vm.showInfo.rid + '&alipaytype=' + 1, '_blank');
         }else if(items.type === 2){
-          window.open( ENDPOINT + 'alipay/index.action?orderid=' + vm.showInfo.orderid
+          window.open( ENDPOINT + '/alipay/index.action?orderid=' + vm.showInfo.orderid
             + '&title=' + vm.showInfo.title + '&price=' + vm.showInfo.price + '&desc=123&userid=' + vm.user.userid
             + '&lid=' + vm.showInfo.cid + '&alipaytype=' + items.type, '_blank');
         }else if(items.type === 1){

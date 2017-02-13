@@ -10,7 +10,16 @@
     return {
       list: list,//承包方列表
       show: show,//承包方详细信息
+      toInsertHelptoqy: toInsertHelptoqy, //撮合沟通
     };
+    function toInsertHelptoqy(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/toInsertHelptoqy.action',
+        data: data
+      });
+    }
+
     function list(params) {
       return $http({
         method: 'POST',

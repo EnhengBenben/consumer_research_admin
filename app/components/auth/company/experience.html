@@ -16,22 +16,27 @@
     </div>
     <div class="circle">
       <div>3</div>
-      <span class="help-block">擅长技能</span>
+      <span class="help-block" ng-if="vm.registertype === 1">擅长技能</span>
+      <span class="help-block" ng-if="vm.registertype === 0">企业认证</span>
     </div>
-    <div class="circle-line">
+    <div class="circle-line circle-resume" ng-if="vm.registertype === 1">
       <div></div>
     </div>
-    <div class="circle">
+    <div class="circle"  ng-if="vm.registertype === 1">
       <div>4</div>
-      <span class="help-block">企业资质</span>
+      <span class="help-block">企业认证</span>
     </div>
   </div>
 </div>
 <form class="form-container form-horizontal" ng-submit="vm.next()" style="padding-right: 0">
   <div class="row">
-    <div class="col-md-10 col-md-offset-2 font-prompt">
+    <div class="col-md-10 col-md-offset-2 font-prompt" ng-if="vm.registertype === 1">
       <p>您过去项目所在的行业有哪些？</p>
       <p>这便于贵司作为行业的资深公司，更好的承接项目</p>
+    </div>
+    <div class="col-md-10 col-md-offset-2 font-prompt" ng-if="vm.registertype === 0">
+      <p>贵司所在的行业有哪些？</p>
+      <p>这便于平台提供更好的项目服务</p>
     </div>
   </div>
   <hr/>

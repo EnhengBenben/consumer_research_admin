@@ -9,11 +9,20 @@
 
   function Service(ENDPOINT, $http){
     return{
-      list: list,//自由职业者列表
-      show: show,//自由职业者详情
+      list: list,//自由职业顾问列表
+      show: show,//自由职业顾问详情
       city: city, //获取城市列表
       province: province,//获取省份列表
+      tohelper: tohelper, //撮合沟通
     };
+
+    function tohelper(data){
+      return  $http({
+        url: ENDPOINT + '/toInsertHelptops.action',
+        method: 'POST',
+        data: data
+      })
+    }
 
     function province(){
       return  $http({

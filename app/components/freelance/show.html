@@ -26,14 +26,14 @@
         <p class="margin-seven">{{vm.show.addrname}}</p>
       </div>
     </div>
-    <div class="form-group">
+  <!--  <div class="form-group">
       <div class="col-md-2 control-label">
         <label>工作职位</label>
       </div>
       <div class="col-md-8">
         <p class="margin-seven">{{vm.show.job}}</p>
       </div>
-    </div>
+    </div>-->
     <div class="form-group">
       <div class="col-md-2 control-label">
         <label>行业经验</label>
@@ -47,7 +47,7 @@
         <label>技术技能</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.skillname | limitTo: vm.show.skillname.length -1}}</p>
+        <p class="margin-seven">{{vm.show.skillname}}</p>
       </div>
     </div>
     <div class="form-group">
@@ -116,6 +116,7 @@
     </div>
     <div class="form-group" style="border-bottom: none">
       <div class="col-md-10 col-md-offset-2">
+        <div  class="btn btn-warning" ng-click="vm.freeShowContact()" ng-if="vm.show.iscment != '2'">免费让您的专属经纪人撮合沟通</div>
         <div  ng-if="vm.show.iscment != '2'" class="btn btn-primary" ng-click="vm.showContact()">查看联系方式</div>
         <div ng-if="vm.show.iscment === '2'" class="btn btn-default" ng-click="vm.sendLetter()">发私信</div>
       </div>

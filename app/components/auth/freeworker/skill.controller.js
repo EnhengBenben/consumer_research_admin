@@ -38,7 +38,7 @@
       }
       str = str.join(',');
       if (str.length && str.split(',').length > 0 && str.split(',').length <= 20) {
-        $localStorage.skill = {skills: str};
+        $localStorage.skill = {skills: str,other: vm.other};
         $state.go('free.resume');
         toaster.pop('success', '已保存，请继续完成注册');
       } else {

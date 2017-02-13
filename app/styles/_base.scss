@@ -17,7 +17,8 @@ a {
 a:hover, a:link, a:active, a:focus {
   text-decoration: none;
 }
-a:focus{
+
+a:focus {
   outline: none;
 }
 
@@ -120,6 +121,12 @@ ul {
     left: 50%;
     margin-left: -600px;
     text-align: center;
+    p {
+      a {
+        font-weight: normal !important;
+        font-size: 14px !important;
+      }
+    }
   }
 
 }
@@ -146,40 +153,45 @@ ul {
     width: 100%;
     border: 1px solid #eee;
     box-shadow: 2px 2px 2px #aaa;
-    li{
+    li {
       text-align: center;
       width: 100% !important;
-      span{
+      span {
         padding: 0 !important;
       }
     }
-    li:hover{
+    li:hover {
       background-color: #3285ff;
       color: #FFF;
     }
   }
 }
-.show-city:hover{
-  ul{
+
+.show-city:hover {
+  ul {
     display: block;
   }
 }
-.overflow-text-hidden{
+
+.overflow-text-hidden {
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.-align-center{
+
+.-align-center {
   text-align: center;
 }
 
-.text-sp{
-  text-indent:2em;
+.text-sp {
+  text-indent: 2em;
 }
-.text-sp-db{
-  text-indent:4em;
+
+.text-sp-db {
+  text-indent: 4em;
 }
+
 .show-skills {
   position: relative;
   width: 190px !important;
@@ -197,45 +209,85 @@ ul {
     width: 100%;
     border: 1px solid #eee;
     box-shadow: 2px 2px 2px #aaa;
-    li{
+    li {
       text-align: center !important;
       width: 100% !important;
       font-weight: 400 !important;
-      span{
+      span {
         padding: 0 !important;
       }
     }
-    li:hover{
+    li:hover {
       background-color: #3285ff;
       color: #FFF;
     }
   }
 }
 
-.null-of-date{
+.null-of-date {
   border: 1px solid red;
 }
-.check-date-picker{
-    border: 1px solid red;
+
+.check-date-picker {
+  border: 1px solid red;
 }
-.show-accept-person{
+
+.show-accept-person {
   width: 40%;
   height: 100%;
   position: absolute;
   top: 0;
   right: 0;
 }
-.list-name{
-  .list-box{
-    p{
+
+.list-name {
+  .list-box {
+    div {
+      width: 1000px;
       margin: 10px 0 10px 0;
+      overflow: auto;
+      span {
+        margin: 2px 2px;
+        display: inline-block;
+      }
+     .remark-title{
+        display: block;
+        width: 130px;
+        text-align: right;
+        float: left;
+      }
+      .test-remark{
+        display: block;
+        width: 860px;
+        float: left;
+      }
     }
-    span{
-      margin: 2px 2px;
-      display: inline-block;
-    }
+
   }
 }
-.help-block{
+
+.help-block {
   text-align: left;
+}
+
+.odd-help {
+  background-color: #dfeeff;
+}
+.help-question{
+  .base-container p:nth-child(1) {
+    color: #3483bf;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  padding-left: 15px;
+  height: 140px;
+  display: table;
+  width: 100%;
+  .base-container{
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+.note-toolbar{
+  display: none !important;
 }

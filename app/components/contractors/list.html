@@ -36,45 +36,61 @@
       <li style="width: 190px" ng-repeat="i in vm.experiences track by $index"
           ng-class="{'left-select': $index != 0&& $index%5 === 0}">
         <div>
-          <label><input type="checkbox" checklist-model="vm.checkExp.ids" checklist-value="i.id">{{i.name}}</label>
+          <label><input type="checkbox" checklist-model="vm.checkExp.ids" checklist-value="i.id"><span style="padding: 0 4px;font-weight: normal">{{i.name}}</span></label>
         </div>
       </li>
     </ul>
     <ul class="list-unstyled no-margin row">
       <li><span>技能选择 ：</span></li>
-      <li class="row" style="width: 1000px">
-        <div class="col-md-6">
-          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 6">
-           <div class="list-box">
-             <p ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-chevron-right': !show,'fa-chevron-left': show}" class="fa" aria-hidden="true"></i></p>
-             <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
-           </div>
+      <li class="row" style="width: 1000px;margin-top: -10px">
+        <div class="col-md-12 no-padding-left no-padding-right">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 2">
+            <div class="list-box">
+              <!--  <p><span>{{lists.remark}}</span> <span ng-click="i.selected = !i.selected"
+                                                       ng-class="{'filter-active': i.selected}"
+                                                       ng-repeat="i in lists.diclist">{{i.name}}</span></p>-->
+              <div class="list-box">
+                <div><span class="remark-title">{{lists.remark}}</span> <span class="test-remark">
+                <span ng-click="vm.selectSkill(lists.pid, i.id)"
+                      ng-class="{'filter-active': i.selected}"
+                      ng-repeat="i in lists.diclist">{{i.name}}</span>
+              </span></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index > 6">
+        <div class="col-md-12">
+          <div class="list-name">
             <div class="list-box">
-              <p  ng-click="show = !show">{{lists.remark}} <i ng-class="{'fa-chevron-right': !show,'fa-chevron-left': show}" class="fa" aria-hidden="true"></i></p>
-              <span ng-click="i.selected = !i.selected" ng-class="{'filter-active': i.selected}" ng-if="show" ng-repeat="i in lists.diclist">{{i.name}}</span>
+              <p style="color: #3285ff;cursor: pointer" ng-click="show = !show">更多技术细节 <i class="fa" ng-class="{'fa-plus-square-o': !show, 'fa-minus-square-o': show}"></i></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" ng-if="show">
+          <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index >= 2">
+            <div class="list-box">
+              <div><span class="remark-title">{{lists.remark}}</span> <span class="test-remark">
+                <span ng-click="vm.selectSkill(lists.pid, i.id)"
+                      ng-class="{'filter-active': i.selected}"
+                      ng-repeat="i in lists.diclist">{{i.name}}</span>
+              </span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" ng-if="show">
+          <div class="col-md-1 no-padding" style="width: 130px;text-align: right">
+            <p><span>其他</span></p>
+          </div>
+          <div class="col-md-10" style="margin-left: 30px">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="vm.other" placeholder="请输入其他技术细节并确定,例如：JAVA"/>
+              <span ng-click="vm.searchOther()" class="input-group-addon" style="background-color: #3285ff;color: #FFF;border: 1px solid #3285ff;cursor: pointer;">搜索</span>
             </div>
           </div>
         </div>
       </li>
-      <!--<li class="width-inherit margin-seven show-skills" ng-repeat="i in vm.skills track by $index"
-          ng-class="{'left-select': $index != 0&& $index%5 === 0}">
-        <label><input type="checkbox" checklist-model="vm.checkSkills.ids" checklist-value="i.pid" ng-click="i.selected = !i.selected;i.opened = !i.opened">{{i.remark}}</label>
-        <ul class="list-unstyled no-margin animated fadeInLeft" style="display: block" ng-if="i.opened">
-          &lt;!&ndash; <li ng-if="i.cityList.length != 1">全部</li>&ndash;&gt;
-          <li style="width: 100% !important; float: left" class="width-inherit margin-seven"
-              ng-class="{'filter-active': list.selected}"
-              ng-repeat="list in i.diclist" ng-click="vm.selectSkills(list, i)"><span>{{list.name}}</span>
-          </li>
-          <li class="width-inherit margin-seven" style="background-color: #3285ff;">
-              <div class="btn" style="color: #FFF !important;" ng-click="vm.checkItems(i)">确认选择</div>
-          </li>
-        </ul>
-      </li>-->
     </ul>
+
   </div>
   <!--加载动画-->
   <div class="spinner" ng-if="!vm.lists">

@@ -14,7 +14,7 @@
       list: list, //获取支付类型及详情
       companyInfo: companyInfo, //付费承接项目
       contractorsInfo: contractorsInfo, //查看承包方联系方式
-      freelanceInfo: freelanceInfo, //查看自由职业者联系方式
+      freelanceInfo: freelanceInfo, //查看自由职业顾问联系方式
       checkIsPayment: checkIsPayment, //查看付款状态
     };
 

@@ -9,7 +9,7 @@
     .controller('PersonalInfoShowCtrl', Controller);
 
   /* @ngInject */
-  function Controller(PersonalService, $localStorage, toaster, $uibModal, $stateParams) {
+  function Controller(PersonalService, $localStorage, $scope, $uibModal, $stateParams) {
     var vm = this;
     vm.goBack = goBack;
     vm.reBack = reBack;
@@ -21,6 +21,11 @@
     function init() {
       if(vm.status === 'accept'){
         //收件箱
+        PersonalService
+          .updateMessageStatus({id: $stateParams.id})
+          .then(function(res){
+            $scope.$emit('read', true);
+          });
         PersonalService
           .infoAcceptBox({id: $stateParams.id})
           .then(function(res){
@@ -48,6 +53,7 @@
         templateUrl: 'components/company/model.html',
         controller: 'ModalInstanceCtrl',
         controllerAs: 'vm',
+        backdrop: 'static',
         size: 'md',
         resolve: {
           items: function () {

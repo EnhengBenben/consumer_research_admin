@@ -6,7 +6,7 @@
     .controller('CompanyListCtrl', Controller);
 
   /* @ngInject */
-  function Controller($localStorage, $state, toaster, $scope, CompanyService, FreelanceService) {
+  function Controller($localStorage, AuthService, toaster, $scope, CompanyService, FreelanceService) {
     var vm = this;
     vm.first = first;
     vm.choice = choice;
@@ -15,6 +15,7 @@
     vm.selectProvince = selectProvince;
     vm.selectCity = selectCity;
     vm.filterPage = filterPage;
+    vm.searchMan = searchMan;
     vm.pageArr = [];
 
     return init();
@@ -26,7 +27,16 @@
         3: null,
         4: null,
         5: null,
-        6: null
+        6: null,
+        job: null
+      };
+      AuthService
+        .findJob()
+        .then(function(res){
+          vm.mantyprsLists = res.data;
+        });
+      vm.mantyprs = {
+        name: null
       };
       vm.dateOptions1 = {
         maxDate: moment()
@@ -55,6 +65,8 @@
       $scope.$watch('vm.filter', function (newValue, oldValue) {
         if (newValue != oldValue) {
           var data = {
+            job: vm.filter.job || null,
+            other: vm.filter.other || null,
             requesttype: vm.filter[1],
           };
           if((typeof vm.filter[3] === 'number' || vm.filter[3] === null)){
@@ -64,7 +76,7 @@
             }
           }else {
             data['zdPublishTime'] = vm.filter[3];
-            //项目发布时间选择指定时间
+            //项目发布日期选择指定时间
             console.log(vm.filter[3]);
           }
           if((typeof vm.filter[6] === 'number'  || vm.filter[6] === null)){
@@ -73,7 +85,7 @@
               delete  vm.dataTime.starttime;
           }else {
             data['zdStartTime'] = vm.filter[6];
-            //项目开始时间选择指定时间
+            //项目开始日期选择指定时间
             //console.log(vm.filter[6]);
           }
           if(vm.filter[2] && vm.filter[2].flag){
@@ -90,6 +102,10 @@
             .list(data)
             .then(function (res) {
               vm.lists = res.data.jsonArray;
+              vm.pageArr = [];
+              for (var i = 1; i <= res.data.pageTotal; i++) {
+                vm.pageArr.push(i);
+              }
             })
         }
       }, true);
@@ -109,11 +125,23 @@
       }, true);
       $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue) {
         if (newValue != oldValue) {
-          CompanyService
-            .list(vm.pageList)
-            .then(function (res) {
-              vm.lists = res.data.jsonArray;
-            })
+         vm.filter['test'] = vm.pageList.currentPage;
+        }
+      }, true);
+      $scope.$watch('vm.manList.name', function (newValue, oldValue) {
+        if (newValue != oldValue) {
+          if(vm.manList.name === '其他'){
+            vm.searchTag = true;
+            vm.filter.job = null;
+          }else if(vm.manList.name === 'SAP'){
+            vm.sapTag = true;
+
+          } else {
+            vm.searchTag = false;
+            vm.sapTag = false;
+            delete vm.filter.other;
+            vm.filter.job = vm.manList.name;
+          }
         }
       }, true);
     }
@@ -152,6 +180,14 @@
       console.log(data);
       vm.filter[2] = data;
       vm.tag = !vm.tag;
+    }
+
+    function searchMan(){
+      if(vm.mantyprs.name)
+      vm.filter['other'] = vm.mantyprs.name;
+      else {
+        toaster.pop('warning', '请输入工程师类型')
+      }
     }
 
   }

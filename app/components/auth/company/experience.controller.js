@@ -10,6 +10,7 @@
     var vm = this;
     vm.next = next;
     vm.back = back;
+    vm.registertype = $localStorage.registertype;
     vm.checkList = [];
     vm.usertype = $localStorage.username.acctype;
     vm.experience = {};
@@ -43,8 +44,12 @@
           experience: str
         };
        if(str.length){
-         $state.go('company.skill');
          toaster.pop('success','已保存，请继续完成注册');
+         if(vm.registertype){
+           $state.go('company.skill');
+         }else {
+           $state.go('company.qualifications');
+         }
        }else {
          toaster.pop('error','请至少选择一项');
        }

@@ -14,34 +14,41 @@
     <div class="circle-line circle-line-active">
       <div></div>
     </div>
-    <div class="circle circle-active">
+    <div class="circle circle-skill circle-active">
       <div>3</div>
-      <span class="help-block">擅长技能</span>
+      <span class="help-block" ng-if="vm.registertype === 1">擅长技能</span>
+      <span class="help-block" ng-if="vm.registertype === 0">企业认证</span>
     </div>
-    <div class="circle-line circle-line-active">
+    <div class="circle-line circle-line-active circle-resume" ng-if="vm.registertype === 1">
       <div></div>
     </div>
-    <div class="circle circle-active">
+    <div class="circle circle-active"  ng-if="vm.registertype === 1">
       <div>4</div>
-      <span class="help-block">企业资质</span>
+      <span class="help-block">企业认证</span>
     </div>
   </div>
 </div>
 <div class="form-container">
   <form class="form-horizontal">
+  <!--  <div class="row">
+      <div class="col-md-6 col-md-offset-4 font-prompt">
+        <p>认证是很好的企业展示。（例如：iso9000质量体系认证）</p>
+        <p>此项可选填</p>
+      </div>
+    </div>-->
     <div class="form-group">
       <div class="col-md-2 control-label">
-        <label>企业资质</label>
+        <label>企业认证</label>
       </div>
       <div class="col-md-3"  style="text-align: center">
-        <label>上传企业资质</label>
+        <label>企业认证名称</label>
       </div>
       <div class="col-md-3"  style="text-align: center">
-        <label>资质名称</label>
+        <label>上传企业认证</label>
         <!--<single-uploader url="vm.base.url"></single-uploader>-->
       </div>
       <div class="col-md-2"  style="text-align: center">
-        <label>资质展示</label>
+        <label>企业认证展示</label>
         <!--<single-uploader url="vm.base.url"></single-uploader>-->
       </div>
       <div class="col-md-2">
@@ -49,13 +56,16 @@
       </div>
     </div>
     <div class="form-group" ng-repeat="i in vm.add.qualifications track by $index">
-      <div class="col-md-3 col-md-offset-2">
-        <input type="text" class="form-control" ng-model="i.zname" required placeholder="请输入企业资质名称">
+      <div class="col-md-2" style="text-align: right">
+        <span>（可选）</span>
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" ng-model="i.zname" placeholder="例如：ISO9000质量体系认证">
       </div>
       <div class="col-md-3">
         <single-uploader url="i.zzurl" name="i.name"></single-uploader>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2" style="text-align: center;">
         <img ng-src="{{i.zzurl}}" style="width: 100px; height: 70px;padding: 4px;"/>
       </div>
       <div class="col-md-2">

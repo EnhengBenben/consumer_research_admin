@@ -10,6 +10,8 @@
     var vm = this;
     vm.next = next;
     vm.back = back;
+    vm.registertype = $localStorage.registertype;
+    console.log(vm.registertype);
     vm.addTag = true;
     vm.add = {
       qualifications: [{
@@ -52,10 +54,10 @@
         }
         for (var i = 0; i < vm.add.qualifications.length; i++) {
           if (vm.add.qualifications[i].zname === "") {
-            toaster.pop('error', '资质名称不能为空');
+            toaster.pop('error', '请完善已有项');
             break;
           } else if (vm.add.qualifications[i].zzurl === "") {
-            toaster.pop('error', '请上传企业资质');
+            toaster.pop('error', '请完善已有项');
             break;
           }
         }
@@ -71,8 +73,10 @@
       angular.extend(vm.add, $localStorage.username);
       angular.extend(vm.add, $localStorage.base);
       angular.extend(vm.add, $localStorage.experience);
-      angular.extend(vm.add, $localStorage.skill);
-      if($localStorage.registertype){
+      if( vm.registertype){
+        angular.extend(vm.add, $localStorage.skill);
+      }
+      if($localStorage.registertype != undefined){
         vm.add['basetype'] = angular.copy($localStorage.registertype);
       }
       var qualificationsArr = [];
@@ -80,24 +84,23 @@
         qualificationsArr.push(i.zname + ',' + i.zzurl);
       });
       vm.add.qualificationll = qualificationsArr.join('-');
-      var save = false;
+      var save = false; // 判断企业认证是否完整
       for (var i = 0; i < vm.add.qualifications.length; i++) {
         if (vm.add.qualifications[i].zname === "") {
-          toaster.pop('error', '资质名称不能为空');
+          //toaster.pop('error', '资质名称不能为空');
           save = false;
           break;
         } else {
           save = true;
         }
         if (vm.add.qualifications[i].zzurl === "") {
-          toaster.pop('error', '请上传企业资质');
+         // toaster.pop('error', '请上传企业资质');
           save = false;
           break;
         } else {
           save = true;
         }
       }
-      if(save){
         AuthService
           .qualifications(vm.add)
           .then(function (res) {
@@ -109,7 +112,6 @@
             $state.go('finish');
             toaster.pop('success', '恭喜！注册已完成');
           });
-      }
     }
     function back(){
       history.back(-1);

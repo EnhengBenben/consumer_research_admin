@@ -22,18 +22,10 @@
       <p>{{vm.showInfo.title}}</p>
     </div>
   </div>
- <!-- <div class="no-margin row">
-    <div class="col-md-2">
-      <p>订单描述</p>
-    </div>
-    <div class="col-md-8">
-      <p>该付款为查找门槛</p>
-    </div>
-  </div>-->
   <div class="row no-margin" style="border-top: 1px dashed #eee;padding-top: 10px;padding-left: 15px">
     <p class="important-font">应付金额：<span>{{vm.showInfo.price}}元</span></p>
     <div class="alipay-icon-box" ng-click="vm.select = ! vm.select" ng-init="vm.select = true">
-      <img ng-src="../images/alipay_icon.png" alt="请刷新获取支付方式">
+      <img ng-src="images/alipay_icon.png" alt="请刷新获取支付方式">
       <i class="fa fa-check" aria-hidden="true" ng-if="vm.select"></i>
     </div>
   </div>

@@ -38,7 +38,7 @@
       }
       str = str.join(',');
       if (str.length && str.split(',').length > 0) {
-        $localStorage.skill = {skills: str};
+        $localStorage.skill = {skills: str,other: vm.other};
         $state.go('company.qualifications');
         toaster.pop('success', '已保存，请继续完成注册');
       } else {

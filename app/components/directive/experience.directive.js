@@ -1,6 +1,6 @@
 (function(){
   angular.module('app')
-    .directive('experience', directive);
+    .directive('notePlaceholder', directive);
 
 
   function directive(){
@@ -8,8 +8,7 @@
       restrict: 'AE',
       templateUrl: 'components/directive/experience.directive.html',
       scope: {
-        lists: '=lists',
-        model: '=model',
+
       },
       controller: Controller,
       controllerAs: 'vm',
@@ -23,10 +22,6 @@
 
   function Controller($scope, $localStorage){
     var vm = this;
-    console.log($localStorage.username.acctype);
-    vm.usertype = $localStorage.username.acctype;
-    vm.lists = [];
-    vm.model = [];
-    vm.show = true;
+
   }
 })();

@@ -4,19 +4,28 @@
   angular.module('app')
     .controller('RegisterController', RegisterController);
 
-  RegisterController.$inject = ['$scope', 'toaster', 'AuthService', '$state', '$localStorage', '$interval'];
+  RegisterController.$inject = ['$scope', 'toaster', 'AuthService', '$state', '$localStorage', '$interval', 'ENDPOINT'];
 
-  function RegisterController($scope, toaster, AuthService, $state, $localStorage, $interval) {
+  function RegisterController($scope, toaster, AuthService, $state, $localStorage, $interval, ENDPOINT) {
     var vm = this;
     vm.register = {};
     vm.regist = regist;
     vm.sendCode = sendCode;
     vm.read = true;
+    vm.image = ENDPOINT + '/getSysManageLoginCode.action?time=' + new Date() ;
     return init();
 
     function init() {
       vm.paracont = "获取验证码";
       vm.paraevent = true;
+      vm.getCode = function(){
+        vm.image = ENDPOINT + '/getSysManageLoginCode.action?time=' + new Date() ;
+      };
+     /* AuthService
+        .findImgCode()
+        .then(function(res){
+          vm.image = res.data;
+        })*/
     }
 
     function regist() {
@@ -56,11 +65,24 @@
              if (res.data === 'false') {
                toaster.pop('error', '该账号已注册');
              }else {
-               delete $localStorage.base;
-               delete $localStorage.experience;
-               delete $localStorage.skill;
-               $localStorage.username = params;
-               $state.go('company.base');
+               if(vm.register.validateCode){
+                 AuthService
+                   .checkImgCode({'validateCode': vm.register.validateCode})
+                   .then(function(res){
+                     if(res.data=="ok"){
+                       delete $localStorage.base;
+                       delete $localStorage.experience;
+                       delete $localStorage.skill;
+                       $localStorage.username = params;
+                       $state.go('company.base');
+                     }else{
+                       vm.getCode();
+                       toaster.pop('error', '验证码错误');
+                     }
+                   })
+               }else {
+                 toaster.pop('验证码不能为空');
+               }
              }
            }
          });
@@ -70,39 +92,43 @@
     }
 
     function sendCode(){
-      AuthService
-        .register(vm.register)
-        .then(function (res) {
-          if (res.data === 'true') {
-            var second = 60,
-              timePromise = undefined;
-            if(vm.paraevent){
-              vm.paraevent = false;
-              timePromise = $interval(function () {
-                if (second <= 0) {
-                  $interval.cancel(timePromise);
-                  timePromise = undefined;
-                  second = 60;
-                  vm.paracont = "重发验证码";
-                  vm.paraclass = "but_null";
-                  vm.paraevent = true;
-                } else {
-                  vm.paracont = second + "秒后可重发";
-                  vm.paraclass = "not but_null";
-                  second--;
-                }
-              }, 1000, 100);
-              AuthService
-                .toCheckCode(vm.register)
-                .then(function(res){
-                  vm.register['Mcode'] = res.data[0].msg;
-                  vm.obj = res.data[0].obj;
-                })
-            }
-          } else if (res.data === 'false') {
-            toaster.pop('error', '该账号已注册');
-          }
-        });
+     if(vm.register.username){
+       AuthService
+         .register(vm.register)
+         .then(function (res) {
+           if (res.data === 'true') {
+             var second = 60,
+               timePromise = undefined;
+             if(vm.paraevent){
+               vm.paraevent = false;
+               timePromise = $interval(function () {
+                 if (second <= 0) {
+                   $interval.cancel(timePromise);
+                   timePromise = undefined;
+                   second = 60;
+                   vm.paracont = "重发验证码";
+                   vm.paraclass = "but_null";
+                   vm.paraevent = true;
+                 } else {
+                   vm.paracont = second + "秒后可重发";
+                   vm.paraclass = "not but_null";
+                   second--;
+                 }
+               }, 1000, 100);
+               AuthService
+                 .toCheckCode(vm.register)
+                 .then(function(res){
+                   vm.register['Mcode'] = res.data[0].msg;
+                   vm.obj = res.data[0].obj;
+                 })
+             }
+           } else if (res.data === 'false') {
+             toaster.pop('error', '该账号已注册');
+           }
+         });
+     }else {
+       toaster.pop('error', '请输入正确的手机号');
+     }
     }
   }
 

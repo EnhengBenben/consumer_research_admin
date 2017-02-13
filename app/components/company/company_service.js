@@ -13,7 +13,15 @@
       undertake: undertake,//承接项目
       sendMessages: sendMessages, //发私信列表
       returnMsg: returnMsg, // 回复私信
+      tohelper: tohelper, //免费撮合
     };
+    function tohelper(data) {
+      return $http({
+        method: 'POST',
+        url: ENDPOINT + '/tohelper.action',
+        data: data
+      });
+    }
 
     function returnMsg(data) {
       return $http({

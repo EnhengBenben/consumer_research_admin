@@ -23,7 +23,7 @@
     </div>
     <div class="circle">
       <div>4</div>
-      <span class="help-block">企业资质</span>
+      <span class="help-block">企业认证</span>
     </div>
   </div>
 </div>
@@ -35,7 +35,7 @@
     </div>
   </div>
   <hr/>
-  <div class="form-group" ng-repeat="skill in vm.skills">
+  <div class="form-group" ng-repeat="skill in vm.skills" ng-if="$index < 2">
     <div class="col-md-2 control-label" style="padding-top: 0">
       <label>{{skill.remark}}</label>
     </div>
@@ -43,6 +43,29 @@
          ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
       <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.skill[i.id]"
                                           ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 control-label" style="padding-top: 0;color: #3285ff;cursor: pointer" ng-click="show = !show">
+      <label>更多</label><span> <i class="fa fa-plus" ng-if="!show"></i> <i class="fa fa-minus" ng-if="show"></i></span>
+    </div>
+  </div>
+  <div class="form-group" ng-repeat="skill in vm.skills" ng-if="$index >= 2 && show">
+    <div class="col-md-2 control-label" style="padding-top: 0">
+      <label>{{skill.remark}}</label>
+    </div>
+    <div class="col-md-2" ng-repeat="i in skill.diclist track by $index"
+         ng-class="{'col-md-offset-2': $index%5 === 0 && $index != 0}">
+      <label class="normal-weight"><input type="checkbox" name="choice" ng-model="vm.skill[i.id]"
+                                          ng-true-value="{{i.id}}"/><span> {{i.name}}</span></label><br>
+    </div>
+  </div>
+  <div class="form-group" ng-if="show">
+    <div class="col-md-2 control-label" style="padding-top: 0">
+      <label>其他</label>
+    </div>
+    <div class="col-md-8">
+      <input type="text" ng-model="vm.other" class="form-control" placeholder="可输入其他技能，多个技能可用逗号分隔，例如：COBOL，Ruby">
     </div>
   </div>
   <div class="form-group" style="border-bottom: none">

@@ -15,35 +15,23 @@
     vm.user = $localStorage.user;
     vm.published = published;
     vm.publish = {
-      starttime: moment()
+      starttime: ''
     };
     vm.status = [{id: 1, name: '开放'}, {id: 2, name: '关闭'}];
-    vm.mantyprs = [{id: 0, name: 'JAVA工程师'}, {id: 1, name: 'PHP工程师'}, {id: 2, name: '.NET工程师'}];
-    vm.jobAges = [
-      {
-        id: 5,
-        name: '应届毕业生'
-      },
-      {
-        id: 1,
-        name: '1-3年'
-      },
-      {
-        id: 2,
-        name: '4-6年'
-      },
-      {
-        id: 3,
-        name: '7-10年'
-      },
-      {
-        id: 4,
-        name: '10年以上'
-      }];
+    vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
+      , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
     vm.changeMoney = changeMoney;
     return init();
 
     function init() {
+      AuthService
+        .findJob()
+        .then(function(res){
+          vm.mantyprs = res.data;
+        });
+      vm.dateOptions1 = {
+        minDate:  moment()
+      };
       vm.dateOptions = {
         minDate: moment(vm.publish.starttime) || moment()
       };
@@ -66,24 +54,25 @@
           vm.dateOptions = {
             minDate: moment(vm.publish.starttime) || moment()
           };
-          console.log(vm.publish);
         }
       }, true);
     }
     function published() {
-   /*  if(vm.publish.starttime){
-       vm.publish.starttime = vm.publish.starttime.format('yyyy-MM-dd');
+   if(!vm.publish.starttime){
+       vm.publish.starttime = moment().format('YYYY-MM-DD');
      }
-     if(vm.publish.endtime){
-       vm.publish.endtime = vm.publish.endtime.format('yyyy-MM-dd');
-     }*/
+      if(vm.publish.sap){
+        delete vm.publish.mantypr;
+        vm.publish.mantypr = vm.publish.sap;
+        delete vm.publish.sap;
+      }
      vm.publish.addr = vm.unitaddr.province + ',' + vm.unitaddr.city;
       vm.publish['userid'] = vm.user.userid;
       ManageService
         .publish(vm.publish)
         .then(function(res){
           vm.publish = {};
-          $state.go('app.manage.company.list');
+          $state.go('app.manage.company.more');
           toaster.pop('success','发布成功');
         })
     }

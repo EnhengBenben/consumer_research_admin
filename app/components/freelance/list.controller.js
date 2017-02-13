@@ -17,6 +17,8 @@
     vm.selectCity = selectCity;
     vm.checkItems = checkItems;
     vm.selectProvince = selectProvince;
+    vm.searchOther = searchOther;
+    vm.selectSkill = selectSkill;
     vm.tag = false;
     vm.params = {
       address: '',
@@ -28,27 +30,8 @@
       2: null,
       3: null,
     };
-    vm.jobAges = [
-      {
-        id:5,
-        name: '应届毕业生'
-      },
-      {
-        id:1,
-        name: '1-3年'
-      },
-      {
-        id:2,
-        name: '4-6年'
-      },
-      {
-        id:3,
-        name: '7-10年'
-      },
-      {
-        id:4,
-        name: '10年以上'
-      }];
+    vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
+      , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
     vm.pageArr = [];
     vm.pageList = {
       currentPage: 1, //当前页数
@@ -96,7 +79,9 @@
       }, true);
       $scope.$watch('vm.params', function (newValue, oldValue){
         if(newValue != oldValue){
-          console.log(vm.params);
+          if(!vm.other && vm.params.other){
+            delete vm.params.other;
+          }
           FreelanceService
             .list(vm.params)
             .then(function (res) {
@@ -115,6 +100,8 @@
       }, true);
       $scope.$watch('vm.skills', function (newValue, oldValue) {
         if (newValue != oldValue) {
+          console.log(newValue);
+          console.log(oldValue);
           var params = [];
           angular.forEach(vm.skills, function(lists){
             angular.forEach(lists.diclist, function(data){
@@ -168,10 +155,28 @@
         });
     }
 
+    function selectSkill(pid, id){
+      angular.forEach(vm.skills, function(lists){
+        if(pid === lists.pid){
+          angular.forEach(lists.diclist, function(data){
+            if(data.id === id){
+              data.selected = !data.selected;
+            }else {
+              data.selected = false;
+            }
+          })
+        }
+      });
+    }
+
     function choice(index, data) {
       //筛选条件选择活动项
       vm.filter[index] = data;
       vm.active = data;
+    }
+
+    function searchOther(){
+      vm.params['other'] = vm.other;
     }
 
     function first() {

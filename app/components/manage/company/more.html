@@ -1,7 +1,9 @@
 <div class="base-container">
   <div class="row no-margin">
     <span class="normal-title">已发布项目</span>
-    <div class="btn btn-primary pull-right" ui-sref="app.manage.company.list">返回</div>
+    <div class="pull-right" ng-if="vm.user.type === 0 && vm.user.basetype === 0">
+      <div class="btn btn-danger" ui-sref="app.manage.company.publish">发布需求</div>
+    </div>
   </div>
   <!-- <div class="row no-margin soft-filter">
     <ul class="list-unstyled no-margin">
@@ -9,7 +11,7 @@
       <li><span ng-click="vm.choice(1,'不限')" ng-class="{'filter-active': vm.filter[1] === '不限'}">不限</span></li>
       <li><span ng-click="vm.choice(1,'整体项目')" ng-class="{'filter-active': vm.filter[1] === '整体项目'}">整体项目</span></li>
       <li><span ng-click="vm.choice(1,'驻场项目')" ng-class="{'filter-active': vm.filter[1] === '驻场项目'}">驻场项目</span></li>
-      <li><span ng-click="vm.choice(1,'自由职业者')" ng-class="{'filter-active': vm.filter[1] === '自由职业者'}">自由职业者项目</span></li>
+      <li><span ng-click="vm.choice(1,'自由职业顾问')" ng-class="{'filter-active': vm.filter[1] === '自由职业顾问'}">自由职业顾问项目</span></li>
     </ul>
     <ul class="list-unstyled no-margin">
       <li><span>工作地点 ：</span></li>
@@ -45,7 +47,7 @@
       <li><span ng-click="vm.choice(5,'2000-2500')" ng-class="{'filter-active': vm.filter[5] === '2000-2500'}">2000-2500</span></li>
       <li><span ng-click="vm.choice(5,'2500以上')" ng-class="{'filter-active': vm.filter[5] === '2500以上'}">2500以上</span></li>
     </ul>
-    <!--<p><span>项目类型 ：</span><span>不限</span><span>整体项目</span><span>驻场项目</span><span>自由职业者项目</span></p>
+    <!--<p><span>项目类型 ：</span><span>不限</span><span>整体项目</span><span>驻场项目</span><span>自由职业顾问项目</span></p>
     <p><span>工作地点 ：</span><span>全国</span><span>北京</span><span>上海</span><span>天津</span><span>深圳</span><span>成都</span></p>
     <p><span>项目周期 ：</span><input type="date"/><span>至</span><input type="date"/></p>
     <p><span>工作经验 ：</span><span>不限</span><span>应届生</span><span>1-3年</span><span>4-6年</span><span>7-10年</span><span>10年以上</span></p>
@@ -63,9 +65,11 @@
     <h4 class="normal-title"><a style="font-size: 15px" ui-sref="app.manage.company.show({id: i.id,requesttype: i.requesttype})">{{i.proname}}</a></h4>
   </div>
   <div class="col-md-8">
+    <span class="pull-right margin-seven" style="display: inline-block;padding: 0 8px">开放</span>
     <div id="div1" class="open1 pull-right" ng-click="vm.openStatus(i)" ng-class="{'close1': i.cstatus === 2}">
       <div id="div2" class="open2"  ng-class="{'close2': i.cstatus === 2}"></div>
     </div>
+    <span class="pull-right margin-seven"  style="display: inline-block;padding: 0 8px">关闭</span>
   </div>
   <div class="col-md-12 no-padding-left">
     <p class="overflow-p">
@@ -73,9 +77,10 @@
   </div>
   <div class="row">
     <div class="col-md-3"><span>{{i.name}}</span></div>
-    <div class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></div>
-    <div class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></div>
-    <div class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></div>
+    <div class="col-md-2 no-padding"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></div>
+    <div class="col-md-2 no-padding"><strong>项目发布日期：</strong><span>{{i.createtime}}</span></div>
+    <div class="col-md-2 no-padding"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></div>
+    <div class="col-md-2 no-padding"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></div>
   </div>
 </div>
 <nav style="padding-bottom: 20px" boundary-link-numbers="true"  ng-if="vm.lists.length">

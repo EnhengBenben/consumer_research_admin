@@ -228,3 +228,12 @@
     padding: 1px;
   }
 }
+.letter-theme{
+  a{
+    color: #4d4d4d;
+  }
+  a:hover{
+    color: #000;
+    text-decoration: underline;
+  }
+}

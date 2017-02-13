@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body" id="modal-body">
   <div class="form-container"  style="width: inherit">
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="FormLetter" ng-submit="vm.ok()" id="FormLetter">
       <div class="form-group" style="border: none">
         <div class="col-xs-2 control-label">
           <label>发送至</label>
@@ -17,7 +17,18 @@
           <label>主题</label>
         </div>
         <div class="col-xs-10">
-          <input type="text" class="form-control" placeholder="请输入私信标题" required ng-model="vm.model.title"/>
+          <input type="text" class="form-control"
+                 name="title"
+                 minlength="2"
+                 maxlength="10"
+                 ng-class="{'error-input': FormLetter.title.touched &&
+                 (FormLetter.title.$error.minlength || FormLetter.title.$error.maxlength || FormLetter.title.$error.required)}"
+                 placeholder="请输入私信标题"
+                 required
+                 ng-model="vm.model.title"/>
+          <span class="help-block error-font" ng-if="FormLetter.title.$error.required &&  FormLetter.title.touched">请输入私信主题</span>
+          <span class="help-block error-font" ng-if="FormLetter.title.$error.minlength &&  FormLetter.title.touched">私信主题不得少于2个字</span>
+          <span class="help-block error-font" ng-if="FormLetter.title.$error.maxlength &&  FormLetter.title.touched">私信主题不得多于10个字</span>
         </div>
       </div>
       <div class="form-group" style="border: none">
@@ -25,13 +36,19 @@
           <label>私信内容</label>
         </div>
         <div class="col-xs-10">
-          <textarea class="form-control" style="min-height: 200px" required name="info" ng-model="vm.model.info" placeholder="请输入3-20个字"></textarea>
+          <textarea class="form-control"
+                    ng-class="{'error-input': FormLetter.info.touched &&
+                 (FormLetter.info.$error.minlength || FormLetter.info.$error.maxlength || FormLetter.info.$error.required)}"
+                    style="min-height: 200px" minlength="2" maxlength="200" required name="info" ng-model="vm.model.info" placeholder="请输入私信内容"></textarea>
+          <span class="help-block error-font" ng-if="FormLetter.info.$error.required &&  FormLetter.info.touched">请输入私信内容</span>
+          <span class="help-block error-font" ng-if="FormLetter.info.$error.minlength &&  FormLetter.info.touched">私信内容不得少于2个字</span>
+          <span class="help-block error-font" ng-if="FormLetter.info.$error.maxlength &&  FormLetter.info.touched">私信内容不得多于10个字</span>
         </div>
       </div>
     </form>
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="vm.ok()">发送</button>
+  <button class="btn btn-primary" type="submit" form="FormLetter">发送</button>
   <button class="btn btn-warning" type="button" ng-click="vm.cancel()">取消</button>
 </div>

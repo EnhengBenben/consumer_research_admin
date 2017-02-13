@@ -16,7 +16,7 @@
       alipaytype: parseInt($stateParams.type),
       userid: $localStorage.user.userid,
       orderid: 12898923,
-      title: '查看自由职业者信息',
+      title: '查看自由职业顾问信息',
       desc: '啊是觉得好卡',
       price: '0.01'
     };

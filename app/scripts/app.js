@@ -23,5 +23,6 @@ angular
     'ngLocale',
     'ui.router',
     'checklist-model',
-    'ui.bootstrap.datetimepicker'
+    'ui.bootstrap.datetimepicker',
+    'summernote'
   ]);

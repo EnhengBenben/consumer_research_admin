@@ -2,7 +2,7 @@
   <div class="row no-margin">
     <span class="normal-title" ng-if="vm.user.type === 0 && vm.user.basetype === 0">已发布项目</span>
     <div class="pull-right" ng-if="vm.user.type === 0 && vm.user.basetype === 0">
-      <div class="btn btn-danger" ui-sref="app.manage.company.publish">发布需求</div>
+      <div class="btn btn-danger" ui-sref="app.manage.company.publish" ng-if="vm.user.ispass === '0'">发布需求</div>
     </div>
   </div>
   <div class="spinner" ng-if="!vm.lists">
@@ -34,9 +34,10 @@
     </div>
     <div class="row">
       <div class="col-md-3"><span>{{i.name}}</span></div>
-      <div class="col-md-3"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></div>
-      <div class="col-md-3"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></div>
-      <div class="col-md-3"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></div>
+      <div class="col-md-2 no-padding"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></div>
+      <div class="col-md-2 no-padding"><strong>项目发布日期：</strong><span>{{i.createtime}}</span></div>
+      <div class="col-md-2 no-padding"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></div>
+      <div class="col-md-2 no-padding"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></div>
     </div>
   </div>
   <div ng-if="vm.user.type === 0 && vm.user.basetype === 0 && vm.lists.length">

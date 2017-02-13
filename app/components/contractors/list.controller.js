@@ -14,8 +14,10 @@
     vm.more = more;
     vm.selectCity = selectCity;
     vm.selectProvince = selectProvince;
+    vm.searchOther = searchOther;
     //vm.selectSkills = selectSkills;
     vm.checkItems = checkItems;
+    vm.selectSkill = selectSkill;
     vm.params = {
       currentPage: 1,
       pageSize: 10,
@@ -91,6 +93,7 @@
       /*******************获取承包方列表end*************************/
       $scope.$watch('vm.pageList.currentPage', function (newValue, oldValue, scope) {
         if (newValue != oldValue) {
+          vm.filter['test'] = 'test';
         /*  ManageService
             .more(vm.pageList)
             .then(function (res) {
@@ -138,20 +141,12 @@
           vm.params['pageSize'] = 10;
           vm.pageList.currentPage = 1;
           vm.pageList.pageSize = 10;
-       /*   FreelanceService
-            .list(vm.params)
-            .then(function (res) {
-              vm.lists = res.data.jsonArray;
-              vm.pageArr = [];
-              for (var i = 1; i <= res.data.totalPage; i++) {
-                vm.pageArr.push(i);
-              }
-            })*/
         }
       }, true);
       $scope.$watch('vm.params', function (newValue, oldValue){
         if(newValue != oldValue){
-          console.log(vm.params);
+          if(!vm.other && vm.params.other)
+          delete vm.params.other;
           ContractorsService
             .list(vm.params)
             .then(function(res){
@@ -169,6 +164,24 @@
             })
         }
       }, true);
+    }
+
+    function selectSkill(pid, id){
+      angular.forEach(vm.skills, function(lists){
+        if(pid === lists.pid){
+          angular.forEach(lists.diclist, function(data){
+            if(data.id === id){
+              data.selected = !data.selected;
+            }else {
+              data.selected = false;
+            }
+          })
+        }
+      });
+    }
+
+    function searchOther(){
+      vm.params['other'] = vm.other;
     }
 
     function first() {
@@ -205,29 +218,7 @@
       vm.filter[index] = data;
       vm.active = data;
     }
-
-    //function selectSkills(data, list){
-    //  angular.forEach(vm.skills, function(i){
-    //    if(i.pid === list.pid){
-    //      angular.forEach(i.diclist,function(d){
-    //        if(d.id === data.id){
-    //          if(d.selected){
-    //           delete d.selected;
-    //          }else {
-    //            d['selected'] = true;
-    //          }
-    //        }
-    //      })
-    //    }
-    //  })
-    //}
     function checkItems(data) {
-      /*angular.forEach(data.diclist,function(i){
-       if(i.selected){
-       vm.skillsItem.items.push(i.id);
-       }
-       });
-       var params = vm.skillsItem.items.join(',');*/
       var params = [];
       angular.forEach(vm.skills, function (lists) {
         angular.forEach(lists.diclist, function (i) {
@@ -239,7 +230,6 @@
           }
         });
       });
-      console.log(params.join(','));
     }
   }
 })();
