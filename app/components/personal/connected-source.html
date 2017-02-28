@@ -1,0 +1,57 @@
+<div class="base-container">
+  <div class="row no-margin" style="margin-bottom: 20px">
+    <span class="normal-title">已联系的资源方</span>
+  </div>
+  <div class="row letter-list-title" ng-if="vm.lists.length">
+    <div class="col-md-3 -align-center">
+      <p>名称</p>
+    </div>
+    <div class="col-md-3">
+      <p>资源类型</p>
+    </div>
+    <div class="col-md-3">
+      <p>联系时间</p>
+    </div>
+    <div class="col-md-3">
+      <p>联系方式</p>
+    </div>
+  </div>
+  <div class="spinner" ng-if="!vm.lists">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+  <div class="row" ng-if="vm.lists && !vm.lists.length">
+    <div class="static-box">
+      <p>暂时没有信息</p>
+    </div>
+  </div>
+  <div class="row letter-list" ng-if="vm.lists.length" ng-repeat="i in vm.lists track by $index"
+       style="margin-top: 10px;margin-left: 0;margin-right: 0;">
+    <div class="col-md-3 letter-theme -align-center">
+      <a ng-if="i.zylx === 2" ui-sref="app.freelance.show({id: i.id})">{{i.name}}</a>
+      <a ng-if="i.zylx === 1" ui-sref="app.contractors.show({id: i.id})">{{i.name}}</a>
+    </div>
+    <div class="col-md-3">
+      <p>{{i.zylx === 1?'公司':'顾问'}}</p>
+    </div>
+    <div class="col-md-3">
+      <p>{{i.time}}</p>
+    </div>
+    <div class="col-md-3">
+      <p>{{i.lktype === 1? '请求撮合沟通': '付费查看'}}</p>
+    </div>
+  </div>
+  <nav style="padding-bottom: 20px" boundary-link-numbers="true" ng-if="vm.lists.length">
+    <ul class="pagination pull-right">
+      <li><a ng-click="vm.first()" ng-disabled="vm.pageList.currentPage === 1"
+             ng-class="{'disabled': vm.pageList.currentPage === 1}">首页</a></li>
+      <li ng-repeat="i in vm.pageArr" ng-click="vm.filterPage(i)"><a
+        ng-class="{'filter-active': vm.pageList.currentPage == i}">{{i}}</a></li>
+      <li><a ng-click="vm.last()" ng-disabled="vm.pageList.currentPage === vm.pageArr.length"
+             ng-class="{'disabled': vm.pageList.currentPage === vm.pageArr.length}">末页</a></li>
+    </ul>
+  </nav>
+</div>
