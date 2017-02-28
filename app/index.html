@@ -2,152 +2,152 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>软盈SoftTrade</title>
-    <meta name="description" content="">
+  <meta charset="utf-8">
+  <title>软盈SoftTrade</title>
+  <meta name="description" content="">
   <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
-    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
-    <link rel="stylesheet" href="bower_components/angular-datepicker/dist/angular-datepicker.css" />
-    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
+  <link rel="stylesheet" href="bower_components/angular-datepicker/dist/angular-datepicker.css" />
+  <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 </head>
 
 <body ng-app="app">
-    <!--[if lte IE 8]>
-    <p class="browsehappy">
-        You are using an <strong>outdated</strong>
-        browser. Please
-        <a href="http://browsehappy.com/">upgrade your browser</a>
-        to improve your experience.
-    </p>
-    <![endif]-->
-    <!-- Add your site or application content here -->
-    <toaster-container toaster-options="{'position-class': 'toast-top-center', 'closeButton': true}"></toaster-container>
-    <div ui-view style="height: 100%"></div>
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-i18n/angular-locale_zh-hans-cn.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
-    <script src="bower_components/metisMenu/dist/metisMenu.js"></script>
-    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/moment/locale/zh-cn.js"></script>
-    <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
-    <script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
-    <script src="bower_components/ngstorage/ngStorage.js"></script>
-    <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
-    <script src="bower_components/particleground/jquery.particleground.js"></script>
-    <script src="bower_components/checklist-model/checklist-model.js"></script>
-    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/summernote/dist/summernote.js"></script>
-    <script src="bower_components/summernote/lang/summernote-zh-CN.js"></script>
-    <script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/config/routes.config.js"></script>
-    <script src="scripts/config/angular_confirm.js"></script>
-    <script src="scripts/config/directives.js"></script>
-    <script src="scripts/config/nonangular.js"></script>
-    <script src="scripts/config/utils.js"></script>
-    <script src="scripts/config/fullscreen.directive.js"></script>
+<!--[if lte IE 8]>
+<p class="browsehappy">
+  您的浏览器<strong>版本过低 </strong>
+  请
+  <a href="http://browsehappy.com/">更新</a>
+  您的浏览器版本
+</p>
+<![endif]-->
+<!-- Add your site or application content here -->
+<toaster-container toaster-options="{'position-class': 'toast-top-center', 'closeButton': true}"></toaster-container>
+<div ui-view style="height: 100%"></div>
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-i18n/angular-locale_zh-hans-cn.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/metisMenu/dist/metisMenu.js"></script>
+<script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/moment/locale/zh-cn.js"></script>
+<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+<script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+<script src="bower_components/particleground/jquery.particleground.js"></script>
+<script src="bower_components/checklist-model/checklist-model.js"></script>
+<script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/summernote/dist/summernote.js"></script>
+<script src="bower_components/summernote/lang/summernote-zh-CN.js"></script>
+<script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/config/routes.config.js"></script>
+<script src="scripts/config/angular_confirm.js"></script>
+<script src="scripts/config/directives.js"></script>
+<script src="scripts/config/nonangular.js"></script>
+<script src="scripts/config/utils.js"></script>
+<script src="scripts/config/fullscreen.directive.js"></script>
 
-    <script src="scripts/config/api.config.js"></script>
-    <script src="scripts/config/loading_bar.config.js"></script>
-    <script src="scripts/config/http.config.js"></script>
-    <script src="scripts/interceptors/auth_interceptor.js"></script>
-    <script src="components/app/app.controller.js"></script>
-    <script src="components/uploader/single_uploader.directive.js"></script>
-    <!--auth-->
-    <script src="components/auth/routers.js"></script>
-    <script src="components/auth/layout.controller.js"></script>
-    <script src="components/auth/register.controller.js"></script>
-    <script src="components/auth/login.controller.js"></script>
-    <script src="components/auth/auth_service.js"></script>
-    <script src="components/auth/freeworker/layout.controller.js"></script>
-    <script src="components/auth/freeworker/base.controller.js"></script>
-    <script src="components/auth/freeworker/experience.controller.js"></script>
-    <script src="components/auth/freeworker/skill.controller.js"></script>
-    <script src="components/auth/freeworker/resume.controller.js"></script>
-    <script src="components/auth/company/layout.controller.js"></script>
-    <script src="components/auth/company/base.controller.js"></script>
-    <script src="components/auth/company/experience.controller.js"></script>
-    <script src="components/auth/company/qualifications.controller.js"></script>
-    <script src="components/auth/company/skill.controller.js"></script>
-    <script src="components/auth/finish.controller.js"></script>
-    <script src="components/auth/forget-passworf.controller.js"></script>
-    <script src="components/auth/check-username.controller.js"></script>
-    <script src="components/auth/resetpassword.controller.js"></script>
-    <!--directive-->
-    <script src="components/directive/experience.directive.js"></script>
-    <script src="components/directive/datepicker.directive.js"></script>
-    <script src="components/directive/skill.directive.js"></script>
-    <!--company-->
-    <script src="components/company/company_service.js"></script>
-    <script src="components/company/list.controller.js"></script>
-    <script src="components/company/show.controller.js"></script>
-    <script src="components/company/router.js"></script>
-    <script src="components/company/model.controller.js"></script>
-    <!--manage-->
-    <script src="components/manage/manage_service.js"></script>
-    <script src="components/manage/routers.js"></script>
-    <script src="components/manage/company/list.controller.js"></script>
-    <script src="components/manage/company/more.controller.js"></script>
-    <script src="components/manage/company/publish.controller.js"></script>
-    <script src="components/manage/company/show.controller.js"></script>
-    <script src="components/manage/contractors/list.controller.js"></script>
-    <script src="components/manage/contractors/show.controller.js"></script>
-    <script src="components/manage/freelance/list.controller.js"></script>
-    <script src="components/manage/freelance/show.controller.js"></script>
-    <!--contractors-->
-    <script src="components/contractors/contractors_service.js"></script>
-    <script src="components/contractors/list.controller.js"></script>
-    <script src="components/contractors/pay.controller.js"></script>
-    <script src="components/contractors/routers.js"></script>
-    <script src="components/contractors/show.controller.js"></script>
-    <!--freelance-->
-    <script src="components/freelance/show.controller.js"></script>
-    <script src="components/freelance/routers.js"></script>
-    <script src="components/freelance/pay.controller.js"></script>
-    <script src="components/freelance/list.controller.js"></script>
-    <script src="components/freelance/freelance_service.js"></script>
-    <!--personal-->
-    <script src="components/personal/routers.js"></script>
-    <script src="components/personal/personal_service.js"></script>
-    <script src="components/personal/setting/list.controller.js"></script>
-    <script src="components/personal/letter/list.controller.js"></script>
-    <script src="components/personal/letter/show.controller.js"></script>
-    <script src="components/personal/letter/info.controller.js"></script>
-    <script src="components/personal/letter/freelance_show.controller.js"></script>
-    <!--alipay-->
-    <script src="components/alipay/routers.js"></script>
-    <script src="components/alipay/list.controller.js"></script>
-    <script src="components/alipay/alipay_service.js"></script>
-    <script src="components/alipay/model.controller.js"></script>
-    <!-- endbuild -->
+<script src="scripts/config/api.config.js"></script>
+<script src="scripts/config/loading_bar.config.js"></script>
+<script src="scripts/config/http.config.js"></script>
+<script src="scripts/interceptors/auth_interceptor.js"></script>
+<script src="components/app/app.controller.js"></script>
+<script src="components/uploader/single_uploader.directive.js"></script>
+<!--auth-->
+<script src="components/auth/routers.js"></script>
+<script src="components/auth/layout.controller.js"></script>
+<script src="components/auth/register.controller.js"></script>
+<script src="components/auth/login.controller.js"></script>
+<script src="components/auth/auth_service.js"></script>
+<script src="components/auth/freeworker/layout.controller.js"></script>
+<script src="components/auth/freeworker/base.controller.js"></script>
+<script src="components/auth/freeworker/experience.controller.js"></script>
+<script src="components/auth/freeworker/skill.controller.js"></script>
+<script src="components/auth/freeworker/resume.controller.js"></script>
+<script src="components/auth/company/layout.controller.js"></script>
+<script src="components/auth/company/base.controller.js"></script>
+<script src="components/auth/company/experience.controller.js"></script>
+<script src="components/auth/company/qualifications.controller.js"></script>
+<script src="components/auth/company/skill.controller.js"></script>
+<script src="components/auth/finish.controller.js"></script>
+<script src="components/auth/forget-passworf.controller.js"></script>
+<script src="components/auth/check-username.controller.js"></script>
+<script src="components/auth/resetpassword.controller.js"></script>
+<!--directive-->
+<script src="components/directive/experience.directive.js"></script>
+<script src="components/directive/datepicker.directive.js"></script>
+<script src="components/directive/skill.directive.js"></script>
+<!--company-->
+<script src="components/company/company_service.js"></script>
+<script src="components/company/list.controller.js"></script>
+<script src="components/company/show.controller.js"></script>
+<script src="components/company/router.js"></script>
+<script src="components/company/model.controller.js"></script>
+<!--manage-->
+<script src="components/manage/manage_service.js"></script>
+<script src="components/manage/routers.js"></script>
+<script src="components/manage/company/more.controller.js"></script>
+<script src="components/manage/company/publish.controller.js"></script>
+<script src="components/manage/company/show.controller.js"></script>
+<script src="components/manage/contractors/list.controller.js"></script>
+<script src="components/manage/contractors/show.controller.js"></script>
+<script src="components/manage/freelance/list.controller.js"></script>
+<script src="components/manage/freelance/show.controller.js"></script>
+<!--contractors-->
+<script src="components/contractors/contractors_service.js"></script>
+<script src="components/contractors/list.controller.js"></script>
+<script src="components/contractors/pay.controller.js"></script>
+<script src="components/contractors/routers.js"></script>
+<script src="components/contractors/show.controller.js"></script>
+<!--freelance-->
+<script src="components/freelance/show.controller.js"></script>
+<script src="components/freelance/routers.js"></script>
+<script src="components/freelance/list.controller.js"></script>
+<script src="components/freelance/freelance_service.js"></script>
+<!--personal-->
+<script src="components/personal/routers.js"></script>
+<script src="components/personal/personal_service.js"></script>
+<script src="components/personal/setting/list.controller.js"></script>
+<script src="components/personal/letter/list.controller.js"></script>
+<script src="components/personal/letter/show.controller.js"></script>
+<script src="components/personal/letter/info.controller.js"></script>
+<script src="components/personal/letter/freelance_show.controller.js"></script>
+<script src="components/personal/connected-source.controller.js"></script>
+<script src="components/personal/connected-project.controller.js"></script>
+<!--alipay-->
+<script src="components/alipay/routers.js"></script>
+<script src="components/alipay/list.controller.js"></script>
+<script src="components/alipay/alipay_service.js"></script>
+<script src="components/alipay/model.controller.js"></script>
+<!-- endbuild -->
 </body>
 
 </html>

@@ -11,7 +11,6 @@
     $scope.$state = $state;
     app.logout = logout;
     app.user = $localStorage.user;
-    console.log(app.user);
     return init();
 
     function init(){

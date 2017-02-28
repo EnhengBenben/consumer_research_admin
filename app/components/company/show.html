@@ -1,5 +1,5 @@
 <div class="row no-margin" style="margin-bottom: 20px">
-  <div class="pull-right btn btn-primary" ui-sref="app.company.list"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
+  <div class="pull-right btn btn-primary" ng-click="vm.goBack()"><i class="fa fa-angle-left" aria-hidden="true"></i> 返回</div>
 </div>
 <div class="form-container" style="position: relative">
   <form class="form-horizontal">
@@ -85,14 +85,14 @@
         <label>项目预算</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven important-font">{{vm.show.price}} /人/月</p>
+        <p class="margin-seven important-font">{{vm.show.price}} 元/人/月</p>
       </div>
     </div> <div class="form-group"  ng-if="vm.show.requesttype[0].id === 2">
     <div class="col-md-2 control-label">
       <label>项目预算</label>
     </div>
     <div class="col-md-10">
-      <p class="margin-seven important-font">{{vm.show.price}} /人/天</p>
+      <p class="margin-seven important-font">{{vm.show.price}} 元/人/天</p>
     </div>
   </div>
     <div class="form-group">

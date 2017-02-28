@@ -1,6 +1,6 @@
 angular.module('app')
   .config(function ($stateProvider, $urlRouterProvider, $rootScopeProvider) {
-    $urlRouterProvider.otherwise('/go/login');
+      // $urlRouterProvider.otherwise('/go/login'); //默认展示路径
     $stateProvider
       .state('app', {
         url:'/app',

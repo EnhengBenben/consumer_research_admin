@@ -11,6 +11,7 @@
     vm.undertake = undertake;
     vm.sendLetter = sendLetter;
     vm.freeShowContact = freeShowContact; //免费咨询
+    vm.goBack = goBack;
     vm.user = $localStorage.user;
     vm.params = {};
     angular.extend(vm.params, vm.user);
@@ -26,11 +27,7 @@
        .then(function(res){
        vm.mantyprs = res.data;
        });*/
-      vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {
-        id: 5,
-        name: '5年'
-      }
-        , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
+      vm.jobAges = [{id: 1, name: '1-3年'}, {id: 2, name: '4-6年'}, {id: 3, name: '7-10年'}, {id: 4, name: '10年以上'}];
       vm.requesttypes = [{id: 0, name: '整体项目'}, {id: 1, name: '驻场开发项目'}, {id: 2, name: '自由职业顾问项目'}];
 
       CompanyService
@@ -74,7 +71,6 @@
           }
         });
         modalInstance.result.then(function (selectedItem) {
-          console.log(selectedItem);
           var params = {
             rid: $stateParams.id,
             userid: vm.user.userid
@@ -132,6 +128,10 @@
 
         // $log.info('Modal dismissed at: ' + new Date());
       });
+    }
+
+    function goBack(){
+      history.back(-1);
     }
   }
 })();

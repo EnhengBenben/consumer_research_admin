@@ -68,7 +68,13 @@
             job: vm.filter.job || null,
             other: vm.filter.other || null,
             requesttype: vm.filter[1],
+            price1: vm.filter.startPrice || null,
+            price2: vm.filter.endPrice || null,
           };
+          if(newValue.test === oldValue.test){
+            vm.pageList.currentPage = 1;
+          }
+            angular.extend(data,vm.pageList);
           if((typeof vm.filter[3] === 'number' || vm.filter[3] === null)){
             data['publishTime'] = vm.filter[3];
             if(vm.dataTime && vm.dataTime.publishtime){
@@ -77,7 +83,6 @@
           }else {
             data['zdPublishTime'] = vm.filter[3];
             //项目发布日期选择指定时间
-            console.log(vm.filter[3]);
           }
           if((typeof vm.filter[6] === 'number'  || vm.filter[6] === null)){
             data['startTime'] = vm.filter[6];
@@ -97,7 +102,6 @@
             data['ages'] = vm.filter[4];
             data['price'] = vm.filter[5];
           }
-          angular.extend(data,vm.pageList);
           CompanyService
             .list(data)
             .then(function (res) {
@@ -177,7 +181,6 @@
     }
 
     function selectProvince(data){
-      console.log(data);
       vm.filter[2] = data;
       vm.tag = !vm.tag;
     }

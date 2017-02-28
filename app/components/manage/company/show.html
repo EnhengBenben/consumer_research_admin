@@ -85,14 +85,14 @@
         <label>项目预算</label>
       </div>
       <div class="col-md-9">
-        <p class="margin-seven">{{vm.show.price}} /人/月</p>
+        <p class="margin-seven">{{vm.show.price}} 元/人/月</p>
       </div>
     </div> <div class="form-group"  ng-if="vm.show.requesttype[0].id === 2">
     <div class="col-md-3 control-label">
       <label>项目预算</label>
     </div>
     <div class="col-md-9">
-      <p class="margin-seven">{{vm.show.price}} /人/天</p>
+      <p class="margin-seven">{{vm.show.price}} 元/人/天</p>
     </div>
   </div>
     <div class="form-group">
@@ -161,7 +161,7 @@
     <uib-tabset style="background:white;">
       <uib-tab heading="企业" style="text-align: right;margin-left: 11%">
         <div class="row letter-list-title margin-seven">
-          <div class="col-md-3">
+          <div class="col-md-3" style="text-align: center">
             <p>企业名称</p>
           </div>
           <div class="col-md-3"><p>地址</p></div>
@@ -192,7 +192,7 @@
       </uib-tab>
       <uib-tab heading="自由职业顾问">
         <div class="row letter-list-title margin-seven">
-          <div class="col-md-2">
+          <div class="col-md-3" style="text-align: center">
             <p>真实姓名</p>
           </div>
           <div class="col-md-2"><p>地址</p></div>

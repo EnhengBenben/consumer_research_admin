@@ -39,8 +39,6 @@
       autoUpload: true,
       removeAfterUpload: true,
       onSuccessItem: function(item, response, status, headers) {
-        console.log(response);
-        console.log(item.file);
         if( item.file.type === 'image/png' || item.file.type === 'image/jpeg'){
           $scope.url = response;
           if(response){

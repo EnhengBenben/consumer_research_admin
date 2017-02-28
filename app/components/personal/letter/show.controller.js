@@ -19,11 +19,11 @@
     return init();
 
     function init() {
-      PersonalService
+     /* PersonalService
         .updateMessageStatus({id: $stateParams.id})
         .then(function(res){
 
-        });
+        });*/
       PersonalService
         .show({id: $stateParams.id,userid: vm.user.userid})
         .then(function (res) {

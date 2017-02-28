@@ -237,11 +237,11 @@
           <span class="error-font help-block" ng-if="base.price.$error.pattern && base.price.$touched">请输入0-9之间的数字</span>
         </div>
         <div class="col-md-5 margin-seven" ng-if="vm.publish.requesttype === 2">
-          <span style="color: #3285ff;">/人/天</span>
+          <span style="color: #3285ff;">元/人/天</span>
           <span style="color: red" ng-if="vm.money">---{{vm.money}}</span>
         </div>
         <div class="col-md-5 margin-seven" ng-if="vm.publish.requesttype === 1">
-          <span style="color: #3285ff">/人/月</span>
+          <span style="color: #3285ff">元/人/月</span>
           <span style="color: red" ng-if="vm.money">---{{vm.money}}</span>
         </div>
        <!-- <div class="col-md-4" style="padding-top: 4px">
@@ -296,7 +296,7 @@
         <div class="col-md-2 control-label">
           <label for="">任职要求</label>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10" ng-class="{'summernote-value': vm.publish.requirements.length}">
      <!--     <textarea class="form-control"
                     ng-class="{'error-input': (base.requirements.$error.required || base.requirements.$error.minlength) && base.requirements.$touched}"
                     name="requirements" ng-model="vm.publish.requirements"
@@ -316,9 +316,9 @@
                     "
                     required
                     minlength="10"></textarea>-->
-          <summernote style="position: relative;z-index: 10" id="summernote" height="300" lang="zh-CN" ng-model="vm.publish.requirements"
+          <summernote style="position: relative;z-index: 10;" id="summernote" height="300" lang="zh-CN" ng-model="vm.publish.requirements"
                      ></summernote>
-          <div style="position: absolute;top: 37px;color: #aaa;" ng-if="!vm.publish.requirements">
+          <div style="position: absolute;top: 37px;color: #aaa;z-index: -1;padding-left: 4px" ng-if="!vm.publish.requirements">
           <p>岗位职责：</p>
             <p>1、实现业务模块的开发（前端DIV+CSS+Jquery，逻辑层JAVA，数据层访问SQL），按时完成编码任务，对代码质量负责；</p>
             <p>2、有良好的代码规范；</p>

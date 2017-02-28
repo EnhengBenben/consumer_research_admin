@@ -50,10 +50,10 @@
         <label>企业认证</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven" ng-repeat="i in vm.show.zname" ng-if="$index % 2 === 0">{{i}}</p>
+        <p class="margin-seven" ng-repeat="i in vm.show.zname track by $index" ng-if="$index % 2 === 0">{{i}}</p>
       </div>
     </div>
-    <div class="form-group important-font">
+    <div class="form-group important-font" ng-if="vm.show.iscment == '2'">
       <div class="col-md-2 control-label">
         <label>手机号</label>
       </div>
@@ -61,7 +61,7 @@
         <p class="margin-seven">{{vm.show.telnum}}</p>
       </div>
     </div>
-    <div class="form-group important-font">
+    <div class="form-group important-font" ng-if="vm.show.iscment == '2'">
       <div class="col-md-2 control-label">
         <label>邮箱</label>
       </div>

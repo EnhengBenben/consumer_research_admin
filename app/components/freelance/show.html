@@ -1,5 +1,5 @@
 <div class="row no-margin" style="margin-bottom: 20px">
-  <div class="pull-right btn btn-primary" ui-sref="app.freelance.list"><i class="fa fa-angle-left"
+  <div class="pull-right btn btn-primary" ng-click="vm.goBack()"><i class="fa fa-angle-left"
                                                                           aria-hidden="true"></i> 返回
   </div>
 </div>
@@ -26,14 +26,14 @@
         <p class="margin-seven">{{vm.show.addrname}}</p>
       </div>
     </div>
-  <!--  <div class="form-group">
+    <div class="form-group important-font">
       <div class="col-md-2 control-label">
-        <label>工作职位</label>
+        <label>期望薪资</label>
       </div>
       <div class="col-md-8">
-        <p class="margin-seven">{{vm.show.job}}</p>
+        <p class="margin-seven">{{vm.show.money}} 元／天</p>
       </div>
-    </div>-->
+    </div>
     <div class="form-group">
       <div class="col-md-2 control-label">
         <label>行业经验</label>
@@ -63,7 +63,7 @@
         <label>雇佣历史</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.history}}</p>
+        <p class="margin-seven" id="history"></p>
       </div>
     </div>
     <div class="form-group">
@@ -71,7 +71,7 @@
         <label>项目履历</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.proexperience}}</p>
+        <p class="margin-seven" id="proexperience"></p>
       </div>
     </div>
     <div class="form-group">
@@ -79,7 +79,7 @@
         <label>教育背景</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.educational}}</p>
+        <p class="margin-seven" id="educational"></p>
       </div>
     </div>
     <div class="form-group">
@@ -95,7 +95,7 @@
         <label>其他能力</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.other}}</p>
+        <p class="margin-seven">{{vm.show.other || '暂无'}}</p>
       </div>
     </div>
     <div class="form-group important-font"  ng-if="vm.show.iscment == '2'">

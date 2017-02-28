@@ -46,45 +46,48 @@
         <div class="col-md-12 no-padding-left no-padding-right">
           <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index < 2">
             <div class="list-box">
-              <!--  <p><span>{{lists.remark}}</span> <span ng-click="i.selected = !i.selected"
-                                                       ng-class="{'filter-active': i.selected}"
-                                                       ng-repeat="i in lists.diclist">{{i.name}}</span></p>-->
-              <div class="list-box">
-                <div><span class="remark-title">{{lists.remark}}</span> <span class="test-remark">
+              <div style="width: 100%; margin: 0;">
+                <div class="remark-title" style="margin: 0;">{{lists.remark}}</div>
+                <div class="test-remark" style="margin: 0;">
                 <span ng-click="vm.selectSkill(lists.pid, i.id)"
                       ng-class="{'filter-active': i.selected}"
                       ng-repeat="i in lists.diclist">{{i.name}}</span>
-              </span></div>
-              </div>
+                </div></div>
             </div>
           </div>
         </div>
         <div class="col-md-12">
           <div class="list-name">
             <div class="list-box">
-              <p style="color: #3285ff;cursor: pointer" ng-click="show = !show">更多技术细节 <i class="fa" ng-class="{'fa-plus-square-o': !show, 'fa-minus-square-o': show}"></i></p>
+              <p style="color: #3285ff;cursor: pointer" ng-click="show = !show">更多技术细节 <i class="fa"
+                                                                                          ng-class="{'fa-plus-square-o': !show, 'fa-minus-square-o': show}"></i>
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-12" ng-if="show">
+        <div class="col-md-12 no-padding" ng-if="show">
           <div class="list-name" ng-repeat="lists in vm.skills track by $index" ng-if="$index >= 2">
             <div class="list-box">
-              <div><span class="remark-title">{{lists.remark}}</span> <span class="test-remark">
+              <div style="width: 100%;margin: 0;">
+                <div class="remark-title" style="margin: 0;">{{lists.remark}}</div>
+                <div class="test-remark" style="margin: 0">
                 <span ng-click="vm.selectSkill(lists.pid, i.id)"
-                      ng-class="{'filter-active': i.selected}"
+                      style="width: 150px"
+                      ng-class="{'filter-active': i.selected, 'long-test': lists.pid === 1011}"
                       ng-repeat="i in lists.diclist">{{i.name}}</span>
-              </span></div>
+                </div></div>
             </div>
           </div>
         </div>
-        <div class="col-md-12" ng-if="show">
+        <div class="col-md-12" ng-if="show" style="margin-top: 20px">
           <div class="col-md-1 no-padding" style="width: 130px;text-align: right">
             <p><span>其他</span></p>
           </div>
-          <div class="col-md-10" style="margin-left: 30px">
+          <div class="col-md-10">
             <div class="input-group">
-              <input type="text" class="form-control" ng-model="vm.other" placeholder="请输入其他技术细节并确定,例如：JAVA"/>
-              <span ng-click="vm.searchOther()" class="input-group-addon" style="background-color: #3285ff;color: #FFF;border: 1px solid #3285ff;cursor: pointer;">搜索</span>
+              <input type="text" class="form-control" ng-model="vm.other" placeholder="请输入其他技术细节并确定,例如：cobol"/>
+              <span ng-click="vm.searchOther()" class="input-group-addon"
+                    style="background-color: #3285ff;color: #FFF;border: 1px solid #3285ff;cursor: pointer;">搜索</span>
             </div>
           </div>
         </div>

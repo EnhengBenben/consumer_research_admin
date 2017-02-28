@@ -18,8 +18,7 @@
       starttime: ''
     };
     vm.status = [{id: 1, name: '开放'}, {id: 2, name: '关闭'}];
-    vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
-      , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
+    vm.jobAges = [{id: 1, name: '1-3年'}, {id: 2, name: '4-6年'}, {id: 3, name: '7-10年'}, {id: 4, name: '10年以上'}];
     vm.changeMoney = changeMoney;
     return init();
 

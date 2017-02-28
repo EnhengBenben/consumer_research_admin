@@ -63,7 +63,7 @@
         <label>雇佣历史</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.history}}</p>
+        <p class="margin-seven" id="history"></p>
       </div>
     </div>
     <div class="form-group">
@@ -71,7 +71,7 @@
         <label>项目履历</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.proexperience}}</p>
+        <p class="margin-seven" id="proexperience"></p>
       </div>
     </div>
     <div class="form-group">
@@ -79,7 +79,7 @@
         <label>教育背景</label>
       </div>
       <div class="col-md-10">
-        <p class="margin-seven">{{vm.show.educational}}</p>
+        <p class="margin-seven" id="educational"></p>
       </div>
     </div>
     <div class="form-group">
@@ -98,7 +98,7 @@
         <p class="margin-seven">{{vm.show.other}}</p>
       </div>
     </div>
-    <div class="form-group important-font">
+    <div class="form-group important-font" ng-if="vm.show.iscment == '2'">
       <div class="col-md-2 control-label">
         <label>手机号</label>
       </div>
@@ -106,7 +106,7 @@
         <p class="margin-seven">{{vm.show.username}}</p>
       </div>
     </div>
-    <div class="form-group important-font">
+    <div class="form-group important-font" ng-if="vm.show.iscment == '2'">
       <div class="col-md-2 control-label">
         <label>邮箱</label>
       </div>

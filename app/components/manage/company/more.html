@@ -2,63 +2,22 @@
   <div class="row no-margin">
     <span class="normal-title">已发布项目</span>
     <div class="pull-right" ng-if="vm.user.type === 0 && vm.user.basetype === 0">
-      <div class="btn btn-danger" ui-sref="app.manage.company.publish">发布需求</div>
+      <div class="btn btn-danger" ng-click="vm.publishPro()">发布需求</div>
     </div>
   </div>
-  <!-- <div class="row no-margin soft-filter">
-    <ul class="list-unstyled no-margin">
-      <li><span>项目类型 ：</span></li>
-      <li><span ng-click="vm.choice(1,'不限')" ng-class="{'filter-active': vm.filter[1] === '不限'}">不限</span></li>
-      <li><span ng-click="vm.choice(1,'整体项目')" ng-class="{'filter-active': vm.filter[1] === '整体项目'}">整体项目</span></li>
-      <li><span ng-click="vm.choice(1,'驻场项目')" ng-class="{'filter-active': vm.filter[1] === '驻场项目'}">驻场项目</span></li>
-      <li><span ng-click="vm.choice(1,'自由职业顾问')" ng-class="{'filter-active': vm.filter[1] === '自由职业顾问'}">自由职业顾问项目</span></li>
-    </ul>
-    <ul class="list-unstyled no-margin">
-      <li><span>工作地点 ：</span></li>
-      <li><span ng-click="vm.choice(2,'全国')" ng-class="{'filter-active': vm.filter[2] === '全国'}">全国</span></li>
-      <li><span ng-click="vm.choice(2,'北京')" ng-class="{'filter-active': vm.filter[2] === '北京'}">北京</span></li>
-      <li><span ng-click="vm.choice(2,'上海')" ng-class="{'filter-active': vm.filter[2] === '上海'}">上海</span></li>
-      <li><span ng-click="vm.choice(2,'天津')" ng-class="{'filter-active': vm.filter[2] === '天津'}">天津</span></li>
-      <li><span ng-click="vm.choice(2,'深圳')" ng-class="{'filter-active': vm.filter[2] === '深圳'}">深圳</span></li>
-      <li><span ng-click="vm.choice(2,'成都')" ng-class="{'filter-active': vm.filter[2] === '成都'}">成都</span></li>
-      <li><span ng-click="vm.choice('更多')">更多</span></li>
-    </ul>
-    <ul class="list-unstyled no-margin">
-      <li><span>项目周期 ：</span></li>
-      <li><span ng-click="vm.choice(3,'不限')" ng-class="{'filter-active': vm.filter[3] === '不限'}">不限</span></li>
-      <li style="width: 400px"><input type="date"/><span>至</span><input type="date"/></li>
-    </ul>
-    <ul class="list-unstyled no-margin">
-      <li><span>工作经验 ：</span></li>
-      <li><span ng-click="vm.choice(4,'不限')" ng-class="{'filter-active': vm.filter[4] === '不限'}">不限</span></li>
-      <li><span ng-click="vm.choice(4,'应届生')" ng-class="{'filter-active': vm.filter[4] === '应届生'}">应届生</span></li>
-      <li><span ng-click="vm.choice(4,'1-3年')" ng-class="{'filter-active': vm.filter[4] === '1-3年'}">1-3年</span></li>
-      <li><span ng-click="vm.choice(4,'4-6年')" ng-class="{'filter-active': vm.filter[4] === '4-6年'}">4-6年</span></li>
-      <li><span ng-click="vm.choice(4,'7-10年')" ng-class="{'filter-active': vm.filter[4] === '7-10年'}">7-10年</span></li>
-      <li><span ng-click="vm.choice(4,'10年以上')" ng-class="{'filter-active': vm.filter[4] === '10年以上'}">10年以上</span></li>
-    </ul>
-    <ul class="list-unstyled no-margin">
-      <li><span>工作经验 ：</span></li>
-      <li><span ng-click="vm.choice(5,'不限')" ng-class="{'filter-active': vm.filter[5] === '不限'}">不限</span></li>
-      <li><span ng-click="vm.choice(5,'500以下')" ng-class="{'filter-active': vm.filter[5] === '500以下'}">500以下</span></li>
-      <li><span ng-click="vm.choice(5,'500-1000')" ng-class="{'filter-active': vm.filter[5] === '500-1000'}">500-1000</span></li>
-      <li><span ng-click="vm.choice(5,'1000-1500')" ng-class="{'filter-active': vm.filter[5] === '1000-1500'}">1000-1500</span></li>
-      <li><span ng-click="vm.choice(5,'1500-2000')" ng-class="{'filter-active': vm.filter[5] === '1500-2000'}">1500-2000</span></li>
-      <li><span ng-click="vm.choice(5,'2000-2500')" ng-class="{'filter-active': vm.filter[5] === '2000-2500'}">2000-2500</span></li>
-      <li><span ng-click="vm.choice(5,'2500以上')" ng-class="{'filter-active': vm.filter[5] === '2500以上'}">2500以上</span></li>
-    </ul>
-    <!--<p><span>项目类型 ：</span><span>不限</span><span>整体项目</span><span>驻场项目</span><span>自由职业顾问项目</span></p>
-    <p><span>工作地点 ：</span><span>全国</span><span>北京</span><span>上海</span><span>天津</span><span>深圳</span><span>成都</span></p>
-    <p><span>项目周期 ：</span><input type="date"/><span>至</span><input type="date"/></p>
-    <p><span>工作经验 ：</span><span>不限</span><span>应届生</span><span>1-3年</span><span>4-6年</span><span>7-10年</span><span>10年以上</span></p>
-    <p><span>驻场价格 ：</span><span>不限</span><span>500以下</span><span>500-1000</span><span>1000-1500</span><span>1500-2000</span><span>2000-2500</span><span>2500以上</span></p>-->
 </div>
-<div class="spinner" ng-if="!vm.lists.length">
+<div class="spinner" ng-if="!vm.lists">
   <div class="rect1"></div>
   <div class="rect2"></div>
   <div class="rect3"></div>
   <div class="rect4"></div>
   <div class="rect5"></div>
+</div>
+<div class="row" ng-if="vm.lists && !vm.lists.length">
+  <div class="static-box">
+    <p ng-if="vm.user.ispass != '0'">尚未发布项目，发布项目找到承包方</p>
+    <p ng-if="vm.user.ispass === '0'">您的资料尚在审核中，审核后您可以在此发布项目</p>
+  </div>
 </div>
 <div class="row no-margin soft-list" ng-repeat="i in vm.lists"  ng-if="vm.lists.length">
   <div class="col-md-4 no-padding-left">
@@ -77,7 +36,7 @@
   </div>
   <div class="row">
     <div class="col-md-3"><span>{{i.name}}</span></div>
-    <div class="col-md-2 no-padding"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'/人/月': '/人/天')}}</span></div>
+    <div class="col-md-2 no-padding"><strong>项目预算：</strong><span>{{i.price}}</span> <span>{{i.requesttype === 0?'元': (i.requesttype === 1?'元/人/月': '元/人/天')}}</span></div>
     <div class="col-md-2 no-padding"><strong>项目发布日期：</strong><span>{{i.createtime}}</span></div>
     <div class="col-md-2 no-padding"><strong>项目开始日期：</strong><span>{{i.starttime}}</span></div>
     <div class="col-md-2 no-padding"><strong>项目结束日期：</strong><span>{{i.endtime}}</span></div>

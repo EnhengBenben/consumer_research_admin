@@ -31,7 +31,7 @@
       3: null,
     };
     vm.jobAges = [{id: 1, name: '1年'}, {id: 2, name: '2年'}, {id: 3, name: '3年'}, {id: 4, name: '4年'}, {id: 5, name: '5年'}
-      , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 4, name: '10年及以上'}];
+      , {id: 6, name: '6年'}, {id: 7, name: '7年'}, {id: 8, name: '8年'}, {id: 9, name: '9年'}, {id: 10, name: '10年及以上'}];
     vm.pageArr = [];
     vm.pageList = {
       currentPage: 1, //当前页数
@@ -100,8 +100,6 @@
       }, true);
       $scope.$watch('vm.skills', function (newValue, oldValue) {
         if (newValue != oldValue) {
-          console.log(newValue);
-          console.log(oldValue);
           var params = [];
           angular.forEach(vm.skills, function(lists){
             angular.forEach(lists.diclist, function(data){
@@ -110,7 +108,6 @@
               }
             })
           });
-          console.log(params);//选中技能
           if(params.length)
             vm.params['skills'] = params.join(',');
           else {
@@ -121,7 +118,6 @@
       $scope.$watch('vm.checkExp', function (newValue, oldValue) {
         if (newValue != oldValue) {
           vm.experienceList = vm.checkExp.ids.join(',');
-          console.log(vm.experienceList); //选中行业经验
           vm.params['experences'] = vm.experienceList;
         }
       }, true);
@@ -206,7 +202,6 @@
     }
 
     function selectProvince(data){
-      console.log(data);
       vm.filter[1] = data;
       vm.tag = !vm.tag;
     }
@@ -229,7 +224,6 @@
           }
         });
       });
-      console.log(params.join(','));
     }
   }
 })();

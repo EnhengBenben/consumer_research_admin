@@ -181,7 +181,7 @@ ul {
 }
 
 .-align-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .text-sp {
@@ -247,23 +247,35 @@ ul {
       margin: 10px 0 10px 0;
       overflow: auto;
       span {
-        margin: 2px 2px;
-        display: inline-block;
+        margin: 2px 2px -1px 2px;
+        display: inline-table;
+        text-align: center;
+        //border-bottom: 1px dashed;
+        /* padding-bottom: 6px; */
+        /* padding: 0 6px; */
+        padding: 6px 20px;
+        width: 110px
       }
      .remark-title{
         display: block;
         width: 130px;
         text-align: right;
         float: left;
+       padding: 8px;
       }
       .test-remark{
         display: block;
         width: 860px;
         float: left;
+        overflow: hidden;
+        border-bottom: 1px dashed;
       }
     }
 
   }
+}
+.long-test{
+  width: 220px !important;
 }
 
 .help-block {
@@ -290,4 +302,9 @@ ul {
 }
 .note-toolbar{
   display: none !important;
+}
+.summernote-value{
+  .note-editor{
+    opacity: 1!important;
+  }
 }

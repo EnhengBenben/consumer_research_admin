@@ -20,7 +20,7 @@
           <input type="text" class="form-control"
                  name="title"
                  minlength="2"
-                 maxlength="10"
+                 maxlength="20"
                  ng-class="{'error-input': FormLetter.title.touched &&
                  (FormLetter.title.$error.minlength || FormLetter.title.$error.maxlength || FormLetter.title.$error.required)}"
                  placeholder="请输入私信标题"
@@ -28,7 +28,7 @@
                  ng-model="vm.model.title"/>
           <span class="help-block error-font" ng-if="FormLetter.title.$error.required &&  FormLetter.title.touched">请输入私信主题</span>
           <span class="help-block error-font" ng-if="FormLetter.title.$error.minlength &&  FormLetter.title.touched">私信主题不得少于2个字</span>
-          <span class="help-block error-font" ng-if="FormLetter.title.$error.maxlength &&  FormLetter.title.touched">私信主题不得多于10个字</span>
+          <span class="help-block error-font" ng-if="FormLetter.title.$error.maxlength &&  FormLetter.title.touched">私信主题不得多于20个字</span>
         </div>
       </div>
       <div class="form-group" style="border: none">
@@ -42,7 +42,7 @@
                     style="min-height: 200px" minlength="2" maxlength="200" required name="info" ng-model="vm.model.info" placeholder="请输入私信内容"></textarea>
           <span class="help-block error-font" ng-if="FormLetter.info.$error.required &&  FormLetter.info.touched">请输入私信内容</span>
           <span class="help-block error-font" ng-if="FormLetter.info.$error.minlength &&  FormLetter.info.touched">私信内容不得少于2个字</span>
-          <span class="help-block error-font" ng-if="FormLetter.info.$error.maxlength &&  FormLetter.info.touched">私信内容不得多于10个字</span>
+          <span class="help-block error-font" ng-if="FormLetter.info.$error.maxlength &&  FormLetter.info.touched">私信内容不得多于200个字</span>
         </div>
       </div>
     </form>

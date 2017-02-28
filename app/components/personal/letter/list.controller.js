@@ -44,24 +44,30 @@
     }
 
     function removeAll() {
-      var data = {
-        ids: vm.checkList.ids.join(',')
-      };
-    if(vm.status === 'send'){
-      PersonalService
-        .delSendAllMessage(data)
-        .then(function(res){
-          toaster.pop('success','私信已删除');
-          init();
-        })
-    }else {
-      PersonalService
-        .delAcceptAllMessage(data)
-        .then(function(res){
-          toaster.pop('success','私信已删除');
-          init();
-        })
-    }
+      if(vm.checkList.ids.length){
+        var data = {
+          ids: vm.checkList.ids.join(',')
+        };
+        if(vm.status === 'send'){
+          PersonalService
+            .delSendAllMessage(data)
+            .then(function(res){
+              vm.checkList.ids = [];
+              toaster.pop('success','私信已删除');
+              init();
+            })
+        }else {
+          PersonalService
+            .delAcceptAllMessage(data)
+            .then(function(res){
+              vm.checkList.ids = [];
+              toaster.pop('success','私信已删除');
+              init();
+            })
+        }
+      }else {
+        toaster.pop('error','请先选择要删除的私信');
+      }
     }
 
     function selectAll(){

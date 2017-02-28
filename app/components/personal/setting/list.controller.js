@@ -258,13 +258,28 @@
     }
 
     function FreelanceResume() {
-      var data = angular.copy(vm.settingObj);
-      data['userid'] = vm.user.userid;
-      PersonalService
-        .updateFreelanceResume(data)
-        .then(function (res) {
-          toaster.pop('success', res.data);
-        })
+      if(vm.settingObj.history === ""){
+        toaster.pop('error', '请填写您的雇佣历史');
+      }else if(vm.settingObj.history.length < 17){
+        toaster.pop('error', '雇佣历史不得少于10个字');
+      }else if(vm.settingObj.proexperience === ""){
+        toaster.pop('error', '请填写您的项目履历');
+      }else if(vm.settingObj.proexperience.length < 17){
+        toaster.pop('error', '项目履历不得少于10个字');
+      }else if(vm.settingObj.educational === ""){
+        toaster.pop('error', '请填写您的教育背景');
+      }else if(vm.settingObj.educational.length < 17){
+        toaster.pop('error', '教育背景不得少于10个字');
+      }else{
+        var data = angular.copy(vm.settingObj);
+        data['userid'] = vm.user.userid;
+        PersonalService
+          .updateFreelanceResume(data)
+          .then(function (res) {
+            toaster.pop('success', res.data);
+          })
+      }
+
     }
 
 

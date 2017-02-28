@@ -111,7 +111,6 @@
               }
             })
           });
-          console.log(params);//选中技能
           if(params.length)
           vm.params['skills'] = params.join(',');
           else {
@@ -122,7 +121,6 @@
       $scope.$watch('vm.checkExp', function (newValue, oldValue, scope) {
         if (newValue != oldValue) {
           vm.experienceList = vm.checkExp.ids.join(',');
-          console.log(vm.experienceList); //选中行业经验
           vm.params['experences'] = vm.experienceList;
         }
       }, true);
@@ -208,7 +206,6 @@
     }
 
     function selectProvince(data) {
-      console.log(data);
       vm.filter[1] = data;
       vm.tag = !vm.tag;
     }

@@ -41,4 +41,14 @@ angular.module('app')
         templateUrl: 'components/personal/letter/freelance-show.html',
         controller: 'PersonalFreelanceShowCtrl as vm'
       })
+      .state('app.personal.connectedProject',{
+        url: '/connected-project',
+        templateUrl: 'components/personal/connected-project.html',
+        controller: 'PersonalConnectedProjectCtrl as vm'
+      })
+      .state('app.personal.connectedSource',{
+        url: '/connected-source',
+        templateUrl: 'components/personal/connected-source.html',
+        controller: 'PersonalConnectedSourceCtrl as vm'
+      })
   });

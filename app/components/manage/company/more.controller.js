@@ -13,6 +13,7 @@
     vm.last = last;
     vm.filterPage = filterPage;
     vm.openStatus = openStatus;
+    vm.publishPro = publishPro;
     vm.user = $localStorage.user;
     vm.filter = {
       1: '不限',
@@ -68,6 +69,14 @@
 
     function last() {
       vm.pageList.currentPage = vm.pageArr.length;
+    }
+
+    function publishPro() {
+      if(vm.user.ispass === '0'){
+        toaster.pop('error', '您的账户正在审核，请耐心等待');
+      }else {
+        $state.go('app.manage.company.publish');
+      }
     }
 
     function filterPage(data) {

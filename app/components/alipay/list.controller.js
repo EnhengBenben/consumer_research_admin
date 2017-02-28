@@ -20,7 +20,6 @@
       desc: '啊是觉得好卡',
       price: '0.01'
     };
-    console.log(vm.params);
 
     return init();
 

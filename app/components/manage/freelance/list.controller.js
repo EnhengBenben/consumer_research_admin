@@ -9,7 +9,6 @@
   function Controller($localStorage, $state, toaster, $scope, ManageService) {
     var vm = this;
     vm.user = $localStorage.user;
-    console.log(vm.user);
 
     return init();
 

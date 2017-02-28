@@ -12,13 +12,8 @@ angular.module('app')
         controller: 'FreelanceListCtrl as vm'
       })
       .state('app.freelance.show',{
-        url: '/show/:id',
+        url: '/show/:id?status',
         templateUrl: 'components/freelance/show.html',
         controller: 'FreelanceShowCtrl as vm',
-      })
-      .state('app.freelance.pay',{
-        url: '/pay',
-        templateUrl: 'components/freelance/pay.html',
-        controller: 'FreelancePayCtrl as vm'
       })
   });

@@ -71,7 +71,7 @@
       AuthService
         .register(vm.register)
         .then(function (res) {
-          if ((res.data === 'true' && $stateParams.status === 'company') || (res.data === 'false' && $stateParams.status === 'freelance')) {
+          if (($stateParams.status === 'company') || (res.data === 'false' && $stateParams.status === 'freelance')) {
             var second = 60,
               timePromise = undefined;
             if (vm.paraevent) {

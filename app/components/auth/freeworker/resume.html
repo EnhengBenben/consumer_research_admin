@@ -29,7 +29,7 @@
 </div>
 <div class="form-container">
   <form class="form-horizontal" name="resume" ng-submit="vm.next()">
-    <div class="form-group" ng-class="{'has-success': resume.levels.$valid}">
+    <!--<div class="form-group" ng-class="{'has-success': resume.levels.$valid}">
       <div class="col-md-2 control-label">
         <label>能力级别</label>
       </div>
@@ -39,7 +39,7 @@
           <option value="">请选择</option>
         </select>
       </div>
-    </div>
+    </div>-->
   <!--  <div class="form-group" ng-class="{'has-success': resume.expectjob.$valid}">
       <div class="col-md-2 control-label">
         <label>期望职位</label>
@@ -60,11 +60,13 @@
                class="form-control"
                name="wage"
                ng-model="vm.resume.money"
-               ng-class="{'error-input': resume.wage.$error.required && resume.wage.$touched}"
+               ng-pattern="/^[0-9]{1,}$/"
+               ng-class="{'error-input': (resume.wage.$error.required || resume.wage.$error.pattern) && resume.wage.$touched}"
                placeholder="请输入期望日薪"
                required
         />
         <div class="help-block error-font" ng-if="(resume.wage.$error.required) && resume.wage.$touched">期望日薪不能为空</div>
+        <div class="help-block error-font" ng-if="(resume.wage.$error.pattern) && resume.wage.$touched">期望日薪必须为数字</div>
         <span class="input-result" ng-if="resume.wage.$valid"><i class="fa fa-check"></i></span>
       </div>
       <div class="col-md-5 margin-seven">
@@ -75,14 +77,18 @@
       <div class="col-md-2 control-label">
         <label>雇佣历史</label>
       </div>
-      <div class="col-md-10">
-        <textarea class="form-control"
+      <div class="col-md-10" ng-class="{'summernote-value': vm.resume.history.length}">
+        <!--<textarea class="form-control"
                   ng-class="{'error-input': (resume.history.$error.minlength || resume.history.$error.required) && resume.history.$touched}"
                   name="history" required placeholder="请输入雇佣历史,不得少于10个字符" minlength="10"
-                  ng-model="vm.resume.history"></textarea>
-        <div class="help-block error-font" ng-if="resume.history.$error.required && resume.history.$touched">雇佣历史不能为空
-        </div>
-        <div class="help-block error-font" ng-if="resume.history.$error.minlength && resume.history.$touched">不得少于10个字
+                  ng-model="vm.resume.history"></textarea>-->
+        <summernote style="position: relative;z-index: 10" id="summernote" height="200" lang="zh-CN" ng-model="vm.resume.history"
+        ></summernote>
+        <div style="position: absolute;top: 37px;color: #aaa;" ng-if="!vm.resume.history">
+          <p>请输入雇佣历史,不得少于10个字符</p>
+          <p>例：</p>
+          <p>XX年XX月~XX年XX月 受雇于XX公司</p>
+          <p>XX年XX月~XX年XX月 受雇于XX公司</p>
         </div>
       </div>
     </div>
@@ -90,11 +96,19 @@
       <div class="col-md-2 control-label">
         <label>项目履历</label>
       </div>
-      <div class="col-md-10">
-        <textarea class="form-control"
+      <div class="col-md-10" ng-class="{'summernote-value': vm.resume.proexperience.length}">
+        <!--<textarea class="form-control"
                   ng-class="{'error-input': (resume.proexperience.$error.minlength || resume.proexperience.$error.required) && resume.proexperience.$touched}"
                   name="proexperience" ng-model="vm.resume.proexperience" placeholder="请输入项目履历,不得少于10个字符" minlength="10"
-                  required="required"></textarea>
+                  required="required"></textarea>-->
+        <summernote style="position: relative;z-index: 10" id="summernote2" height="200" lang="zh-CN" ng-model="vm.resume.proexperience"
+        ></summernote>
+        <div style="position: absolute;top: 37px;color: #aaa;" ng-if="!vm.resume.proexperience">
+          <p>请输入项目履历,不得少于10个字符</p>
+          <p>例：</p>
+          <p>XX年XX月~XX年XX月 大型SAP实施部署项目</p>
+          <p>XX年XX月~XX年XX月 大型Java开发项目</p>
+        </div>
         <div class="help-block error-font" ng-if="resume.proexperience.$error.required && resume.proexperience.$touched">项目履历不能为空</div>
         <div class="help-block error-font" ng-if="resume.proexperience.$error.minlength && resume.proexperience.$touched">不得少于10个字</div>
       </div>
@@ -103,10 +117,18 @@
       <div class="col-md-2 control-label">
         <label>教育背景</label>
       </div>
-      <div class="col-md-10">
-        <textarea class="form-control" name="educational" ng-model="vm.resume.educational"
+      <div class="col-md-10" ng-class="{'summernote-value': vm.resume.educational.length}">
+       <!-- <textarea class="form-control" name="educational" ng-model="vm.resume.educational"
                   ng-class="{'error-input': (resume.educational.$error.minlength || resume.educational.$error.required) && resume.educational.$touched}"
-                  placeholder="请输入教育背景,不得少于10个字符" minlength="10" required="required"></textarea>
+                  placeholder="请输入教育背景,不得少于10个字符" minlength="10" required="required"></textarea>-->
+        <summernote style="position: relative;z-index: 10" id="summernote3" height="200" lang="zh-CN" ng-model="vm.resume.educational"
+        ></summernote>
+        <div style="position: absolute;top: 37px;color: #aaa;" ng-if="!vm.resume.educational">
+          <p>请输入教育背景,不得少于10个字符</p>
+          <p>例：</p>
+          <p>XX年XX月~XX年XX月 XX大学 软件工程  本科</p>
+          <p>XX年XX月~XX年XX月 XX大学 计算机系统设计 硕士 </p>
+        </div>
         <div class="help-block error-font" ng-if="resume.educational.$error.required && resume.educational.$touched">项目履历不能为空</div>
         <div class="help-block error-font" ng-if="resume.educational.$error.minlength && resume.educational.$touched">不得少于10个字</div>
       </div>

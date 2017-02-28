@@ -4,8 +4,9 @@
   angular
     .module('app')
     // .constant('ENDPOINT', 'http://121.43.106.58:8080/stproject') //部署测试服务器
-    // .constant('ENDPOINT','http://www.softtrade.top') //部署正式服务器
-     .constant('ENDPOINT','http://192.168.0.115:8080/stproject') //本地测试
+     .constant('ENDPOINT','http://www.softtrade.top') //部署正式服务器
+    // .constant('ENDPOINT','http://192.168.0.115:8080/stproject') //本地测试
+    // .constant('ENDPOINT','http://101.37.36.7') //本地测试
     .run(function () {
       moment.locale('zh-CN');
       moment.tz.setDefault("Asia/Hong_Kong");

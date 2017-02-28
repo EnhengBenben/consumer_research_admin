@@ -31,7 +31,26 @@
       findInBox2: findInBox2, //承包方收件箱列表
       countMessage: countMessage, //私信未读数目
       updateMessageStatus: updateMessageStatus, //承包方收件箱列表
+      toSearchHelpInfo: toSearchHelpInfo, // 撮合自由职业者列表
+      toSearchFBHelperInfo: toSearchFBHelperInfo, // 发包方付费或者撮合列表
     };
+
+    function toSearchFBHelperInfo(data){
+      return  $http({
+        url: ENDPOINT + '/toSearchFBHelperInfo.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
+    function toSearchHelpInfo(data){
+      return  $http({
+        url: ENDPOINT + '/toSearchHelpInfo.action',
+        method: 'POST',
+        data: data
+      })
+    }
+
     function findInBox2(data){
       return  $http({
         url: ENDPOINT + '/findInBox2.action',
